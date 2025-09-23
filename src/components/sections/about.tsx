@@ -25,7 +25,7 @@ export default function AboutSection() {
                 </div>
 
                 <Button asChild size="lg">
-                    <a href="/resume.pdf" download="Srivatsav_Resume.pdf">Download Resume</a>
+                    <a href="/resume.pdf" download="SRIVATSAV_Resume.pdf">Download Resume</a>
                 </Button>
             </div>
         </section>

@@ -26,7 +26,7 @@ export default function Footer() {
           })}
         </div>
         <p className="text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} Srivatsav. All Rights Reserved.
+          &copy; {new Date().getFullYear()} SRIVATSAV. All Rights Reserved.
         </p>
       </div>
     </footer>

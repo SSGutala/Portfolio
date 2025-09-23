@@ -53,7 +53,7 @@ export default function Header() {
       <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="mx-auto flex h-16 max-w-6xl items-center px-6 md:px-8">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <span className="text-xl md:text-2xl font-bold">Srivatsav</span>
+            <span className="text-xl md:text-2xl font-bold">SRIVATSAV</span>
           </Link>
 
           <nav className="hidden md:flex flex-1 items-center justify-center space-x-6 text-sm font-medium">
@@ -74,7 +74,7 @@ export default function Header() {
           <div className="flex flex-1 items-center justify-end space-x-4">
             <ConnectButton variant="outline">Connect</ConnectButton>
             <Button asChild>
-              <a href="/resume.pdf" download="Srivatsav_Resume.pdf">Resume</a>
+              <a href="/resume.pdf" download="SRIVATSAV_Resume.pdf">Resume</a>
             </Button>
             <button
               className="md:hidden"
