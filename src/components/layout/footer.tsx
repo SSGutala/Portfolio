@@ -16,11 +16,14 @@ export default function Footer() {
           {socialLinks.map((link) => {
             const Icon = link.icon;
             return (
-              <Link key={link.name} href={link.href} passHref legacyBehavior>
-                <a target="_blank" rel="noopener noreferrer">
-                  <span className="sr-only">{link.name}</span>
-                  <Icon className="h-6 w-6 text-muted-foreground hover:text-primary transition-colors" />
-                </a>
+              <Link
+                key={link.name}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="sr-only">{link.name}</span>
+                <Icon className="h-6 w-6 text-muted-foreground hover:text-primary transition-colors" />
               </Link>
             );
           })}
