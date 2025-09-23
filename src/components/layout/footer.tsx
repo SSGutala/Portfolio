@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Github, Linkedin, Mail, Twitter } from 'lucide-react';
 
 const socialLinks = [
-  { icon: Mail, href: 'mailto:srivatsav@example.com', name: 'Email' },
+  { icon: Mail, href: 'mailto:sai.gutala@gmail.com', name: 'Email' },
   { icon: Linkedin, href: '#', name: 'LinkedIn' },
   { icon: Github, href: '#', name: 'GitHub' },
   { icon: Twitter, href: '#', name: 'X' },

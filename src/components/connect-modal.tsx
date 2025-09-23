@@ -57,7 +57,7 @@ export function ConnectModal({ isOpen, setIsOpen }: ConnectModalProps) {
   const onSubmit: SubmitHandler<FormData> = (data) => {
     const subject = `Inquiry about ${data.topic} from ${data.name}`;
     const body = `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`;
-    window.location.href = `mailto:srivatsav@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:sai.gutala@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setIsOpen(false);
     form.reset();
   };

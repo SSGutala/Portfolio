@@ -82,7 +82,7 @@ export default function Header() {
           <div className="flex flex-1 items-center justify-end space-x-4">
             <ConnectButton variant="outline">Connect</ConnectButton>
             <Button asChild>
-              <a href="/resume.pdf" download="SRIVATSAV_Resume.pdf">Resume</a>
+              <a href="https://docs.google.com/document/d/1t3SIQxCx4P6oIHpcJ1Prg2nnzYp-3z0l9fI7SObNotQ/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a>
             </Button>
             <button
               className="md:hidden"
