@@ -8,6 +8,7 @@ import { ConnectButton } from "@/components/connect-button";
 import { cn } from "@/lib/utils";
 
 const navItems = [
+  { name: "Home", href: "/" },
   { name: "Consulting", href: "#consulting" },
   { name: "Ventures", href: "#ventures" },
   { name: "Product", href: "#product" },
