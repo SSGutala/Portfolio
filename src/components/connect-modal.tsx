@@ -28,6 +28,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useToast } from "@/hooks/use-toast";
+import { handleFormSubmission, type ContactFormData } from "@/ai/flows/contact-form-flow";
+import { useState } from "react";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -36,15 +39,16 @@ const formSchema = z.object({
   message: z.string().min(10, "Message must be at least 10 characters."),
 });
 
-type FormData = z.infer<typeof formSchema>;
-
 interface ConnectModalProps {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
 }
 
 export function ConnectModal({ isOpen, setIsOpen }: ConnectModalProps) {
-  const form = useForm<FormData>({
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const form = useForm<ContactFormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
@@ -54,12 +58,25 @@ export function ConnectModal({ isOpen, setIsOpen }: ConnectModalProps) {
     },
   });
 
-  const onSubmit: SubmitHandler<FormData> = (data) => {
-    const subject = `Inquiry about ${data.topic} from ${data.name}`;
-    const body = `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`;
-    window.location.href = `mailto:sai.gutala@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setIsOpen(false);
-    form.reset();
+  const onSubmit: SubmitHandler<ContactFormData> = async (data) => {
+    setIsSubmitting(true);
+    try {
+      const result = await handleFormSubmission(data);
+      toast({
+        title: "Message Sent!",
+        description: result.confirmationMessage,
+      });
+      setIsOpen(false);
+      form.reset();
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "There was a problem with your request. Please try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -80,7 +97,7 @@ export function ConnectModal({ isOpen, setIsOpen }: ConnectModalProps) {
                 <FormItem>
                   <FormLabel>Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="Your Name" {...field} />
+                    <Input placeholder="Your Name" {...field} disabled={isSubmitting} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -93,7 +110,7 @@ export function ConnectModal({ isOpen, setIsOpen }: ConnectModalProps) {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="your.email@example.com" {...field} />
+                    <Input placeholder="your.email@example.com" {...field} disabled={isSubmitting} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -105,7 +122,7 @@ export function ConnectModal({ isOpen, setIsOpen }: ConnectModalProps) {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Topic</FormLabel>
-                   <Select onValueChange={field.onChange} defaultValue={field.value}>
+                   <Select onValueChange={field.onChange} defaultValue={field.value} disabled={isSubmitting}>
                     <FormControl>
                       <SelectTrigger>
                         <SelectValue placeholder="What is this about?" />
@@ -130,13 +147,15 @@ export function ConnectModal({ isOpen, setIsOpen }: ConnectModalProps) {
                 <FormItem>
                   <FormLabel>Message</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="Your message..." {...field} />
+                    <Textarea placeholder="Your message..." {...field} disabled={isSubmitting} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full">Send Message</Button>
+            <Button type="submit" className="w-full" disabled={isSubmitting}>
+              {isSubmitting ? "Sending..." : "Send Message"}
+            </Button>
           </form>
         </Form>
       </DialogContent>
