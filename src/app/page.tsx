@@ -13,11 +13,11 @@ export default function Home() {
       <Header />
       <main className="flex-grow">
         <HomeSection />
+        <AboutSection />
         <VenturesSection />
         <ConsultingSection />
         <ProductSection />
         <UiUxSection />
-        <AboutSection />
       </main>
       <Footer />
     </div>
