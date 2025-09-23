@@ -11,8 +11,8 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-black">
       <Header />
       <main className="flex-grow">
-        <ConsultingSection />
         <VenturesSection />
+        <ConsultingSection />
         <ProductSection />
         <UiUxSection />
         <AboutSection />
