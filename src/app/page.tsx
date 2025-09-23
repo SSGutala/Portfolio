@@ -1,3 +1,23 @@
+import Header from '@/components/layout/header';
+import Footer from '@/components/layout/footer';
+import ConsultingSection from '@/components/sections/consulting';
+import VenturesSection from '@/components/sections/ventures';
+import ProductSection from '@/components/sections/product';
+import UiUxSection from '@/components/sections/ui-ux';
+import AboutSection from '@/components/sections/about';
+
 export default function Home() {
-  return <></>;
+  return (
+    <div className="flex flex-col min-h-screen bg-black">
+      <Header />
+      <main className="flex-grow">
+        <ConsultingSection />
+        <VenturesSection />
+        <ProductSection />
+        <UiUxSection />
+        <AboutSection />
+      </main>
+      <Footer />
+    </div>
+  );
 }
