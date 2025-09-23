@@ -8,7 +8,7 @@ import { ConnectButton } from "@/components/connect-button";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { name: "Home", href: "/" },
+  { name: "Home", href: "#home" },
   { name: "Ventures", href: "#ventures" },
   { name: "Consulting", href: "#consulting" },
   { name: "Product", href: "#product" },
@@ -17,7 +17,7 @@ const navItems = [
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
+  const [activeSection, setActiveSection] = useState("home");
   const observer = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
@@ -38,6 +38,13 @@ export default function Header() {
         observer.current.observe(section);
       }
     });
+
+    // Set initial active section for home
+    const homeElement = document.getElementById('home');
+    if (homeElement && window.scrollY < homeElement.offsetHeight / 2) {
+      setActiveSection('home');
+    }
+
 
     return () => {
       sections.forEach((section) => {

@@ -1,32 +1,47 @@
 import AnimatedSection from "@/components/animated-section";
-import { ConnectButton } from "@/components/connect-button";
-import Image from "next/image";
+import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { BarChart, Briefcase, Lightbulb, Users } from "lucide-react";
+
+const services = [
+  {
+    icon: <Briefcase className="h-8 w-8 mb-4" />,
+    title: "Strategy",
+    description: "Defining product vision and roadmap to align with business goals.",
+  },
+  {
+    icon: <Users className="h-8 w-8 mb-4" />,
+    title: "UX Research",
+    description: "Understanding user needs to inform design and development.",
+  },
+  {
+    icon: <Lightbulb className="h-8 w-8 mb-4" />,
+    title: "Prototyping",
+    description: "Creating interactive models to test and validate ideas.",
+  },
+  {
+    icon: <BarChart className="h-8 w-8 mb-4" />,
+    title: "Analytics",
+    description: "Using data to drive product decisions and measure success.",
+  },
+];
 
 export default function ConsultingSection() {
   return (
     <AnimatedSection id="consulting">
-      <div className="grid md:grid-cols-2 gap-12 items-center">
-        <div className="flex flex-col items-center md:items-start text-center md:text-left">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
-            Builder, advisor, and product leader.
-          </h1>
-          <p className="text-lg text-muted-foreground mb-8 max-w-md">
-            I partner with early-stage startups and established companies to define, design, and deliver impactful products. My approach combines strategic thinking with hands-on execution.
-          </p>
-          <ConnectButton size="lg">
-            Get in Touch
-          </ConnectButton>
-        </div>
-        <div className="flex justify-center">
-           <Image
-            src="https://raw.githubusercontent.com/SSGutala/Portfolio/7c67606f69b501fa960efc8988fef2275ee3120f/prof-pic.png"
-            alt="SRIVATSAV professional picture"
-            width={350}
-            height={350}
-            className="rounded-full object-cover"
-            priority
-          />
-        </div>
+      <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-4 text-center">Consulting Services</h2>
+      <p className="max-w-3xl mx-auto text-lg text-muted-foreground mb-12 text-center">
+        I offer a range of services to help you build and scale successful products.
+      </p>
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {services.map((service, index) => (
+          <Card key={index} className="bg-card text-center p-6 flex flex-col items-center">
+            <CardHeader>
+              {service.icon}
+              <CardTitle>{service.title}</CardTitle>
+            </CardHeader>
+            <CardDescription>{service.description}</CardDescription>
+          </Card>
+        ))}
       </div>
     </AnimatedSection>
   );
