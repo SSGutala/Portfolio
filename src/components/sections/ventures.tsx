@@ -119,7 +119,7 @@ export default function VenturesSection() {
           </div>
 
           <div className="flex flex-col items-center">
-             <div className="w-48 h-36 rounded-xl mb-4 flex items-center justify-center bg-gradient-to-r from-cyan-400 via-blue-500 to-fuchsia-500">
+             <div className="w-48 h-36 rounded-xl mb-4 flex items-center justify-center bg-gradient-to-r from-blue-600 to-fuchsia-600">
                 <span className="text-3xl font-light text-white tracking-widest">Provaloh</span>
               </div>
               <h3 className="text-2xl font-bold mb-2">Provaloh</h3>
