@@ -1,21 +1,29 @@
 import AnimatedSection from "@/components/animated-section";
 import { ConnectButton } from "@/components/connect-button";
 import Image from "next/image";
+import Bubbles from "./bubbles";
 
 export default function HomeSection() {
   return (
-    <AnimatedSection id="home">
-      <div className="grid md:grid-cols-2 gap-12 items-center">
+    <AnimatedSection id="home" className="relative">
+       <div id="bubbles-layer" className="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
+        <Bubbles />
+      </div>
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(closest-side_at_50%_55%,rgba(0,0,0,0.28),transparent_65%)]" aria-hidden="true"></div>
+
+      <div className="grid md:grid-cols-2 gap-12 items-center relative z-10">
         <div className="flex flex-col items-center md:items-start text-center md:text-left">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
-            Builder, advisor, and product leader.
+            Visionary, Builder, and product leader.
           </h1>
           <p className="text-lg text-muted-foreground mb-8 max-w-md">
             I partner with early-stage startups and established companies to define, design, and deliver impactful products. My approach combines strategic thinking with hands-on execution.
           </p>
-          <ConnectButton size="lg">
-            Get in Touch
-          </ConnectButton>
+          <a href="mailto:sai.gutala@gmail.com">
+            <ConnectButton size="lg">
+              Get in Touch
+            </ConnectButton>
+          </a>
         </div>
         <div className="flex justify-center">
            <Image
