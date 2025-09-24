@@ -36,7 +36,7 @@ const getVentureLogo = (id: string): ImagePlaceholder | undefined => PlaceHolder
 
 export default function VenturesSection() {
   return (
-    <AnimatedSection id="ventures">
+    <AnimatedSection id="ventures" className="pt-0 md:pt-0">
       <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-4 text-center">Ventures</h2>
       <p className="max-w-3xl mx-auto text-lg text-muted-foreground mb-12 text-center">
         Exploring new ideas and building ventures from the ground up. Here are some of the concepts I'm currently working on.
