@@ -21,7 +21,7 @@ export default function ConsultingSection() {
           />
           <div className="text-lg text-muted-foreground space-y-6 text-left">
             <p>
-              Bangladrop was a startup based in Bangladesh seeking support in designing the first iteration of their mobile app for a dropshipping platform. The vision was to create a system similar to Alibaba but focused on connecting global business owners with wholesale sellers in Bangladesh.
+              <strong>Bangladrop</strong> was a startup based in Bangladesh seeking support in designing the first iteration of their mobile app for a dropshipping platform. The vision was to create a system similar to Alibaba but focused on connecting global business owners with wholesale sellers in Bangladesh.
             </p>
             <p>
               I worked closely with the client through multiple meetings to understand their goals and translate them into actionable design solutions. This included customizing wireframes and app flows to align with Bangladrop’s vision, while also engaging with prospective customers and businesses in Bangladesh to ensure the design addressed real user needs.
