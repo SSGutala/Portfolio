@@ -143,6 +143,8 @@
     display:inline-block;
     cursor:pointer;
     will-change:transform, filter;
+    animation: glitch-shake 2.5s infinite ease-in-out, yellow-channel 2.5s infinite steps(10);
+    filter: contrast(115%) saturate(120%);
   }
 
   /* duplicate colored layers */
@@ -155,8 +157,16 @@
     mix-blend-mode:screen;
   }
 
-  .glitch::before{ color:#00ffff; transform:translateX(0); } /* cyan */
-  .glitch::after { color:#ff004d; transform:translateX(0); } /* red */
+  .glitch::before{
+    color:#00ffff; /* cyan */
+    transform:translateX(0);
+    animation: glitch-slices 2.5s infinite steps(12);
+  }
+  .glitch::after {
+    color:#ff004d; /* red */
+    transform:translateX(0);
+    animation: glitch-slices 2.5s infinite steps(12) reverse;
+  }
 
   /* extra yellow layer via text-shadow (cheaper than a 3rd element) */
   .glitch{
@@ -202,19 +212,6 @@
     60%     { text-shadow: 0 0 0 #fff, 3px 0 0 #ffea00; }
     80%     { text-shadow: 0 0 0 #fff, -3px 0 0 #ffea00; }
   }
-
-  /* Active glitch state (used on load + hover) */
-  .glitch.is-glitching{
-    animation: glitch-shake 700ms ease-in-out both, yellow-channel 700ms steps(10) both;
-    filter: contrast(115%) saturate(120%);
-  }
-  .glitch.is-glitching::before{ animation: glitch-slices 700ms steps(12) both; transform: translateX(2px); }
-  .glitch.is-glitching::after { animation: glitch-slices 700ms steps(12) reverse both; transform: translateX(-2px); }
-
-  /* hover retriggers */
-  .glitch:hover{ animation: glitch-shake 700ms ease-in-out both, yellow-channel 700ms steps(10) both; }
-  .glitch:hover::before{ animation: glitch-slices 700ms steps(12) both; transform: translateX(2px); }
-  .glitch:hover::after { animation: glitch-slices 700ms steps(12) reverse both; transform: translateX(-2px); }
 
   /* reduced motion: soften effect */
   @media (prefers-reduced-motion: reduce){
