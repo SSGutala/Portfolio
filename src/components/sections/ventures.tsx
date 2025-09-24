@@ -9,12 +9,11 @@ export default function VenturesSection() {
 
         <div className="flex flex-col items-center">
             <Image
-                src="https://picsum.photos/seed/alphawave/128/128"
+                src="https://raw.githubusercontent.com/SSGutala/Portfolio/4cdedf9fa796a57e7ed6d1240bba3ffeeefaabfc/AW_Logo.png"
                 alt="Alphawave Technologies Logo"
                 width={128}
                 height={128}
                 className="rounded-xl mb-4"
-                data-ai-hint="logo tech"
             />
             <h3 className="text-2xl font-bold mb-6">Alphawave Technologies</h3>
 
