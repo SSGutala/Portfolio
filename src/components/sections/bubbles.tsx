@@ -22,6 +22,7 @@ const fragmentShader = `
   uniform vec3 cameraPos;
   uniform float filmThickness; // 200–800 nm
   uniform float ior;           // 1.33
+  uniform vec3 tint;
 
   // Fresnel Schlick
   float fresnel(vec3 N, vec3 V, float F0) {
@@ -67,6 +68,7 @@ const fragmentShader = `
 
     // mix: clear glass center, rainbow edge
     vec3 color = mix(env * 0.5, env * 1.0 + film * 1.0, F);
+    color = mix(color, tint, 0.2); // Apply tint
 
     // final with subtle opacity
     gl_FragColor = vec4(color, 0.4 + 0.2 * F);
@@ -155,6 +157,14 @@ const Bubbles = () => {
 
     const bubbles: THREE.Mesh[] = [];
     const bubbleGeometry = new THREE.SphereGeometry(1, 48, 48);
+    const tintPalette = [
+      new THREE.Color("hsl(0, 80%, 80%)"),   // Red
+      new THREE.Color("hsl(210, 95%, 82%)"), // Blue
+      new THREE.Color("hsl(270, 90%, 85%)"), // Violet
+      new THREE.Color("hsl(160, 70%, 75%)"), // Mint
+      new THREE.Color("hsl(35, 100%, 80%)"),  // Amber
+      new THREE.Color("hsl(330, 85%, 88%)"), // Pink
+    ];
 
     for (let i = 0; i < bubbleCount; i++) {
       const material = new THREE.ShaderMaterial({
@@ -165,6 +175,7 @@ const Bubbles = () => {
           filmThickness: { value: THREE.MathUtils.randFloat(250, 800) },
           ior: { value: 1.33 },
           envMap: { value: renderedEnvMap },
+          tint: { value: tintPalette[i % tintPalette.length] },
         },
         transparent: true,
         side: THREE.FrontSide,
