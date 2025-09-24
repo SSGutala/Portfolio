@@ -78,8 +78,11 @@ export default function Header() {
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  "link-underline transition-colors hover:text-primary",
-                  activeSection === item.href.substring(1) ? "active text-primary" : "text-muted-foreground"
+                  "link-underline transition-colors",
+                  item.name === 'Home' && 'hover:gradient-text-hover',
+                  activeSection === item.href.substring(1) 
+                    ? (item.name === 'Home' ? 'gradient-text-hover active' : 'active text-primary')
+                    : 'text-muted-foreground'
                 )}
               >
                 {item.name}
