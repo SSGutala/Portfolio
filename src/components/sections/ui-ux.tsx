@@ -32,6 +32,7 @@ export default function UiUxSection() {
 
     return () => {
       if (currentRef) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         observer.unobserve(currentRef);
       }
     };
@@ -49,7 +50,7 @@ export default function UiUxSection() {
         <div
           className={cn(
             "absolute transition-all duration-[1200ms] ease-out",
-            "w-[45%] md:w-[250px]",
+            "w-[48%] md:w-[320px]",
             isVisible
               ? "opacity-100 translate-x-[-55%]"
               : "opacity-0 translate-x-[-150%]"
@@ -58,8 +59,8 @@ export default function UiUxSection() {
           <Image
             src="https://raw.githubusercontent.com/SSGutala/Portfolio/a8e1cae263ceecd70eab9040feb9c91281ffa384/AWr1.png"
             alt="Alphawave Rider App Screen 1"
-            width={250}
-            height={500}
+            width={320}
+            height={640}
             className="w-full h-auto object-contain"
           />
         </div>
@@ -68,7 +69,7 @@ export default function UiUxSection() {
         <div
           className={cn(
             "absolute transition-all duration-[1200ms] ease-out",
-            "w-[45%] md:w-[250px]",
+            "w-[48%] md:w-[320px]",
             isVisible
               ? "opacity-100 translate-x-[55%]"
               : "opacity-0 translate-x-[150%]"
@@ -77,8 +78,8 @@ export default function UiUxSection() {
           <Image
             src="https://raw.githubusercontent.com/SSGutala/Portfolio/a8e1cae263ceecd70eab9040feb9c91281ffa384/AWr3.png"
             alt="Alphawave Rider App Screen 2"
-            width={250}
-            height={500}
+            width={320}
+            height={640}
             className="w-full h-auto object-contain"
           />
         </div>
