@@ -27,7 +27,7 @@ const services = [
 
 export default function ConsultingSection() {
   return (
-    <AnimatedSection id="consulting">
+    <AnimatedSection id="consulting" className="pt-0 md:pt-0">
       <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-4 text-center">Consulting Services</h2>
       <p className="max-w-3xl mx-auto text-lg text-muted-foreground mb-12 text-center">
         I offer a range of services to help you build and scale successful products.
