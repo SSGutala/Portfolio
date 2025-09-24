@@ -136,7 +136,7 @@
 @layer components {
   @keyframes bubble-float {
     0%   { transform: translate3d(var(--x,0px), 12vh, 0) scale(var(--s,1)); opacity: 0 }
-    5%   { opacity: var(--op,.65) }
+    5%   { opacity: var(--op,.85) }
     100% { transform: translate3d(calc(var(--x,0px) + var(--drift,0px)), -18vh, 0) scale(var(--s,1)); opacity: 0 }
   }
   #bubble-sprites { overflow: hidden; }
@@ -145,11 +145,11 @@
     width: var(--size); height: var(--size);
     animation: bubble-float var(--dur) linear var(--delay) infinite;
     mix-blend-mode: screen;
-    filter: brightness(1.3) contrast(1.05) saturate(1.15) hue-rotate(var(--hue,0deg));
+    filter: brightness(1.6) contrast(1.1) saturate(1.4) hue-rotate(var(--hue,0deg));
     will-change: transform, filter, opacity;
     pointer-events: none;
   }
   @media (prefers-reduced-motion: reduce) {
-    #bubble-sprites img.bubble { animation: none; opacity: .55 }
+    #bubble-sprites img.bubble { animation: none; opacity: .75 }
   }
 }
