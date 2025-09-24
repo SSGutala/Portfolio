@@ -22,7 +22,7 @@ export default function AboutSection() {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                     {stats.map(stat => (
-                        <div key={stat.label} className="p-6 rounded-lg bg-card border border-primary">
+                        <div key={stat.label} className="p-6 rounded-lg bg-black border border-primary">
                             <p className="text-4xl md:text-5xl font-bold text-primary flex items-baseline justify-center">
                               {stat.value}
                               <span className="text-sm font-medium tracking-widest text-muted-foreground ml-2">YEARS</span>
