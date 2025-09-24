@@ -1,5 +1,5 @@
 import AnimatedSection from "@/components/animated-section";
-import { ConnectButton } from "@/components/connect-button";
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Bubbles from "./bubbles";
 
@@ -19,11 +19,11 @@ export default function HomeSection() {
           <p className="text-lg text-muted-foreground mb-8 max-w-md">
             I create products and experiences where creativity meets execution, blending design, strategy, and innovation to turn bold ideas into meaningful results.
           </p>
-          <a href="mailto:sai.gutala@gmail.com">
-            <ConnectButton size="lg">
+          <Button asChild size="lg">
+            <a href="https://www.linkedin.com/in/sai-gutala/" target="_blank" rel="noopener noreferrer">
               Get in Touch
-            </ConnectButton>
-          </a>
+            </a>
+          </Button>
         </div>
         <div className="flex justify-center">
            <Image

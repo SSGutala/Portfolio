@@ -113,7 +113,7 @@ export default function Header() {
           
           <div className="flex flex-1 items-center justify-end space-x-4">
             <Button asChild variant="outline">
-                <a href="mailto:sai.gutala@gmail.com">Connect</a>
+                <a href="https://www.linkedin.com/in/sai-gutala/" target="_blank" rel="noopener noreferrer">Connect</a>
             </Button>
             <Button asChild>
               <a href="https://docs.google.com/document/d/1t3SIQxCx4P6oIHpcJ1Prg2nnzYp-3z0l9fI7SObNotQ/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a>
