@@ -50,7 +50,7 @@ export default function UiUxSection() {
         <div
           className={cn(
             "absolute transition-all duration-[1200ms] ease-out",
-            "w-[48%] md:w-[320px]",
+            "w-[48%] md:w-[300px]",
             isVisible
               ? "opacity-100 translate-x-[-55%]"
               : "opacity-0 translate-x-[-150%]"
@@ -69,7 +69,7 @@ export default function UiUxSection() {
         <div
           className={cn(
             "absolute transition-all duration-[1200ms] ease-out",
-            "w-[48%] md:w-[320px]",
+            "w-[48%] md:w-[300px]",
             isVisible
               ? "opacity-100 translate-x-[55%]"
               : "opacity-0 translate-x-[150%]"
