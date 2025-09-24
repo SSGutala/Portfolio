@@ -12,7 +12,7 @@ const navItems = [
   { name: "Ventures", href: "#ventures", color: "yellow" },
   { name: "Consulting", href: "#consulting", color: "green" },
   { name: "Product", href: "#product", color: "blue" },
-  { name: "UI/UX", href: "#uiux", color: "purple" },
+  { name: "UI/UX", href: "#uiux", color: "pink" },
 ];
 
 export default function Header() {
