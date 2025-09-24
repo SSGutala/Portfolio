@@ -60,8 +60,8 @@ export default function VenturesSection() {
               <Image
                   src="https://raw.githubusercontent.com/SSGutala/Portfolio/ffbb7b6b6eed5e77e9fa05007f8f7aa8fd4b1641/superstarlogo.png"
                   alt="SuperStar Logo"
-                  width={128}
-                  height={128}
+                  width={144}
+                  height={144}
                   className="rounded-xl mb-4"
               />
               <h3 className="text-2xl font-bold mb-2">SuperStar</h3>
