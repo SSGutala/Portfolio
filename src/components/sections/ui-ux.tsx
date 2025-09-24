@@ -1,37 +1,42 @@
+
+"use client";
+
 import Image from "next/image";
 import AnimatedSection from "@/components/animated-section";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import { Card, CardContent } from "@/components/ui/card";
-import { PlaceHolderImages, type ImagePlaceholder } from "@/lib/placeholder-images";
-
-const mockups = [
-  {
-    caption: "High-fidelity dashboard design for a data analytics platform.",
-    imageId: "ui-mockup-1",
-  },
-  {
-    caption: "User flow and wireframes for a new mobile banking feature.",
-    imageId: "ui-mockup-2",
-  },
-  {
-    caption: "Early-stage wireframing for a social media application.",
-    imageId: "ui-mockup-3",
-  },
-  {
-    caption: "Component library showcase from a comprehensive design system.",
-    imageId: "ui-mockup-4",
-  },
-];
-
-const getUiImage = (id: string): ImagePlaceholder | undefined => PlaceHolderImages.find(p => p.id === id);
+import { useEffect, useRef, useState } from "react";
+import { cn } from "@/lib/utils";
 
 export default function UiUxSection() {
+  const [isVisible, setIsVisible] = useState(false);
+  const animationRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.2, // Trigger when 20% of the element is visible
+      }
+    );
+
+    const currentRef = animationRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, []);
+
   return (
     <AnimatedSection id="uiux" className="pt-0 md:pt-0">
       <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-4 text-center">Designing systems and experiences.</h2>
@@ -39,36 +44,45 @@ export default function UiUxSection() {
         From wireframes to high-fidelity mockups, I focus on creating intuitive and beautiful user interfaces.
       </p>
 
-      <Carousel className="w-full" opts={{ loop: true }}>
-        <CarouselContent>
-          {mockups.map((mockup, index) => {
-            const image = getUiImage(mockup.imageId);
-            return (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                <div className="p-1">
-                  <Card className="overflow-hidden bg-card">
-                    <CardContent className="flex aspect-video items-center justify-center p-0 relative">
-                      {image && (
-                         <Image
-                          src={image.imageUrl}
-                          alt={mockup.caption}
-                          fill
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                          className="object-cover"
-                          data-ai-hint={image.imageHint}
-                        />
-                      )}
-                    </CardContent>
-                  </Card>
-                  <p className="text-sm text-muted-foreground mt-2 text-center">{mockup.caption}</p>
-                </div>
-              </CarouselItem>
-            );
-          })}
-        </CarouselContent>
-        <CarouselPrevious className="ml-14" />
-        <CarouselNext className="mr-14" />
-      </Carousel>
+      <div ref={animationRef} className="relative h-96 md:h-[600px] w-full max-w-4xl mx-auto flex items-center justify-center overflow-hidden">
+        {/* Left Phone */}
+        <div
+          className={cn(
+            "absolute transition-all duration-[1200ms] ease-out",
+            "w-[45%] md:w-[250px]",
+            isVisible
+              ? "opacity-100 translate-x-[-55%]"
+              : "opacity-0 translate-x-[-150%]"
+          )}
+        >
+          <Image
+            src="https://raw.githubusercontent.com/SSGutala/Portfolio/a8e1cae263ceecd70eab9040feb9c91281ffa384/AWr1.png"
+            alt="Alphawave Rider App Screen 1"
+            width={250}
+            height={500}
+            className="w-full h-auto object-contain"
+          />
+        </div>
+
+        {/* Right Phone */}
+        <div
+          className={cn(
+            "absolute transition-all duration-[1200ms] ease-out",
+            "w-[45%] md:w-[250px]",
+            isVisible
+              ? "opacity-100 translate-x-[55%]"
+              : "opacity-0 translate-x-[150%]"
+          )}
+        >
+          <Image
+            src="https://raw.githubusercontent.com/SSGutala/Portfolio/a8e1cae263ceecd70eab9040feb9c91281ffa384/AWr3.png"
+            alt="Alphawave Rider App Screen 2"
+            width={250}
+            height={500}
+            className="w-full h-auto object-contain"
+          />
+        </div>
+      </div>
     </AnimatedSection>
   );
 }
