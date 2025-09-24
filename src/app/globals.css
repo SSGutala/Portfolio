@@ -80,20 +80,20 @@
 
   /* Color tokens via CSS variables */
   .nav-ink { --c:#fff; } /* fallback */
-  .nav-ink[data-color="red"]    { --c:#FF0000; }
-  .nav-ink[data-color="orange"] { --c:#FF4500; }
-  .nav-ink[data-color="yellow"] { --c:#FFFF00; }
-  .nav-ink[data-color="green"]  { --c:#00FF00; }
-  .nav-ink[data-color="blue"]   { --c:#0000FF; }
-  .nav-ink[data-color="purple"] { --c:#8A2BE2; }
-  .nav-ink[data-color="pink"]   { --c:#FF00FF; }
+  .nav-ink[data-color="red"]    { --c:#ff0000; }
+  .nav-ink[data-color="orange"] { --c:#ff4500; }
+  .nav-ink[data-color="yellow"] { --c:#ffff00; }
+  .nav-ink[data-color="green"]  { --c:#00ff00; }
+  .nav-ink[data-color="blue"]   { --c:#0000ff; }
+  .nav-ink[data-color="purple"] { --c:#8a2be2; }
+  .nav-ink[data-color="pink"]   { --c:#ff00ff; }
 
   /* Underline sweep (matches color) */
   .nav-ink::after{
-    content:""; position:absolute; left:0; right:0; bottom:0; height:2px;
+    content:""; position:absolute; left:0; right:0; bottom:0; height:1px;
     background: var(--c); transform:scaleX(0); transform-origin:left center;
     transition: transform 360ms cubic-bezier(.2,.8,.2,1);
-    opacity:.95; border-radius:2px;
+    opacity:.95; border-radius:1px;
   }
   .nav-ink:hover::after,
   .nav-ink.active::after { transform:scaleX(1); }
