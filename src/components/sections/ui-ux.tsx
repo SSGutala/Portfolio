@@ -7,19 +7,20 @@ import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 export default function UiUxSection() {
-  const [isVisible, setIsVisible] = useState(false);
   const animationRef = useRef<HTMLDivElement>(null);
+  const leftPhoneRef = useRef<HTMLDivElement>(null);
+  const rightPhoneRef = useRef<HTMLDivElement>(null);
+  const [isIntersecting, setIsIntersecting] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Update visibility state based on whether the element is intersecting
-        setIsVisible(entry.isIntersecting);
+        setIsIntersecting(entry.isIntersecting);
       },
       {
         root: null,
         rootMargin: '0px',
-        threshold: 0.2, // Trigger when 20% of the element is visible
+        threshold: 0, // Trigger as soon as any part is visible
       }
     );
 
@@ -36,6 +37,44 @@ export default function UiUxSection() {
     };
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const sectionEl = animationRef.current;
+      const leftPhoneEl = leftPhoneRef.current;
+      const rightPhoneEl = rightPhoneRef.current;
+      if (!sectionEl || !leftPhoneEl || !rightPhoneEl || !isIntersecting) return;
+
+      const rect = sectionEl.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+
+      // Calculate progress: 0 when top of section hits bottom of viewport, 1 when it's a bit past the top
+      const start = viewportHeight;
+      const end = -rect.height * 0.5; // End animation when it's halfway up the screen
+      const progress = (start - rect.top) / (start - end);
+      const clampedProgress = Math.max(0, Math.min(1, progress));
+
+      // Calculate transform values
+      const leftTranslate = -100 + clampedProgress * 45;  // from -100% to -55%
+      const rightTranslate = 100 - clampedProgress * 45; // from 100% to 55%
+      
+      const opacity = clampedProgress;
+
+      leftPhoneEl.style.transform = `translateX(${leftTranslate}%)`;
+      leftPhoneEl.style.opacity = `${opacity}`;
+      rightPhoneEl.style.transform = `translateX(${rightTranslate}%)`;
+      rightPhoneEl.style.opacity = `${opacity}`;
+    };
+
+    if (isIntersecting) {
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll(); // Initial call
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isIntersecting]);
+
   return (
     <AnimatedSection id="uiux" className="pt-0 md:pt-0">
       <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-4 text-center">Designing systems and experiences.</h2>
@@ -46,12 +85,11 @@ export default function UiUxSection() {
       <div ref={animationRef} className="relative h-96 md:h-[600px] w-full max-w-4xl mx-auto flex items-center justify-center overflow-hidden">
         {/* Left Phone */}
         <div
+          ref={leftPhoneRef}
           className={cn(
-            "absolute transition-all duration-[2000ms] ease-out",
+            "absolute",
             "w-[48%] md:w-[300px]",
-            isVisible
-              ? "opacity-100 translate-x-[-55%]"
-              : "opacity-0 translate-x-[-150%]"
+            "transform -translate-x-[100%] opacity-0"
           )}
         >
           <Image
@@ -65,12 +103,11 @@ export default function UiUxSection() {
 
         {/* Right Phone */}
         <div
+          ref={rightPhoneRef}
           className={cn(
-            "absolute transition-all duration-[2000ms] ease-out",
+            "absolute",
             "w-[48%] md:w-[300px]",
-            isVisible
-              ? "opacity-100 translate-x-[55%]"
-              : "opacity-0 translate-x-[150%]"
+             "transform translate-x-[100%] opacity-0"
           )}
         >
           <Image
