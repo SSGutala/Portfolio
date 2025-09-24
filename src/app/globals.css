@@ -120,8 +120,14 @@
   /* Reduced motion: no stagger, instant color */
   @media (prefers-reduced-motion: reduce) {
     .nav-ink:hover .char,
-    .nav-ink.active .char { animation:none; color:var(--c); }
-    .nav-ink::after{ transition:none; transform:scaleX(1); }
+    .nav-ink.active .char {
+      animation: none;
+      color: var(--c);
+    }
+    .nav-ink::after {
+      transition: none;
+      transform: scaleX(1);
+    }
   }
 }
 
