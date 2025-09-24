@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ConnectButton } from "@/components/connect-button";
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -22,11 +21,25 @@ export default function Header() {
   const observer = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
+    // Set home as active by default
+    setActiveSection('home');
+
+    const handleScroll = () => {
+        if (window.scrollY === 0) {
+            setActiveSection('home');
+        }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+
     observer.current = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
+            // Don't unset home if we are at the top
+            if (window.scrollY > 100 || entry.target.id !== 'home') {
+                 setActiveSection(entry.target.id);
+            }
           }
         });
       },
@@ -40,14 +53,8 @@ export default function Header() {
       }
     });
 
-    // Set initial active section for home
-    const homeElement = document.getElementById('home');
-    if (homeElement && window.scrollY < homeElement.offsetHeight / 2) {
-      setActiveSection('home');
-    }
-
-
     return () => {
+      window.removeEventListener('scroll', handleScroll);
       sections.forEach((section) => {
         if (observer.current) {
           // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -81,7 +88,9 @@ export default function Header() {
           </nav>
           
           <div className="flex flex-1 items-center justify-end space-x-4">
-            <ConnectButton variant="outline">Connect</ConnectButton>
+            <Button asChild variant="outline">
+                <a href="mailto:sai.gutala@gmail.com">Connect</a>
+            </Button>
             <Button asChild>
               <a href="https://docs.google.com/document/d/1t3SIQxCx4P6oIHpcJ1Prg2nnzYp-3z0l9fI7SObNotQ/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a>
             </Button>
