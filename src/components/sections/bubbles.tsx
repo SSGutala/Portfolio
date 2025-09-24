@@ -63,7 +63,7 @@ const Bubbles = () => {
       });
 
       const bubble = new THREE.Mesh(bubbleGeometry, material);
-      const scale = THREE.MathUtils.randFloat(0.2, 1.5);
+      const scale = THREE.MathUtils.randFloat(0.2, 0.8);
       bubble.scale.set(scale, scale, scale);
       
       bubble.position.set(
@@ -74,7 +74,7 @@ const Bubbles = () => {
 
       // Store extra data for animation
       (bubble as any).userData = {
-        speed: (2.0 - scale) * 0.005,
+        speed: (1.0 - scale) * 0.005,
         rotationSpeed: {
           x: THREE.MathUtils.randFloat(-0.005, 0.005),
           y: THREE.MathUtils.randFloat(-0.005, 0.005),
