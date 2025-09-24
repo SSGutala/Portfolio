@@ -80,15 +80,18 @@ const Bubbles = () => {
   const envMap = useMemo(() => {
     if (typeof document === 'undefined') return null;
     const canvas = document.createElement('canvas');
-    canvas.width = 128;
-    canvas.height = 128;
+    canvas.width = 256;
+    canvas.height = 256;
     const context = canvas.getContext('2d');
     if (context) {
-        const gradient = context.createRadialGradient(64, 64, 0, 64, 64, 64);
-        gradient.addColorStop(0, 'hsl(0, 0%, 15%)');
-        gradient.addColorStop(1, 'hsl(0, 0%, 5%)');
+        const gradient = context.createLinearGradient(0, 0, 0, 256);
+        gradient.addColorStop(0, 'hsl(210, 60%, 70%)'); // Lighter sky blue
+        gradient.addColorStop(0.45, 'hsl(210, 40%, 30%)'); // Deeper sky blue
+        gradient.addColorStop(0.5, 'hsl(210, 40%, 25%)'); // Horizon line
+        gradient.addColorStop(0.55, 'hsl(100, 20%, 20%)'); // Distant green
+        gradient.addColorStop(1, 'hsl(100, 20%, 15%)'); // Darker green
         context.fillStyle = gradient;
-        context.fillRect(0, 0, 128, 128);
+        context.fillRect(0, 0, 256, 256);
     }
     return new THREE.CanvasTexture(canvas);
   }, []);
@@ -96,14 +99,27 @@ const Bubbles = () => {
 
   useEffect(() => {
     if (!mountRef.current || !envMap) return;
+    const container = mountRef.current;
     
     let isReducedMotion = false;
     if (typeof window !== 'undefined') {
-        isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        try {
+            isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        } catch (e) {
+            console.error("Could not check for reduced motion preference.", e);
+        }
     }
     
+    let renderer: THREE.WebGLRenderer | null = null;
+    try {
+        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    } catch(e) {
+        console.error("WebGL not supported, falling back to CSS.", e);
+        isReducedMotion = true;
+    }
+
+
     if (isReducedMotion) {
-      const container = mountRef.current;
       container.style.position = 'relative';
       for (let i = 0; i < 30; i++) {
         const circle = document.createElement('div');
@@ -114,25 +130,27 @@ const Bubbles = () => {
         circle.style.position = 'absolute';
         circle.style.left = `${Math.random() * 100}%`;
         circle.style.top = `${Math.random() * 100}%`;
-        const hue = Math.random() * 360;
+        const hue = 180 + Math.random() * 120;
         circle.style.background = `radial-gradient(circle, hsla(${hue}, 70%, 80%, 0.4) 0%, hsla(${hue}, 70%, 80%, 0) 70%)`;
-        circle.style.opacity = `${Math.random() * 0.5 + 0.1}`;
+        circle.style.opacity = `${Math.random() * 0.25 + 0.1}`;
         container.appendChild(circle);
       }
       return;
     }
 
+    if (!renderer) return;
+
     const bubbleCount = 36;
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, mountRef.current.clientWidth / mountRef.current.clientHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
     camera.position.z = 5;
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
-    mountRef.current.appendChild(renderer.domElement);
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    container.appendChild(renderer.domElement);
 
     const pmremGenerator = new PMREMGenerator(renderer);
+    pmremGenerator.compileEquirectangularShader();
     const renderedEnvMap = pmremGenerator.fromEquirectangular(envMap).texture;
 
     const bubbles: THREE.Mesh[] = [];
@@ -159,9 +177,10 @@ const Bubbles = () => {
       const vFOV = THREE.MathUtils.degToRad(camera.fov);
       const viewHeight = 2 * Math.tan(vFOV / 2) * camera.position.z;
       
-      const maxScale = (56 / window.innerHeight) * viewHeight * 0.5;
-      const minScale = (16 / window.innerHeight) * viewHeight * 0.5;
-      const scale = THREE.MathUtils.randFloat(minScale, maxScale);
+      // Convert pixel sizes to world units
+      const maxWorldSize = (56 / window.innerHeight) * viewHeight;
+      const minWorldSize = (16 / window.innerHeight) * viewHeight;
+      const scale = THREE.MathUtils.randFloat(minWorldSize, maxWorldSize) / 2; // radius
 
       bubble.scale.set(scale, scale, scale);
       
@@ -176,12 +195,13 @@ const Bubbles = () => {
       );
 
       (bubble as any).userData = {
-        speed: (maxScale - scale) * 0.025 + 0.0025,
+        // Smaller bubbles move faster
+        speed: (maxWorldSize - scale * 2) * 0.02 + 0.005,
         rotationSpeed: {
-          x: THREE.MathUtils.randFloat(-0.002, 0.002),
-          y: THREE.MathUtils.randFloat(-0.002, 0.002),
+          x: THREE.MathUtils.randFloat(-0.001, 0.001),
+          y: THREE.MathUtils.randFloat(-0.001, 0.001),
         },
-        horizontalDrift: Math.sin(i) * 0.0005,
+        horizontalDrift: Math.sin(i) * 0.0003,
       };
 
       bubbles.push(bubble);
@@ -221,8 +241,8 @@ const Bubbles = () => {
         bubble.rotation.x += (bubble as any).userData.rotationSpeed.x;
         bubble.rotation.y += (bubble as any).userData.rotationSpeed.y;
 
-        if (bubble.position.y > limitY) {
-          bubble.position.y = resetY;
+        if (bubble.position.y - bubble.scale.x > limitY) {
+          bubble.position.y = resetY - bubble.scale.x;
           bubble.position.x = THREE.MathUtils.randFloat(-limitX, limitX);
         }
       });
@@ -231,31 +251,32 @@ const Bubbles = () => {
       camera.position.y += (mouse.y * 0.25 - camera.position.y) * 0.05;
       camera.lookAt(scene.position);
 
-      renderer.render(scene, camera);
+      renderer?.render(scene, camera);
     };
 
     animate();
     
+    const localRenderer = renderer;
     const onResize = () => {
-        if (!mountRef.current) return;
-        const width = mountRef.current.clientWidth;
-        const height = mountRef.current.clientHeight;
+        if (!container || !localRenderer) return;
+        const width = container.clientWidth;
+        const height = container.clientHeight;
 
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
 
-        renderer.setSize(width, height);
+        localRenderer.setSize(width, height);
     };
     window.addEventListener('resize', onResize);
 
     return () => {
       window.removeEventListener('resize', onResize);
       window.removeEventListener('mousemove', onMouseMove);
-      if (mountRef.current) {
-        mountRef.current.innerHTML = '';
+      if (container) {
+        container.innerHTML = '';
       }
-      if (renderer) {
-          renderer.dispose();
+      if (localRenderer) {
+          localRenderer.dispose();
           bubbleGeometry.dispose();
           bubbles.forEach(bubble => {
               if (bubble.material instanceof THREE.Material) {
