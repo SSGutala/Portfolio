@@ -47,7 +47,7 @@ export default function UiUxSection() {
         {/* Left Phone */}
         <div
           className={cn(
-            "absolute transition-all duration-[1200ms] ease-out",
+            "absolute transition-all duration-[2000ms] ease-out",
             "w-[48%] md:w-[300px]",
             isVisible
               ? "opacity-100 translate-x-[-55%]"
@@ -66,7 +66,7 @@ export default function UiUxSection() {
         {/* Right Phone */}
         <div
           className={cn(
-            "absolute transition-all duration-[1200ms] ease-out",
+            "absolute transition-all duration-[2000ms] ease-out",
             "w-[48%] md:w-[300px]",
             isVisible
               ? "opacity-100 translate-x-[55%]"
