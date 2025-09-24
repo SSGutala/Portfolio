@@ -8,7 +8,7 @@ const stats = [
 
 export default function AboutSection() {
     return (
-        <section id="about" className="py-20 md:py-32 bg-card">
+        <section id="about" className="py-20 md:py-32 bg-background">
             <div className="max-w-6xl mx-auto px-6 md:px-8 text-center">
                 <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-6">About Me</h2>
                 <div className="max-w-3xl mx-auto text-lg text-muted-foreground mb-12 space-y-6">
@@ -22,7 +22,7 @@ export default function AboutSection() {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                     {stats.map(stat => (
-                        <div key={stat.label} className="p-6 rounded-lg bg-background">
+                        <div key={stat.label} className="p-6 rounded-lg bg-card border border-primary">
                             <p className="text-4xl md:text-5xl font-bold text-primary flex items-baseline justify-center">
                               {stat.value}
                               <span className="text-sm font-medium tracking-widest text-muted-foreground ml-2">YEARS</span>
