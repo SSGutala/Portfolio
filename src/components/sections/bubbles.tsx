@@ -44,7 +44,7 @@ const Bubbles = () => {
       // animation tuning
       const drift = (Math.random()<.5?-1:1) * (6 + Math.random()*14); // sideways px
       const s = 0.92 + Math.random()*0.2;                              // scale jitter
-      const durSec = 18 + Math.random()*16;                            // 18–34s
+      const durSec = 10 + Math.random()*10;                            // 10–20s
       const delay = (-Math.random()*durSec) + 's';                     // stagger
       const op = (0.5 + Math.random()*0.25).toFixed(2);
 
