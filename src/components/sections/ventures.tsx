@@ -15,7 +15,8 @@ export default function VenturesSection() {
                 height={128}
                 className="rounded-xl mb-4"
             />
-            <h3 className="text-2xl font-bold mb-6">Alphawave Technologies</h3>
+            <h3 className="text-2xl font-bold mb-2">Alphawave Technologies</h3>
+            <p className="text-muted-foreground mb-6">(2020-2024)</p>
 
             <div className="text-lg text-muted-foreground space-y-6 text-left">
                 <p>
