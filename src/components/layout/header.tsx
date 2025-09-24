@@ -20,6 +20,17 @@ export default function Header() {
   const [activeSection, setActiveSection] = useState("home");
   const observer = useRef<IntersectionObserver | null>(null);
   const navRef = useRef<HTMLElement>(null);
+  const glitchRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    // Glitch effect on load
+    if (glitchRef.current) {
+      const el = glitchRef.current;
+      el.classList.add("glitch-once");
+      const timer = setTimeout(() => el.classList.remove("glitch-once"), 2500);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   useEffect(() => {
     // JS to split letters for animation
@@ -92,7 +103,9 @@ export default function Header() {
       <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="mx-auto flex h-16 max-w-6xl items-center px-6 md:px-8">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <span className="text-xl md:text-2xl font-bold">SRIVATSAV</span>
+            <span ref={glitchRef} className="glitch-text" data-text="SRIVATSAV">
+              SRIVATSAV
+            </span>
           </Link>
 
           <nav ref={navRef} className="hidden md:flex flex-1 items-center justify-center space-x-6 text-sm">

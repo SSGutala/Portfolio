@@ -131,6 +131,73 @@
       transform: scaleX(1);
     }
   }
+
+    .glitch-text {
+    position: relative;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem; /* md:text-2xl */
+    font-weight: 800;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  /* Duplicate layers for glitch colors */
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    color: #fff;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  .glitch-text::before {
+    color: #f00; /* red shift */
+    animation: glitch-top 2.2s infinite linear alternate-reverse;
+  }
+
+  .glitch-text::after {
+    color: #0ff; /* cyan shift */
+    animation: glitch-bottom 2.2s infinite linear alternate-reverse;
+  }
+
+  /* Keyframes for glitch movement */
+  @keyframes glitch-top {
+    0% { clip: rect(0, 9999px, 0, 0); transform: translate(0); }
+    10% { clip: rect(10px, 9999px, 50px, 0); transform: translate(-3px, -2px); }
+    20% { clip: rect(85px, 9999px, 140px, 0); transform: translate(3px, 2px); }
+    30% { clip: rect(50px, 9999px, 90px, 0); transform: translate(-2px, 0); }
+    40% { clip: rect(20px, 9999px, 70px, 0); transform: translate(2px, -1px); }
+    50%, 100% { clip: rect(0, 9999px, 0, 0); transform: translate(0); }
+  }
+
+  @keyframes glitch-bottom {
+    0% { clip: rect(0, 9999px, 0, 0); transform: translate(0); }
+    10% { clip: rect(60px, 9999px, 100px, 0); transform: translate(3px, 2px); }
+    20% { clip: rect(20px, 9999px, 80px, 0); transform: translate(-2px, -1px); }
+    30% { clip: rect(80px, 9999px, 120px, 0); transform: translate(2px, 1px); }
+    40% { clip: rect(40px, 9999px, 90px, 0); transform: translate(-3px, 0); }
+    50%, 100% { clip: rect(0, 9999px, 0, 0); transform: translate(0); }
+  }
+
+  /* Hover triggers glitch burst */
+  .glitch-text:hover::before,
+  .glitch-text:hover::after {
+    animation: glitch-top 1.2s infinite linear alternate-reverse,
+              glitch-bottom 1.2s infinite linear alternate-reverse;
+  }
+
+    /* Apply glitch burst once on load */
+  .glitch-once::before,
+  .glitch-once::after {
+    animation: glitch-top 1.2s infinite linear alternate-reverse,
+              glitch-bottom 1.2s infinite linear alternate-reverse;
+  }
 }
 
 @layer components {
