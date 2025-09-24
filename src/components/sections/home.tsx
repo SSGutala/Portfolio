@@ -14,7 +14,7 @@ export default function HomeSection() {
       <div className="grid md:grid-cols-2 gap-12 items-center relative z-10">
         <div className="flex flex-col items-center md:items-start text-center md:text-left">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
-            Visionary, Builder, and product leader.
+            Visionary, Builder, and Product Leader.
           </h1>
           <p className="text-lg text-muted-foreground mb-8 max-w-md">
             I create products and experiences where creativity meets execution, blending design, strategy, and innovation to turn bold ideas into meaningful results.
