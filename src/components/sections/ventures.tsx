@@ -118,6 +118,25 @@ export default function VenturesSection() {
               </div>
           </div>
 
+          <div className="flex flex-col items-center">
+             <div className="w-48 h-36 rounded-xl mb-4 flex items-center justify-center bg-gradient-to-r from-cyan-400 via-blue-500 to-fuchsia-500">
+                <span className="text-3xl font-bold text-white tracking-widest">Provaloh</span>
+              </div>
+              <h3 className="text-2xl font-bold mb-2">Provaloh</h3>
+               <p className="text-muted-foreground mb-6">(2018)</p>
+              <div className="text-lg text-muted-foreground space-y-6 text-left">
+                  <p>
+                      Provaloh was my very first venture experience — a virtual trial room app designed to let users try on clothes digitally before making a purchase. The concept aimed to blend fashion with technology, reducing the uncertainty of online shopping while improving customer confidence in their choices.
+                  </p>
+                  <p>
+                      To bring this vision to life, I built and led a team of 10 people across engineering, marketing, business, and design. Together, we explored how to merge technical feasibility with customer needs while experimenting with different approaches to user experience and product delivery.
+                  </p>
+                  <p>
+                     As my first exposure to building a venture, Provaloh provided invaluable lessons in leadership, collaboration, and the fundamentals of product development. It showed me how bold ideas can spark new possibilities, and how execution and teamwork are key to turning vision into reality.
+                  </p>
+              </div>
+          </div>
+
         </div>
       </div>
     </AnimatedSection>
