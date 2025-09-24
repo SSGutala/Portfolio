@@ -66,7 +66,7 @@ export default function Header() {
           }
         });
       },
-      { rootMargin: "-30% 0px -70% 0px" }
+      { rootMargin: "-40% 0px -60% 0px" }
     );
 
     const sections = document.querySelectorAll("section[id]");
