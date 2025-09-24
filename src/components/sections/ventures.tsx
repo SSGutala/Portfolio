@@ -120,10 +120,10 @@ export default function VenturesSection() {
 
           <div className="flex flex-col items-center">
              <div className="w-48 h-36 rounded-xl mb-4 flex items-center justify-center bg-gradient-to-r from-cyan-400 via-blue-500 to-fuchsia-500">
-                <span className="text-3xl font-bold text-white tracking-widest">Provaloh</span>
+                <span className="text-3xl font-light text-white tracking-widest">Provaloh</span>
               </div>
               <h3 className="text-2xl font-bold mb-2">Provaloh</h3>
-               <p className="text-muted-foreground mb-6">(2018)</p>
+               <p className="text-muted-foreground mb-6">(2017-2019)</p>
               <div className="text-lg text-muted-foreground space-y-6 text-left">
                   <p>
                       Provaloh was my very first venture experience — a virtual trial room app designed to let users try on clothes digitally before making a purchase. The concept aimed to blend fashion with technology, reducing the uncertainty of online shopping while improving customer confidence in their choices.
