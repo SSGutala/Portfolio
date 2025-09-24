@@ -1,240 +1,165 @@
 "use client";
 
-import { useEffect, useRef, useMemo } from 'react';
-import * as THREE from 'three';
-import { PMREMGenerator } from 'three';
+import { useEffect, useRef } from 'react';
 
 const Bubbles = () => {
-  const mountRef = useRef<HTMLDivElement>(null);
-
-  const envMap = useMemo(() => {
-    if (typeof document === 'undefined') return null;
-    const canvas = document.createElement('canvas');
-    canvas.width = 256;
-    canvas.height = 256;
-    const context = canvas.getContext('2d');
-    if (context) {
-        const gradient = context.createLinearGradient(0, 0, 0, 256);
-        gradient.addColorStop(0, 'hsl(210, 60%, 70%)'); // Lighter sky blue
-        gradient.addColorStop(0.48, 'hsl(210, 40%, 30%)'); // Deeper sky blue
-        gradient.addColorStop(0.5, 'hsl(210, 40%, 28%)'); // Horizon line
-        gradient.addColorStop(0.52, 'hsl(100, 20%, 20%)'); // Distant green
-        gradient.addColorStop(1, 'hsl(100, 20%, 15%)'); // Darker green
-        context.fillStyle = gradient;
-        context.fillRect(0, 0, 256, 256);
-    }
-    return new THREE.CanvasTexture(canvas);
-  }, []);
-
+  const layerRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    if (!mountRef.current || !envMap) return;
-    const container = mountRef.current;
-    
-    let isReducedMotion = false;
-    if (typeof window !== 'undefined') {
-        try {
-            isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        } catch (e) {
-            console.error("Could not check for reduced motion preference.", e);
-        }
-    }
-    
-    let renderer: THREE.WebGLRenderer | null = null;
+    const layer = layerRef.current;
+    const cv = canvasRef.current;
+    if (!layer || !cv) return;
+
+    // Reduced motion fallback
+    let reduce = false;
     try {
-        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     } catch(e) {
-        console.error("WebGL not supported, falling back to CSS.", e);
-        isReducedMotion = true;
+        console.error("Could not check for reduced motion preference.", e);
+    }
+    
+    const ctx = cv.getContext('2d', { alpha: true, desynchronized: true });
+    if (!ctx) return;
+
+    const DPR = Math.min(window.devicePixelRatio || 1, 2);
+    function fit() {
+      if (!layer) return;
+      const {width, height} = layer.getBoundingClientRect();
+      cv.width = Math.max(1, Math.floor(width * DPR));
+      cv.height = Math.max(1, Math.floor(height * DPR));
+      // cv.style.width = width + 'px'; // not needed with tailwind
+      // cv.style.height = height + 'px';
+    }
+    fit(); 
+    const resizeObserver = new ResizeObserver(fit);
+    resizeObserver.observe(layer);
+
+
+    // Palette for iridescent rims (HSL hue degrees)
+    const hues = [0, 210, 270, 160, 35, 330];
+
+    // Bubble model
+    const bubbles: any[] = [];
+    const COUNT = 30;                    // total bubbles
+    const MIN_PX = 16, MAX_PX = 48;      // size clamp (on-screen)
+    function rnd(a: number, b: number){ return a + Math.random()*(b-a); }
+
+    function spawnBubble() {
+      const w = cv.width, h = cv.height;
+      const r = rnd(MIN_PX, MAX_PX) * DPR * 0.5;
+      return {
+        x: rnd(r, w-r),
+        y: rnd(0, h),
+        r,
+        hue: hues[Math.floor(Math.random()*hues.length)],
+        alpha: rnd(0.25, 0.4),
+        vy: rnd(-0.08, -0.25) * DPR,         // upward
+        vx: rnd(-0.06, 0.06) * DPR,
+        wobble: rnd(0.6, 1.2),
+        t: Math.random()*Math.PI*2
+      };
+    }
+    for (let i=0;i<COUNT;i++) bubbles.push(spawnBubble());
+
+    // mouse parallax
+    let mx=0, my=0;
+    const onMouseMove = (e: MouseEvent) => {
+        const r = layer.getBoundingClientRect();
+        if (r.width === 0 || r.height === 0) return;
+        mx = ((e.clientX - r.left)/r.width - .5) * 6 * DPR;
+        my = ((e.clientY - r.top)/r.height - .5) * 6 * DPR;
+    };
+    layer.addEventListener('mousemove', onMouseMove);
+
+    // Draw one bubble with reflective/iridescent rim (Canvas 2D technique)
+    function drawBubble(b: any) {
+      const {x,y,r,alpha,hue} = b;
+
+      // 1) Base clear body (very faint center glow)
+      let g = ctx!.createRadialGradient(x, y, 0, x, y, r*1.05);
+      g.addColorStop(0.0, `rgba(255,255,255,${alpha*0.05})`);
+      g.addColorStop(0.7, `rgba(255,255,255,${alpha*0.02})`);
+      g.addColorStop(1.0, `rgba(255,255,255,0)`);
+      ctx!.globalCompositeOperation = 'source-over';
+      ctx!.fillStyle = g;
+      ctx!.beginPath(); ctx!.arc(x,y,r,0,Math.PI*2); ctx!.fill();
+
+      // 2) Iridescent rim (rainbow thin-film)
+      const stops = [
+        [0.72, `hsla(${(hue+300)%360}, 90%, 70%, ${alpha*0.65})`],
+        [0.80, `hsla(${(hue+240)%360}, 90%, 65%, ${alpha*0.75})`],
+        [0.88, `hsla(${(hue+180)%360}, 85%, 60%, ${alpha*0.85})`],
+        [0.94, `hsla(${(hue+120)%360}, 85%, 65%, ${alpha*0.75})`],
+        [0.98, `hsla(${(hue+60)%360},  85%, 70%, ${alpha*0.55})`],
+        [1.00, `rgba(255,255,255,0)`]
+      ];
+      g = ctx!.createRadialGradient(x, y, r*0.6, x, y, r*1.02);
+      for (const [p,c] of stops) g.addColorStop(p as number, c as string);
+      ctx!.globalCompositeOperation = 'lighter'; // additive for glossy look
+      ctx!.fillStyle = g;
+      ctx!.beginPath(); ctx!.arc(x,y,r,0,Math.PI*2); ctx!.fill();
+
+      // 3) Specular highlight (small white spot near rim)
+      const hx = x - r*0.35, hy = y - r*0.35;
+      const hg = ctx!.createRadialGradient(hx, hy, 0, hx, hy, r*0.55);
+      hg.addColorStop(0.0, `rgba(255,255,255,${alpha*0.9})`);
+      hg.addColorStop(0.25, `rgba(255,255,255,${alpha*0.25})`);
+      hg.addColorStop(1.0, `rgba(255,255,255,0)`);
+      ctx!.fillStyle = hg;
+      ctx!.beginPath(); ctx!.arc(x,y,r,0,Math.PI*2); ctx!.fill();
+
+      // 4) Dark inner rim (gives thickness)
+      const dg = ctx!.createRadialGradient(x, y, r*0.5, x, y, r*1.02);
+      dg.addColorStop(0.92, `rgba(0,0,0,${alpha*0.15})`);
+      dg.addColorStop(1.00, `rgba(0,0,0,0)`);
+      ctx!.globalCompositeOperation = 'source-over';
+      ctx!.fillStyle = dg;
+      ctx!.beginPath(); ctx!.arc(x,y,r,0,Math.PI*2); ctx!.fill();
     }
 
-
-    if (isReducedMotion) {
-      container.style.position = 'relative';
-      for (let i = 0; i < 30; i++) {
-        const circle = document.createElement('div');
-        const size = Math.random() * (32 - 16) + 16;
-        circle.style.width = `${size}px`;
-        circle.style.height = `${size}px`;
-        circle.style.borderRadius = '50%';
-        circle.style.position = 'absolute';
-        circle.style.left = `${Math.random() * 100}%`;
-        circle.style.top = `${Math.random() * 100}%`;
-        const hue = 180 + Math.random() * 120;
-        circle.style.background = `radial-gradient(circle, hsla(${hue}, 70%, 80%, 0.4) 0%, hsla(${hue}, 70%, 80%, 0) 70%)`;
-        circle.style.opacity = `${Math.random() * 0.25 + 0.1}`;
-        container.appendChild(circle);
-      }
+    // Static fallback (no animation)
+    if (reduce) {
+      ctx.clearRect(0,0,cv.width,cv.height);
+      for (const b of bubbles) drawBubble(b);
       return;
     }
 
-    if (!renderer) return;
+    // Animation loop
+    let animationFrameId: number;
+    function tick(){
+      const w=cv.width, h=cv.height;
+      ctx!.clearRect(0,0,w,h);
 
-    const bubbleCount = 36;
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
-    camera.position.z = 10;
+      for (const b of bubbles){
+        b.t += 0.016;
+        b.x += b.vx + Math.sin(b.t*b.wobble)*0.05 + mx*0.002;
+        b.y += b.vy + my*0.002;
 
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.outputColorSpace = THREE.SRGBColorSpace;
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.0;
-    container.appendChild(renderer.domElement);
+        // wrap
+        if (b.y + b.r < 0) { Object.assign(b, spawnBubble()); b.y = h + b.r; }
+        if (b.x - b.r > w) b.x = -b.r;
+        if (b.x + b.r < 0) b.x = w + b.r;
 
-    const pmremGenerator = new PMREMGenerator(renderer);
-    pmremGenerator.compileEquirectangularShader();
-    const renderedEnvMap = pmremGenerator.fromEquirectangular(envMap).texture;
-    scene.environment = renderedEnvMap;
-
-    const bubbles: THREE.Mesh[] = [];
-    const bubbleGeometry = new THREE.SphereGeometry(1, 64, 64);
-    
-    const tintPalette = [
-      new THREE.Color("hsl(0, 80%, 60%)"),   // Red
-      new THREE.Color("hsl(210, 95%, 62%)"), // Blue
-      new THREE.Color("hsl(270, 90%, 65%)"), // Violet
-      new THREE.Color("hsl(160, 70%, 55%)"), // Mint
-      new THREE.Color("hsl(35, 100%, 60%)"),  // Amber
-      new THREE.Color("hsl(330, 85%, 68%)"), // Pink
-    ];
-
-    for (let i = 0; i < bubbleCount; i++) {
-       const material = new THREE.MeshPhysicalMaterial({
-        color: 0xffffff,
-        transmission: 1.0,
-        ior: 1.33,
-        thickness: THREE.MathUtils.randFloat(0.12, 0.35),
-        roughness: 0.03,
-        clearcoat: 1.0,
-        clearcoatRoughness: 0.08,
-        envMapIntensity: 1.2,
-        iridescence: 1.0,
-        iridescenceIOR: 1.3,
-        iridescenceThicknessRange: [220, 800],
-        attenuationColor: tintPalette[i % tintPalette.length],
-        attenuationDistance: 2.0,
-        transparent: true,
-        opacity: 0.35,
-      });
-
-      const bubble = new THREE.Mesh(bubbleGeometry, material);
-      
-      const vFOV = THREE.MathUtils.degToRad(camera.fov);
-      const viewHeight = 2 * Math.tan(vFOV / 2) * camera.position.z;
-      
-      const maxWorldSize = (48 / window.innerHeight) * viewHeight;
-      const minWorldSize = (16 / window.innerHeight) * viewHeight;
-      const scale = THREE.MathUtils.randFloat(minWorldSize, maxWorldSize) / 2; // radius
-
-      bubble.scale.set(scale, scale, scale);
-      
-      const viewWidth = viewHeight * camera.aspect;
-      bubble.position.set(
-        THREE.MathUtils.randFloat(-viewWidth / 2, viewWidth / 2),
-        THREE.MathUtils.randFloat(-viewHeight / 2 - 2, viewHeight / 2 + 2),
-        THREE.MathUtils.randFloat(-1.5, 1.5)
-      );
-
-      (bubble as any).userData = {
-        speed: (0.02 + (maxWorldSize - scale * 2) * 0.1),
-        rotationSpeed: {
-          x: THREE.MathUtils.randFloat(-0.005, 0.005),
-          y: THREE.MathUtils.randFloat(-0.005, 0.005),
-        },
-        horizontalDrift: (Math.random() * 2 - 1) * (0.02 + Math.random() * 0.03),
-        phase: Math.random() * Math.PI * 2,
-      };
-
-      bubbles.push(bubble);
-      scene.add(bubble);
+        drawBubble(b);
+      }
+      animationFrameId = requestAnimationFrame(tick);
     }
-    
-    const mouse = new THREE.Vector2();
-    const onMouseMove = (event: MouseEvent) => {
-      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-    };
-    window.addEventListener('mousemove', onMouseMove);
-
-    const clock = new THREE.Clock();
-    let time = 0;
-    const animate = () => {
-      requestAnimationFrame(animate);
-
-      const delta = clock.getDelta();
-      time += delta;
-
-      const vFOV = THREE.MathUtils.degToRad(camera.fov);
-      const viewHeight = 2 * Math.tan(vFOV / 2) * camera.position.z;
-      const viewWidth = viewHeight * camera.aspect;
-      
-      const limitY = viewHeight / 2 + 2; 
-      const limitX = viewWidth / 2 + 1;
-      const resetY = -limitY;
-
-      bubbles.forEach((bubble) => {
-        bubble.position.y += (bubble as any).userData.speed * delta * 3; // frame-rate independent
-        
-        const sineDrift = Math.sin(time * 0.6 + (bubble as any).userData.phase) * (bubble as any).userData.horizontalDrift;
-        bubble.position.x += sineDrift * delta * 3;
-
-        bubble.rotation.x += (bubble as any).userData.rotationSpeed.x;
-        bubble.rotation.y += (bubble as any).userData.rotationSpeed.y;
-
-        if (bubble.position.y - bubble.scale.x > limitY) {
-          bubble.position.y = resetY - bubble.scale.x;
-          bubble.position.x = THREE.MathUtils.randFloat(-limitX, limitX);
-        }
-      });
-      
-      camera.position.x += (mouse.x * 0.25 - camera.position.x) * 0.05;
-      camera.position.y += (mouse.y * 0.25 - camera.position.y) * 0.05;
-      camera.lookAt(scene.position);
-
-      renderer?.render(scene, camera);
-    };
-
-    animate();
-    
-    const localRenderer = renderer;
-    const onResize = () => {
-        if (!container || !localRenderer) return;
-        const width = container.clientWidth;
-        const height = container.clientHeight;
-
-        camera.aspect = width / height;
-        camera.updateProjectionMatrix();
-
-        localRenderer.setSize(width, height);
-    };
-    window.addEventListener('resize', onResize);
+    tick();
 
     return () => {
-      window.removeEventListener('resize', onResize);
-      window.removeEventListener('mousemove', onMouseMove);
-      if (container) {
-        container.innerHTML = '';
-      }
-      if (localRenderer) {
-          localRenderer.dispose();
-          bubbleGeometry.dispose();
-          bubbles.forEach(bubble => {
-              if (Array.isArray(bubble.material)) {
-                bubble.material.forEach(m => m.dispose());
-              } else {
-                bubble.material.dispose();
-              }
-          });
-          scene.clear();
-          pmremGenerator.dispose();
-          renderedEnvMap.dispose();
-          if(envMap) envMap.dispose();
-      }
-    };
-  }, [envMap]);
+        window.removeEventListener('resize', fit);
+        layer.removeEventListener('mousemove', onMouseMove);
+        resizeObserver.disconnect();
+        cancelAnimationFrame(animationFrameId);
+    }
+  }, []);
 
-  return <div ref={mountRef} className="w-full h-full" />;
+  return (
+    <div ref={layerRef} className="w-full h-full">
+        <canvas ref={canvasRef} className="w-full h-full block"></canvas>
+    </div>
+  );
 };
 
 export default Bubbles;
