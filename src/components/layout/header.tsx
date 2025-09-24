@@ -7,18 +7,41 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Ventures", href: "#ventures" },
-  { name: "Consulting", href: "#consulting" },
-  { name: "Product", href: "#product" },
-  { name: "UI/UX", href: "#uiux" },
+  { name: "Home", href: "#home", color: "red" },
+  { name: "About", href: "#about", color: "orange" },
+  { name: "Ventures", href: "#ventures", color: "yellow" },
+  { name: "Consulting", href: "#consulting", color: "green" },
+  { name: "Product", href: "#product", color: "blue" },
+  { name: "UI/UX", href: "#uiux", color: "pink" },
 ];
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const observer = useRef<IntersectionObserver | null>(null);
+  const navRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    // JS to split letters for animation
+    if (navRef.current) {
+      const links = navRef.current.querySelectorAll('.nav-ink');
+      links.forEach(link => {
+        // Check if already processed
+        if (link.querySelector('.char')) return;
+        
+        const text = link.textContent?.trim() || '';
+        link.setAttribute('aria-label', text);
+        link.textContent = ''; // clear
+        [...text].forEach((ch, idx) => {
+          const span = document.createElement('span');
+          span.className = 'char';
+          span.style.setProperty('--i', String(idx)); // for stagger
+          span.textContent = ch;
+          link.appendChild(span);
+        });
+      });
+    }
+  }, []);
 
   useEffect(() => {
     // Set home as active by default
@@ -72,17 +95,15 @@ export default function Header() {
             <span className="text-xl md:text-2xl font-bold">SRIVATSAV</span>
           </Link>
 
-          <nav className="hidden md:flex flex-1 items-center justify-center space-x-6 text-sm font-medium">
+          <nav ref={navRef} className="hidden md:flex flex-1 items-center justify-center space-x-6 text-sm">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
+                data-color={item.color}
                 className={cn(
-                  "link-underline transition-colors",
-                  item.name === 'Home' && 'hover:gradient-text-hover',
-                  activeSection === item.href.substring(1) 
-                    ? (item.name === 'Home' ? 'gradient-text-hover active' : 'active text-primary')
-                    : 'text-muted-foreground'
+                  "nav-ink",
+                  activeSection === item.href.substring(1) && "active"
                 )}
               >
                 {item.name}
@@ -116,8 +137,8 @@ export default function Header() {
                   href={item.href}
                   onClick={() => setIsMenuOpen(false)}
                   className={cn(
-                    "link-underline transition-colors hover:text-primary",
-                    activeSection === item.href.substring(1) ? "active text-primary" : "text-muted-foreground"
+                    "transition-colors hover:text-primary",
+                     activeSection === item.href.substring(1) ? "text-primary" : "text-muted-foreground"
                   )}
                 >
                   {item.name}

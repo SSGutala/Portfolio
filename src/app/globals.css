@@ -72,29 +72,56 @@
 }
 
 @layer utilities {
-  .link-underline {
-    position: relative;
-    text-decoration: none;
+  /* Base nav look */
+  .nav-ink {
+    position:relative; display:inline-block; font-weight:500; letter-spacing:0.2px;
+    color:#fff; text-decoration:none; padding-bottom:6px;
   }
-  .link-underline::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 1px;
-    bottom: -2px;
-    left: 0;
-    background-color: hsl(var(--primary));
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
+
+  /* Color tokens via CSS variables */
+  .nav-ink { --c:#fff; } /* fallback */
+  .nav-ink[data-color="red"]    { --c:#b91c1c; }
+  .nav-ink[data-color="orange"] { --c:#c2410c; }
+  .nav-ink[data-color="yellow"] { --c:#a16207; }
+  .nav-ink[data-color="green"]  { --c:#166534; }
+  .nav-ink[data-color="blue"]   { --c:#1e40af; }
+  .nav-ink[data-color="pink"]   { --c:#9d174d; }
+
+  /* Underline sweep (matches color) */
+  .nav-ink::after{
+    content:""; position:absolute; left:0; right:0; bottom:0; height:2px;
+    background: var(--c); transform:scaleX(0); transform-origin:left center;
+    transition: transform 360ms cubic-bezier(.2,.8,.2,1);
+    opacity:.95; border-radius:2px;
   }
-  .link-underline:hover::after,
-  .link-underline.active::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
+  .nav-ink:hover::after,
+  .nav-ink.active::after { transform:scaleX(1); }
+
+  /* Characters (inserted by JS) */
+  .nav-ink .char{
+    display:inline-block; color:#ffffff; /* start white */
+    transition: color 0ms; /* color set by animation */
   }
-   .gradient-text-hover {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-red-700;
+
+  /* Letter-by-letter sweep */
+  @keyframes ink-sweep {
+    0%   { color:#ffffff;   text-shadow:none; }
+    60%  { color:var(--c);  text-shadow:0 0 0px var(--c); }
+    100% { color:var(--c);  text-shadow:0 0 6px color-mix(in srgb, var(--c) 35%, transparent); }
+  }
+  .nav-ink:hover .char {
+    animation: ink-sweep 520ms ease forwards;
+    animation-delay: calc(var(--i) * 28ms); /* left→right stagger */
+  }
+  .nav-ink.active .char {
+    color: var(--c);
+  }
+
+  /* Reduced motion: no stagger, instant color */
+  @media (prefers-reduced-motion: reduce) {
+    .nav-ink:hover .char,
+    .nav-ink.active .char { animation:none; color:var(--c); }
+    .nav-ink::after{ transition:none; transform:scaleX(1); }
   }
 }
 
