@@ -13,10 +13,8 @@ export default function UiUxSection() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
+        // Update visibility state based on whether the element is intersecting
+        setIsVisible(entry.isIntersecting);
       },
       {
         root: null,
