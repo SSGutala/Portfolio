@@ -17,7 +17,7 @@ export default function ConsultingSection() {
             loop
             muted
             playsInline
-            className="rounded-lg shadow-2xl w-full max-w-3xl mb-8"
+            className="rounded-lg shadow-2xl w-full max-w-md mb-8"
           />
           <div className="text-lg text-muted-foreground space-y-6 text-left">
             <p>
