@@ -17,7 +17,7 @@ export default function HomeSection() {
             Visionary, Builder, and product leader.
           </h1>
           <p className="text-lg text-muted-foreground mb-8 max-w-md">
-            I partner with early-stage startups and established companies to define, design, and deliver impactful products. My approach combines strategic thinking with hands-on execution.
+            I create products and experiences where creativity meets execution, blending design, strategy, and innovation to turn bold ideas into meaningful results.
           </p>
           <a href="mailto:sai.gutala@gmail.com">
             <ConnectButton size="lg">
