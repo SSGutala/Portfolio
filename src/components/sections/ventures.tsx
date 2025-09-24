@@ -1,103 +1,36 @@
 import Image from "next/image";
 import AnimatedSection from "@/components/animated-section";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { PlaceHolderImages, type ImagePlaceholder } from "@/lib/placeholder-images";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-
-const ventures = [
-  {
-    name: "InnovateAI",
-    thesis: "AI-powered platform for democratizing market research.",
-    stage: "Idea",
-    logoId: "venture-logo-1",
-  },
-  {
-    name: "ConnectSphere",
-    thesis: "Decentralized professional networking for the new web.",
-    stage: "MVP",
-    logoId: "venture-logo-2",
-  },
-  {
-    name: "HealthTrack",
-    thesis: "Personalized wellness monitoring using wearable tech.",
-    stage: "Scale",
-    logoId: "venture-logo-3",
-  },
-];
-
-const getVentureLogo = (id: string): ImagePlaceholder | undefined => PlaceHolderImages.find(p => p.id === id);
 
 export default function VenturesSection() {
   return (
     <AnimatedSection id="ventures" className="pt-0 md:pt-0">
-      <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-4 text-center">Ventures</h2>
-      <p className="max-w-3xl mx-auto text-lg text-muted-foreground mb-12 text-center">
-        Exploring new ideas and building ventures from the ground up. Here are some of the concepts I'm currently working on.
-      </p>
-      
-      <div className="md:hidden">
-        <Carousel opts={{ loop: true }} className="w-full max-w-xs mx-auto">
-          <CarouselContent>
-            {ventures.map((venture, index) => {
-              const logo = getVentureLogo(venture.logoId);
-              return (
-                <CarouselItem key={index}>
-                  <div className="p-1">
-                    <VentureCard venture={venture} logo={logo} />
-                  </div>
-                </CarouselItem>
-              );
-            })}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
-      </div>
+      <div className="max-w-3xl mx-auto text-center">
+        <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-8">Ventures</h2>
 
-      <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {ventures.map((venture, index) => {
-          const logo = getVentureLogo(venture.logoId);
-          return <VentureCard key={index} venture={venture} logo={logo} />;
-        })}
+        <div className="flex flex-col items-center">
+            <Image
+                src="https://picsum.photos/seed/alphawave/128/128"
+                alt="Alphawave Technologies Logo"
+                width={128}
+                height={128}
+                className="rounded-xl mb-4"
+                data-ai-hint="logo tech"
+            />
+            <h3 className="text-2xl font-bold mb-6">Alphawave Technologies</h3>
+
+            <div className="text-lg text-muted-foreground space-y-6 text-left">
+                <p>
+                    Alphawave Technologies was a four-year wearable devices venture exploring the future of smart footwear. The vision began with shoes that could display images and short videos through flexible OLED screens, but through six iterations of prototypes and over 100 customer interviews, the product evolved toward a more practical, market-aligned design: footwear capable of shifting between multiple static colors and patterns, controlled by a mobile app.
+                </p>
+                <p>
+                    Across the journey, we learned how to build shoes and wearables from the ground up — taking a concept from barebones MVP to a market-ready product. Customer research revealed strong preferences for lower-cost shoes with multiple style options, and for premium footwear that leaned on designer-driven aesthetics. App testing further reinforced the value of simplicity: users favored neutral tones, straightforward navigation, and minimal complexity.
+                </p>
+                <p>
+                    These insights guided the final product direction — shifting from dynamic displays to cost-effective static styles — and shaped our broader approach to wearable tech, product design, and customer-driven development.
+                </p>
+            </div>
+        </div>
       </div>
     </AnimatedSection>
   );
 }
-
-interface VentureCardProps {
-  venture: typeof ventures[0];
-  logo: ImagePlaceholder | undefined;
-}
-
-const VentureCard = ({ venture, logo }: VentureCardProps) => (
-  <Card className="flex flex-col h-full bg-card hover:bg-accent transition-all duration-300 transform hover:-translate-y-1">
-    <CardHeader className="flex-row items-center gap-4">
-      {logo && (
-        <Image
-          src={logo.imageUrl}
-          alt={`${venture.name} logo`}
-          width={64}
-          height={64}
-          data-ai-hint={logo.imageHint}
-          className="rounded-lg bg-muted p-1"
-        />
-      )}
-      <div>
-        <h3 className="text-xl font-bold">{venture.name}</h3>
-        <Badge variant={venture.stage === 'Idea' ? 'outline' : venture.stage === 'MVP' ? 'secondary' : 'default'} className="mt-1">
-          {venture.stage}
-        </Badge>
-      </div>
-    </CardHeader>
-    <CardContent className="flex-grow">
-      <p className="text-muted-foreground">{venture.thesis}</p>
-    </CardContent>
-  </Card>
-);
