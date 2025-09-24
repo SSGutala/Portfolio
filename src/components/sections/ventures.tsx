@@ -16,11 +16,11 @@ export default function VenturesSection() {
                 className="rounded-xl mb-4"
             />
             <h3 className="text-2xl font-bold mb-2">Alphawave Technologies</h3>
-            <p className="text-muted-foreground mb-6">(2020-2024)</p>
+            <p className="text-muted-foreground mb-6">(2020-2023)</p>
 
             <div className="text-lg text-muted-foreground space-y-6 text-left">
                 <p>
-                    Alphawave Technologies was a four-year wearable devices venture exploring the future of smart footwear. The vision began with shoes that could display images and short videos through flexible OLED screens, but through six iterations of prototypes and over 100 customer interviews, the product evolved toward a more practical, market-aligned design: footwear capable of shifting between multiple static colors and patterns, controlled by a mobile app.
+                    Alphawave Technologies was a three-year wearable devices venture exploring the future of smart footwear. The vision began with shoes that could display images and short videos through flexible OLED screens, but through six iterations of prototypes and over 100 customer interviews, the product evolved toward a more practical, market-aligned design: footwear capable of shifting between multiple static colors and patterns, controlled by a mobile app.
                 </p>
                 <p>
                     Across the journey, we learned how to build shoes and wearables from the ground up — taking a concept from barebones MVP to a market-ready product. Customer research revealed strong preferences for lower-cost shoes with multiple style options, and for premium footwear that leaned on designer-driven aesthetics. App testing further reinforced the value of simplicity: users favored neutral tones, straightforward navigation, and minimal complexity.
