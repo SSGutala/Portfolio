@@ -41,7 +41,7 @@ export default function VenturesSection() {
                   className="rounded-xl mb-4"
               />
               <h3 className="text-2xl font-bold mb-2">Alphawave Technologies</h3>
-              <p className="text-muted-foreground mb-6">(2020-2023)</p>
+              <p className="text-muted-foreground mb-6">(2020 - 2023)</p>
 
               <div className="text-lg text-muted-foreground space-y-6 text-left">
                   <p>
@@ -103,7 +103,7 @@ export default function VenturesSection() {
                 </svg>
               </div>
               <h3 className="text-2xl font-bold mb-2">YoungPreneurs</h3>
-              <p className="text-muted-foreground mb-6">(2018-2019)</p>
+              <p className="text-muted-foreground mb-6">(2018 - 2019)</p>
 
               <div className="text-lg text-muted-foreground space-y-6 text-left">
                   <p>
@@ -123,7 +123,7 @@ export default function VenturesSection() {
                 <span className="text-3xl font-light text-white tracking-widest">Provaloh</span>
               </div>
               <h3 className="text-2xl font-bold mb-2">Provaloh</h3>
-               <p className="text-muted-foreground mb-6">(2017-2019)</p>
+               <p className="text-muted-foreground mb-6">(2017 - 2019)</p>
               <div className="text-lg text-muted-foreground space-y-6 text-left">
                   <p>
                       Provaloh was my very first venture experience — a virtual trial room app designed to let users try on clothes digitally before making a purchase. The concept aimed to blend fashion with technology, reducing the uncertainty of online shopping while improving customer confidence in their choices.
