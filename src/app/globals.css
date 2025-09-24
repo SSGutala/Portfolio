@@ -124,7 +124,8 @@
       animation: none;
       color: var(--c);
     }
-    .nav-ink::after {
+    .nav-ink:hover::after,
+    .nav-ink.active::after {
       transition: none;
       transform: scaleX(1);
     }
