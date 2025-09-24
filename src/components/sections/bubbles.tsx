@@ -15,7 +15,7 @@ const Bubbles = () => {
       return;
     }
 
-    let bubbleCount = 80;
+    let bubbleCount = 100;
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.z = 5;
@@ -76,7 +76,7 @@ const Bubbles = () => {
 
       // Store extra data for animation
       (bubble as any).userData = {
-        speed: (0.45 - scale) * 0.08, // Adjusted speed based on size
+        speed: (0.45 - scale) * 0.12, // Adjusted speed based on size
         rotationSpeed: {
           x: THREE.MathUtils.randFloat(-0.005, 0.005),
           y: THREE.MathUtils.randFloat(-0.005, 0.005),
