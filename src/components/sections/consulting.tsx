@@ -12,6 +12,29 @@ export default function ConsultingSection() {
 
         <div className="space-y-24">
           <div className="flex flex-col items-center">
+            <h3 className="text-2xl font-bold mb-4">Corporate Stretch</h3>
+            <video
+              src="https://raw.githubusercontent.com/SSGutala/Portfolio/e2fe9b606d096e903260830d8a2bf9662c1a2728/CSRender.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="rounded-lg shadow-2xl w-full max-w-md mb-8"
+            />
+            <div className="text-lg text-muted-foreground space-y-6 text-left">
+              <p>
+                <strong>Corporate Stretch</strong> partnered with me to elevate their digital presence and brand identity. The company provides mobile stretch therapy services to athletes, corporate employees, and teams across the Washington, DC metro area, with a mission to improve wellness, energy, and productivity through guided movement.
+              </p>
+              <p>
+                I worked on positioning Corporate Stretch as a professional, trusted service brand by designing a clean, modern website and refining their messaging. The focus was on highlighting the core problem — workplace fatigue and unproductivity from sitting all day — and presenting Corporate Stretch’s mobile therapy sessions as an energizing solution.
+              </p>
+              <p>
+                Through this project, I gained experience in shaping a wellness service into a scalable digital brand, balancing approachable design with corporate credibility. It underscored the importance of tone, storytelling, and usability when building trust with both businesses and individual clients.
+              </p>
+            </div>
+          </div>
+          
+          <div className="flex flex-col items-center">
             <h3 className="text-2xl font-bold mb-4">Bangladrop</h3>
             <video
               src="https://raw.githubusercontent.com/SSGutala/Portfolio/0931ddc08ab698b4d49418541cb9298aa4afeced/BangladropRender.mov"
