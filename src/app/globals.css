@@ -107,7 +107,7 @@
     width: var(--size); height: var(--size);
     animation: bubble-float var(--dur) linear var(--delay) infinite;
     mix-blend-mode: screen;
-    filter: brightness(1.15) contrast(1.05) saturate(1.15) hue-rotate(var(--hue,0deg));
+    filter: brightness(1.3) contrast(1.05) saturate(1.15) hue-rotate(var(--hue,0deg));
     will-change: transform, filter, opacity;
     pointer-events: none;
   }
