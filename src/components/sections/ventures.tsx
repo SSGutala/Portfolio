@@ -10,6 +10,30 @@ export default function VenturesSection() {
         <div className="flex flex-col items-center space-y-16">
           <div className="flex flex-col items-center">
               <Image
+                  src="https://raw.githubusercontent.com/SSGutala/Portfolio/17df4d3237b30de90ef68e27a089ad67831d1c23/hooplogo.jpg"
+                  alt="The Hoop Foundation Logo"
+                  width={187}
+                  height={187}
+                  className="rounded-xl mb-4"
+              />
+              <h3 className="text-2xl font-bold mb-2">The Hoop Foundation</h3>
+              <p className="text-muted-foreground mb-4">(2024 - Present)</p>
+              <p className="text-lg font-semibold text-primary mb-6">Empowering underserved children through education and creativity.</p>
+
+              <div className="text-lg text-muted-foreground space-y-6 text-left">
+                  <p>
+                      The Hoop Foundation is a non-profit organization I founded with the mission of empowering underprivileged children through education, creativity, and opportunity. Our focus is on providing resources and support to children who need them most — from underserved schools to communities often left behind.
+                  </p>
+                  <p>
+                      Our first initiative was held in India, where we successfully assisted over 200 underserved students by providing custom educational materials and treats, helping make learning more engaging and accessible. This effort marked the foundation’s first step toward creating lasting impact at the grassroots level.
+                  </p>
+                  <p>
+                      Beyond this, The Hoop Foundation continues to build partnerships, recruit volunteers, and lay the groundwork for broader programs, including future 501(c) registration in the U.S. The journey has taught me the importance of combining entrepreneurial drive with compassion, and how education can be one of the most powerful tools for change.
+                  </p>
+              </div>
+          </div>
+          <div className="flex flex-col items-center">
+              <Image
                   src="https://raw.githubusercontent.com/SSGutala/Portfolio/5151bb3c20f4821795f6d93526e6d73138d14986/Veera-logo.png"
                   alt="Veera Apparel Logo"
                   width={187}
