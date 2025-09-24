@@ -132,71 +132,93 @@
     }
   }
 
-    .glitch-text {
-    position: relative;
-    font-family: 'Inter', sans-serif;
+  .glitch{
+    position:relative;
+    font-family:Inter, system-ui, sans-serif;
+    font-weight:800;
+    font-size:clamp(40px, 8vw, 96px);
+    letter-spacing:2px;
+    color:#fff;
+    text-transform:uppercase;
+    display:inline-block;
+    cursor:pointer;
+    will-change:transform, filter;
+  }
+
+  /* duplicate colored layers */
+  .glitch::before,
+  .glitch::after{
+    content:attr(data-text);
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    mix-blend-mode:screen;
+  }
+
+  .glitch::before{ color:#00ffff; transform:translateX(0); } /* cyan */
+  .glitch::after { color:#ff004d; transform:translateX(0); } /* red */
+
+  /* extra yellow layer via text-shadow (cheaper than a 3rd element) */
+  .glitch{
     font-size: 1.5rem; /* md:text-2xl */
-    font-weight: 800;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    cursor: pointer;
-    overflow: hidden;
+    text-shadow:
+      0 0 0 #fff,             /* base */
+      0 0 0 #ffea00;          /* yellow channel seed */
   }
 
-  /* Duplicate layers for glitch colors */
-  .glitch-text::before,
-  .glitch-text::after {
-    content: attr(data-text);
-    position: absolute;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    color: #fff;
-    clip: rect(0, 0, 0, 0);
+  /* --- Animations --- */
+  @keyframes glitch-slices {
+    0%   { clip-path: inset(0 0 0 0); transform: translate(0,0) }
+    10%  { clip-path: inset(8% 0 70% 0); transform: translate(-3px,-1px) }
+    20%  { clip-path: inset(60% 0 20% 0); transform: translate(3px,1px) }
+    30%  { clip-path: inset(30% 0 50% 0); transform: translate(-2px,0) }
+    40%  { clip-path: inset(75% 0 10% 0); transform: translate(2px,-1px) }
+    50%  { clip-path: inset(15% 0 65% 0); transform: translate(2px,1px) }
+    60%  { clip-path: inset(45% 0 35% 0); transform: translate(-3px,0) }
+    70%  { clip-path: inset(5% 0 80% 0);  transform: translate(3px,-1px) }
+    80%  { clip-path: inset(55% 0 25% 0); transform: translate(-2px,1px) }
+    100% { clip-path: inset(0 0 0 0);     transform: translate(0,0) }
   }
 
-  .glitch-text::before {
-    color: #f00; /* red shift */
-    animation: glitch-top 2.2s infinite linear alternate-reverse;
+  /* whole-word shake */
+  @keyframes glitch-shake {
+    0% { transform: translateX(0) }
+    10% { transform: translateX(-3px) }
+    20% { transform: translateX(3px) }
+    30% { transform: translateX(-4px) }
+    40% { transform: translateX(4px) }
+    50% { transform: translateX(-3px) }
+    60% { transform: translateX(3px) }
+    70% { transform: translateX(-2px) }
+    80% { transform: translateX(2px) }
+    100% { transform: translateX(0) }
   }
 
-  .glitch-text::after {
-    color: #0ff; /* cyan shift */
-    animation: glitch-bottom 2.2s infinite linear alternate-reverse;
+  /* pulse the yellow channel using text-shadow offsets */
+  @keyframes yellow-channel {
+    0%,100% { text-shadow: 0 0 0 #fff, 0 0 0 #ffea00; }
+    20%     { text-shadow: 0 0 0 #fff, 2px 0 0 #ffea00; }
+    40%     { text-shadow: 0 0 0 #fff, -2px 0 0 #ffea00; }
+    60%     { text-shadow: 0 0 0 #fff, 3px 0 0 #ffea00; }
+    80%     { text-shadow: 0 0 0 #fff, -3px 0 0 #ffea00; }
   }
 
-  /* Keyframes for glitch movement */
-  @keyframes glitch-top {
-    0% { clip: rect(0, 9999px, 0, 0); transform: translate(0); }
-    10% { clip: rect(10px, 9999px, 50px, 0); transform: translate(-3px, -2px); }
-    20% { clip: rect(85px, 9999px, 140px, 0); transform: translate(3px, 2px); }
-    30% { clip: rect(50px, 9999px, 90px, 0); transform: translate(-2px, 0); }
-    40% { clip: rect(20px, 9999px, 70px, 0); transform: translate(2px, -1px); }
-    50%, 100% { clip: rect(0, 9999px, 0, 0); transform: translate(0); }
+  /* Active glitch state (used on load + hover) */
+  .glitch.is-glitching{
+    animation: glitch-shake 700ms ease-in-out both, yellow-channel 700ms steps(10) both;
+    filter: contrast(115%) saturate(120%);
   }
+  .glitch.is-glitching::before{ animation: glitch-slices 700ms steps(12) both; transform: translateX(2px); }
+  .glitch.is-glitching::after { animation: glitch-slices 700ms steps(12) reverse both; transform: translateX(-2px); }
 
-  @keyframes glitch-bottom {
-    0% { clip: rect(0, 9999px, 0, 0); transform: translate(0); }
-    10% { clip: rect(60px, 9999px, 100px, 0); transform: translate(3px, 2px); }
-    20% { clip: rect(20px, 9999px, 80px, 0); transform: translate(-2px, -1px); }
-    30% { clip: rect(80px, 9999px, 120px, 0); transform: translate(2px, 1px); }
-    40% { clip: rect(40px, 9999px, 90px, 0); transform: translate(-3px, 0); }
-    50%, 100% { clip: rect(0, 9999px, 0, 0); transform: translate(0); }
-  }
+  /* hover retriggers */
+  .glitch:hover{ animation: glitch-shake 700ms ease-in-out both, yellow-channel 700ms steps(10) both; }
+  .glitch:hover::before{ animation: glitch-slices 700ms steps(12) both; transform: translateX(2px); }
+  .glitch:hover::after { animation: glitch-slices 700ms steps(12) reverse both; transform: translateX(-2px); }
 
-  /* Hover triggers glitch burst */
-  .glitch-text:hover::before,
-  .glitch-text:hover::after {
-    animation: glitch-top 1.2s infinite linear alternate-reverse,
-              glitch-bottom 1.2s infinite linear alternate-reverse;
-  }
-
-    /* Apply glitch burst once on load */
-  .glitch-once::before,
-  .glitch-once::after {
-    animation: glitch-top 1.2s infinite linear alternate-reverse,
-              glitch-bottom 1.2s infinite linear alternate-reverse;
+  /* reduced motion: soften effect */
+  @media (prefers-reduced-motion: reduce){
+    .glitch, .glitch::before, .glitch::after{ animation:none !important; transform:none !important; text-shadow:none; }
   }
 }
 
