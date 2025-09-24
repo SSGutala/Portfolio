@@ -75,17 +75,18 @@
   /* Base nav look */
   .nav-ink {
     position:relative; display:inline-block; font-weight:500; letter-spacing:0.2px;
-    color:#fff; text-decoration:none; padding-bottom:6px;
+    color:#fff; text-decoration:none; padding-bottom:6px; white-space: nowrap;
   }
 
   /* Color tokens via CSS variables */
   .nav-ink { --c:#fff; } /* fallback */
-  .nav-ink[data-color="red"]    { --c:#b91c1c; }
-  .nav-ink[data-color="orange"] { --c:#c2410c; }
-  .nav-ink[data-color="yellow"] { --c:#a16207; }
-  .nav-ink[data-color="green"]  { --c:#166534; }
-  .nav-ink[data-color="blue"]   { --c:#1e40af; }
-  .nav-ink[data-color="pink"]   { --c:#9d174d; }
+  .nav-ink[data-color="red"]    { --c:#FF0000; }
+  .nav-ink[data-color="orange"] { --c:#FF4500; }
+  .nav-ink[data-color="yellow"] { --c:#FFFF00; }
+  .nav-ink[data-color="green"]  { --c:#00FF00; }
+  .nav-ink[data-color="blue"]   { --c:#0000FF; }
+  .nav-ink[data-color="purple"] { --c:#8A2BE2; }
+  .nav-ink[data-color="pink"]   { --c:#FF00FF; }
 
   /* Underline sweep (matches color) */
   .nav-ink::after{
