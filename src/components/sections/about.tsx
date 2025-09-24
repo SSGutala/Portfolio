@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
 
 const stats = [
-    { value: "5+", label: "Years Experience" },
-    { value: "20+", label: "Projects Shipped" },
-    { value: "10+", label: "Happy Clients" },
+    { value: "1.5+", label: "Years Experience" },
+    { value: "4+", label: "Venture Experience" },
+    { value: "5+", label: "Product Design" },
 ];
 
 export default function AboutSection() {
@@ -11,9 +11,14 @@ export default function AboutSection() {
         <section id="about" className="py-20 md:py-32 bg-card">
             <div className="max-w-6xl mx-auto px-6 md:px-8 text-center">
                 <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-6">About Me</h2>
-                <p className="max-w-3xl mx-auto text-lg text-muted-foreground mb-12">
-                    I'm a product-focused builder with a passion for creating meaningful technology. My expertise spans the full product lifecycle, from initial concept and strategy to design, launch, and iteration.
-                </p>
+                <div className="max-w-3xl mx-auto text-lg text-muted-foreground mb-12 space-y-6">
+                  <p>
+                      Hi, I’m Srivatsav. I’m passionate about building products that combine creativity with impact — taking ideas from concept to something people can actually enjoy using. My background spans product management, startups, and design, and I enjoy shaping projects where strategy and user experience come together.
+                  </p>
+                  <p>
+                      Outside of work, music is a big part of who I am. I sing, play guitar and piano, and write songs — it’s a creative outlet that keeps me inspired and often gives me fresh perspective on the work I do.
+                  </p>
+                </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                     {stats.map(stat => (
