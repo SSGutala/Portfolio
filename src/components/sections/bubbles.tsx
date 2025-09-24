@@ -140,7 +140,7 @@ const Bubbles = () => {
 
     if (!renderer) return;
 
-    const bubbleCount = 36;
+    const bubbleCount = 48;
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
     camera.position.z = 5;
@@ -196,7 +196,7 @@ const Bubbles = () => {
 
       (bubble as any).userData = {
         // Smaller bubbles move faster
-        speed: (maxWorldSize - scale * 2) * 0.01 + 0.0025,
+        speed: ((maxWorldSize - scale * 2) * 0.01 + 0.0025) * 0.75,
         rotationSpeed: {
           x: THREE.MathUtils.randFloat(-0.001, 0.001),
           y: THREE.MathUtils.randFloat(-0.001, 0.001),
