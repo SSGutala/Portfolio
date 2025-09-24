@@ -66,10 +66,10 @@ const fragmentShader = `
     vec3 film = thinFilm(cosI, filmThickness);
 
     // mix: clear glass center, rainbow edge
-    vec3 color = mix(env * 0.25, env * 0.6 + film * 0.7, F);
+    vec3 color = mix(env * 0.5, env * 1.0 + film * 1.0, F);
 
     // final with subtle opacity
-    gl_FragColor = vec4(color, 0.38 + 0.15 * F);
+    gl_FragColor = vec4(color, 0.4 + 0.2 * F);
   }
 `;
 
@@ -196,12 +196,12 @@ const Bubbles = () => {
 
       (bubble as any).userData = {
         // Smaller bubbles move faster
-        speed: (maxWorldSize - scale * 2) * 0.02 + 0.005,
+        speed: (maxWorldSize - scale * 2) * 0.01 + 0.0025,
         rotationSpeed: {
           x: THREE.MathUtils.randFloat(-0.001, 0.001),
           y: THREE.MathUtils.randFloat(-0.001, 0.001),
         },
-        horizontalDrift: Math.sin(i) * 0.0003,
+        horizontalDrift: Math.sin(i) * 0.00015,
       };
 
       bubbles.push(bubble);
