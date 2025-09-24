@@ -15,7 +15,7 @@ const Bubbles = () => {
       return;
     }
 
-    let bubbleCount = 20;
+    let bubbleCount = 25;
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.z = 5;
@@ -26,44 +26,46 @@ const Bubbles = () => {
     mountRef.current.appendChild(renderer.domElement);
 
     // Lighting
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
     scene.add(ambientLight);
 
-    const directionalLight1 = new THREE.DirectionalLight(0xffffff, 1.5);
+    const directionalLight1 = new THREE.DirectionalLight(0xffffff, 1.8);
     directionalLight1.position.set(5, 5, 5);
     scene.add(directionalLight1);
     
-    const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.8);
+    const directionalLight2 = new THREE.DirectionalLight(0xffffff, 1.2);
     directionalLight2.position.set(-5, -5, -2);
     scene.add(directionalLight2);
 
     // Bubbles
     const bubbles: THREE.Mesh[] = [];
-    const bubbleGeometry = new THREE.SphereGeometry(1, 32, 32);
+    const bubbleGeometry = new THREE.SphereGeometry(1, 32, 16);
     const colors = [
-      new THREE.Color("hsl(0, 80%, 60%)"),
-      new THREE.Color("hsl(210, 95%, 62%)"),
-      new THREE.Color("hsl(270, 90%, 65%)"),
-      new THREE.Color("hsl(160, 70%, 55%)"),
-      new THREE.Color("hsl(35, 100%, 60%)"),
-      new THREE.Color("hsl(330, 85%, 68%)"),
+      new THREE.Color("hsl(0, 80%, 60%)"),   // Red
+      new THREE.Color("hsl(210, 95%, 62%)"), // Blue
+      new THREE.Color("hsl(270, 90%, 65%)"), // Violet
+      new THREE.Color("hsl(160, 70%, 55%)"), // Mint
+      new THREE.Color("hsl(35, 100%, 60%)"),  // Amber
+      new THREE.Color("hsl(330, 85%, 68%)"), // Pink
     ];
 
     for (let i = 0; i < bubbleCount; i++) {
       const material = new THREE.MeshPhysicalMaterial({
         transmission: 1.0,
         ior: 1.33,
-        thickness: THREE.MathUtils.randFloat(0.3, 2.0),
+        thickness: THREE.MathUtils.randFloat(0.1, 0.3),
         roughness: 0.05,
         clearcoat: 1.0,
         clearcoatRoughness: 0.1,
         envMapIntensity: 1.0,
         attenuationColor: colors[i % colors.length],
         attenuationDistance: Infinity,
+        transparent: true,
+        opacity: THREE.MathUtils.randFloat(0.3, 0.5),
       });
 
       const bubble = new THREE.Mesh(bubbleGeometry, material);
-      const scale = THREE.MathUtils.randFloat(0.2, 0.8);
+      const scale = THREE.MathUtils.randFloat(0.1, 0.4); // Smaller bubbles
       bubble.scale.set(scale, scale, scale);
       
       bubble.position.set(
@@ -74,7 +76,7 @@ const Bubbles = () => {
 
       // Store extra data for animation
       (bubble as any).userData = {
-        speed: (1.0 - scale) * 0.005,
+        speed: (0.45 - scale) * 0.01, // Adjusted speed based on size
         rotationSpeed: {
           x: THREE.MathUtils.randFloat(-0.005, 0.005),
           y: THREE.MathUtils.randFloat(-0.005, 0.005),
