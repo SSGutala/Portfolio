@@ -21,8 +21,8 @@ const Bubbles = () => {
       'https://raw.githubusercontent.com/SSGutala/Portfolio/df9668041c16aa5913594877e17de454b9bf8eb1/redbubble.png'
     ];
 
-    const COUNT = 34;                 // total bubbles
-    const MIN = 16, MAX = 42;         // px size clamp (keep small & realistic)
+    const COUNT = 40;                 // total bubbles
+    const MIN = 20, MAX = 50;         // px size clamp (keep small & realistic)
     const HUES = ['0deg','25deg','120deg','210deg','280deg']; // subtle tints
 
     const spawn = (i: number) => {
