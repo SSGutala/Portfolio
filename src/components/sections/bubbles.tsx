@@ -4,78 +4,6 @@ import { useEffect, useRef, useMemo } from 'react';
 import * as THREE from 'three';
 import { PMREMGenerator } from 'three';
 
-const vertexShader = `
-  varying vec3 vWorldNormal;
-  varying vec3 vWorldPos;
-  void main() {
-    vec4 wp = modelMatrix * vec4(position, 1.0);
-    vWorldPos = wp.xyz;
-    vWorldNormal = normalize(mat3(modelMatrix) * normal);
-    gl_Position = projectionMatrix * viewMatrix * wp;
-  }
-`;
-
-const fragmentShader = `
-  precision highp float;
-  varying vec3 vWorldNormal;
-  varying vec3 vWorldPos;
-  uniform vec3 cameraPos;
-  uniform float filmThickness; // 200–800 nm
-  uniform float ior;           // 1.33
-  uniform vec3 tint;
-
-  // Fresnel Schlick
-  float fresnel(vec3 N, vec3 V, float F0) {
-    float cosTheta = clamp(dot(N, V), 0.0, 1.0);
-    return F0 + (1.0 - F0) * pow(1.0 - cosTheta, 5.0);
-  }
-
-  // Approx thin-film interference -> returns rgb 0..1
-  vec3 thinFilm(float cosI, float thicknessNm) {
-    // wavelengths nm
-    float rW = 650.0;
-    float gW = 510.0;
-    float bW = 440.0;
-    float twoPi = 6.28318530718;
-    float n = 1.33; // Approx IOR of water
-    
-    float phase_r = twoPi * n * thicknessNm * cosI / rW;
-    float phase_g = twoPi * n * thicknessNm * cosI / gW;
-    float phase_b = twoPi * n * thicknessNm * cosI / bW;
-    
-    float Ir = 0.5 + 0.5 * cos(phase_r);
-    float Ig = 0.5 + 0.5 * cos(phase_g);
-    float Ib = 0.5 + 0.5 * cos(phase_b);
-    
-    return clamp(vec3(Ir, Ig, Ib), 0.0, 1.0);
-  }
-
-  uniform samplerCube envMap; // PMREM env
-  void main() {
-    vec3 N = normalize(vWorldNormal);
-    vec3 V = normalize(cameraPos - vWorldPos);
-
-    // reflect env
-    vec3 R = reflect(-V, N);
-    vec3 env = textureCube(envMap, R).rgb;
-
-    // Fresnel edge boost
-    float F = fresnel(N, V, 0.02);
-
-    // Iridescent film color stronger at grazing angles
-    float cosI = clamp(dot(N, V), 0.0, 1.0);
-    vec3 film = thinFilm(cosI, filmThickness);
-
-    // mix: clear glass center, rainbow edge
-    vec3 color = mix(env * 0.5, env * 1.0 + film * 1.0, F);
-    color = mix(color, tint, 0.2); // Apply tint
-
-    // final with subtle opacity
-    gl_FragColor = vec4(color, 0.4 + 0.2 * F);
-  }
-`;
-
-
 const Bubbles = () => {
   const mountRef = useRef<HTMLDivElement>(null);
 
@@ -88,9 +16,9 @@ const Bubbles = () => {
     if (context) {
         const gradient = context.createLinearGradient(0, 0, 0, 256);
         gradient.addColorStop(0, 'hsl(210, 60%, 70%)'); // Lighter sky blue
-        gradient.addColorStop(0.45, 'hsl(210, 40%, 30%)'); // Deeper sky blue
-        gradient.addColorStop(0.5, 'hsl(210, 40%, 25%)'); // Horizon line
-        gradient.addColorStop(0.55, 'hsl(100, 20%, 20%)'); // Distant green
+        gradient.addColorStop(0.48, 'hsl(210, 40%, 30%)'); // Deeper sky blue
+        gradient.addColorStop(0.5, 'hsl(210, 40%, 28%)'); // Horizon line
+        gradient.addColorStop(0.52, 'hsl(100, 20%, 20%)'); // Distant green
         gradient.addColorStop(1, 'hsl(100, 20%, 15%)'); // Darker green
         context.fillStyle = gradient;
         context.fillRect(0, 0, 256, 256);
@@ -142,45 +70,52 @@ const Bubbles = () => {
 
     if (!renderer) return;
 
-    const bubbleCount = 48;
+    const bubbleCount = 36;
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
-    camera.position.z = 5;
+    camera.position.z = 10;
 
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.0;
     container.appendChild(renderer.domElement);
 
     const pmremGenerator = new PMREMGenerator(renderer);
     pmremGenerator.compileEquirectangularShader();
     const renderedEnvMap = pmremGenerator.fromEquirectangular(envMap).texture;
+    scene.environment = renderedEnvMap;
 
     const bubbles: THREE.Mesh[] = [];
-    const bubbleGeometry = new THREE.SphereGeometry(1, 48, 48);
+    const bubbleGeometry = new THREE.SphereGeometry(1, 64, 64);
+    
     const tintPalette = [
-      new THREE.Color("hsl(0, 80%, 80%)"),   // Red
-      new THREE.Color("hsl(210, 95%, 82%)"), // Blue
-      new THREE.Color("hsl(270, 90%, 85%)"), // Violet
-      new THREE.Color("hsl(160, 70%, 75%)"), // Mint
-      new THREE.Color("hsl(35, 100%, 80%)"),  // Amber
-      new THREE.Color("hsl(330, 85%, 88%)"), // Pink
+      new THREE.Color("hsl(0, 80%, 60%)"),   // Red
+      new THREE.Color("hsl(210, 95%, 62%)"), // Blue
+      new THREE.Color("hsl(270, 90%, 65%)"), // Violet
+      new THREE.Color("hsl(160, 70%, 55%)"), // Mint
+      new THREE.Color("hsl(35, 100%, 60%)"),  // Amber
+      new THREE.Color("hsl(330, 85%, 68%)"), // Pink
     ];
 
     for (let i = 0; i < bubbleCount; i++) {
-      const material = new THREE.ShaderMaterial({
-        vertexShader,
-        fragmentShader,
-        uniforms: {
-          cameraPos: { value: camera.position },
-          filmThickness: { value: THREE.MathUtils.randFloat(250, 800) },
-          ior: { value: 1.33 },
-          envMap: { value: renderedEnvMap },
-          tint: { value: tintPalette[i % tintPalette.length] },
-        },
+       const material = new THREE.MeshPhysicalMaterial({
+        color: 0xffffff,
+        transmission: 1.0,
+        ior: 1.33,
+        thickness: THREE.MathUtils.randFloat(0.12, 0.35),
+        roughness: 0.03,
+        clearcoat: 1.0,
+        clearcoatRoughness: 0.08,
+        envMapIntensity: 1.2,
+        iridescence: 1.0,
+        iridescenceIOR: 1.3,
+        iridescenceThicknessRange: [220, 800],
+        attenuationColor: tintPalette[i % tintPalette.length],
+        attenuationDistance: 2.0,
         transparent: true,
-        side: THREE.FrontSide,
-        blending: THREE.AdditiveBlending,
-        depthWrite: false,
+        opacity: 0.35,
       });
 
       const bubble = new THREE.Mesh(bubbleGeometry, material);
@@ -188,31 +123,27 @@ const Bubbles = () => {
       const vFOV = THREE.MathUtils.degToRad(camera.fov);
       const viewHeight = 2 * Math.tan(vFOV / 2) * camera.position.z;
       
-      // Convert pixel sizes to world units
-      const maxWorldSize = (56 / window.innerHeight) * viewHeight;
+      const maxWorldSize = (48 / window.innerHeight) * viewHeight;
       const minWorldSize = (16 / window.innerHeight) * viewHeight;
       const scale = THREE.MathUtils.randFloat(minWorldSize, maxWorldSize) / 2; // radius
 
       bubble.scale.set(scale, scale, scale);
       
       const viewWidth = viewHeight * camera.aspect;
-      const spawnRangeY = viewHeight / 2 + scale * 2;
-      const spawnRangeX = viewWidth / 2 + scale * 2;
-      
       bubble.position.set(
-        THREE.MathUtils.randFloat(-spawnRangeX, spawnRangeX),
-        THREE.MathUtils.randFloat(-spawnRangeY, spawnRangeY),
-        THREE.MathUtils.randFloat(-2, 2)
+        THREE.MathUtils.randFloat(-viewWidth / 2, viewWidth / 2),
+        THREE.MathUtils.randFloat(-viewHeight / 2 - 2, viewHeight / 2 + 2),
+        THREE.MathUtils.randFloat(-1.5, 1.5)
       );
 
       (bubble as any).userData = {
-        // Smaller bubbles move faster
-        speed: ((maxWorldSize - scale * 2) * 0.01 + 0.0025) * 0.75,
+        speed: (0.02 + (maxWorldSize - scale * 2) * 0.1),
         rotationSpeed: {
-          x: THREE.MathUtils.randFloat(-0.001, 0.001),
-          y: THREE.MathUtils.randFloat(-0.001, 0.001),
+          x: THREE.MathUtils.randFloat(-0.005, 0.005),
+          y: THREE.MathUtils.randFloat(-0.005, 0.005),
         },
-        horizontalDrift: Math.sin(i) * 0.00015,
+        horizontalDrift: (Math.random() * 2 - 1) * (0.02 + Math.random() * 0.03),
+        phase: Math.random() * Math.PI * 2,
       };
 
       bubbles.push(bubble);
@@ -238,16 +169,15 @@ const Bubbles = () => {
       const viewHeight = 2 * Math.tan(vFOV / 2) * camera.position.z;
       const viewWidth = viewHeight * camera.aspect;
       
-      const limitY = viewHeight / 2 + 1;
+      const limitY = viewHeight / 2 + 2; 
       const limitX = viewWidth / 2 + 1;
       const resetY = -limitY;
 
-
-      bubbles.forEach((bubble, i) => {
-        bubble.position.y += (bubble as any).userData.speed;
+      bubbles.forEach((bubble) => {
+        bubble.position.y += (bubble as any).userData.speed * delta * 3; // frame-rate independent
         
-        const sineDrift = Math.sin(time + i) * (bubble as any).userData.horizontalDrift;
-        bubble.position.x += sineDrift;
+        const sineDrift = Math.sin(time * 0.6 + (bubble as any).userData.phase) * (bubble as any).userData.horizontalDrift;
+        bubble.position.x += sineDrift * delta * 3;
 
         bubble.rotation.x += (bubble as any).userData.rotationSpeed.x;
         bubble.rotation.y += (bubble as any).userData.rotationSpeed.y;
@@ -290,8 +220,10 @@ const Bubbles = () => {
           localRenderer.dispose();
           bubbleGeometry.dispose();
           bubbles.forEach(bubble => {
-              if (bubble.material instanceof THREE.Material) {
-                  bubble.material.dispose();
+              if (Array.isArray(bubble.material)) {
+                bubble.material.forEach(m => m.dispose());
+              } else {
+                bubble.material.dispose();
               }
           });
           scene.clear();
