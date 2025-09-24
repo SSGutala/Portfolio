@@ -39,7 +39,7 @@ const Bubbles = () => {
 
     // Bubbles
     const bubbles: THREE.Mesh[] = [];
-    const bubbleGeometry = new THREE.SphereGeometry(1, 32, 16);
+    const bubbleGeometry = new THREE.SphereGeometry(1, 32, 32);
     const colors = [
       new THREE.Color("hsl(0, 80%, 60%)"),   // Red
       new THREE.Color("hsl(210, 95%, 62%)"), // Blue
@@ -76,7 +76,7 @@ const Bubbles = () => {
 
       // Store extra data for animation
       (bubble as any).userData = {
-        speed: (0.45 - scale) * 0.04, // Adjusted speed based on size
+        speed: (0.45 - scale) * 0.08, // Adjusted speed based on size
         rotationSpeed: {
           x: THREE.MathUtils.randFloat(-0.005, 0.005),
           y: THREE.MathUtils.randFloat(-0.005, 0.005),
