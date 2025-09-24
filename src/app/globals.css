@@ -143,7 +143,7 @@
     display:inline-block;
     cursor:pointer;
     will-change:transform, filter;
-    animation: glitch-shake 2.5s infinite ease-in-out, yellow-channel 2.5s infinite steps(10);
+    animation: yellow-channel 0.7s steps(10) 5s infinite;
     filter: contrast(115%) saturate(120%);
   }
 
@@ -160,12 +160,12 @@
   .glitch::before{
     color:#00ffff; /* cyan */
     transform:translateX(0);
-    animation: glitch-slices 2.5s infinite steps(12);
+    animation: glitch-slices 0.7s steps(12) 5s infinite;
   }
   .glitch::after {
     color:#ff004d; /* red */
     transform:translateX(0);
-    animation: glitch-slices 2.5s infinite steps(12) reverse;
+    animation: glitch-slices 0.7s steps(12) 5s infinite reverse;
   }
 
   /* extra yellow layer via text-shadow (cheaper than a 3rd element) */
@@ -190,28 +190,20 @@
     100% { clip-path: inset(0 0 0 0);     transform: translate(0,0) }
   }
 
-  /* whole-word shake */
-  @keyframes glitch-shake {
-    0% { transform: translateX(0) }
-    10% { transform: translateX(-3px) }
-    20% { transform: translateX(3px) }
-    30% { transform: translateX(-4px) }
-    40% { transform: translateX(4px) }
-    50% { transform: translateX(-3px) }
-    60% { transform: translateX(3px) }
-    70% { transform: translateX(-2px) }
-    80% { transform: translateX(2px) }
-    100% { transform: translateX(0) }
-  }
-
   /* pulse the yellow channel using text-shadow offsets */
   @keyframes yellow-channel {
-    0%,100% { text-shadow: 0 0 0 #fff, 0 0 0 #ffea00; }
+    0%      { text-shadow: 0 0 0 #fff, 0 0 0 #ffea00; }
     20%     { text-shadow: 0 0 0 #fff, 2px 0 0 #ffea00; }
     40%     { text-shadow: 0 0 0 #fff, -2px 0 0 #ffea00; }
     60%     { text-shadow: 0 0 0 #fff, 3px 0 0 #ffea00; }
     80%     { text-shadow: 0 0 0 #fff, -3px 0 0 #ffea00; }
+    100%, 14% { text-shadow: 0 0 0 #fff, 0 0 0 #ffea00; } /* 100% / (100 / (5/0.7)) = 14% */
   }
+  
+  .glitch:hover::before { animation-play-state: running; }
+  .glitch:hover::after { animation-play-state: running; }
+  .glitch:hover { animation-play-state: running; }
+
 
   /* reduced motion: soften effect */
   @media (prefers-reduced-motion: reduce){
@@ -239,3 +231,5 @@
     #bubble-sprites img.bubble { animation: none; opacity: .75 }
   }
 }
+
+    
