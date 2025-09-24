@@ -6,7 +6,7 @@ import Bubbles from "./bubbles";
 export default function HomeSection() {
   return (
     <AnimatedSection id="home" className="relative">
-       <div id="bubbles-layer" className="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
+       <div id="bubble-sprites" className="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
         <Bubbles />
       </div>
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(closest-side_at_50%_55%,rgba(0,0,0,0.28),transparent_65%)]" aria-hidden="true"></div>
