@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useRef, useMemo } from 'react';
@@ -79,7 +78,6 @@ const Bubbles = () => {
   const mountRef = useRef<HTMLDivElement>(null);
 
   const envMap = useMemo(() => {
-    // This part now only runs on the client due to the check in useEffect
     if (typeof document === 'undefined') return null;
     const canvas = document.createElement('canvas');
     canvas.width = 128;
@@ -99,9 +97,12 @@ const Bubbles = () => {
   useEffect(() => {
     if (!mountRef.current || !envMap) return;
     
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reducedMotion) {
-      // Create static CSS bubbles as a fallback
+    let isReducedMotion = false;
+    if (typeof window !== 'undefined') {
+        isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+    
+    if (isReducedMotion) {
       const container = mountRef.current;
       container.style.position = 'relative';
       for (let i = 0; i < 30; i++) {
@@ -123,7 +124,7 @@ const Bubbles = () => {
 
     const bubbleCount = 36;
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(75, mountRef.current.clientWidth / mountRef.current.clientHeight, 0.1, 1000);
     camera.position.z = 5;
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -143,7 +144,7 @@ const Bubbles = () => {
         fragmentShader,
         uniforms: {
           cameraPos: { value: camera.position },
-          filmThickness: { value: THREE.MathUtils.randFloat(200, 800) },
+          filmThickness: { value: THREE.MathUtils.randFloat(250, 800) },
           ior: { value: 1.33 },
           envMap: { value: renderedEnvMap },
         },
@@ -155,19 +156,18 @@ const Bubbles = () => {
 
       const bubble = new THREE.Mesh(bubbleGeometry, material);
       
-      // Calculate world units to approximate 16-64px size
       const vFOV = THREE.MathUtils.degToRad(camera.fov);
-      const height = 2 * Math.tan(vFOV / 2) * camera.position.z;
-      const aspect = window.innerWidth / window.innerHeight;
-      const width = height * aspect;
-      const maxScale = (64 / window.innerHeight) * height * 0.5;
-      const minScale = (16 / window.innerHeight) * height * 0.5;
+      const viewHeight = 2 * Math.tan(vFOV / 2) * camera.position.z;
+      
+      const maxScale = (56 / window.innerHeight) * viewHeight * 0.5;
+      const minScale = (16 / window.innerHeight) * viewHeight * 0.5;
       const scale = THREE.MathUtils.randFloat(minScale, maxScale);
 
       bubble.scale.set(scale, scale, scale);
       
-      const spawnRangeY = height / 2 + scale * 2;
-      const spawnRangeX = width / 2 + scale * 2;
+      const viewWidth = viewHeight * camera.aspect;
+      const spawnRangeY = viewHeight / 2 + scale * 2;
+      const spawnRangeX = viewWidth / 2 + scale * 2;
       
       bubble.position.set(
         THREE.MathUtils.randFloat(-spawnRangeX, spawnRangeX),
@@ -176,12 +176,12 @@ const Bubbles = () => {
       );
 
       (bubble as any).userData = {
-        speed: (maxScale - scale) * 0.025 + 0.0025, // Adjusted speed
+        speed: (maxScale - scale) * 0.025 + 0.0025,
         rotationSpeed: {
           x: THREE.MathUtils.randFloat(-0.002, 0.002),
           y: THREE.MathUtils.randFloat(-0.002, 0.002),
         },
-        horizontalDrift: THREE.MathUtils.randFloat(-0.001, 0.001)
+        horizontalDrift: Math.sin(i) * 0.0005,
       };
 
       bubbles.push(bubble);
@@ -196,26 +196,34 @@ const Bubbles = () => {
     window.addEventListener('mousemove', onMouseMove);
 
     const clock = new THREE.Clock();
+    let time = 0;
     const animate = () => {
       requestAnimationFrame(animate);
 
       const delta = clock.getDelta();
+      time += delta;
 
       const vFOV = THREE.MathUtils.degToRad(camera.fov);
       const viewHeight = 2 * Math.tan(vFOV / 2) * camera.position.z;
-      const resetY = -viewHeight / 2 - 1;
+      const viewWidth = viewHeight * camera.aspect;
+      
       const limitY = viewHeight / 2 + 1;
+      const limitX = viewWidth / 2 + 1;
+      const resetY = -limitY;
 
-      bubbles.forEach(bubble => {
+
+      bubbles.forEach((bubble, i) => {
         bubble.position.y += (bubble as any).userData.speed;
-        bubble.position.x += (bubble as any).userData.horizontalDrift;
         
+        const sineDrift = Math.sin(time + i) * (bubble as any).userData.horizontalDrift;
+        bubble.position.x += sineDrift;
+
         bubble.rotation.x += (bubble as any).userData.rotationSpeed.x;
         bubble.rotation.y += (bubble as any).userData.rotationSpeed.y;
 
         if (bubble.position.y > limitY) {
           bubble.position.y = resetY;
-          bubble.position.x = THREE.MathUtils.randFloat(-viewHeight * camera.aspect / 2, viewHeight * camera.aspect / 2);
+          bubble.position.x = THREE.MathUtils.randFloat(-limitX, limitX);
         }
       });
       
@@ -244,24 +252,21 @@ const Bubbles = () => {
       window.removeEventListener('resize', onResize);
       window.removeEventListener('mousemove', onMouseMove);
       if (mountRef.current) {
-        // eslint-disable-next-line react-hooks/exhaustive-deps
         mountRef.current.innerHTML = '';
       }
-      renderer.dispose();
-      scene.children.forEach(child => {
-        if(child instanceof THREE.Mesh) {
-          child.geometry.dispose();
-          if(Array.isArray(child.material)) {
-            child.material.forEach(m => m.dispose());
-          } else {
-            child.material.dispose();
-          }
-        }
-      });
-      scene.clear();
-      pmremGenerator.dispose();
-      renderedEnvMap.dispose();
-      if(envMap) envMap.dispose();
+      if (renderer) {
+          renderer.dispose();
+          bubbleGeometry.dispose();
+          bubbles.forEach(bubble => {
+              if (bubble.material instanceof THREE.Material) {
+                  bubble.material.dispose();
+              }
+          });
+          scene.clear();
+          pmremGenerator.dispose();
+          renderedEnvMap.dispose();
+          if(envMap) envMap.dispose();
+      }
     };
   }, [envMap]);
 
