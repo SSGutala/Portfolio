@@ -12,8 +12,8 @@ export default function VenturesSection() {
               <Image
                   src="https://raw.githubusercontent.com/SSGutala/Portfolio/5151bb3c20f4821795f6d93526e6d73138d14986/Veera-logo.png"
                   alt="Veera Apparel Logo"
-                  width={144}
-                  height={144}
+                  width={187}
+                  height={187}
                   className="rounded-xl mb-4"
               />
               <h3 className="text-2xl font-bold mb-2">Veera Apparel</h3>
