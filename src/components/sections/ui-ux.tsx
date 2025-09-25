@@ -109,6 +109,57 @@ const PhoneAnimation: React.FC<PhoneAnimationProps> = ({ leftImageSrc, leftImage
   );
 };
 
+interface FadeInImageProps {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  className?: string;
+}
+
+const FadeInImage: React.FC<FadeInImageProps> = ({ src, alt, width, height, className }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const imageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    const currentRef = imageRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, []);
+
+  return (
+    <div
+      ref={imageRef}
+      className={cn(
+        'transition-opacity duration-700 ease-in-out',
+        isVisible ? 'opacity-100' : 'opacity-0'
+      )}
+    >
+      <Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        className={className}
+      />
+    </div>
+  );
+};
+
 
 export default function UiUxSection() {
   return (
@@ -135,14 +186,14 @@ export default function UiUxSection() {
         <div>
           <h3 className="text-2xl font-light underline text-center mb-8">DJ AI Web App Samples</h3>
           <div className="flex flex-col items-center gap-8">
-            <Image
+             <FadeInImage
               src="https://raw.githubusercontent.com/SSGutala/Portfolio/47fa924db0d0f62b17075764116a105db2a81aef/DJAIr1.png"
               alt="DJ AI Web App Screen 1"
               width={640}
               height={400}
               className="w-full max-w-2xl h-auto object-contain rounded-lg"
             />
-            <Image
+            <FadeInImage
               src="https://raw.githubusercontent.com/SSGutala/Portfolio/47fa924db0d0f62b17075764116a105db2a81aef/DJAIr2.png"
               alt="DJ AI Web App Screen 2"
               width={640}
