@@ -129,16 +129,14 @@ const FadeInImage: React.FC<FadeInImageProps> = ({ src, alt, width, height, clas
       const rect = imageEl.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
 
-      const start = rect.top + rect.height;
-      const end = viewportHeight * 0.2; // 80% scrolled
+      const end = viewportHeight * 0.4; // 60% scrolled (1 - 0.4)
       
       let progress = 0;
       if (rect.top < viewportHeight && rect.bottom > 0) {
-        progress = (viewportHeight - rect.top) / (viewportHeight + rect.height);
+        progress = (viewportHeight - rect.top) / (viewportHeight - end);
       }
       
-      const adjustedProgress = (progress - 0.2) / 0.3;
-      const clampedProgress = Math.max(0, Math.min(1, adjustedProgress));
+      const clampedProgress = Math.max(0, Math.min(1, progress));
 
       setOpacity(clampedProgress);
     };
