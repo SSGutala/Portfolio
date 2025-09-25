@@ -83,7 +83,7 @@ const PhoneAnimation: React.FC<PhoneAnimationProps> = ({ leftImageSrc, leftImage
     <div ref={animationRef} className="relative h-96 md:h-[600px] w-full max-w-4xl mx-auto flex items-center justify-center overflow-hidden">
       <div
         ref={leftPhoneRef}
-        className="absolute w-[48%] md:w-[300px] transform -translate-x-[100%] opacity-0"
+        className="absolute w-[48%] md:w-[320px] transform -translate-x-[100%] opacity-0"
       >
         <Image
           src={leftImageSrc}
@@ -95,7 +95,7 @@ const PhoneAnimation: React.FC<PhoneAnimationProps> = ({ leftImageSrc, leftImage
       </div>
       <div
         ref={rightPhoneRef}
-        className="absolute w-[48%] md:w-[300px] transform translate-x-[100%] opacity-0"
+        className="absolute w-[48%] md:w-[320px] transform translate-x-[100%] opacity-0"
       >
         <Image
           src={rightImageSrc}
@@ -140,7 +140,17 @@ export default function UiUxSection() {
             rightImageSrc="https://raw.githubusercontent.com/SSGutala/Portfolio/47fa924db0d0f62b17075764116a105db2a81aef/DJAIr2.png"
             rightImageAlt="DJ AI Web App Screen 2"
           />
-          {/* You can add a caption for the DJ AI images here if you want */}
+          <p className="text-muted-foreground text-sm mt-4 text-center">
+            DJ AI Web App Samples
+          </p>
+          <div className="max-w-3xl mx-auto text-lg text-muted-foreground space-y-6 text-center mt-8">
+            <p>
+              DJ AI was envisioned as a next-generation web application for music creation and mixing. The concept combined the power of artificial intelligence with the creativity of human text input. On one side, the app would allow users to generate unique mixes automatically through AI—blending beats, transitions, and effects of two user-defined songs, in real time. On the other, it offered manual mixing tools, giving users full control to layer tracks, adjust tempo, and experiment with their own style.
+            </p>
+            <p>
+              The design focused on building an intuitive interface that balanced automation and manual creativity, making the platform accessible to casual listeners while still offering depth for aspiring DJs. The vision was to create a space where music could be both discovered and co-created, redefining what it means to mix in the digital age, as well as serve as a device in bars and nightclubs that would save businesses money.
+            </p>
+          </div>
         </div>
       </div>
     </AnimatedSection>
