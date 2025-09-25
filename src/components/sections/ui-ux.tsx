@@ -134,12 +134,22 @@ export default function UiUxSection() {
 
         <div>
           <h3 className="text-2xl font-light underline text-center mb-8">DJ AI Web App Samples</h3>
-           <PhoneAnimation
-            leftImageSrc="https://raw.githubusercontent.com/SSGutala/Portfolio/47fa924db0d0f62b17075764116a105db2a81aef/DJAIr1.png"
-            leftImageAlt="DJ AI Web App Screen 1"
-            rightImageSrc="https://raw.githubusercontent.com/SSGutala/Portfolio/47fa924db0d0f62b17075764116a105db2a81aef/DJAIr2.png"
-            rightImageAlt="DJ AI Web App Screen 2"
-          />
+          <div className="flex flex-col items-center gap-8">
+            <Image
+              src="https://raw.githubusercontent.com/SSGutala/Portfolio/47fa924db0d0f62b17075764116a105db2a81aef/DJAIr1.png"
+              alt="DJ AI Web App Screen 1"
+              width={640}
+              height={400}
+              className="w-full max-w-2xl h-auto object-contain rounded-lg"
+            />
+            <Image
+              src="https://raw.githubusercontent.com/SSGutala/Portfolio/47fa924db0d0f62b17075764116a105db2a81aef/DJAIr2.png"
+              alt="DJ AI Web App Screen 2"
+              width={640}
+              height={400}
+              className="w-full max-w-2xl h-auto object-contain rounded-lg"
+            />
+          </div>
           <p className="text-muted-foreground text-sm mt-4 text-center">
             DJ AI Web App Samples
           </p>
