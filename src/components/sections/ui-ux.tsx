@@ -129,7 +129,9 @@ const FadeInImage: React.FC<FadeInImageProps> = ({ src, alt, width, height, clas
       const rect = imageEl.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
 
-      const end = viewportHeight * 0.4; // 60% scrolled (1 - 0.4)
+      // Start fading in when the top of the element is visible,
+      // and be fully visible when it's 45% up the screen (1 - 0.55 = 0.45)
+      const end = viewportHeight * 0.45; 
       
       let progress = 0;
       if (rect.top < viewportHeight && rect.bottom > 0) {
