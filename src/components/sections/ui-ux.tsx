@@ -47,9 +47,9 @@ export default function UiUxSection() {
       const rect = sectionEl.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
 
-      // Calculate progress: 0 when top of section hits bottom of viewport, 1 when it's a bit past the top
+      // Calculate progress: 0 when top of section hits bottom of viewport, 1 when it hits the middle
       const start = viewportHeight;
-      const end = -rect.height * 0.5; // End animation when it's halfway up the screen
+      const end = viewportHeight * 0.5; // End animation when top of section reaches middle of viewport
       const progress = (start - rect.top) / (start - end);
       const clampedProgress = Math.max(0, Math.min(1, progress));
 
