@@ -82,6 +82,8 @@ export default function UiUxSection() {
         From wireframes to high-fidelity mockups, I focus on creating intuitive and beautiful user interfaces.
       </p>
 
+      <h3 className="text-2xl font-bold text-center mb-8">Alphawave Mobile App Samples</h3>
+
       <div ref={animationRef} className="relative h-96 md:h-[600px] w-full max-w-4xl mx-auto flex items-center justify-center overflow-hidden">
         {/* Left Phone */}
         <div
