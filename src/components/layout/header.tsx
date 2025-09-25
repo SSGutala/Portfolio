@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, useRef } from "react";
@@ -66,7 +67,7 @@ export default function Header() {
           }
         });
       },
-      { rootMargin: "-20% 0px -65% 0px" }
+      { rootMargin: "-20% 0px -50% 0px" }
     );
 
     const sections = document.querySelectorAll("section[id]");
