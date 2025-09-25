@@ -6,7 +6,14 @@ import AnimatedSection from "@/components/animated-section";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
-export default function UiUxSection() {
+interface PhoneAnimationProps {
+  leftImageSrc: string;
+  leftImageAlt: string;
+  rightImageSrc: string;
+  rightImageAlt: string;
+}
+
+const PhoneAnimation: React.FC<PhoneAnimationProps> = ({ leftImageSrc, leftImageAlt, rightImageSrc, rightImageAlt }) => {
   const animationRef = useRef<HTMLDivElement>(null);
   const leftPhoneRef = useRef<HTMLDivElement>(null);
   const rightPhoneRef = useRef<HTMLDivElement>(null);
@@ -20,7 +27,7 @@ export default function UiUxSection() {
       {
         root: null,
         rootMargin: '0px',
-        threshold: 0, // Trigger as soon as any part is visible
+        threshold: 0,
       }
     );
 
@@ -47,16 +54,13 @@ export default function UiUxSection() {
       const rect = sectionEl.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
 
-      // Calculate progress: 0 when top of section hits bottom of viewport, 1 when it hits 88% of the way up the screen
       const start = viewportHeight;
-      const end = viewportHeight * 0.12; // End animation when top of section reaches 88% up the viewport
+      const end = viewportHeight * 0.12; 
       const progress = (start - rect.top) / (start - end);
       const clampedProgress = Math.max(0, Math.min(1, progress));
 
-      // Calculate transform values
-      const leftTranslate = -100 + clampedProgress * 45;  // from -100% to -55%
-      const rightTranslate = 100 - clampedProgress * 45; // from 100% to 55%
-      
+      const leftTranslate = -100 + clampedProgress * 45;
+      const rightTranslate = 100 - clampedProgress * 45;
       const opacity = clampedProgress;
 
       leftPhoneEl.style.transform = `translateX(${leftTranslate}%)`;
@@ -66,8 +70,8 @@ export default function UiUxSection() {
     };
 
     if (isIntersecting) {
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        handleScroll(); // Initial call
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll();
     }
 
     return () => {
@@ -76,54 +80,69 @@ export default function UiUxSection() {
   }, [isIntersecting]);
 
   return (
+    <div ref={animationRef} className="relative h-96 md:h-[600px] w-full max-w-4xl mx-auto flex items-center justify-center overflow-hidden">
+      <div
+        ref={leftPhoneRef}
+        className="absolute w-[48%] md:w-[300px] transform -translate-x-[100%] opacity-0"
+      >
+        <Image
+          src={leftImageSrc}
+          alt={leftImageAlt}
+          width={320}
+          height={640}
+          className="w-full h-auto object-contain"
+        />
+      </div>
+      <div
+        ref={rightPhoneRef}
+        className="absolute w-[48%] md:w-[300px] transform translate-x-[100%] opacity-0"
+      >
+        <Image
+          src={rightImageSrc}
+          alt={rightImageAlt}
+          width={320}
+          height={640}
+          className="w-full h-auto object-contain"
+        />
+      </div>
+    </div>
+  );
+};
+
+
+export default function UiUxSection() {
+  return (
     <AnimatedSection id="uiux" className="pt-0 md:pt-0">
       <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-4 text-center">Designing systems and experiences.</h2>
       <p className="max-w-3xl mx-auto text-lg text-muted-foreground mb-12 text-center">
         From wireframes to high-fidelity mockups, I focus on creating intuitive and beautiful user interfaces.
       </p>
 
-      <h3 className="text-2xl font-light underline text-center mb-8">Alphawave Mobile App Samples</h3>
-
-      <div ref={animationRef} className="relative h-96 md:h-[600px] w-full max-w-4xl mx-auto flex items-center justify-center overflow-hidden">
-        {/* Left Phone */}
-        <div
-          ref={leftPhoneRef}
-          className={cn(
-            "absolute",
-            "w-[48%] md:w-[300px]",
-            "transform -translate-x-[100%] opacity-0"
-          )}
-        >
-          <Image
-            src="https://raw.githubusercontent.com/SSGutala/Portfolio/a8e1cae263ceecd70eab9040feb9c91281ffa384/AWr1.png"
-            alt="Alphawave Rider App Screen 1"
-            width={320}
-            height={640}
-            className="w-full h-auto object-contain"
+      <div className="space-y-16">
+        <div>
+          <h3 className="text-2xl font-light underline text-center mb-8">Alphawave Mobile App Samples</h3>
+          <PhoneAnimation
+            leftImageSrc="https://raw.githubusercontent.com/SSGutala/Portfolio/a8e1cae263ceecd70eab9040feb9c91281ffa384/AWr1.png"
+            leftImageAlt="Alphawave Rider App Screen 1"
+            rightImageSrc="https://raw.githubusercontent.com/SSGutala/Portfolio/a8e1cae263ceecd70eab9040feb9c91281ffa384/AWr3.png"
+            rightImageAlt="Alphawave Rider App Screen 2"
           />
+          <p className="text-muted-foreground text-sm mt-4 text-center">
+            Alphawave Technologies Mobile App Render Samples
+          </p>
         </div>
 
-        {/* Right Phone */}
-        <div
-          ref={rightPhoneRef}
-          className={cn(
-            "absolute",
-            "w-[48%] md:w-[300px]",
-             "transform translate-x-[100%] opacity-0"
-          )}
-        >
-          <Image
-            src="https://raw.githubusercontent.com/SSGutala/Portfolio/a8e1cae263ceecd70eab9040feb9c91281ffa384/AWr3.png"
-            alt="Alphawave Rider App Screen 2"
-            width={320}
-            height={640}
-            className="w-full h-auto object-contain"
+        <div>
+          <h3 className="text-2xl font-light underline text-center mb-8">DJ AI Web App Samples</h3>
+           <PhoneAnimation
+            leftImageSrc="https://raw.githubusercontent.com/SSGutala/Portfolio/47fa924db0d0f62b17075764116a105db2a81aef/DJAIr1.png"
+            leftImageAlt="DJ AI Web App Screen 1"
+            rightImageSrc="https://raw.githubusercontent.com/SSGutala/Portfolio/47fa924db0d0f62b17075764116a105db2a81aef/DJAIr2.png"
+            rightImageAlt="DJ AI Web App Screen 2"
           />
+          {/* You can add a caption for the DJ AI images here if you want */}
         </div>
       </div>
-      <p className="text-muted-foreground text-sm mt-4 text-center">
-        Alphawave Technologies Mobile App Render Samples
-      </p>
     </AnimatedSection>
   );
 }
