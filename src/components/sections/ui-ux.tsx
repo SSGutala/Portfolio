@@ -118,43 +118,51 @@ interface FadeInImageProps {
 }
 
 const FadeInImage: React.FC<FadeInImageProps> = ({ src, alt, width, height, className }) => {
-  const [isVisible, setIsVisible] = useState(false);
   const imageRef = useRef<HTMLDivElement>(null);
+  const [opacity, setOpacity] = useState(0);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      { threshold: 0.1 }
-    );
+    const handleScroll = () => {
+      const imageEl = imageRef.current;
+      if (!imageEl) return;
 
-    const currentRef = imageRef.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
+      const rect = imageEl.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+
+      const start = rect.top + rect.height;
+      const end = viewportHeight * 0.2; // 80% scrolled
+      
+      let progress = 0;
+      if (rect.top < viewportHeight && rect.bottom > 0) {
+        progress = (viewportHeight - rect.top) / (viewportHeight + rect.height);
+      }
+      
+      const adjustedProgress = (progress - 0.2) / 0.3;
+      const clampedProgress = Math.max(0, Math.min(1, adjustedProgress));
+
+      setOpacity(clampedProgress);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); 
 
     return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   return (
     <div
       ref={imageRef}
-      className={cn(
-        'transition-opacity duration-1000 ease-in-out',
-        isVisible ? 'opacity-100' : 'opacity-0'
-      )}
+      style={{ opacity }}
+      className={cn('transition-opacity duration-1000 ease-in-out', className)}
     >
       <Image
         src={src}
         alt={alt}
         width={width}
         height={height}
-        className={className}
+        className="w-full h-auto object-contain rounded-lg"
       />
     </div>
   );
@@ -191,14 +199,14 @@ export default function UiUxSection() {
               alt="DJ AI Web App Screen 1"
               width={640}
               height={400}
-              className="w-full max-w-2xl h-auto object-contain rounded-lg"
+              className="w-full max-w-2xl"
             />
             <FadeInImage
               src="https://raw.githubusercontent.com/SSGutala/Portfolio/47fa924db0d0f62b17075764116a105db2a81aef/DJAIr2.png"
               alt="DJ AI Web App Screen 2"
               width={640}
               height={400}
-              className="w-full max-w-2xl h-auto object-contain rounded-lg"
+              className="w-full max-w-2xl"
             />
           </div>
           <p className="text-muted-foreground text-sm mt-4 text-center">
