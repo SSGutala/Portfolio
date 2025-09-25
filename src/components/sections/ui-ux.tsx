@@ -145,7 +145,7 @@ const FadeInImage: React.FC<FadeInImageProps> = ({ src, alt, width, height, clas
     <div
       ref={imageRef}
       className={cn(
-        'transition-opacity duration-700 ease-in-out',
+        'transition-opacity duration-1000 ease-in-out',
         isVisible ? 'opacity-100' : 'opacity-0'
       )}
     >
