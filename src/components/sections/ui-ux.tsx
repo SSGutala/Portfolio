@@ -119,6 +119,9 @@ export default function UiUxSection() {
           />
         </div>
       </div>
+      <p className="text-muted-foreground text-sm mt-4 text-center">
+        Alphawave Technologies Mobile App Render Samples
+      </p>
     </AnimatedSection>
   );
 }
