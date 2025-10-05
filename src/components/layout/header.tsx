@@ -45,30 +45,25 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    // Set home as active by default
-    setActiveSection('home');
-
-    const handleScroll = () => {
-        if (window.scrollY === 0) {
+    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          if (entry.target.id === 'home' && window.scrollY < 200) {
             setActiveSection('home');
+          } else if (entry.target.id !== 'home') {
+            setActiveSection(entry.target.id);
+          }
         }
+      });
+      // Fallback for when at the top of the page
+      if (window.scrollY < 200) {
+        setActiveSection('home');
+      }
     };
     
-    window.addEventListener('scroll', handleScroll);
-
-    observer.current = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Don't unset home if we are at the top
-            if (window.scrollY > 100 || entry.target.id !== 'home') {
-                 setActiveSection(entry.target.id);
-            }
-          }
-        });
-      },
-      { rootMargin: "-20% 0px -50% 0px" }
-    );
+    observer.current = new IntersectionObserver(handleIntersection, { 
+      rootMargin: "-20% 0px -50% 0px"
+    });
 
     const sections = document.querySelectorAll("section[id]");
     sections.forEach((section) => {
@@ -77,8 +72,16 @@ export default function Header() {
       }
     });
 
+    const handleScroll = () => {
+        if (window.scrollY < 200) {
+            setActiveSection('home');
+        }
+    };
+    window.addEventListener('scroll', handleScroll);
+
+
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+       window.removeEventListener('scroll', handleScroll);
       sections.forEach((section) => {
         if (observer.current) {
           // eslint-disable-next-line react-hooks/exhaustive-deps
