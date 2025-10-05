@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import AnimatedSection from "@/components/animated-section";
 
@@ -22,13 +23,13 @@ export default function VenturesSection() {
 
               <div className="text-lg text-muted-foreground space-y-6 text-left">
                   <p>
-                      The Hoop Foundation is a non-profit organization I founded with the mission of empowering underprivileged children through education, creativity, and opportunity. Our focus is on providing resources and support to children who need them most — from underserved schools to communities often left behind.
+                      The Hoop Foundation is a non-profit organization I founded with the mission of empowering underprivileged children through education, creativity, and opportunity. Our goal is to provide education to the poorest of the poor elementary children in India, particularly those living in the slums, by leveraging both live and pre-recorded remote teaching methods alongside AI-powered learning agents. The long-term vision is to meet national curriculum needs for children K through 12, supporting their college and career goals entirely free of cost.
                   </p>
                   <p>
                       Our first initiative was held in India, where we successfully assisted over 200 underserved students by providing custom educational materials and treats, helping make learning more engaging and accessible. This effort marked the foundation’s first step toward creating lasting impact at the grassroots level.
                   </p>
                   <p>
-                      Beyond this, The Hoop Foundation continues to build partnerships, recruit volunteers, and lay the groundwork for broader programs, including future 501(c) registration in the U.S. The journey has taught me the importance of combining entrepreneurial drive with compassion, and how education can be one of the most powerful tools for change.
+                      Beyond this, The Hoop Foundation continues to build partnerships, recruit volunteers, and lay the groundwork for broader programs, including future 501(c) registration in the United States and NGO registration in India. The journey has taught me the importance of combining entrepreneurial drive with compassion, and how education can be one of the most powerful tools for change.
                   </p>
               </div>
           </div>
