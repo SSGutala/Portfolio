@@ -168,16 +168,7 @@ export default function VenturesSection() {
                     <div className="space-y-8 text-lg text-muted-foreground">
                         <div>
                             <h5 className="font-semibold mb-2">Hardware: Physical Product Engineering &amp; Manufacturing Enablement</h5>
-                            <ul className="list-disc list-inside space-y-1">
-                                <li>Developed detailed 3D renders and engineering-ready shoe models using Blender and Keyshot, integrating battery housing, MCU compartment, wiring channels, and removable color panel slots.</li>
-                                <li>Built multiple iterations of physical prototypes using Arduino and then ESP32, allowing BLE communication, higher power efficiency, and debugging through the Arduino IDE and VS Code.</li>
-                                <li>Managed BOM (Bill of Materials) planning and sourcing, coordinating key components: fabric base, e-textile layer, 3.7V LiPo battery, ESP32-based microcontroller, wiring harness, and color-change e-ink panel prototypes.</li>
-                                <li>Created technical documentation and annotated CAD files to communicate design intent, constraints, and dimensions to Shenzhen-based manufacturing partners for prototyping.</li>
-                                <li>Engaged with E-ink suppliers and wearable material specialists, evaluating tradeoffs in flexibility, voltage tolerance, durability, and response time for color change modules.</li>
-                                <li>Coordinated design handoff, prototype approval, and version tracking using supplier communication packets, combining renders, specs, materials, and firmware interactions.</li>
-                                <li>Incorporated user feedback loops to refine wearability, weight distribution, charging methods, and style preservation—improving user comfort perception and aesthetic appeal.</li>
-                            </ul>
-                            <div className="flex flex-col items-center mt-8">
+                            <div className="flex flex-col items-center my-8">
                                 <video
                                     src="https://raw.githubusercontent.com/SSGutala/Portfolio/61f360425f33f225faeffc56b46f36a656138480/AWPrismrender.mp4"
                                     autoPlay
@@ -190,6 +181,15 @@ export default function VenturesSection() {
                                     Alphawave Technologies Prism Model Product Render
                                 </p>
                             </div>
+                            <ul className="list-disc list-inside space-y-1">
+                                <li>Developed detailed 3D renders and engineering-ready shoe models using Blender and Keyshot, integrating battery housing, MCU compartment, wiring channels, and removable color panel slots.</li>
+                                <li>Built multiple iterations of physical prototypes using Arduino and then ESP32, allowing BLE communication, higher power efficiency, and debugging through the Arduino IDE and VS Code.</li>
+                                <li>Managed BOM (Bill of Materials) planning and sourcing, coordinating key components: fabric base, e-textile layer, 3.7V LiPo battery, ESP32-based microcontroller, wiring harness, and color-change e-ink panel prototypes.</li>
+                                <li>Created technical documentation and annotated CAD files to communicate design intent, constraints, and dimensions to Shenzhen-based manufacturing partners for prototyping.</li>
+                                <li>Engaged with E-ink suppliers and wearable material specialists, evaluating tradeoffs in flexibility, voltage tolerance, durability, and response time for color change modules.</li>
+                                <li>Coordinated design handoff, prototype approval, and version tracking using supplier communication packets, combining renders, specs, materials, and firmware interactions.</li>
+                                <li>Incorporated user feedback loops to refine wearability, weight distribution, charging methods, and style preservation—improving user comfort perception and aesthetic appeal.</li>
+                            </ul>
                         </div>
                         <div>
                             <h5 className="font-semibold mb-2">Embedded Software &amp; Hardware Control</h5>
