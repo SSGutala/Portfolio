@@ -14,7 +14,7 @@ import {
 export default function VenturesSection() {
   return (
     <AnimatedSection id="ventures" className="pt-0 md:pt-0">
-      <div className="max-w-3xl mx-auto text-center">
+      <div className="max-w3xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-12">Ventures</h2>
 
         <div className="flex flex-col items-center space-y-16">
@@ -78,7 +78,7 @@ export default function VenturesSection() {
             />
             <div className="text-center">
                 <h3 className="text-2xl font-bold">Alphawave Technologies — Smart Footwear Venture</h3>
-                <p className="text-muted-foreground mt-2">Role: Product Owner & Founder</p>
+                <p className="text-muted-foreground mt-2">Role: Product Owner &amp; Founder</p>
                 <p className="text-muted-foreground">Timeline: 2020–2023</p>
                 <p className="text-muted-foreground">Type: Hardware + Mobile SaaS | Wearable Tech | IoT</p>
                 <p className="text-muted-foreground italic mb-6">Scope: Concept → Market Discovery → MVP → Technical Pre-Validation</p>
@@ -94,8 +94,8 @@ export default function VenturesSection() {
                 </div>
 
                 <div>
-                    <h4 className="text-xl font-bold mb-4">Phase 1 — Product Discovery & Vision Architecture</h4>
-                    <h5 className="text-lg font-semibold mb-3">Defining Mission, Target Market & Use Case</h5>
+                    <h4 className="text-xl font-bold mb-4">Phase 1 — Product Discovery &amp; Vision Architecture</h4>
+                    <h5 className="text-lg font-semibold mb-3">Defining Mission, Target Market &amp; Use Case</h5>
                     <div className="space-y-4 text-lg text-muted-foreground">
                         <p>Conducted market gap analysis across fashion tech, smart wearables, and customization products.</p>
                         <p>Identified growing trend in: Self-expression, modular fashion, sustainable personalization, and youth-driven digital identity.</p>
@@ -113,7 +113,7 @@ export default function VenturesSection() {
                 </div>
 
                 <div>
-                    <h4 className="text-xl font-bold mb-4">Phase 2 — Requirements Definition & Technical Feasibility</h4>
+                    <h4 className="text-xl font-bold mb-4">Phase 2 — Requirements Definition &amp; Technical Feasibility</h4>
                     <p className="text-lg text-muted-foreground mb-4"><strong>Key Challenge:</strong> Can this technology (e-Ink / OLED / color-shifting materials) actually be embedded into a shoe while maintaining flexibility, durability, and battery efficiency?</p>
                     <h5 className="text-lg font-semibold mb-3">Activities Performed</h5>
                     <Table>
@@ -126,18 +126,18 @@ export default function VenturesSection() {
                         <TableBody>
                             <TableRow><TableCell>Material Feasibility</TableCell><TableCell>Evaluated OLED, LCD mesh, flexible e-Ink, electrochromic film</TableCell></TableRow>
                             <TableRow><TableCell>Vendor Discussions</TableCell><TableCell>Met with E-Ink Corp and multiple Shenzhen prototyping labs</TableCell></TableRow>
-                            <TableRow><TableCell>Legal & Patent Research</TableCell><TableCell>Conducted IP feasibility, initiated provisional patent development</TableCell></TableRow>
+                            <TableRow><TableCell>Legal &amp; Patent Research</TableCell><TableCell>Conducted IP feasibility, initiated provisional patent development</TableCell></TableRow>
                             <TableRow><TableCell>Technical Workshops</TableCell><TableCell>Evaluated battery integration, wireless controllers (BLE), flex-PCB constraints</TableCell></TableRow>
                             <TableRow><TableCell>Engineering Budgeting</TableCell><TableCell>Cost modeling for prototype versioning, BOM analysis</TableCell></TableRow>
                         </TableBody>
                     </Table>
-                    <p className="text-lg text-muted-foreground my-4"><strong>PM Deliverable Created:</strong> Technical Feasibility Assessment & Build vs Buy Matrix</p>
+                    <p className="text-lg text-muted-foreground my-4"><strong>PM Deliverable Created:</strong> Technical Feasibility Assessment &amp; Build vs Buy Matrix</p>
                     <p className="text-lg text-muted-foreground"><strong>Decision:</strong> Pivoted away from OLED screens (fragility / heat / high-cost) → toward static color-shifting e-Ink panels with Bluetooth microcontroller integration.</p>
                 </div>
 
                 <div>
-                    <h4 className="text-xl font-bold mb-4">Phase 3 — Design & Experience Prototyping</h4>
-                    <h5 className="text-lg font-semibold mb-3">Prototype 1 — Concept Modeling (Sketches & 2D Visual Renders)</h5>
+                    <h4 className="text-xl font-bold mb-4">Phase 3 — Design &amp; Experience Prototyping</h4>
+                    <h5 className="text-lg font-semibold mb-3">Prototype 1 — Concept Modeling (Sketches &amp; 2D Visual Renders)</h5>
                      <div class="space-y-4 text-lg text-muted-foreground">
                         <p><strong>Goal:</strong> Capture form, functionality, and the user experience.</p>
                         <p>Created concept storyboards, sketch design pack, and usage journey mapping.</p>
@@ -150,7 +150,7 @@ export default function VenturesSection() {
                         <ul className="list-disc list-inside">
                            <li>How users select styles</li>
                            <li>How shoe connects to app (Bluetooth scanning)</li>
-                           <li>Style presets & favorites experience</li>
+                           <li>Style presets &amp; favorites experience</li>
                         </ul>
                          <div>
                             <p className="font-semibold mt-4">Deliverables:</p>
@@ -164,10 +164,10 @@ export default function VenturesSection() {
                 </div>
 
                 <div>
-                    <h4 className="text-xl font-bold mb-4">Phase 4 — High-Fidelity Design & Physical Prototype Coordination</h4>
+                    <h4 className="text-xl font-bold mb-4">Phase 4 — High-Fidelity Design &amp; Physical Prototype Coordination</h4>
                     <div className="space-y-8 text-lg text-muted-foreground">
                         <div>
-                            <h5 className="font-semibold mb-2">Hardware: Physical Product Engineering & Manufacturing Enablement</h5>
+                            <h5 className="font-semibold mb-2">Hardware: Physical Product Engineering &amp; Manufacturing Enablement</h5>
                             <ul className="list-disc list-inside space-y-1">
                                 <li>Developed detailed 3D renders and engineering-ready shoe models using Blender and Keyshot, integrating battery housing, MCU compartment, wiring channels, and removable color panel slots.</li>
                                 <li>Built multiple iterations of physical prototypes using Arduino and then ESP32, allowing BLE communication, higher power efficiency, and debugging through the Arduino IDE and VS Code.</li>
@@ -177,9 +177,22 @@ export default function VenturesSection() {
                                 <li>Coordinated design handoff, prototype approval, and version tracking using supplier communication packets, combining renders, specs, materials, and firmware interactions.</li>
                                 <li>Incorporated user feedback loops to refine wearability, weight distribution, charging methods, and style preservation—improving user comfort perception and aesthetic appeal.</li>
                             </ul>
+                            <div className="flex flex-col items-center mt-8">
+                                <video
+                                    src="https://raw.githubusercontent.com/SSGutala/Portfolio/61f360425f33f225faeffc56b46f36a656138480/AWPrismrender.mp4"
+                                    autoPlay
+                                    loop
+                                    muted
+                                    playsInline
+                                    className="rounded-lg shadow-2xl w-full max-w-4xl"
+                                />
+                                <p className="text-muted-foreground text-sm mt-4">
+                                    Alphawave Technologies Prism Model Product Render
+                                </p>
+                            </div>
                         </div>
                         <div>
-                            <h5 className="font-semibold mb-2">Embedded Software & Hardware Control</h5>
+                            <h5 className="font-semibold mb-2">Embedded Software &amp; Hardware Control</h5>
                              <ul className="list-disc list-inside space-y-1">
                                 <li>Iterated from Arduino-based prototypes to ESP32 microcontroller for improved Bluetooth capabilities, battery efficiency, and processing speed.</li>
                                 <li>Wrote firmware in C/C++ to handle BLE communication, boot sequencing, power management, and LED driver control.</li>
@@ -189,7 +202,7 @@ export default function VenturesSection() {
                             </ul>
                         </div>
                         <div>
-                            <h5 className="font-semibold mb-2">Mobile Software – React Native App (User Experience & BLE Integration)</h5>
+                            <h5 className="font-semibold mb-2">Mobile Software – React Native App (User Experience &amp; BLE Integration)</h5>
                              <ul className="list-disc list-inside space-y-1">
                                 <li>Built a hybrid mobile application using React Native to support both iOS and Android, prioritizing faster iteration and cost efficiency for prototype testing.</li>
                                 <li>Designed and documented the BLE command protocol, mapping app interactions to firmware-level actions (hex command strings for color updates, style changes, and preset sync).</li>
@@ -205,13 +218,13 @@ export default function VenturesSection() {
                         <ul className="list-disc list-inside">
                             <li>Hi-Fi App Design System</li>
                             <li>Design Spec Document for Hardware Integration</li>
-                            <li>Clickable Prototype for Demo & Pre-Investor Pitch</li>
+                            <li>Clickable Prototype for Demo &amp; Pre-Investor Pitch</li>
                         </ul>
                     </div>
                 </div>
 
                 <div>
-                    <h4 className="text-xl font-bold mb-4">Phase 5 — User Testing & Market Validation</h4>
+                    <h4 className="text-xl font-bold mb-4">Phase 5 — User Testing &amp; Market Validation</h4>
                      <p className="text-lg text-muted-foreground mb-4">Conducted 100+ tests with: Lifestyle users, Fashion students, and TikTok content creators.</p>
                      <Table>
                         <TableHeader>
@@ -246,7 +259,7 @@ export default function VenturesSection() {
                          <div>
                             <p className="font-semibold mt-4">Deliverables:</p>
                             <ul className="list-disc list-inside">
-                                <li>MVP Feature List & Prioritization (MoSCoW)</li>
+                                <li>MVP Feature List &amp; Prioritization (MoSCoW)</li>
                                 <li>Go-to-Market MVP Plan</li>
                                 <li>Pitch Assets for Investor Readiness</li>
                             </ul>
@@ -255,13 +268,13 @@ export default function VenturesSection() {
                 </div>
 
                 <div>
-                    <h4 className="text-xl font-bold mb-4">Outcome & Learnings</h4>
+                    <h4 className="text-xl font-bold mb-4">Outcome &amp; Learnings</h4>
                      <div class="space-y-4 text-lg text-muted-foreground">
                         <div>
                             <h5 className="font-semibold mb-2">Why MVP Production Paused:</h5>
                             <ul className="list-disc list-inside space-y-1">
-                                <li>Supply chain & manufacturing risk too high for bootstrapped budget</li>
-                                <li>Complexity in durability testing & certifications</li>
+                                <li>Supply chain &amp; manufacturing risk too high for bootstrapped budget</li>
+                                <li>Complexity in durability testing &amp; certifications</li>
                                 <li>High initial manufacturing cost ($85–$120 per pair — too high without volume)</li>
                             </ul>
                         </div>
