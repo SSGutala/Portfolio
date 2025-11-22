@@ -3,8 +3,6 @@ import Footer from '@/components/layout/footer';
 import HomeSection from '@/components/sections/home';
 import ConsultingSection from '@/components/sections/consulting';
 import VenturesSection from '@/components/sections/ventures';
-import ProductSection from '@/components/sections/product';
-import UiUxSection from '@/components/sections/ui-ux';
 import AboutSection from '@/components/sections/about';
 
 export default function Home() {
@@ -16,8 +14,6 @@ export default function Home() {
         <AboutSection />
         <VenturesSection />
         <ConsultingSection />
-        <ProductSection />
-        <UiUxSection />
       </main>
       <Footer />
     </div>

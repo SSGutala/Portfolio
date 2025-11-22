@@ -13,8 +13,6 @@ const navItems = [
   { name: "About", href: "#about" },
   { name: "Ventures", href: "#ventures" },
   { name: "Consulting", href: "#consulting" },
-  { name: "Product", href: "#product" },
-  { name: "UI/UX", href: "#uiux" },
 ];
 
 export default function Header() {
