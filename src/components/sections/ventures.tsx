@@ -26,7 +26,7 @@ export default function VenturesSection() {
                     height={187}
                     className="rounded-2xl mb-4"
                 />
-                <h3 className="text-2xl font-bold mb-2">The Hoop Foundation</h3>
+                <h3 className="text-2xl font-bold mb-2">Hoop Foundation — Social Impact Learning Initiative</h3>
                 <p className="text-muted-foreground mb-4">(2024 - Present)</p>
                 <p className="text-lg font-semibold text-primary mb-6">Empowering underserved children through education and creativity.</p>
 
@@ -103,7 +103,7 @@ export default function VenturesSection() {
                         <li>Analyzed premium activewear brands (Lululemon, Alo, Gymshark) to compare tone, brand language, and perception of quality. </li>
                         <li>Identified opportunity in understated cultural identity—not bold graphics or printed symbolism.</li>
                       </ul>
-                      <br/>
+                      
                       <p><strong>PM Deliverables:</strong> Problem Statement • Target Persona Profiles • Brand Positioning Axes (Minimal ↔ Loud, Lifestyle ↔ Performance)</p>
                   </div>
                   
@@ -137,12 +137,12 @@ export default function VenturesSection() {
                          <p><strong>Outcome → Shifted design toward neutral tones, subtle accents, and tone-on-tone motifs.</strong></p>
                   </div>
 
-                  <hr className="border-border" />
+                  <hr />
                   
                   <div className="text-lg text-muted-foreground space-y-6">
                     <h4 className="text-xl font-bold mb-4">Phase 3 — Design Iteration</h4>
                      <div className="space-y-4">
-                        <h5 className="font-semibold">Prototype 1: Graphic-Based Concepts</h5>
+                        <h4 className="font-semibold">Prototype 1: Graphic-Based Concepts</h4>
                         <ul className="list-disc list-inside">
                             <li>Explored strong cultural illustration and printed motifs</li>
                             <li>Created mockups in Illustrator and Figma for visualizing placement & identity</li>
@@ -150,7 +150,7 @@ export default function VenturesSection() {
                         </ul>
                     </div>
                      <div className="space-y-4">
-                        <h5 className="font-semibold">Prototype 2: Minimal & Tone-Based Expression</h5>
+                        <h4 className="font-semibold">Prototype 2: Minimal & Tone-Based Expression</h4>
                         <ul className="list-disc list-inside">
                             <li>Refined into clean silhouettes and tone-on-tone symbolic elements</li>
                             <li>Focused on matte textures, subtle cultural accents, and premium feel</li>
