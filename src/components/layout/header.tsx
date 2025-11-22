@@ -27,7 +27,7 @@ export default function Header() {
         if (entry.isIntersecting) {
           if (entry.target.id === 'home' && entry.intersectionRatio >= 0.5) {
              setActiveSection('home');
-          } else if (entry.intersectionRatio > 0.5) {
+          } else if (entry.intersectionRatio > 0.25) { // Adjusted threshold
             setActiveSection(entry.target.id);
           }
         }
@@ -38,7 +38,7 @@ export default function Header() {
     };
     
     observer.current = new IntersectionObserver(handleIntersection, { 
-      threshold: 0.5
+      threshold: [0.25, 0.5, 0.75], // More thresholds
     });
 
     const sections = document.querySelectorAll("section[id]");
@@ -97,7 +97,7 @@ export default function Header() {
                 <a href="https://www.linkedin.com/in/sai-gutala/" target="_blank" rel="noopener noreferrer">Connect</a>
             </Button>
             <Button asChild>
-              <a href="https://docs.google.com/document/d/1t3SIQxCx4P6oIHpcJ1Prg2nnzYp-3z0l9fI7SObNotQ/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a>
+              <a href="https://docs.google.com/document/d/13ciZiL_jlkSxqxgCaEvAtzph2389z9EnutM0dO18NP8/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a>
             </Button>
             <button
               className="md:hidden"

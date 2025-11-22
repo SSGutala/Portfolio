@@ -33,7 +33,7 @@ export default function AboutSection() {
                 </div>
 
                 <Button asChild size="lg">
-                    <a href="https://docs.google.com/document/d/1t3SIQxCx4P6oIHpcJ1Prg2nnzYp-3z0l9fI7SObNotQ/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Download Resume</a>
+                    <a href="https://docs.google.com/document/d/13ciZiL_jlkSxqxgCaEvAtzph2389z9EnutM0dO18NP8/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Download Resume</a>
                 </Button>
             </div>
         </section>
