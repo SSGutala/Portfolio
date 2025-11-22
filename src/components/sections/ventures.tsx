@@ -167,7 +167,7 @@ export default function VenturesSection() {
                     <h4 className="text-xl font-bold mb-4">Phase 4 — High-Fidelity Design &amp; Physical Prototype Coordination</h4>
                     <div className="space-y-8 text-lg text-muted-foreground">
                         <div>
-                            <h5 className="font-semibold mb-2">Hardware: Physical Product Engineering &amp; Manufacturing Enablement</h5>
+                            <h5 className="font-semibold mb-2">Hardware: Physical Product Engineering & Manufacturing Enablement</h5>
                             <div className="flex flex-col md:flex-row gap-8 items-center my-8">
                                 <div className="flex-1">
                                     <video
@@ -179,7 +179,7 @@ export default function VenturesSection() {
                                         className="rounded-lg shadow-2xl w-full"
                                     />
                                     <p className="text-muted-foreground text-sm mt-4 text-center">
-                                        Prism Model
+                                        E-ink Prism Model
                                     </p>
                                 </div>
                                 <div className="flex-1">
@@ -192,7 +192,7 @@ export default function VenturesSection() {
                                         className="rounded-lg shadow-2xl w-full"
                                     />
                                      <p className="text-muted-foreground text-sm mt-4 text-center">
-                                        Slip-on Model
+                                        OLED Model
                                     </p>
                                 </div>
                             </div>
@@ -207,7 +207,7 @@ export default function VenturesSection() {
                             </ul>
                         </div>
                         <div>
-                            <h5 className="font-semibold mb-2">Embedded Software &amp; Hardware Control</h5>
+                            <h5 className="font-semibold mb-2">Embedded Software & Hardware Control</h5>
                              <ul className="list-disc list-inside space-y-1">
                                 <li>Iterated from Arduino-based prototypes to ESP32 microcontroller for improved Bluetooth capabilities, battery efficiency, and processing speed.</li>
                                 <li>Wrote firmware in C/C++ to handle BLE communication, boot sequencing, power management, and LED driver control.</li>
@@ -217,7 +217,7 @@ export default function VenturesSection() {
                             </ul>
                         </div>
                         <div>
-                            <h5 className="font-semibold mb-2">Mobile Software – React Native App (User Experience &amp; BLE Integration)</h5>
+                            <h5 className="font-semibold mb-2">Mobile Software – React Native App (User Experience & BLE Integration)</h5>
                             <div className="flex justify-center items-center gap-4 md:gap-8 flex-col md:flex-row my-8">
                                 <div className="w-[48%] md:w-auto md:max-w-[320px]">
                                 <Image
