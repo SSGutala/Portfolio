@@ -125,7 +125,7 @@ export default function VenturesSection() {
                         </TableHeader>
                         <TableBody>
                             <TableRow><TableCell>Material Feasibility</TableCell><TableCell>Evaluated OLED, LCD mesh, flexible e-Ink, electrochromic film</TableCell></TableRow>
-                            <TableRow><TableCell>Vendor Discussions</TableCell><TableCell>Met with E-Ink Corp, Visionox Flexible OLED, and multiple Shenzhen prototyping labs</TableCell></TableRow>
+                            <TableRow><TableCell>Vendor Discussions</TableCell><TableCell>Met with E-Ink Corp and multiple Shenzhen prototyping labs</TableCell></TableRow>
                             <TableRow><TableCell>Legal & Patent Research</TableCell><TableCell>Conducted IP feasibility, initiated provisional patent development</TableCell></TableRow>
                             <TableRow><TableCell>Technical Workshops</TableCell><TableCell>Evaluated battery integration, wireless controllers (BLE), flex-PCB constraints</TableCell></TableRow>
                             <TableRow><TableCell>Engineering Budgeting</TableCell><TableCell>Cost modeling for prototype versioning, BOM analysis</TableCell></TableRow>
@@ -261,7 +261,7 @@ export default function VenturesSection() {
                 <div>
                     <h4 className="text-xl font-bold mb-4">Next Iteration (Concept for Future)</h4>
                     <p className="text-lg text-muted-foreground">Knowing GenAI and flexible tech are evolving rapidly, revived concept can become:</p>
-                    <p className="text-lg text-muted-foreground font-semibold">“AI-Powered Adaptive Footwear” — Upload an outfit → App generates matching shoe style → Sends to smart footwear with instant color sync.</p>
+                    <p className="text-lg text-muted-foreground font-semibold">AI-Powered Adaptive Footwear — Upload an outfit → App generates matching shoe style → Sends to smart footwear with instant color sync.</p>
                 </div>
             </div>
           </div>
