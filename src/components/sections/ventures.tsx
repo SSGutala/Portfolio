@@ -1,4 +1,5 @@
 
+
 import Image from "next/image";
 import {
   Table,
@@ -57,7 +58,7 @@ export default function VenturesSection() {
                     <p>Role: Founder & Product Owner</p>
                     <p>Timeline: 2024–Present</p>
                     <p>Type: Apparel & Brand | Lifestyle & Activewear</p>
-                    <p className="italic">Stage: Concept → Market Discovery → Design System → Pre-Launch Validation</p>
+                    <p className="italic">Scope: Concept → Market Discovery → Design System → Pre-Launch Validation</p>
                 </div>
 
 
