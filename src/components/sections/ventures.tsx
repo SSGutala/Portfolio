@@ -96,12 +96,45 @@ export default function VenturesSection() {
                       </div>
                   </div>
                   <div className="text-lg text-muted-foreground space-y-6">
-                      <p>
-                          The journey involved developing the brand identity, experimenting with materials, and designing a digital-first experience. The website was crafted with a sleek “liquid glass” interface to reflect the modern, elevated feel of the brand, while the product design emphasized comfort, durability, and style.
-                      </p>
-                      <p>
-                          Through research and early feedback, Veera reinforced the importance of balancing aesthetics with functionality. Customers valued clean, minimal designs with subtle accents over bold, cluttered patterns. The project highlighted how thoughtful branding, user-friendly digital experiences, and well-crafted products can create a sense of pride and representation in everyday wear.
-                      </p>
+                      <h4 className="text-xl font-bold mb-4">Phase 1 — Discovery & Market Insight</h4>
+                       <h5 className="text-lg font-semibold mb-3">Activities:</h5>
+                       <ul className="list-disc list-inside">
+                        <li>Interviewed 50+ early potential users (fitness creators, young professionals, models) on comfort, fit, and cultural expression.</li>
+                        <li>Analyzed premium activewear brands (Lululemon, Alo, Gymshark) to compare tone, brand language, and perception of quality. </li>
+                        <li>Identified opportunity in understated cultural identity—not bold graphics or printed symbolism.</li>
+                      </ul>
+                      <br/>
+                      <h5 className="text-lg font-semibold mb-3">PM Deliverables:</h5>
+                      <p>Problem Statement • Target Persona Profiles • Brand Positioning Axes (Minimal ↔ Loud, Lifestyle ↔ Performance)</p>
+                  </div>
+                  <div>
+                      <h4 className="text-xl font-bold mb-4">Phase 2 — Requirements & Material Exploration</h4>
+                      <div className="space-y-4 text-lg text-muted-foreground">
+                        <p>Focused on fabric feel, premium perception, and manufacturability at small scale.</p>
+                        <Table>
+                          <TableHeader>
+                            <TableRow>
+                              <TableHead>Area</TableHead>
+                              <TableHead>Key Focus</TableHead>
+                            </TableRow>
+                          </TableHeader>
+                          <TableBody>
+                            <TableRow>
+                              <TableCell>Material Testing</TableCell>
+                              <TableCell>Evaluated cotton-spandex and bamboo blends for softness, stretch, and wash durability</TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell>Cost Modeling</TableCell>
+                              <TableCell>Created small-batch feasibility plan (50–100 unit drop)</TableCell>
+                            </TableRow>
+                             <TableRow>
+                              <TableCell>Brand Testing</TableCell>
+                              <TableCell>Compared subtle symbolic accents vs cultural graphic printing</TableCell>
+                            </TableRow>
+                          </TableBody>
+                        </Table>
+                         <p><strong>Outcome → Shifted design toward neutral tones, subtle accents, and tone-on-tone motifs.</strong></p>
+                      </div>
                   </div>
                 </div>
             </div>
