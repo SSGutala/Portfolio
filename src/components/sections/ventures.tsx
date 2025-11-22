@@ -20,7 +20,7 @@ export default function VenturesSection() {
         <div className="flex flex-col items-center space-y-16">
           <div className="flex flex-col items-center">
               <Image
-                  src="https://raw.githubusercontent.com/SSGutala/Portfolio/17df4d3237b30de90ef68e27a089ad67831d1c23/hooplogo.jpg"
+                  src="https://raw.githubusercontent.com/SSGutala/Portfolio/17df4d3237b30de90ef6d93526e6d73138d14986/hooplogo.jpg"
                   alt="The Hoop Foundation Logo"
                   width={187}
                   height={187}
@@ -77,132 +77,191 @@ export default function VenturesSection() {
                 className="rounded-2xl mb-4"
             />
             <div className="text-center">
-                <h3 className="text-2xl font-bold">Alphawave Technologies — Smart Footwear System</h3>
-                <p className="text-muted-foreground mt-2 mb-6">(2020 - 2023)</p>
-                <p className="text-muted-foreground italic">Role: Founder & Product Lead | Type: Wearable Tech Venture (Smart Fashion / IoT)</p>
+                <h3 className="text-2xl font-bold">Alphawave Technologies — Smart Footwear Venture</h3>
+                <p className="text-muted-foreground mt-2">Role: Product Owner & Founder</p>
+                <p className="text-muted-foreground">Timeline: 2020–2023</p>
+                <p className="text-muted-foreground">Type: Hardware + Mobile SaaS | Wearable Tech | IoT</p>
+                <p className="text-muted-foreground italic mb-6">Scope: Concept → Market Discovery → MVP → Technical Pre-Validation</p>
             </div>
 
-            <div className="space-y-12 mt-8">
+            <div className="space-y-12 mt-8 w-full">
                 <div>
-                    <h4 className="text-xl font-bold mb-4">🧠 Problem & Opportunity</h4>
+                    <h4 className="text-xl font-bold mb-4">Product Vision</h4>
                     <div className="space-y-4 text-lg text-muted-foreground">
-                        <p><strong>Problem Statement:</strong> People want shoes that match multiple outfits and styles, but buying multiple pairs is costly and environmentally wasteful. Fashion-focused customers wanted personalization, without having to purchase multiple physical products.</p>
-                        <p><strong>Target Users:</strong> Tech-savvy teens, sneaker enthusiasts, and fashion-conscious buyers.</p>
-                        <p><strong>Business Insight:</strong> 75% of potential customers we interviewed expressed interest in shoes that could “match anything” and change appearance — but were unwilling to pay high prices for screens. They preferred simple, stylish, lower-cost flexibility.</p>
+                        <p>To design the first app-controlled adaptive footwear, enabling users to dynamically change colors and patterns using their phone — blending personalization, fashion, and smart wearable technology.</p>
+                        <blockquote className="border-l-4 border-primary pl-4 italic">“Shoes that adapt like your phone wallpaper — customizable, expressive, and digitally intelligent.”</blockquote>
                     </div>
                 </div>
 
                 <div>
-                    <h4 className="text-xl font-bold mb-4">🔍 Research & Insights</h4>
-                    <p className="text-lg text-muted-foreground mb-4">Conducted 100+ user interviews and early concept tests with college fashion groups, sneaker communities, and Etsy custom shoe designers.</p>
-                    <h5 className="text-lg font-semibold mb-3">📌 Key Findings:</h5>
+                    <h4 className="text-xl font-bold mb-4">Phase 1 — Product Discovery & Vision Architecture</h4>
+                    <h5 className="text-lg font-semibold mb-3">Defining Mission, Target Market & Use Case</h5>
+                    <div className="space-y-4 text-lg text-muted-foreground">
+                        <p>Conducted market gap analysis across fashion tech, smart wearables, and customization products.</p>
+                        <p>Identified growing trend in: Self-expression, modular fashion, sustainable personalization, and youth-driven digital identity.</p>
+                        <div>
+                            <p className="font-semibold">PM Deliverables built:</p>
+                            <ul className="list-disc list-inside">
+                                <li>Product Vision Statement</li>
+                                <li>Problem Statement</li>
+                                <li>User Personas (Sneakerheads, lifestyle users, creators)</li>
+                                <li>Market Size Model (~$12B Growing Smart Wearables Market)</li>
+                                <li>Business Model Canvas (Customizable hardware + digital experiences)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 className="text-xl font-bold mb-4">Phase 2 — Requirements Definition & Technical Feasibility</h4>
+                    <p className="text-lg text-muted-foreground mb-4"><strong>Key Challenge:</strong> Can this technology (e-Ink / OLED / color-shifting materials) actually be embedded into a shoe while maintaining flexibility, durability, and battery efficiency?</p>
+                    <h5 className="text-lg font-semibold mb-3">Activities Performed</h5>
                     <Table>
                         <TableHeader>
                             <TableRow>
-                                <TableHead className="font-bold">Insight</TableHead>
-                                <TableHead className="font-bold text-right">Source</TableHead>
+                                <TableHead>Exploration</TableHead>
+                                <TableHead>What We Did</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            <TableRow>
-                                <TableCell>Customers prefer multiple preset styles (colors, textures) over full-screen video displays</TableCell>
-                                <TableCell className="text-right text-muted-foreground">Interviews</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>Cost sensitivity was high — users wouldn’t pay +$120 for OLED screens</TableCell>
-                                <TableCell className="text-right text-muted-foreground">Surveys</TableCell>
-                            </TableRow>
-                             <TableRow>
-                                <TableCell>Most users wear just 3–4 color types regularly</TableCell>
-                                <TableCell className="text-right text-muted-foreground">Diary study</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>Simplicity > Tech complexity (screens felt ‘too gimmicky’)</TableCell>
-                                <TableCell className="text-right text-muted-foreground">Prototype feedback</TableCell>
-                            </TableRow>
+                            <TableRow><TableCell>Material Feasibility</TableCell><TableCell>Evaluated OLED, LCD mesh, flexible e-Ink, electrochromic film</TableCell></TableRow>
+                            <TableRow><TableCell>Vendor Discussions</TableCell><TableCell>Met with E-Ink Corp, Visionox Flexible OLED, and multiple Shenzhen prototyping labs</TableCell></TableRow>
+                            <TableRow><TableCell>Legal & Patent Research</TableCell><TableCell>Conducted IP feasibility, initiated provisional patent development</TableCell></TableRow>
+                            <TableRow><TableCell>Technical Workshops</TableCell><TableCell>Evaluated battery integration, wireless controllers (BLE), flex-PCB constraints</TableCell></TableRow>
+                            <TableRow><TableCell>Engineering Budgeting</TableCell><TableCell>Cost modeling for prototype versioning, BOM analysis</TableCell></TableRow>
                         </TableBody>
                     </Table>
+                    <p className="text-lg text-muted-foreground my-4"><strong>PM Deliverable Created:</strong> Technical Feasibility Assessment & Build vs Buy Matrix</p>
+                    <p className="text-lg text-muted-foreground"><strong>Decision:</strong> Pivoted away from OLED screens (fragility / heat / high-cost) → toward static color-shifting e-Ink panels with Bluetooth microcontroller integration.</p>
+                </div>
+
+                <div>
+                    <h4 className="text-xl font-bold mb-4">Phase 3 — Design & Experience Prototyping</h4>
+                    <h5 className="text-lg font-semibold mb-3">Prototype 1 — Concept Modeling (Sketches & 2D Visual Renders)</h5>
+                     <div class="space-y-4 text-lg text-muted-foreground">
+                        <p><strong>Goal:</strong> Capture form, functionality, and the user experience.</p>
+                        <p>Created concept storyboards, sketch design pack, and usage journey mapping.</p>
+                        <p>Defined mobile app companion concept: Color selection, presets, connectivity, “Style Library.”</p>
+                    </div>
+
+                    <h5 className="text-lg font-semibold my-3">Prototype 2 — Low-Fidelity UX Wireframes</h5>
+                    <div class="space-y-4 text-lg text-muted-foreground">
+                        <p>Built quick flows using Figma lo-fi, focusing on:</p>
+                        <ul className="list-disc list-inside">
+                           <li>How users select styles</li>
+                           <li>How shoe connects to app (Bluetooth scanning)</li>
+                           <li>Style presets & favorites experience</li>
+                        </ul>
+                         <div>
+                            <p className="font-semibold mt-4">Deliverables:</p>
+                            <ul className="list-disc list-inside">
+                                <li>User Flow Maps</li>
+                                <li>Lo-Fi Wireframes</li>
+                                <li>Interaction Model Diagram (shoe ↔ phone ↔ cloud preset sync)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 className="text-xl font-bold mb-4">Phase 4 — High-Fidelity Design & Physical Prototype Coordination</h4>
+                    <div className="grid md:grid-cols-2 gap-8 text-lg text-muted-foreground">
+                        <div>
+                            <h5 className="font-semibold mb-2">Hardware: 3D Shoe Model Development</h5>
+                            <ul className="list-disc list-inside space-y-1">
+                                <li>Built 3D renders using Blender & Keyshot</li>
+                                <li>Managed design handoff to Shenzhen prototype manufacturer</li>
+                                <li>Coordinated BOM assembly: Fabric base, battery compartment, microcontroller, color panels</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 className="font-semibold mb-2">Software (Mobile App):</h5>
+                             <ul className="list-disc list-inside space-y-1">
+                                <li>Built high-fidelity screens using Figma (Pixel-perfect mockups)</li>
+                                <li>Designed user interaction: Live Preview | Color Wheel | Preset Editor | Push Style to Shoe</li>
+                            </ul>
+                        </div>
+                    </div>
+                     <div class="space-y-4 text-lg text-muted-foreground mt-4">
+                        <p className="font-semibold">Deliverables:</p>
+                        <ul className="list-disc list-inside">
+                            <li>Hi-Fi App Design System</li>
+                            <li>Design Spec Document for Hardware Integration</li>
+                            <li>Clickable Prototype for Demo & Pre-Investor Pitch</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 className="text-xl font-bold mb-4">Phase 5 — User Testing & Market Validation</h4>
+                     <p className="text-lg text-muted-foreground mb-4">Conducted 100+ tests with: Lifestyle users, Fashion students, and TikTok content creators.</p>
+                     <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead>Feedback</TableHead>
+                                <TableHead>Value</TableHead>
+                                <TableHead>Outcome</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            <TableRow><TableCell>Customization felt scarce in the footwear market</TableCell><TableCell>High</TableCell><TableCell>Confirmed interest</TableCell></TableRow>
+                            <TableRow><TableCell>Users preferred preset-based designs, not complex manual editing</TableCell><TableCell>High</TableCell><TableCell>Simplified UX model</TableCell></TableRow>
+                            <TableRow><TableCell>Concerns about durability and weather-resistance</TableCell><TableCell>High</TableCell><TableCell>Redesigned housing</TableCell></TableRow>
+                            <TableRow><TableCell>Suggested adding preset “Collections” (Seasonal, Minimal, Streetwear)</TableCell><TableCell>Medium</TableCell><TableCell>Added Collection concept</TableCell></TableRow>
+                        </TableBody>
+                    </Table>
+                    <p className="text-lg text-muted-foreground my-4"><strong>PM Deliverable:</strong> Usability Report — Iteration Path for V2</p>
                 </div>
                 
                 <div>
-                    <h4 className="text-xl font-bold mb-4">💡 Solution Strategy</h4>
-                    <p className="text-lg text-muted-foreground mb-4">We pivoted from OLED screen shoes ➝ to lightweight, color-shifting smart footwear powered by flexible e-ink color displays controlled through a mobile app.</p>
-                    <div className="grid md:grid-cols-2 gap-x-8 gap-y-4 text-lg">
-                        <div>
-                            <h5 className="font-semibold mb-2">Prioritized for MVP:</h5>
-                            <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                                <li><span className="text-green-600 mr-2">✅</span>Color change (4–10 preset styles)</li>
-                                <li><span className="text-green-600 mr-2">✔️</span>Bluetooth connectivity</li>
-                                <li><span className="text-green-600 mr-2">✔️</span>Long battery life (7 days)</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h5 className="font-semibold mb-2">Deprioritized:</h5>
-                             <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                                <li><span className="text-red-600 mr-2">⚠️</span>Animated screens due to cost & low user pull</li>
+                    <h4 className="text-xl font-bold mb-4">Phase 6 — MVP Concept Definition (Go-to-Market Prep)</h4>
+                    <div class="space-y-4 text-lg text-muted-foreground">
+                        <p>Based on feasibility, user desirability, and cost modeling, MVP was defined as:</p>
+                        <p className="font-semibold">App-Controlled Static Color-Shifting Shoe (No animation video, just dynamic color panels)</p>
+                        <ul className="list-disc list-inside">
+                            <li>Mobile App Integration</li>
+                            <li>Limited battery use (&lt;8hrs per charge)</li>
+                            <li>Quick style swapping</li>
+                            <li>Limited initial presets (6–10 styles)</li>
+                            <li>Fabricated to withstand physical usage</li>
+                        </ul>
+                         <div>
+                            <p className="font-semibold mt-4">Deliverables:</p>
+                            <ul className="list-disc list-inside">
+                                <li>MVP Feature List & Prioritization (MoSCoW)</li>
+                                <li>Go-to-Market MVP Plan</li>
+                                <li>Pitch Assets for Investor Readiness</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
                 <div>
-                    <h4 className="text-xl font-bold mb-4">🔧 Design & Prototyping</h4>
-                    <p className="text-lg text-muted-foreground mb-4">Iterated 6 times through lo-fi app screens, a web-based configurator, and in-person wearable samples.</p>
-                     <ul className="list-decimal list-inside text-lg text-muted-foreground space-y-1">
-                        <li><strong>Phase 1:</strong> Paper sketches → Figma flows → interactive mockups</li>
-                        <li><strong>Phase 2:</strong> 3D renders of shoes + color modes</li>
-                        <li><strong>Phase 3:</strong> App UI prototype for selecting color/style</li>
-                    </ul>
+                    <h4 className="text-xl font-bold mb-4">Outcome & Learnings</h4>
+                     <div class="space-y-4 text-lg text-muted-foreground">
+                        <div>
+                            <h5 className="font-semibold mb-2">Why MVP Production Paused:</h5>
+                            <ul className="list-disc list-inside space-y-1">
+                                <li>Supply chain & manufacturing risk too high for bootstrapped budget</li>
+                                <li>Complexity in durability testing & certifications</li>
+                                <li>High initial manufacturing cost ($85–$120 per pair — too high without volume)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 className="font-semibold mb-2">What I learned:</h5>
+                             <ul className="list-disc list-inside space-y-1">
+                                <li>Hardware x Software PM requires deep technical feasibility + vendor collaboration</li>
+                                <li>Human behavior favors simplicity—users don’t need full control, just curated choices</li>
+                                <li>PM Rule: Faster doesn’t mean better — “Test desirability before building feasibility.”</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
                 <div>
-                    <h4 className="text-xl font-bold mb-4">🚀 Development & Execution</h4>
-                     <ul className="list-disc list-inside text-lg text-muted-foreground space-y-1">
-                        <li>Led cross-functional team (4 engineers, 1 designer, 1 marketer)</li>
-                        <li>Led patent research & provisional filing</li>
-                        <li>Built functional prototype using Arduino Nano, Bluetooth controllers & E-ink panel</li>
-                        <li>Launched pilot with 32 testers</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 className="text-xl font-bold mb-4">📈 Outcomes</h4>
-                    <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead className="font-bold">Metric</TableHead>
-                                <TableHead className="font-bold text-right">Outcome</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            <TableRow>
-                                <TableCell>User Satisfaction</TableCell>
-                                <TableCell className="text-right">40% improvement after iteration 4</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>Cost Reduction</TableCell>
-                                <TableCell className="text-right">Reduced prototype cost 60% from OLED → static panels</TableCell>
-                            </TableRow>
-                             <TableRow>
-                                <TableCell>Value Perception</TableCell>
-                                <TableCell className="text-right">3.2 ⭐ → 4.5 ⭐ rating after UX and hardware refinement</TableCell>
-                            </TableRow>
-                             <TableRow>
-                                <TableCell>Feature Adoption</TableCell>
-                                <TableCell className="text-right">Most used feature: Style presets</TableCell>
-                            </TableRow>
-                        </TableBody>
-                    </Table>
-                </div>
-
-                <div>
-                    <h4 className="text-xl font-bold mb-4">🔁 Retrospective & Next Steps</h4>
-                    <h5 className="font-semibold mb-2">What I would do next:</h5>
-                     <ul className="list-disc list-inside text-lg text-muted-foreground space-y-1">
-                        <li>Partner with existing shoe brand for co-manufacturing</li>
-                        <li>Target sneaker collectors through limited-edition designs</li>
-                        <li>Convert into a Shopify plugin for customized footwear</li>
-                    </ul>
+                    <h4 className="text-xl font-bold mb-4">Next Iteration (Concept for Future)</h4>
+                    <p className="text-lg text-muted-foreground">Knowing GenAI and flexible tech are evolving rapidly, revived concept can become:</p>
+                    <p className="text-lg text-muted-foreground font-semibold">“AI-Powered Adaptive Footwear” — Upload an outfit → App generates matching shoe style → Sends to smart footwear with instant color sync.</p>
                 </div>
             </div>
           </div>
