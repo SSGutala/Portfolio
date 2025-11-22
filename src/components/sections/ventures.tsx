@@ -53,7 +53,7 @@ export default function VenturesSection() {
                   />
                 </div>
                 <h3 className="text-2xl font-bold mb-2">Veera Apparel — Lifestyle Activewear Venture</h3>
-                <p className="text-muted-foreground mb-6">(2024 - Present)</p>
+                <p className="text-muted-foreground mb-6">Role: Founder & Product Owner Timeline: 2024–Present Type: Apparel & Brand | Lifestyle & Activewear Stage: Concept → Market Discovery → Design System → Pre-Launch Validation</p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-8">
                   <div className="flex justify-center items-center">
