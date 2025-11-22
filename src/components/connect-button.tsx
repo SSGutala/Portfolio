@@ -1,22 +1,17 @@
 "use client";
 
-import { useState } from "react";
 import { Button, type ButtonProps } from '@/components/ui/button';
-import { ConnectModal } from '@/components/connect-modal';
 
-interface ConnectButtonProps extends Omit<ButtonProps, 'onClick'> {
+interface ConnectButtonProps extends ButtonProps {
   children: React.ReactNode;
 }
 
 export function ConnectButton({ children, ...props }: ConnectButtonProps) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   return (
-    <>
-      <Button onClick={() => setIsModalOpen(true)} {...props}>
+    <Button asChild {...props}>
+      <a href="https://www.linkedin.com/in/sai-gutala/" target="_blank" rel="noopener noreferrer">
         {children}
-      </Button>
-      <ConnectModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
-    </>
+      </a>
+    </Button>
   );
 }
