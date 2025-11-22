@@ -9,10 +9,17 @@ interface AnimatedSectionProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 const AnimatedSection = ({ children, id, className, ...props }: AnimatedSectionProps) => {
+  const [isMounted, setIsMounted] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -27,17 +34,17 @@ const AnimatedSection = ({ children, id, className, ...props }: AnimatedSectionP
       }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const currentRef = sectionRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        observer.unobserve(sectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
-  }, []);
+  }, [isMounted]);
 
   return (
     <section
@@ -46,7 +53,7 @@ const AnimatedSection = ({ children, id, className, ...props }: AnimatedSectionP
       className={cn(
         'min-h-[90vh] py-20 md:py-32 transition-all duration-700 ease-out',
         'opacity-0 transform translate-y-8',
-        isVisible && 'opacity-100 translate-y-0',
+        isMounted && isVisible && 'opacity-100 translate-y-0',
         className
       )}
       {...props}
