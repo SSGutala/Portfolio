@@ -1,6 +1,15 @@
 
 import Image from "next/image";
 import AnimatedSection from "@/components/animated-section";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+
 
 export default function VenturesSection() {
   return (
@@ -15,7 +24,7 @@ export default function VenturesSection() {
                   alt="The Hoop Foundation Logo"
                   width={187}
                   height={187}
-                  className="rounded-xl mb-4"
+                  className="rounded-2xl mb-4"
               />
               <h3 className="text-2xl font-bold mb-2">The Hoop Foundation</h3>
               <p className="text-muted-foreground mb-4">(2024 - Present)</p>
@@ -34,13 +43,13 @@ export default function VenturesSection() {
               </div>
           </div>
           <div className="flex flex-col items-center">
-              <div className="rounded-xl mb-4 bg-black p-4">
+              <div className="rounded-2xl mb-4 bg-black p-4">
                 <Image
                     src="https://raw.githubusercontent.com/SSGutala/Portfolio/5151bb3c20f4821795f6d93526e6d73138d14986/Veera-logo.png"
                     alt="Veera Apparel Logo"
                     width={187}
                     height={187}
-                    className="rounded-xl mix-blend-lighten"
+                    className="rounded-2xl mix-blend-lighten"
                 />
               </div>
               <h3 className="text-2xl font-bold mb-2">Veera Apparel</h3>
@@ -59,28 +68,143 @@ export default function VenturesSection() {
               </div>
           </div>
           
-          <div className="flex flex-col items-center">
-              <Image
-                  src="https://raw.githubusercontent.com/SSGutala/Portfolio/4cdedf9fa796a57e7ed6d1240bba3ffeeefaabfc/AW_Logo.png"
-                  alt="Alphawave Technologies Logo"
-                  width={128}
-                  height={128}
-                  className="rounded-xl mb-4"
-              />
-              <h3 className="text-2xl font-bold mb-2">Alphawave Technologies</h3>
-              <p className="text-muted-foreground mb-6">(2020 - 2023)</p>
+          <div className="flex flex-col items-center text-left w-full">
+            <Image
+                src="https://raw.githubusercontent.com/SSGutala/Portfolio/4cdedf9fa796a57e7ed6d1240bba3ffeeefaabfc/AW_Logo.png"
+                alt="Alphawave Technologies Logo"
+                width={128}
+                height={128}
+                className="rounded-2xl mb-4"
+            />
+            <div className="text-center">
+                <h3 className="text-2xl font-bold">Alphawave Technologies — Smart Footwear System</h3>
+                <p className="text-muted-foreground mt-2 mb-6">(2020 - 2023)</p>
+                <p className="text-muted-foreground italic">Role: Founder & Product Lead | Type: Wearable Tech Venture (Smart Fashion / IoT)</p>
+            </div>
 
-              <div className="text-lg text-muted-foreground space-y-6 text-left">
-                  <p>
-                      Alphawave Technologies was a three-year wearable devices venture exploring the future of smart footwear. The vision began with shoes that could display images and short videos through flexible OLED screens, but through six iterations of prototypes and over 100 customer interviews, the product evolved toward a more practical, market-aligned design: footwear capable of shifting between multiple static colors and patterns, controlled by a mobile app.
-                  </p>
-                  <p>
-                      Across the journey, we learned how to build shoes and wearables from the ground up — taking a concept from barebones MVP to a market-ready product. Customer research revealed strong preferences for lower-cost shoes with multiple style options, and for premium footwear that leaned on designer-driven aesthetics. App testing further reinforced the value of simplicity: users favored neutral tones, straightforward navigation, and minimal complexity.
-                  </p>
-                  <p>
-                      These insights guided the final product direction — shifting from dynamic displays to cost-effective static styles — and shaped our broader approach to wearable tech, product design, and customer-driven development.
-                  </p>
-              </div>
+            <div className="space-y-12 mt-8">
+                <div>
+                    <h4 className="text-xl font-bold mb-4">🧠 Problem & Opportunity</h4>
+                    <div className="space-y-4 text-lg text-muted-foreground">
+                        <p><strong>Problem Statement:</strong> People want shoes that match multiple outfits and styles, but buying multiple pairs is costly and environmentally wasteful. Fashion-focused customers wanted personalization, without having to purchase multiple physical products.</p>
+                        <p><strong>Target Users:</strong> Tech-savvy teens, sneaker enthusiasts, and fashion-conscious buyers.</p>
+                        <p><strong>Business Insight:</strong> 75% of potential customers we interviewed expressed interest in shoes that could “match anything” and change appearance — but were unwilling to pay high prices for screens. They preferred simple, stylish, lower-cost flexibility.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 className="text-xl font-bold mb-4">🔍 Research & Insights</h4>
+                    <p className="text-lg text-muted-foreground mb-4">Conducted 100+ user interviews and early concept tests with college fashion groups, sneaker communities, and Etsy custom shoe designers.</p>
+                    <h5 className="text-lg font-semibold mb-3">📌 Key Findings:</h5>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead className="font-bold">Insight</TableHead>
+                                <TableHead className="font-bold text-right">Source</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            <TableRow>
+                                <TableCell>Customers prefer multiple preset styles (colors, textures) over full-screen video displays</TableCell>
+                                <TableCell className="text-right text-muted-foreground">Interviews</TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell>Cost sensitivity was high — users wouldn’t pay +$120 for OLED screens</TableCell>
+                                <TableCell className="text-right text-muted-foreground">Surveys</TableCell>
+                            </TableRow>
+                             <TableRow>
+                                <TableCell>Most users wear just 3–4 color types regularly</TableCell>
+                                <TableCell className="text-right text-muted-foreground">Diary study</TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell>Simplicity > Tech complexity (screens felt ‘too gimmicky’)</TableCell>
+                                <TableCell className="text-right text-muted-foreground">Prototype feedback</TableCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+                </div>
+                
+                <div>
+                    <h4 className="text-xl font-bold mb-4">💡 Solution Strategy</h4>
+                    <p className="text-lg text-muted-foreground mb-4">We pivoted from OLED screen shoes ➝ to lightweight, color-shifting smart footwear powered by microfilm color panels controlled through a mobile app.</p>
+                    <div className="grid md:grid-cols-2 gap-x-8 gap-y-4 text-lg">
+                        <div>
+                            <h5 className="font-semibold mb-2">Prioritized for MVP:</h5>
+                            <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                                <li><span className="text-green-600 mr-2">✅</span>Color change (4–10 preset styles)</li>
+                                <li><span className="text-green-600 mr-2">✔️</span>Bluetooth connectivity</li>
+                                <li><span className="text-green-600 mr-2">✔️</span>Long battery life (7 days)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 className="font-semibold mb-2">Deprioritized:</h5>
+                             <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                                <li><span className="text-red-600 mr-2">⚠️</span>Animated screens due to cost & low user pull</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 className="text-xl font-bold mb-4">🔧 Design & Prototyping</h4>
+                    <p className="text-lg text-muted-foreground mb-4">Iterated 6 times through lo-fi app screens, a web-based configurator, and in-person wearable samples.</p>
+                     <ul className="list-decimal list-inside text-lg text-muted-foreground space-y-1">
+                        <li><strong>Phase 1:</strong> Paper sketches → Figma flows → interactive mockups</li>
+                        <li><strong>Phase 2:</strong> 3D renders of shoes + color modes</li>
+                        <li><strong>Phase 3:</strong> App UI prototype for selecting color/style</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 className="text-xl font-bold mb-4">🚀 Development & Execution</h4>
+                     <ul className="list-disc list-inside text-lg text-muted-foreground space-y-1">
+                        <li>Led cross-functional team (4 engineers, 1 designer, 1 marketer)</li>
+                        <li>Led patent research & provisional filing</li>
+                        <li>Built functional prototype using Arduino Nano, Bluetooth controllers & E-ink panel</li>
+                        <li>Launched pilot with 32 testers</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 className="text-xl font-bold mb-4">📈 Outcomes</h4>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead className="font-bold">Metric</TableHead>
+                                <TableHead className="font-bold text-right">Outcome</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            <TableRow>
+                                <TableCell>User Satisfaction</TableCell>
+                                <TableCell className="text-right">40% improvement after iteration 4</TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell>Cost Reduction</TableCell>
+                                <TableCell className="text-right">Reduced prototype cost 60% from OLED → static panels</TableCell>
+                            </TableRow>
+                             <TableRow>
+                                <TableCell>Value Perception</TableCell>
+                                <TableCell className="text-right">3.2 ⭐ → 4.5 ⭐ rating after UX and hardware refinement</TableCell>
+                            </TableRow>
+                             <TableRow>
+                                <TableCell>Feature Adoption</TableCell>
+                                <TableCell className="text-right">Most used feature: Style presets</TableCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+                </div>
+
+                <div>
+                    <h4 className="text-xl font-bold mb-4">🔁 Retrospective & Next Steps</h4>
+                    <h5 className="font-semibold mb-2">What I would do next:</h5>
+                     <ul className="list-disc list-inside text-lg text-muted-foreground space-y-1">
+                        <li>Partner with existing shoe brand for co-manufacturing</li>
+                        <li>Target sneaker collectors through limited-edition designs</li>
+                        <li>Convert into a Shopify plugin for customized footwear</li>
+                    </ul>
+                </div>
+            </div>
           </div>
 
           <div className="flex flex-col items-center">
@@ -89,7 +213,7 @@ export default function VenturesSection() {
                   alt="SuperStar Logo"
                   width={240}
                   height={240}
-                  className="rounded-xl mb-4"
+                  className="rounded-2xl mb-4"
               />
               <h3 className="text-2xl font-bold mb-2">SuperStar</h3>
               <p className="text-muted-foreground mb-6">(2019 - 2020)</p>
@@ -108,7 +232,7 @@ export default function VenturesSection() {
           </div>
 
           <div className="flex flex-col items-center">
-             <div className="w-36 h-36 rounded-xl mb-4 flex items-center justify-center bg-gradient-to-b from-yellow-400 to-orange-500">
+             <div className="w-36 h-36 rounded-2xl mb-4 flex items-center justify-center bg-gradient-to-b from-yellow-400 to-orange-500">
                 <svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg" className="w-24 h-24">
                   <defs>
                     <linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -146,7 +270,7 @@ export default function VenturesSection() {
           </div>
 
           <div className="flex flex-col items-center">
-             <div className="w-48 h-36 rounded-xl mb-4 flex items-center justify-center bg-gradient-to-r from-blue-600 to-fuchsia-600">
+             <div className="w-48 h-36 rounded-2xl mb-4 flex items-center justify-center bg-gradient-to-r from-blue-600 to-fuchsia-600">
                 <span className="text-3xl font-light text-white tracking-widest">Provaloh</span>
               </div>
               <h3 className="text-2xl font-bold mb-2">Provaloh</h3>
