@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="bg-black border-t border-border">
       <div className="max-w-6xl mx-auto py-8 px-6 md:px-8 flex flex-col items-center">
         <p className="text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} SRIVATSAV. All Rights Reserved.
+          &copy; {new Date().getFullYear()} Sri Gutala. All Rights Reserved.
         </p>
       </div>
     </footer>

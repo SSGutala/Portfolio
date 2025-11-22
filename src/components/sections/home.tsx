@@ -24,7 +24,7 @@ export default function HomeSection() {
         <div className="flex justify-center">
            <Image
             src="https://raw.githubusercontent.com/SSGutala/Portfolio/7c67606f69b501fa960efc8988fef2275ee3120f/prof-pic.png"
-            alt="SRIVATSAV professional picture"
+            alt="Sri Gutala professional picture"
             width={350}
             height={350}
             className="rounded-full object-cover"

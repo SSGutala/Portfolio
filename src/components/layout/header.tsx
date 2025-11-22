@@ -73,7 +73,7 @@ export default function Header() {
         <div className="mx-auto flex h-16 max-w-6xl items-center px-6 md:px-8">
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <span className="text-lg font-extrabold uppercase tracking-wider">
-              SRIVATSAV
+              Sri Gutala
             </span>
           </Link>
 
