@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 
 const stats = [
+    { value: "1.5+", label: "Corporate Experience" },
     { value: "4+", label: "Venture Experience" },
     { value: "5+", label: "Product Design" },
 ];
@@ -31,7 +32,7 @@ export default function AboutSection() {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-3xl mx-auto">
                     {stats.map(stat => (
                         <div key={stat.label} className="p-6 rounded-lg bg-card border border-primary">
                             <p className="text-4xl md:text-5xl font-bold text-primary-foreground bg-primary rounded-md p-2 flex items-baseline justify-center">
