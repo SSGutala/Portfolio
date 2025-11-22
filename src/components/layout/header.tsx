@@ -18,51 +18,50 @@ const navItems = [
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  const observer = useRef<IntersectionObserver | null>(null);
+  const sectionRefs = useRef<{[key: string]: HTMLElement | null}>({});
 
   useEffect(() => {
-    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          if (entry.target.id === 'home' && entry.intersectionRatio >= 0.5) {
-             setActiveSection('home');
-          } else if (entry.intersectionRatio > 0.25 && entry.target.id !== 'home') {
-            setActiveSection(entry.target.id);
-          }
-        }
-      });
-       if (window.scrollY < 200) {
-        setActiveSection('home');
-      }
-    };
-    
-    observer.current = new IntersectionObserver(handleIntersection, { 
-      threshold: [0.25, 0.5, 0.75],
-    });
-
-    const sections = document.querySelectorAll("section[id]");
-    sections.forEach((section) => {
-      if (observer.current) {
-        observer.current.observe(section);
-      }
+    navItems.forEach(item => {
+      const id = item.href.substring(1);
+      sectionRefs.current[id] = document.getElementById(id);
     });
 
     const handleScroll = () => {
-        if (window.scrollY < 200) {
-            setActiveSection('home');
-        }
-    };
-    window.addEventListener('scroll', handleScroll);
+      let currentSection = 'home';
+      let maxVisible = 0;
 
+      const viewportHeight = window.innerHeight;
+
+      for (const id in sectionRefs.current) {
+        const section = sectionRefs.current[id];
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          const visibleHeight = Math.max(0, Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0));
+          
+          if (id === 'home' && window.scrollY < viewportHeight / 2) {
+             currentSection = 'home';
+             break;
+          }
+
+          if (visibleHeight > maxVisible) {
+            maxVisible = visibleHeight;
+            currentSection = id;
+          }
+        }
+      }
+      
+      if (window.scrollY + window.innerHeight >= document.body.scrollHeight - 50) {
+        currentSection = 'consulting';
+      }
+
+      setActiveSection(currentSection);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); 
 
     return () => {
-       window.removeEventListener('scroll', handleScroll);
-      sections.forEach((section) => {
-        if (observer.current) {
-          // eslint-disable-next-line react-hooks/exhaustive-deps
-          observer.current.unobserve(section);
-        }
-      });
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
