@@ -1,14 +1,10 @@
 import AnimatedSection from "@/components/animated-section";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import Bubbles from "./bubbles";
 
 export default function HomeSection() {
   return (
     <AnimatedSection id="home" className="relative">
-       <div id="bubble-sprites" className="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
-        <Bubbles />
-      </div>
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(closest-side_at_50%_55%,rgba(0,0,0,0.28),transparent_65%)]" aria-hidden="true"></div>
 
       <div className="grid md:grid-cols-2 gap-12 items-center relative z-10">
