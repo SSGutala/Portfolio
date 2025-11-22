@@ -43,7 +43,7 @@ export default function VenturesSection() {
                     </p>
                 </div>
             </div>
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center text-left w-full">
                 <div className="rounded-2xl mb-4 bg-black p-4">
                   <Image
                       src="https://raw.githubusercontent.com/SSGutala/Portfolio/5151bb3c20f4821795f6d93526e6d73138d14986/Veera-logo.png"
@@ -53,16 +53,17 @@ export default function VenturesSection() {
                       className="rounded-2xl mix-blend-lighten"
                   />
                 </div>
-                <h3 className="text-2xl font-bold mb-2">Veera Apparel — Lifestyle Activewear Venture</h3>
-                <div className="text-muted-foreground text-center mb-6">
-                    <p>Role: Founder & Product Owner</p>
-                    <p>Timeline: 2024–Present</p>
-                    <p>Type: Apparel & Brand | Lifestyle & Activewear</p>
-                    <p className="italic">Scope: Concept → Market Discovery → Design System → Pre-Launch Validation</p>
+                 <div className="text-center">
+                    <h3 className="text-2xl font-bold mb-2">Veera Apparel — Lifestyle Activewear Venture</h3>
+                    <div className="text-muted-foreground mb-6">
+                        <p>Role: Founder & Product Owner</p>
+                        <p>Timeline: 2024–Present</p>
+                        <p>Type: Apparel & Brand | Lifestyle & Activewear</p>
+                        <p className="italic">Scope: Concept → Market Discovery → Design System → Pre-Launch Validation</p>
+                    </div>
                 </div>
 
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-8 w-full max-w-4xl">
                   <div className="flex justify-center items-center">
                     <Image
                       src="https://raw.githubusercontent.com/SSGutala/Portfolio/61f360425f33f225faeffc56b46f36a656138480/archer-front-veera.png"
@@ -86,16 +87,22 @@ export default function VenturesSection() {
                   Veera Apparel Product Render Samples
                 </p>
 
-                <div className="text-lg text-muted-foreground space-y-6 text-left">
-                    <p>
-                        Veera is a lifestyle and apparel venture built around the idea of combining premium design with cultural representation. The brand’s vision focused on creating workout and athleisure wear that felt both high-quality and expressive, especially for audiences often overlooked in mainstream activewear.
-                    </p>
-                    <p>
-                        The journey involved developing the brand identity, experimenting with materials, and designing a digital-first experience. The website was crafted with a sleek “liquid glass” interface to reflect the modern, elevated feel of the brand, while the product design emphasized comfort, durability, and style.
-                    </p>
-                    <p>
-                        Through research and early feedback, Veera reinforced the importance of balancing aesthetics with functionality. Customers valued clean, minimal designs with subtle accents over bold, cluttered patterns. The project highlighted how thoughtful branding, user-friendly digital experiences, and well-crafted products can create a sense of pride and representation in everyday wear.
-                    </p>
+                <div className="space-y-12 mt-8 w-full">
+                  <div>
+                      <h4 className="text-xl font-bold mb-4">Product Vision</h4>
+                      <div className="space-y-4 text-lg text-muted-foreground">
+                          <p>To design lifestyle activewear that feels premium, minimal, and culturally expressive—without being loud or cliché. Built for everyday wear, not just events or gyms.</p>
+                          <blockquote className="border-l-4 border-primary pl-4 italic">“Comfort-first apparel with subtle identity—not costume, not cliché, just confidently expressive.”</blockquote>
+                      </div>
+                  </div>
+                  <div className="text-lg text-muted-foreground space-y-6">
+                      <p>
+                          The journey involved developing the brand identity, experimenting with materials, and designing a digital-first experience. The website was crafted with a sleek “liquid glass” interface to reflect the modern, elevated feel of the brand, while the product design emphasized comfort, durability, and style.
+                      </p>
+                      <p>
+                          Through research and early feedback, Veera reinforced the importance of balancing aesthetics with functionality. Customers valued clean, minimal designs with subtle accents over bold, cluttered patterns. The project highlighted how thoughtful branding, user-friendly digital experiences, and well-crafted products can create a sense of pride and representation in everyday wear.
+                      </p>
+                  </div>
                 </div>
             </div>
             
