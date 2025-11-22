@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { ConnectButton } from "@/components/connect-button";
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -27,7 +28,7 @@ export default function Header() {
         if (entry.isIntersecting) {
           if (entry.target.id === 'home' && entry.intersectionRatio >= 0.5) {
              setActiveSection('home');
-          } else if (entry.intersectionRatio > 0.25) { // Adjusted threshold
+          } else if (entry.intersectionRatio > 0.25 && entry.target.id !== 'home') {
             setActiveSection(entry.target.id);
           }
         }
@@ -38,7 +39,7 @@ export default function Header() {
     };
     
     observer.current = new IntersectionObserver(handleIntersection, { 
-      threshold: [0.25, 0.5, 0.75], // More thresholds
+      threshold: [0.25, 0.5, 0.75],
     });
 
     const sections = document.querySelectorAll("section[id]");
@@ -77,7 +78,7 @@ export default function Header() {
             </span>
           </Link>
 
-          <nav className="hidden md:flex flex-1 items-center justify-center space-x-6 text-sm">
+          <nav className="hidden md:flex flex-1 items-center justify-center space-x-2 text-sm">
             {navItems.map((item) => (
               <Link
                 key={item.name}
@@ -93,9 +94,7 @@ export default function Header() {
           </nav>
           
           <div className="flex flex-1 items-center justify-end space-x-4">
-            <Button asChild variant="outline">
-                <a href="https://www.linkedin.com/in/sai-gutala/" target="_blank" rel="noopener noreferrer">Connect</a>
-            </Button>
+             <ConnectButton variant="outline">Connect</ConnectButton>
             <Button asChild>
               <a href="https://docs.google.com/document/d/13ciZiL_jlkSxqxgCaEvAtzph2389z9EnutM0dO18NP8/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a>
             </Button>
@@ -118,8 +117,9 @@ export default function Header() {
                   href={item.href}
                   onClick={() => setIsMenuOpen(false)}
                   className={cn(
-                    "transition-colors hover:text-primary",
-                     activeSection === item.href.substring(1) ? "text-primary" : "text-muted-foreground"
+                    "transition-colors hover:text-primary-foreground hover:bg-primary",
+                     activeSection === item.href.substring(1) ? "text-primary-foreground bg-primary" : "text-muted-foreground",
+                     "rounded-md px-3 py-1"
                   )}
                 >
                   {item.name}
