@@ -8,22 +8,22 @@
   }
 
   :root {
-    --background: 35 33% 94%; /* #F3EFEA */
+    --background: 35 33% 92%; /* Adjusted for more beige */
     --foreground: 0 0% 17%; /* #2B2B2B */
 
-    --card: 36 43% 96%; /* #F8F5F1 */
+    --card: 36 43% 95%; /* Adjusted for more beige */
     --card-foreground: 0 0% 17%;
 
-    --popover: 36 43% 96%;
+    --popover: 36 43% 95%; /* Adjusted for more beige */
     --popover-foreground: 0 0% 17%;
 
     --primary: 25 46% 12%; /* #2d1c10 */
     --primary-foreground: 35 33% 94%; /* Button text */
 
-    --secondary: 36 43% 96%;
+    --secondary: 36 43% 95%; /* Adjusted for more beige */
     --secondary-foreground: 25 46% 12%;
     
-    --muted: 36 43% 96%;
+    --muted: 36 43% 95%; /* Adjusted for more beige */
     --muted-foreground: 0 0% 33%; /* #555555 */
 
     --accent: 35 15% 89%; /* Slightly darker than border */
