@@ -34,13 +34,15 @@ export default function VenturesSection() {
               </div>
           </div>
           <div className="flex flex-col items-center">
-              <Image
-                  src="https://raw.githubusercontent.com/SSGutala/Portfolio/5151bb3c20f4821795f6d93526e6d73138d14986/Veera-logo.png"
-                  alt="Veera Apparel Logo"
-                  width={187}
-                  height={187}
-                  className="rounded-xl mb-4"
-              />
+              <div className="rounded-xl mb-4 bg-black p-4">
+                <Image
+                    src="https://raw.githubusercontent.com/SSGutala/Portfolio/5151bb3c20f4821795f6d93526e6d73138d14986/Veera-logo.png"
+                    alt="Veera Apparel Logo"
+                    width={187}
+                    height={187}
+                    className="rounded-xl mix-blend-lighten"
+                />
+              </div>
               <h3 className="text-2xl font-bold mb-2">Veera Apparel</h3>
               <p className="text-muted-foreground mb-6">(2024 - Present)</p>
 
