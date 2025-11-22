@@ -1,4 +1,5 @@
 
+
 import Image from "next/image";
 import {
   Table,
@@ -27,15 +28,22 @@ export default function VenturesSection() {
                     className="rounded-2xl mb-4"
                 />
                 <h3 className="text-2xl font-bold mb-2">Hoop Foundation — Social Impact Learning Initiative</h3>
-                <div className="text-muted-foreground mb-4">
+                <div className="text-muted-foreground mb-4 text-center">
                   <p>Role: Founder & Program Architect</p>
                   <p>Timeline: 2024–Present</p>
                   <p>Type: Education Impact | Community Model | AI-Assisted Learning</p>
                   <p className="italic">Scope: Concept → Field Discovery → Program Model Design → Pre-Launch Validation</p>
                 </div>
-                <p className="text-lg font-semibold text-primary mb-6">Empowering underserved children through education and creativity.</p>
+                
+                <div className="w-full text-left">
+                  <h4 className="text-xl font-bold mb-4">Product Vision</h4>
+                  <div className="space-y-4 text-lg text-muted-foreground">
+                      <p>To expand high-quality education access to underserved children living in Indian slum communities by designing a hybrid community + online learning model — powered by volunteer teachers, remote learning pods, and AI-based learning companions.</p>
+                      <blockquote className="border-l-4 border-primary pl-4 italic">“Every child should have access to opportunity, not just information. Education shouldn’t depend on your ZIP code.”</blockquote>
+                  </div>
+                </div>
 
-                <div className="text-lg text-muted-foreground space-y-6 text-left">
+                <div className="text-lg text-muted-foreground space-y-6 text-left mt-8">
                     <p>
                         The Hoop Foundation is a non-profit organization I founded with the mission of empowering underprivileged children through education, creativity, and opportunity. Our goal is to provide education to the poorest of the poor elementary children in India, particularly those living in the slums, by leveraging both live and pre-recorded remote teaching methods alongside AI-powered learning agents. The long-term vision is to meet national curriculum needs for children K through 12, supporting their college and career goals entirely free of cost.
                     </p>
