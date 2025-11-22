@@ -20,12 +20,11 @@ export default function VenturesSection() {
         <div className="flex flex-col items-center space-y-16">
           <div className="flex flex-col items-center">
               <Image
-                  src="https://picsum.photos/seed/hooplogo/187/187"
+                  src="https://raw.githubusercontent.com/SSGutala/Portfolio/61f360425f33f225faeffc56b46f36a656138480/hooplogo.jpg"
                   alt="The Hoop Foundation Logo"
                   width={187}
                   height={187}
                   className="rounded-2xl mb-4"
-                  data-ai-hint="abstract logo"
               />
               <h3 className="text-2xl font-bold mb-2">The Hoop Foundation</h3>
               <p className="text-muted-foreground mb-4">(2024 - Present)</p>
