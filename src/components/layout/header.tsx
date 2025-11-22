@@ -8,61 +8,37 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { name: "Home", href: "#home", color: "red" },
-  { name: "About", href: "#about", color: "orange" },
-  { name: "Ventures", href: "#ventures", color: "yellow" },
-  { name: "Consulting", href: "#consulting", color: "green" },
-  { name: "Product", href: "#product", color: "blue" },
-  { name: "UI/UX", href: "#uiux", color: "pink" },
+  { name: "Home", href: "#home" },
+  { name: "About", href: "#about" },
+  { name: "Ventures", href: "#ventures" },
+  { name: "Consulting", href: "#consulting" },
+  { name: "Product", href: "#product" },
+  { name: "UI/UX", href: "#uiux" },
 ];
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const observer = useRef<IntersectionObserver | null>(null);
-  const navRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    // JS to split letters for animation
-    if (navRef.current) {
-      const links = navRef.current.querySelectorAll('.nav-ink');
-      links.forEach(link => {
-        // Check if already processed
-        if (link.querySelector('.char')) return;
-        
-        const text = link.textContent?.trim() || '';
-        link.setAttribute('aria-label', text);
-        link.textContent = ''; // clear
-        [...text].forEach((ch, idx) => {
-          const span = document.createElement('span');
-          span.className = 'char';
-          span.style.setProperty('--i', String(idx)); // for stagger
-          span.textContent = ch;
-          link.appendChild(span);
-        });
-      });
-    }
-  }, []);
 
   useEffect(() => {
     const handleIntersection = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          if (entry.target.id === 'home' && window.scrollY < 200) {
-            setActiveSection('home');
-          } else if (entry.target.id !== 'home') {
+          if (entry.target.id === 'home' && entry.intersectionRatio >= 0.5) {
+             setActiveSection('home');
+          } else if (entry.intersectionRatio > 0.5) {
             setActiveSection(entry.target.id);
           }
         }
       });
-      // Fallback for when at the top of the page
-      if (window.scrollY < 200) {
+       if (window.scrollY < 200) {
         setActiveSection('home');
       }
     };
     
     observer.current = new IntersectionObserver(handleIntersection, { 
-      rootMargin: "-20% 0px -50% 0px"
+      threshold: 0.5
     });
 
     const sections = document.querySelectorAll("section[id]");
@@ -96,19 +72,18 @@ export default function Header() {
       <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="mx-auto flex h-16 max-w-6xl items-center px-6 md:px-8">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <span className="glitch" data-text="SRIVATSAV">
+            <span className="text-lg font-extrabold uppercase tracking-wider">
               SRIVATSAV
             </span>
           </Link>
 
-          <nav ref={navRef} className="hidden md:flex flex-1 items-center justify-center space-x-6 text-sm">
+          <nav className="hidden md:flex flex-1 items-center justify-center space-x-6 text-sm">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                data-color={item.color}
                 className={cn(
-                  "nav-ink",
+                  "nav-link",
                   activeSection === item.href.substring(1) && "active"
                 )}
               >
