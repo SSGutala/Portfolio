@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 
 const stats = [
-    { value: "1.5+", label: "Corporate Experience" },
+    { value: "2.5+", label: "Corporate Experience" },
     { value: "4+", label: "Venture Experience" },
     { value: "5+", label: "Product Design" },
 ];
