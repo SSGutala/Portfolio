@@ -55,6 +55,30 @@ export default function VenturesSection() {
               <h3 className="text-2xl font-bold mb-2">Veera Apparel</h3>
               <p className="text-muted-foreground mb-6">(2024 - Present)</p>
 
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-8">
+                <div className="flex justify-center items-center">
+                  <Image
+                    src="https://raw.githubusercontent.com/SSGutala/Portfolio/61f360425f33f225faeffc56b46f36a656138480/archer-front-veera.png"
+                    alt="Veera Apparel Front Render"
+                    width={400}
+                    height={400}
+                    className="rounded-lg shadow-2xl object-contain"
+                  />
+                </div>
+                <div className="flex justify-center items-center">
+                  <Image
+                    src="https://raw.githubusercontent.com/SSGutala/Portfolio/61f360425f33f225faeffc56b46f36a656138480/veera-big-back.png"
+                    alt="Veera Apparel Back Render"
+                    width={400}
+                    height={400}
+                    className="rounded-lg shadow-2xl object-contain"
+                  />
+                </div>
+              </div>
+              <p className="text-muted-foreground text-sm mb-8 text-center">
+                Veera Apparel Product Render Samples
+              </p>
+
               <div className="text-lg text-muted-foreground space-y-6 text-left">
                   <p>
                       Veera is a lifestyle and apparel venture built around the idea of combining premium design with cultural representation. The brand’s vision focused on creating workout and athleisure wear that felt both high-quality and expressive, especially for audiences often overlooked in mainstream activewear.
