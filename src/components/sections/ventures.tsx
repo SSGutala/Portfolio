@@ -138,14 +138,14 @@ export default function VenturesSection() {
                 <div>
                     <h4 className="text-xl font-bold mb-4">Phase 3 — Design &amp; Experience Prototyping</h4>
                     <h5 className="text-lg font-semibold mb-3">Prototype 1 — Concept Modeling (Sketches &amp; 2D Visual Renders)</h5>
-                     <div class="space-y-4 text-lg text-muted-foreground">
+                     <div className="space-y-4 text-lg text-muted-foreground">
                         <p><strong>Goal:</strong> Capture form, functionality, and the user experience.</p>
                         <p>Created concept storyboards, sketch design pack, and usage journey mapping.</p>
                         <p>Defined mobile app companion concept: Color selection, presets, connectivity, “Style Library.”</p>
                     </div>
 
                     <h5 className="text-lg font-semibold my-3">Prototype 2 — Low-Fidelity UX Wireframes</h5>
-                    <div class="space-y-4 text-lg text-muted-foreground">
+                    <div className="space-y-4 text-lg text-muted-foreground">
                         <p>Built quick flows using Figma lo-fi, focusing on:</p>
                         <ul className="list-disc list-inside">
                            <li>How users select styles</li>
@@ -168,18 +168,33 @@ export default function VenturesSection() {
                     <div className="space-y-8 text-lg text-muted-foreground">
                         <div>
                             <h5 className="font-semibold mb-2">Hardware: Physical Product Engineering &amp; Manufacturing Enablement</h5>
-                            <div className="flex flex-col items-center my-8">
-                                <video
-                                    src="https://raw.githubusercontent.com/SSGutala/Portfolio/61f360425f33f225faeffc56b46f36a656138480/AWPrismrender.mp4"
-                                    autoPlay
-                                    loop
-                                    muted
-                                    playsInline
-                                    className="rounded-lg shadow-2xl w-full max-w-4xl"
-                                />
-                                <p className="text-muted-foreground text-sm mt-4">
-                                    Alphawave Technologies Prism Model Product Render
-                                </p>
+                            <div className="flex flex-col md:flex-row gap-8 items-center my-8">
+                                <div className="flex-1">
+                                    <video
+                                        src="https://raw.githubusercontent.com/SSGutala/Portfolio/61f360425f33f225faeffc56b46f36a656138480/AWPrismrender.mp4"
+                                        autoPlay
+                                        loop
+                                        muted
+                                        playsInline
+                                        className="rounded-lg shadow-2xl w-full"
+                                    />
+                                    <p className="text-muted-foreground text-sm mt-4 text-center">
+                                        Prism Model
+                                    </p>
+                                </div>
+                                <div className="flex-1">
+                                    <video
+                                        src="https://raw.githubusercontent.com/SSGutala/Portfolio/cf9aa8bf85d3d96aa8cec1ee6583c3e768b94bae/AWSlipOns.mp4"
+                                        autoPlay
+                                        loop
+                                        muted
+                                        playsInline
+                                        className="rounded-lg shadow-2xl w-full"
+                                    />
+                                     <p className="text-muted-foreground text-sm mt-4 text-center">
+                                        Slip-on Model
+                                    </p>
+                                </div>
                             </div>
                             <ul className="list-disc list-inside space-y-1">
                                 <li>Developed detailed 3D renders and engineering-ready shoe models using Blender and Keyshot, integrating battery housing, MCU compartment, wiring channels, and removable color panel slots.</li>
@@ -203,6 +218,26 @@ export default function VenturesSection() {
                         </div>
                         <div>
                             <h5 className="font-semibold mb-2">Mobile Software – React Native App (User Experience &amp; BLE Integration)</h5>
+                            <div className="flex justify-center items-center gap-4 md:gap-8 flex-col md:flex-row my-8">
+                                <div className="w-[48%] md:w-auto md:max-w-[320px]">
+                                <Image
+                                    src="https://raw.githubusercontent.com/SSGutala/Portfolio/a8e1cae263ceecd70eab9040feb9c91281ffa384/AWr1.png"
+                                    alt="Alphawave Rider App Screen 1"
+                                    width={320}
+                                    height={640}
+                                    className="w-full h-auto object-contain rounded-lg shadow-xl"
+                                />
+                                </div>
+                                <div className="w-[48%] md:w-auto md:max-w-[320px]">
+                                <Image
+                                    src="https://raw.githubusercontent.com/SSGutala/Portfolio/a8e1cae263ceecd70eab9040feb9c91281ffa384/AWr3.png"
+                                    alt="Alphawave Rider App Screen 2"
+                                    width={320}
+                                    height={640}
+                                    className="w-full h-auto object-contain rounded-lg shadow-xl"
+                                />
+                                </div>
+                            </div>
                              <ul className="list-disc list-inside space-y-1">
                                 <li>Built a hybrid mobile application using React Native to support both iOS and Android, prioritizing faster iteration and cost efficiency for prototype testing.</li>
                                 <li>Designed and documented the BLE command protocol, mapping app interactions to firmware-level actions (hex command strings for color updates, style changes, and preset sync).</li>
@@ -213,7 +248,7 @@ export default function VenturesSection() {
                             </ul>
                         </div>
                     </div>
-                     <div class="space-y-4 text-lg text-muted-foreground mt-4">
+                     <div className="space-y-4 text-lg text-muted-foreground mt-4">
                         <p className="font-semibold">Deliverables:</p>
                         <ul className="list-disc list-inside">
                             <li>Hi-Fi App Design System</li>
@@ -246,7 +281,7 @@ export default function VenturesSection() {
                 
                 <div>
                     <h4 className="text-xl font-bold mb-4">Phase 6 — MVP Concept Definition (Go-to-Market Prep)</h4>
-                    <div class="space-y-4 text-lg text-muted-foreground">
+                    <div className="space-y-4 text-lg text-muted-foreground">
                         <p>Based on feasibility, user desirability, and cost modeling, MVP was defined as:</p>
                         <p className="font-semibold">App-Controlled Static Color-Shifting Shoe (No animation video, just dynamic color panels)</p>
                         <ul className="list-disc list-inside">
@@ -269,7 +304,7 @@ export default function VenturesSection() {
 
                 <div>
                     <h4 className="text-xl font-bold mb-4">Outcome &amp; Learnings</h4>
-                     <div class="space-y-4 text-lg text-muted-foreground">
+                     <div className="space-y-4 text-lg text-muted-foreground">
                         <div>
                             <h5 className="font-semibold mb-2">Why MVP Production Paused:</h5>
                             <ul className="list-disc list-inside space-y-1">

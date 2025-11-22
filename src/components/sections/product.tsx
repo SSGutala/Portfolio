@@ -31,19 +31,7 @@ export default function ProductSection() {
       </p>
 
       <div className="flex flex-col items-center space-y-16">
-        <div className="flex flex-col items-center">
-          <video
-            src="https://raw.githubusercontent.com/SSGutala/Portfolio/cf9aa8bf85d3d96aa8cec1ee6583c3e768b94bae/AWSlipOns.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="rounded-lg shadow-2xl w-full max-w-4xl"
-          />
-          <p className="text-muted-foreground text-sm mt-4">
-            Alphawave Technologies OLED Product Render
-          </p>
-        </div>
+        {/* The Alphawave video that was here has been moved to the Ventures section */}
       </div>
     </AnimatedSection>
   );
