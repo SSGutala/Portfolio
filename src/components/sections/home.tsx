@@ -5,7 +5,6 @@ import Image from "next/image";
 export default function HomeSection() {
   return (
     <AnimatedSection id="home" className="relative">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(closest-side_at_50%_55%,rgba(0,0,0,0.28),transparent_65%)]" aria-hidden="true"></div>
 
       <div className="grid md:grid-cols-2 gap-12 items-center relative z-10">
         <div className="flex flex-col items-center md:items-start text-center md:text-left">
