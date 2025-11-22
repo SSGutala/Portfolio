@@ -1,5 +1,4 @@
 
-
 import Image from "next/image";
 import {
   Table,
@@ -95,6 +94,7 @@ export default function VenturesSection() {
                           <blockquote className="border-l-4 border-primary pl-4 italic">“Comfort-first apparel with subtle identity—not costume, not cliché, just confidently expressive.”</blockquote>
                       </div>
                   </div>
+                  
                   <div className="text-lg text-muted-foreground space-y-6">
                       <h4 className="text-xl font-bold mb-4">Phase 1 — Discovery & Market Insight</h4>
                        <h5 className="text-lg font-semibold mb-3">Activities:</h5>
@@ -104,13 +104,14 @@ export default function VenturesSection() {
                         <li>Identified opportunity in understated cultural identity—not bold graphics or printed symbolism.</li>
                       </ul>
                       <br/>
-                      <h5 className="text-lg font-semibold mb-3">PM Deliverables:</h5>
-                      <p>Problem Statement • Target Persona Profiles • Brand Positioning Axes (Minimal ↔ Loud, Lifestyle ↔ Performance)</p>
+                      <p><strong>PM Deliverables:</strong> Problem Statement • Target Persona Profiles • Brand Positioning Axes (Minimal ↔ Loud, Lifestyle ↔ Performance)</p>
                   </div>
-                  <div>
+                  
+                  <hr className="border-border" />
+
+                  <div className="text-lg text-muted-foreground space-y-6">
                       <h4 className="text-xl font-bold mb-4">Phase 2 — Requirements & Material Exploration</h4>
-                      <div className="space-y-4 text-lg text-muted-foreground">
-                        <p>Focused on fabric feel, premium perception, and manufacturability at small scale.</p>
+                      <p>Focused on fabric feel, premium perception, and manufacturability at small scale.</p>
                         <Table>
                           <TableHeader>
                             <TableRow>
@@ -134,8 +135,93 @@ export default function VenturesSection() {
                           </TableBody>
                         </Table>
                          <p><strong>Outcome → Shifted design toward neutral tones, subtle accents, and tone-on-tone motifs.</strong></p>
-                      </div>
                   </div>
+
+                  <hr className="border-border" />
+                  
+                  <div className="text-lg text-muted-foreground space-y-6">
+                    <h4 className="text-xl font-bold mb-4">Phase 3 — Design Iteration</h4>
+                     <div className="space-y-4">
+                        <h5 className="font-semibold">Prototype 1: Graphic-Based Concepts</h5>
+                        <ul className="list-disc list-inside">
+                            <li>Explored strong cultural illustration and printed motifs</li>
+                            <li>Created mockups in Illustrator and Figma for visualizing placement & identity</li>
+                            <li><strong>User Insight:</strong> “Looks good, but too loud to wear casually.”</li>
+                        </ul>
+                    </div>
+                     <div className="space-y-4">
+                        <h5 className="font-semibold">Prototype 2: Minimal & Tone-Based Expression</h5>
+                        <ul className="list-disc list-inside">
+                            <li>Refined into clean silhouettes and tone-on-tone symbolic elements</li>
+                            <li>Focused on matte textures, subtle cultural accents, and premium feel</li>
+                            <li>Developed Visual Identity System (Design System v1) including:
+                                <ul className="list-disc list-inside ml-6">
+                                <li>Soft neutral palette (charcoal, stone, deep navy)</li>
+                                <li>Tone-on-tone accents and minimal branding</li>
+                                <li>Placement rules for symbolic micro-elements</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                  </div>
+
+                  <hr className="border-border" />
+
+                  <div className="text-lg text-muted-foreground space-y-6">
+                      <h4 className="text-xl font-bold mb-4">Phase 4 — Brand Identity & Pre-Launch Planning</h4>
+                      <ul className="list-disc list-inside">
+                        <li>Created lifestyle concept visuals (gym, café, everyday casual)</li>
+                        <li>Developed brand story centered on subtle identity, comfort, and self-expression</li>
+                        <li>Built early Go-to-Market concept: waitlist, concept testing, influencer sampling (not executed yet)</li>
+                      </ul>
+                      <p><strong>PM Deliverables:</strong> Brand Story • MVP Concept Brief • Design System Snapshot</p>
+                  </div>
+
+                   <hr className="border-border" />
+
+                   <div className="text-lg text-muted-foreground space-y-6">
+                      <h4 className="text-xl font-bold mb-4">Outcome & Current Stage</h4>
+                      <Table>
+                          <TableHeader>
+                            <TableRow>
+                              <TableHead>Insight</TableHead>
+                              <TableHead>Impact</TableHead>
+                            </TableRow>
+                          </TableHeader>
+                          <TableBody>
+                            <TableRow>
+                              <TableCell>People want "premium minimal" more than bold ethnic designs</TableCell>
+                              <TableCell>Shifted away from graphic imagery toward tone-based accents</TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell>Fabric feel signals quality</TableCell>
+                              <TableCell>Limited materials to mid-weight cotton and cotton-spandex blends</TableCell>
+                            </TableRow>
+                             <TableRow>
+                              <TableCell>Cultural identity must be subtle, not loud</TableCell>
+                              <TableCell>Established symbolic over literal cultural designs</TableCell>
+                            </TableRow>
+                          </TableBody>
+                        </Table>
+
+                        <h5 className="font-semibold pt-4">Next Steps (Pending)</h5>
+                        <ul className="list-disc list-inside">
+                            <li>Produce first fabric prototypes (sampling stage)</li>
+                            <li>Fit, drape, softness testing with user panel</li>
+                            <li>Small batch launch (50–75 units) with story-first marketing</li>
+                        </ul>
+                   </div>
+
+                    <hr className="border-border" />
+
+                    <div className="text-lg text-muted-foreground space-y-6">
+                        <h4 className="text-xl font-bold mb-4">What I Learned</h4>
+                        <blockquote className="border-l-4 border-primary pl-4 italic space-y-2">
+                          <p>Subtlety is a strategy—not just a design choice.</p>
+                          <p>Fabric is the MVP in apparel.</p>
+                          <p>You can validate desirability without producing inventory.</p>
+                        </blockquote>
+                    </div>
                 </div>
             </div>
             
