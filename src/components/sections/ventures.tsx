@@ -52,7 +52,7 @@ export default function VenturesSection() {
                       className="rounded-2xl mix-blend-lighten"
                   />
                 </div>
-                <h3 className="text-2xl font-bold mb-2">Veera Apparel</h3>
+                <h3 className="text-2xl font-bold mb-2">Veera Apparel — Lifestyle Activewear Venture</h3>
                 <p className="text-muted-foreground mb-6">(2024 - Present)</p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-8">
