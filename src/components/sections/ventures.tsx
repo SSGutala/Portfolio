@@ -165,7 +165,7 @@ export default function VenturesSection() {
 
                 <div>
                     <h4 className="text-xl font-bold mb-4">Phase 4 — High-Fidelity Design & Physical Prototype Coordination</h4>
-                    <div className="grid md:grid-cols-2 gap-8 text-lg text-muted-foreground">
+                    <div className="space-y-8 text-lg text-muted-foreground">
                         <div>
                             <h5 className="font-semibold mb-2">Hardware: Physical Product Engineering & Manufacturing Enablement</h5>
                             <ul className="list-disc list-inside space-y-1">
@@ -179,10 +179,24 @@ export default function VenturesSection() {
                             </ul>
                         </div>
                         <div>
-                            <h5 className="font-semibold mb-2">Software (Mobile App):</h5>
+                            <h5 className="font-semibold mb-2">Embedded Software & Hardware Control</h5>
                              <ul className="list-disc list-inside space-y-1">
-                                <li>Built high-fidelity screens using Figma (Pixel-perfect mockups)</li>
-                                <li>Designed user interaction: Live Preview | Color Wheel | Preset Editor | Push Style to Shoe</li>
+                                <li>Iterated from Arduino-based prototypes to ESP32 microcontroller for improved Bluetooth capabilities, battery efficiency, and processing speed.</li>
+                                <li>Wrote firmware in C/C++ to handle BLE communication, boot sequencing, power management, and LED driver control.</li>
+                                <li>Designed logic for real-time color switching, synchronization timing, and memory-based preset storage on EEPROM.</li>
+                                <li>Collaborated with an electrical engineer to build a custom PCB, integrating power regulation, BLE module, LED drivers, and charging components.</li>
+                                <li>Tested firmware at multiple stages, using serial debugging and edge-case simulations to improve reliability and responsiveness.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 className="font-semibold mb-2">Mobile Software – React Native App (User Experience & BLE Integration)</h5>
+                             <ul className="list-disc list-inside space-y-1">
+                                <li>Built a hybrid mobile application using React Native to support both iOS and Android, prioritizing faster iteration and cost efficiency for prototype testing.</li>
+                                <li>Designed and documented the BLE command protocol, mapping app interactions to firmware-level actions (hex command strings for color updates, style changes, and preset sync).</li>
+                                <li>Created high-fidelity Figma screens, then converted them into responsive React Native components—Live Preview, Color Wheel, Preset Editor, and One-Tap Apply Style.</li>
+                                <li>Structured the app using a modular architecture (UI Layer → BLE Service Layer → Firmware Controller), ensuring scalable integration with hardware.</li>
+                                <li>Implemented real-time preview simulation in the app using React Native Animated API to mirror actual hardware behavior — helping users visualize style changes before pushing them to the shoe.</li>
+                                <li>Conducted usability testing across 15+ users, identifying friction in Bluetooth pairing flow; iterated to add automatic device detection and onboarding prompts.</li>
                             </ul>
                         </div>
                     </div>
