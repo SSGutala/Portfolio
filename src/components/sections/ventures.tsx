@@ -126,7 +126,7 @@ export default function VenturesSection() {
                 
                 <div>
                     <h4 className="text-xl font-bold mb-4">💡 Solution Strategy</h4>
-                    <p className="text-lg text-muted-foreground mb-4">We pivoted from OLED screen shoes ➝ to lightweight, color-shifting smart footwear powered by microfilm color panels controlled through a mobile app.</p>
+                    <p className="text-lg text-muted-foreground mb-4">We pivoted from OLED screen shoes ➝ to lightweight, color-shifting smart footwear powered by flexible e-ink color displays controlled through a mobile app.</p>
                     <div className="grid md:grid-cols-2 gap-x-8 gap-y-4 text-lg">
                         <div>
                             <h5 className="font-semibold mb-2">Prioritized for MVP:</h5>
