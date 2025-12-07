@@ -13,6 +13,7 @@ const navItems = [
   { name: "About", href: "#about" },
   { name: "Ventures", href: "#ventures" },
   { name: "Consulting", href: "#consulting" },
+  { name: "Leadership", href: "#leadership" },
 ];
 
 export default function Header() {
@@ -36,13 +37,14 @@ export default function Header() {
         const section = sectionRefs.current[id];
         if (section) {
           const rect = section.getBoundingClientRect();
-          const visibleHeight = Math.max(0, Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0));
           
-          if (id === 'home' && window.scrollY < viewportHeight / 2) {
-             currentSection = 'home';
-             break;
+          // If the section is not in the viewport, skip it
+          if (rect.bottom < 0 || rect.top > viewportHeight) {
+            continue;
           }
 
+          const visibleHeight = Math.max(0, Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0));
+          
           if (visibleHeight > maxVisible) {
             maxVisible = visibleHeight;
             currentSection = id;
@@ -50,8 +52,14 @@ export default function Header() {
         }
       }
       
+      // Special case for top of the page for 'home'
+      if (window.scrollY < viewportHeight / 2) {
+         currentSection = 'home';
+      }
+      
+      // Special case for the end of the page
       if (window.scrollY + window.innerHeight >= document.body.scrollHeight - 50) {
-        currentSection = 'consulting';
+        currentSection = navItems[navItems.length - 1].href.substring(1);
       }
 
       setActiveSection(currentSection);
