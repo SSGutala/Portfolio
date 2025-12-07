@@ -6,7 +6,7 @@ export default function LeadershipSection() {
           <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-16">Leadership</h2>
         </div>
 
-        <div className="max-w-3xl mx-auto space-y-16">
+        <div className="max-w-3xl mx-auto space-y-24">
           <div className="flex flex-col items-center text-left w-full space-y-8">
             <div className="text-center">
               <h3 className="text-2xl font-bold">HackOverflow</h3>
@@ -104,6 +104,106 @@ export default function LeadershipSection() {
                     <li>Cross-functional leadership</li>
                     <li>Budgeting and risk management</li>
                     <li>Organizational scaling and advisory support</li>
+                </ul>
+            </div>
+          </div>
+          
+          <div className="flex flex-col items-center text-left w-full space-y-8">
+            <div className="text-center">
+              <h3 className="text-2xl font-bold">Inventors &amp; Innovations Team</h3>
+              <p className="text-muted-foreground mt-2">Co-Founder &amp; Co-President (2019–2022)</p>
+              <p className="text-muted-foreground">Advisor (2022–2023)</p>
+              <p className="text-muted-foreground font-semibold italic mt-2">GMU’s First Hands-On, Project-Based Engineering Organization</p>
+              <p>
+                <a href="https://gmufourthestate.com/2019/10/28/faces-of-mason-40/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Featured in GMU’s “Faces of Mason”</a>
+              </p>
+            </div>
+
+            <div className="space-y-4 text-lg text-muted-foreground">
+              <h4 className="text-xl font-bold text-foreground">Overview</h4>
+              <p>I co-founded the Inventors &amp; Innovations Team (IIT) to solve a notable gap at George Mason University: while numerous engineering organizations existed, most were primarily networking-focused or theoretical, with limited opportunities for students to gain true hands-on engineering experience.</p>
+              <p>IIT became GMU’s first organization dedicated entirely to building real hardware and technical projects, creating a structured environment where students could learn by doing. The organization grew rapidly, supporting multi-disciplinary teams and multi-semester builds, and was recognized in GMU’s Faces of Mason for its contribution to innovation, technical education, and student development.</p>
+            </div>
+            
+            <div className="w-full space-y-4 text-lg text-muted-foreground">
+                <h4 className="text-xl font-bold text-foreground">Challenge</h4>
+                <p>Before IIT, students who wanted to build physical prototypes or gain practical engineering skills had few options beyond coursework. Most organizations at the time were:</p>
+                <ul className="list-disc list-inside space-y-1">
+                    <li>Career and networking oriented</li>
+                    <li>Light on actual engineering or prototyping</li>
+                    <li>Not equipped to support multi-month hardware projects</li>
+                    <li>Focused more on industry exposure than technical execution</li>
+                </ul>
+                <p>Students lacked a space to design, prototype, and test real engineering solutions. IIT was created to change that by establishing a fully hands-on technical ecosystem.</p>
+            </div>
+
+            <div className="w-full space-y-6 text-lg text-muted-foreground">
+              <h4 className="text-xl font-bold text-foreground">My Role & Leadership</h4>
+              <div className="space-y-4">
+                <h5 className="font-semibold text-foreground">Co-Founder &amp; Co-President (Aug 2019 – Jun 2022)</h5>
+                <div>
+                  <p className="font-semibold italic">Founding Vision</p>
+                  <ul className="list-disc list-inside space-y-1 mt-2">
+                    <li>Co-created the university’s first organization dedicated to hands-on engineering, invention, and practical technical education.</li>
+                    <li>Designed the mission, structure, and operating model to support multi-disciplinary engineering teams and multi-semester builds.</li>
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-semibold italic">Organizational Leadership</p>
+                  <ul className="list-disc list-inside space-y-1 mt-2">
+                    <li>Scaled the organization from an idea to 100+ active members and 11 board officers.</li>
+                    <li>Built team structures capable of supporting five simultaneous large-scale engineering projects.</li>
+                    <li>Established workflows, project lifecycles, safety guidelines, and lab access protocols.</li>
+                  </ul>
+                </div>
+                 <div>
+                  <p className="font-semibold italic">Technical Development & Education</p>
+                  <ul className="list-disc list-inside space-y-1 mt-2">
+                    <li>Led workshops and mentorship sessions in circuitry, microcontrollers, embedded systems, and prototyping.</li>
+                    <li>Guided teams in planning and executing full project builds, from ideation to functional prototypes.</li>
+                  </ul>
+                </div>
+                 <div>
+                  <p className="font-semibold italic">Community & Culture Building</p>
+                  <ul className="list-disc list-inside space-y-1 mt-2">
+                    <li>Built a collaborative culture where students from EE, CE, ME, CS, IT, and design could work together on real hardware products.</li>
+                    <li>Positioned IIT as the central hub for students seeking true hands-on experience, rather than traditional career-focused club activities.</li>
+                  </ul>
+                </div>
+              </div>
+               <div className="space-y-4">
+                <h5 className="font-semibold text-foreground">Advisor (Jun 2022 – Apr 2023)</h5>
+                <div>
+                  <p className="font-semibold italic">Advisory Contributions</p>
+                  <ul className="list-disc list-inside space-y-1 mt-2">
+                    <li>Supported new leadership through strategic guidance on planning, budgeting, and project execution.</li>
+                    <li>Advised on complex technical builds, team structures, and scaling strategies.</li>
+                    <li>Ensured the organization maintained its hands-on identity and operational continuity.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className="w-full space-y-4 text-lg text-muted-foreground">
+                <h4 className="text-xl font-bold text-foreground">Outcomes</h4>
+                <ul className="list-disc list-inside space-y-1">
+                    <li>Established GMU’s first organization dedicated to hands-on engineering and invention.</li>
+                    <li>Enabled students to gain practical technical skills and build functional prototypes in interdisciplinary teams.</li>
+                    <li>Grew into one of the largest and most active engineering organizations on campus.</li>
+                    <li>Highlighted by GMU in the “Faces of Mason” feature for innovation and student leadership impact.</li>
+                    <li>Created a long-term operational framework enabling IIT to continue under new leadership.</li>
+                </ul>
+            </div>
+
+             <div className="w-full space-y-4 text-lg text-muted-foreground">
+                <h4 className="text-xl font-bold text-foreground">Skills Demonstrated</h4>
+                <ul className="list-disc list-inside space-y-1">
+                    <li>Strategic program creation</li>
+                    <li>Technical education &amp; mentorship</li>
+                    <li>Multi-team project leadership</li>
+                    <li>Organizational scaling &amp; governance</li>
+                    <li>Cross-functional collaboration</li>
+                    <li>Long-term advisory support</li>
                 </ul>
             </div>
           </div>
