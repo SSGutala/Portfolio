@@ -13,7 +13,7 @@ export default function LeadershipSection() {
               <p className="text-muted-foreground mt-2">Co-Founder & Chairman (2021–2022)</p>
               <p className="text-muted-foreground">Advisor (2022–2024)</p>
               <p className="text-muted-foreground font-semibold italic mt-2">GMU’s First Hardware Hackathon — Among the Few in the Nation at the Time</p>
-              <a href="https://www.hackoverflow.org" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">www.hackoverflow.org</a>
+              <a href="https://www.hackoverflow.org" target="_blank" rel="noopener noreferrer" className="text-primary underline">www.hackoverflow.org</a>
             </div>
 
             <div className="space-y-4 text-lg text-muted-foreground">
@@ -21,7 +21,7 @@ export default function LeadershipSection() {
               <p>I co-founded HackOverflow to address a critical gap in George Mason University’s innovation ecosystem. While hackathons on campus and across the country were almost exclusively software-oriented, there were virtually no platforms that allowed engineering students to design and prototype physical hardware solutions. HackOverflow was developed to fill that gap, becoming GMU’s first hardware-focused hackathon and, at the time of launch, one of the very few hardware hackathons in the United States.</p>
               <p>The event established a comprehensive environment for hands-on engineering — from circuitry and embedded systems to electromechanical prototypes. HackOverflow continues today under new student leadership, supported by the operational foundation and processes put in place during the founding years.</p>
                <p>
-                <strong>Featured:</strong> <a href="https://vimeo.com/691019238" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">https://vimeo.com/691019238</a>
+                <strong>Featured:</strong> <a href="https://vimeo.com/691019238" target="_blank" rel="noopener noreferrer" className="text-primary underline">https://vimeo.com/691019238</a>
               </p>
             </div>
             
@@ -115,7 +115,7 @@ export default function LeadershipSection() {
               <p className="text-muted-foreground">Advisor (2022–2023)</p>
               <p className="text-muted-foreground font-semibold italic mt-2">GMU’s First Hands-On, Project-Based Engineering Organization</p>
               <p>
-                <a href="https://gmufourthestate.com/2019/10/28/faces-of-mason-40/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Featured in GMU’s “Faces of Mason”</a>
+                <a href="https://gmufourthestate.com/2019/10/28/faces-of-mason-40/" target="_blank" rel="noopener noreferrer" className="text-primary underline">Featured in GMU’s “Faces of Mason”</a>
               </p>
             </div>
 
