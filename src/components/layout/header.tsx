@@ -11,7 +11,7 @@ import { ConnectButton } from "@/components/connect-button";
 const navItems = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
-  { name: "Ventures", href: "#ventures" },
+  { name: "Projects", href: "#projects" },
   { name: "Consulting", href: "#consulting" },
   { name: "Leadership", href: "#leadership" },
 ];
@@ -77,8 +77,11 @@ export default function Header() {
     <>
       <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="mx-auto flex h-16 max-w-6xl items-center px-6 md:px-8">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
-            <span className="text-lg font-extrabold uppercase tracking-wider">
+          <Link href="/" className="mr-6 flex items-center space-x-3">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full border-[1.5px] border-primary">
+              <span className="font-serif text-sm font-semibold text-primary">SG</span>
+            </div>
+            <span className="text-[15px] font-extrabold uppercase tracking-[0.2em] text-primary">
               Sri Gutala
             </span>
           </Link>
@@ -100,7 +103,7 @@ export default function Header() {
           
           <div className="flex flex-1 items-center justify-end space-x-4">
              <ConnectButton variant="outline">Connect</ConnectButton>
-            <Button asChild>
+            <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-md px-6">
               <a href="https://docs.google.com/document/d/13ciZiL_jlkSxqxgCaEvAtzph2389z9EnutM0dO18NP8/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a>
             </Button>
             <button

@@ -8,20 +8,22 @@
   }
 
   :root {
-    --background: 35 33% 92%; /* Adjusted for more beige */
-    --foreground: 0 0% 17%; /* #2B2B2B */
+    --background: 33 42% 95%; /* Cream */
+    --foreground: 0 0% 17%;
 
-    --card: 36 43% 95%; /* Adjusted for more beige */
+    --card: 33 42% 96%;
     --card-foreground: 0 0% 17%;
 
-    --popover: 36 43% 95%; /* Adjusted for more beige */
+    --popover: 33 42% 96%;
     --popover-foreground: 0 0% 17%;
 
-    --primary: 25 46% 12%; /* #2d1c10 */
-    --primary-foreground: 35 33% 94%; /* Button text */
+    --primary: 215 64% 12%; /* Navy */
+    --primary-foreground: 33 42% 95%;
 
-    --secondary: 36 43% 95%; /* Adjusted for more beige */
-    --secondary-foreground: 25 46% 12%;
+    --secondary: 0 0% 100%;
+    --secondary-foreground: 215 64% 12%;
+    
+    --copper: 20 56% 52%; /* Accent orange/copper */
     
     --muted: 36 43% 95%; /* Adjusted for more beige */
     --muted-foreground: 0 0% 33%; /* #555555 */
@@ -76,9 +78,9 @@
     @apply font-medium tracking-wide transition-colors;
   }
   .nav-link.active {
-    @apply text-primary-foreground bg-primary rounded-md px-3 py-1;
+    @apply text-foreground border-b-2 border-copper px-1 py-1;
   }
   .nav-link:not(.active) {
-    @apply text-muted-foreground hover:text-primary-foreground hover:bg-primary/90 rounded-md px-3 py-1;
+    @apply text-muted-foreground hover:text-foreground hover:border-b-2 hover:border-border px-1 py-1 border-b-2 border-transparent;
   }
 }
