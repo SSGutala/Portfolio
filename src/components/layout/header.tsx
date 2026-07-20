@@ -61,15 +61,11 @@ export default function Header() {
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center px-6 md:px-8">
-        <Link href="/" className="mr-6 flex items-center space-x-3">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#00BFFF]/15 ring-1 ring-[#00BFFF]/60">
-            <span className="font-landing text-sm font-semibold text-[#00BFFF]">
-              SG
-            </span>
-          </div>
-          <span className="font-landing text-[15px] font-extrabold uppercase tracking-[0.12em] text-white">
-            Sri Gutala
-          </span>
+        <Link
+          href="/"
+          className="mr-6 font-landing text-[15px] font-extrabold uppercase tracking-[0.12em] text-white underline decoration-[#00D1FF] decoration-2 underline-offset-4"
+        >
+          Sri Gutala
         </Link>
 
         <nav className="hidden flex-1 items-center justify-center space-x-6 text-sm md:flex">
