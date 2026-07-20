@@ -11,11 +11,11 @@ export default function AriaProject() {
   return (
     <div className="flex flex-col items-center w-full">
       {/* Logo */}
-      <div className="w-36 h-36 rounded-3xl mb-6 flex items-center justify-center bg-primary shadow-2xl">
-        <span className="text-7xl font-serif font-bold text-primary-foreground">A</span>
+      <div className="mb-6 flex h-36 w-36 items-center justify-center rounded-3xl bg-[#00D1FF]/15 shadow-[0_0_40px_rgba(0,209,255,0.25)] ring-1 ring-[#00D1FF]/40">
+        <span className="font-landing text-7xl font-bold text-[#00D1FF]">A</span>
       </div>
 
-      <h1 className="text-3xl md:text-4xl font-bold mb-2 text-center">Aria</h1>
+      <h1 className="mb-2 text-center font-landing text-3xl font-bold md:text-4xl">Aria</h1>
       <p className="text-xl text-muted-foreground mb-2 text-center">AI Product Workflow Platform</p>
 
       <div className="text-muted-foreground mb-8 text-center space-y-1">

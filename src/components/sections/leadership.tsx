@@ -1,32 +1,34 @@
 export default function LeadershipSection() {
   return (
-    <section className="pt-0 md:pt-0 min-h-[90vh] py-20 md:py-32">
-       <div className="max-w-6xl mx-auto px-6 md:px-8">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-16">Leadership</h2>
+    <section className="relative min-h-[90vh] overflow-hidden bg-black py-20 text-white md:py-32">
+       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-8">
+        <div className="pointer-events-none absolute -right-10 top-24 h-72 w-72 rounded-full bg-[#00D1FF]/10 blur-[100px]" />
+        <div className="relative z-10 max-w-3xl mx-auto text-center mb-16">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.28em] text-[#00D1FF]">Leadership</p>
+          <h2 className="font-landing text-3xl font-bold tracking-tight md:text-4xl lg:text-[2.75rem]">Leadership</h2>
         </div>
 
         <div className="max-w-3xl mx-auto space-y-24">
           <div className="flex flex-col items-center text-left w-full space-y-8">
             <div className="text-center">
-              <h3 className="text-2xl font-bold">HackOverflow</h3>
-              <p className="text-muted-foreground mt-2">Co-Founder & Chairman (2021–2022)</p>
-              <p className="text-muted-foreground">Advisor (2022–2024)</p>
-              <p className="text-muted-foreground font-semibold italic mt-2">GMU’s First Hardware Hackathon — Among the Few in the Nation at the Time</p>
-              <a href="https://www.hackoverflow.org" target="_blank" rel="noopener noreferrer" className="text-primary underline">www.hackoverflow.org</a>
+              <h3 className="font-landing text-2xl font-bold text-white">HackOverflow</h3>
+              <p className="text-white/65 mt-2">Co-Founder & Chairman (2021–2022)</p>
+              <p className="text-white/65">Advisor (2022–2024)</p>
+              <p className="text-white/65 font-semibold italic mt-2">GMU’s First Hardware Hackathon — Among the Few in the Nation at the Time</p>
+              <a href="https://www.hackoverflow.org" target="_blank" rel="noopener noreferrer" className="text-[#00D1FF] underline underline-offset-2 hover:text-[#00D1FF]/80">www.hackoverflow.org</a>
             </div>
 
-            <div className="space-y-4 text-lg text-muted-foreground">
-              <h4 className="text-xl font-bold text-foreground">Overview</h4>
+            <div className="space-y-4 text-lg text-white/65">
+              <h4 className="text-xl font-bold text-white">Overview</h4>
               <p>I co-founded HackOverflow to address a critical gap in George Mason University’s innovation ecosystem. While hackathons on campus and across the country were almost exclusively software-oriented, there were virtually no platforms that allowed engineering students to design and prototype physical hardware solutions. HackOverflow was developed to fill that gap, becoming GMU’s first hardware-focused hackathon and, at the time of launch, one of the very few hardware hackathons in the United States.</p>
               <p>The event established a comprehensive environment for hands-on engineering — from circuitry and embedded systems to electromechanical prototypes. HackOverflow continues today under new student leadership, supported by the operational foundation and processes put in place during the founding years.</p>
                <p>
-                <strong>Featured:</strong> <a href="https://vimeo.com/691019238" target="_blank" rel="noopener noreferrer" className="text-primary underline">https://vimeo.com/691019238</a>
+                <strong>Featured:</strong> <a href="https://vimeo.com/691019238" target="_blank" rel="noopener noreferrer" className="text-[#00D1FF] underline underline-offset-2 hover:text-[#00D1FF]/80">https://vimeo.com/691019238</a>
               </p>
             </div>
             
-            <div className="w-full space-y-4 text-lg text-muted-foreground">
-                <h4 className="text-xl font-bold text-foreground">Challenge</h4>
+            <div className="w-full space-y-4 text-lg text-white/65">
+                <h4 className="text-xl font-bold text-white">Challenge</h4>
                 <p>Engineering students lacked a structured platform to build hardware prototypes in a collaborative, competitive setting. Existing hackathons supported app development, but not:</p>
                 <ul className="list-disc list-inside space-y-1">
                     <li>Embedded systems</li>
@@ -39,10 +41,10 @@ export default function LeadershipSection() {
                 <p>HackOverflow introduced the infrastructure, funding, and technical support needed to enable true hardware innovation at scale.</p>
             </div>
 
-            <div className="w-full space-y-6 text-lg text-muted-foreground">
-              <h4 className="text-xl font-bold text-foreground">Leadership & Contributions</h4>
+            <div className="w-full space-y-6 text-lg text-white/65">
+              <h4 className="text-xl font-bold text-white">Leadership & Contributions</h4>
               <div className="space-y-4">
-                <h5 className="font-semibold text-foreground">Co-Founder & Chairman (May 2021 – June 2022)</h5>
+                <h5 className="font-semibold text-white">Co-Founder & Chairman (May 2021 – June 2022)</h5>
                 <div>
                   <p className="font-semibold italic">Strategic Vision & Program Design</p>
                   <ul className="list-disc list-inside space-y-1 mt-2">
@@ -72,7 +74,7 @@ export default function LeadershipSection() {
                 </div>
               </div>
                <div className="space-y-4">
-                <h5 className="font-semibold text-foreground">Advisor (June 2022 – December 2024)</h5>
+                <h5 className="font-semibold text-white">Advisor (June 2022 – December 2024)</h5>
                  <p>After transitioning out of the chairman role, I continued supporting the organization as an Advisor.</p>
                 <div>
                   <p className="font-semibold italic">Advisory Scope</p>
@@ -85,8 +87,8 @@ export default function LeadershipSection() {
               </div>
             </div>
 
-            <div className="w-full space-y-4 text-lg text-muted-foreground">
-                <h4 className="text-xl font-bold text-foreground">Outcomes</h4>
+            <div className="w-full space-y-4 text-lg text-white/65">
+                <h4 className="text-xl font-bold text-white">Outcomes</h4>
                 <ul className="list-disc list-inside space-y-1">
                     <li>Established GMU’s first hardware hackathon, creating a lasting platform for hands-on engineering innovation.</li>
                     <li>Launched one of the few hardware hackathons in the nation at the time, positioning GMU as an early leader in hardware-focused collegiate competitions.</li>
@@ -95,8 +97,8 @@ export default function LeadershipSection() {
                 </ul>
             </div>
 
-             <div className="w-full space-y-4 text-lg text-muted-foreground">
-                <h4 className="text-xl font-bold text-foreground">Core Competencies Demonstrated</h4>
+             <div className="w-full space-y-4 text-lg text-white/65">
+                <h4 className="text-xl font-bold text-white">Core Competencies Demonstrated</h4>
                 <ul className="list-disc list-inside space-y-1">
                     <li>Strategic program development</li>
                     <li>Technical event architecture</li>
@@ -110,23 +112,23 @@ export default function LeadershipSection() {
           
           <div className="flex flex-col items-center text-left w-full space-y-8">
             <div className="text-center">
-              <h3 className="text-2xl font-bold">Inventors &amp; Innovations Team</h3>
-              <p className="text-muted-foreground mt-2">Co-Founder &amp; Co-President (2019–2022)</p>
-              <p className="text-muted-foreground">Advisor (2022–2023)</p>
-              <p className="text-muted-foreground font-semibold italic mt-2">GMU’s First Hands-On, Project-Based Engineering Organization</p>
+              <h3 className="font-landing text-2xl font-bold text-white">Inventors &amp; Innovations Team</h3>
+              <p className="text-white/65 mt-2">Co-Founder &amp; Co-President (2019–2022)</p>
+              <p className="text-white/65">Advisor (2022–2023)</p>
+              <p className="text-white/65 font-semibold italic mt-2">GMU’s First Hands-On, Project-Based Engineering Organization</p>
               <p>
-                <a href="https://gmufourthestate.com/2019/10/28/faces-of-mason-40/" target="_blank" rel="noopener noreferrer" className="text-primary underline">Featured in GMU’s “Faces of Mason”</a>
+                <a href="https://gmufourthestate.com/2019/10/28/faces-of-mason-40/" target="_blank" rel="noopener noreferrer" className="text-[#00D1FF] underline underline-offset-2 hover:text-[#00D1FF]/80">Featured in GMU’s “Faces of Mason”</a>
               </p>
             </div>
 
-            <div className="space-y-4 text-lg text-muted-foreground">
-              <h4 className="text-xl font-bold text-foreground">Overview</h4>
+            <div className="space-y-4 text-lg text-white/65">
+              <h4 className="text-xl font-bold text-white">Overview</h4>
               <p>I co-founded the Inventors &amp; Innovations Team (IIT) to solve a notable gap at George Mason University: while numerous engineering organizations existed, most were primarily networking-focused or theoretical, with limited opportunities for students to gain true hands-on engineering experience.</p>
               <p>IIT became GMU’s first organization dedicated entirely to building real hardware and technical projects, creating a structured environment where students could learn by doing. The organization grew rapidly, supporting multi-disciplinary teams and multi-semester builds, and was recognized in GMU’s Faces of Mason for its contribution to innovation, technical education, and student development.</p>
             </div>
             
-            <div className="w-full space-y-4 text-lg text-muted-foreground">
-                <h4 className="text-xl font-bold text-foreground">Challenge</h4>
+            <div className="w-full space-y-4 text-lg text-white/65">
+                <h4 className="text-xl font-bold text-white">Challenge</h4>
                 <p>Before IIT, students who wanted to build physical prototypes or gain practical engineering skills had few options beyond coursework. Most organizations at the time were:</p>
                 <ul className="list-disc list-inside space-y-1">
                     <li>Career and networking oriented</li>
@@ -137,10 +139,10 @@ export default function LeadershipSection() {
                 <p>Students lacked a space to design, prototype, and test real engineering solutions. IIT was created to change that by establishing a fully hands-on technical ecosystem.</p>
             </div>
 
-            <div className="w-full space-y-6 text-lg text-muted-foreground">
-              <h4 className="text-xl font-bold text-foreground">My Role & Leadership</h4>
+            <div className="w-full space-y-6 text-lg text-white/65">
+              <h4 className="text-xl font-bold text-white">My Role & Leadership</h4>
               <div className="space-y-4">
-                <h5 className="font-semibold text-foreground">Co-Founder &amp; Co-President (Aug 2019 – Jun 2022)</h5>
+                <h5 className="font-semibold text-white">Co-Founder &amp; Co-President (Aug 2019 – Jun 2022)</h5>
                 <div>
                   <p className="font-semibold italic">Founding Vision</p>
                   <ul className="list-disc list-inside space-y-1 mt-2">
@@ -172,7 +174,7 @@ export default function LeadershipSection() {
                 </div>
               </div>
                <div className="space-y-4">
-                <h5 className="font-semibold text-foreground">Advisor (Jun 2022 – Apr 2023)</h5>
+                <h5 className="font-semibold text-white">Advisor (Jun 2022 – Apr 2023)</h5>
                 <div>
                   <p className="font-semibold italic">Advisory Contributions</p>
                   <ul className="list-disc list-inside space-y-1 mt-2">
@@ -184,8 +186,8 @@ export default function LeadershipSection() {
               </div>
             </div>
 
-            <div className="w-full space-y-4 text-lg text-muted-foreground">
-                <h4 className="text-xl font-bold text-foreground">Outcomes</h4>
+            <div className="w-full space-y-4 text-lg text-white/65">
+                <h4 className="text-xl font-bold text-white">Outcomes</h4>
                 <ul className="list-disc list-inside space-y-1">
                     <li>Established GMU’s first organization dedicated to hands-on engineering and invention.</li>
                     <li>Enabled students to gain practical technical skills and build functional prototypes in interdisciplinary teams.</li>
@@ -195,8 +197,8 @@ export default function LeadershipSection() {
                 </ul>
             </div>
 
-             <div className="w-full space-y-4 text-lg text-muted-foreground">
-                <h4 className="text-xl font-bold text-foreground">Skills Demonstrated</h4>
+             <div className="w-full space-y-4 text-lg text-white/65">
+                <h4 className="text-xl font-bold text-white">Skills Demonstrated</h4>
                 <ul className="list-disc list-inside space-y-1">
                     <li>Strategic program creation</li>
                     <li>Technical education &amp; mentorship</li>

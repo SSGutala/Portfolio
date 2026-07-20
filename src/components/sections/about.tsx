@@ -1,13 +1,5 @@
 import { Briefcase, Lightbulb } from "lucide-react";
-
-const glassCardStyle = {
-  background:
-    "linear-gradient(160deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.04) 42%, rgba(0,209,255,0.06) 100%)",
-  backdropFilter: "blur(18px) saturate(1.35)",
-  WebkitBackdropFilter: "blur(18px) saturate(1.35)",
-  boxShadow:
-    "inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -1px 0 rgba(255,255,255,0.06), 0 0 0 1px rgba(255,255,255,0.14), 0 18px 40px rgba(0,0,0,0.35)",
-} as const;
+import { glassCardStyle } from "@/lib/glass-styles";
 
 const features = [
   {
@@ -27,12 +19,10 @@ const features = [
 export default function AboutSection() {
   return (
     <section className="relative overflow-hidden bg-black py-20 text-white md:py-28">
-      {/* Soft ambient glow */}
       <div className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-[#00D1FF]/10 blur-[100px]" />
       <div className="pointer-events-none absolute bottom-0 right-0 h-80 w-80 rounded-full bg-[#00D1FF]/[0.07] blur-[120px]" />
 
       <div className="relative z-10 mx-auto grid max-w-6xl items-stretch gap-10 px-6 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.2fr)] md:gap-14 md:px-8">
-        {/* Left stat card */}
         <div
           className="relative flex min-h-[320px] flex-col items-center justify-center overflow-hidden rounded-[2rem] px-8 py-14 text-center md:min-h-full md:rounded-[2.25rem]"
           style={glassCardStyle}
@@ -47,7 +37,6 @@ export default function AboutSection() {
           </p>
         </div>
 
-        {/* Right content */}
         <div className="flex flex-col justify-center">
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.28em] text-[#00D1FF]">
             About Me

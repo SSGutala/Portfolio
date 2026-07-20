@@ -1,3 +1,5 @@
+import { glassCardStyle } from "@/lib/glass-styles";
+
 const experiences = [
   {
     company: "AT&T",
@@ -21,31 +23,42 @@ const experiences = [
 
 export default function ExperienceSection() {
   return (
-    <section className="min-h-[90vh] py-20 md:py-32 bg-background">
-      <div className="max-w-6xl mx-auto px-6 md:px-8">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tighter mb-6">
+    <section className="relative min-h-[90vh] overflow-hidden bg-black py-20 text-white md:py-32">
+      <div className="pointer-events-none absolute right-0 top-20 h-72 w-72 rounded-full bg-[#00D1FF]/10 blur-[100px]" />
+
+      <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8">
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.28em] text-[#00D1FF]">
+            Experience
+          </p>
+          <h1 className="font-landing text-3xl font-bold tracking-tight md:text-4xl lg:text-[2.75rem]">
             Experience
           </h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="mt-4 text-lg text-white/65">
             Corporate roles where I shaped product strategy, automation, and
             user-centered digital experiences across enterprise environments.
           </p>
         </div>
 
-        <div className="max-w-3xl mx-auto space-y-10">
+        <div className="mx-auto max-w-3xl space-y-6">
           {experiences.map((item) => (
             <article
               key={item.company}
-              className="border-l-2 border-primary/30 pl-6 md:pl-8"
+              className="relative overflow-hidden rounded-2xl px-6 py-7 md:px-8"
+              style={glassCardStyle}
             >
-              <h2 className="text-2xl font-bold tracking-tight">{item.company}</h2>
-              <p className="text-sm font-medium uppercase tracking-widest text-primary/80 mt-2">
-                {item.role}
-              </p>
-              <p className="text-lg text-muted-foreground mt-4 leading-relaxed">
-                {item.summary}
-              </p>
+              <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+              <div className="border-l-2 border-[#00D1FF]/50 pl-5 md:pl-6">
+                <h2 className="font-landing text-2xl font-bold tracking-tight text-white">
+                  {item.company}
+                </h2>
+                <p className="mt-2 text-sm font-medium uppercase tracking-widest text-[#00D1FF]">
+                  {item.role}
+                </p>
+                <p className="mt-4 text-base leading-relaxed text-white/65 md:text-lg">
+                  {item.summary}
+                </p>
+              </div>
             </article>
           ))}
         </div>
