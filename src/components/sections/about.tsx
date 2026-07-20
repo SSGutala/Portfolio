@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { glassCardStyle } from "@/lib/glass-styles";
 
-const LINKEDIN_URL = "https://www.linkedin.com/in/sai-gutala/";
+const LINKEDIN_URL = "https://www.linkedin.com/in/sri-gutala/";
 
 export default function AboutSection() {
   return (

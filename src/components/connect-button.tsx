@@ -9,7 +9,7 @@ interface ConnectButtonProps extends ButtonProps {
 export function ConnectButton({ children, ...props }: ConnectButtonProps) {
   return (
     <Button asChild {...props}>
-      <a href="https://www.linkedin.com/in/sai-gutala/" target="_blank" rel="noopener noreferrer">
+      <a href="https://www.linkedin.com/in/sri-gutala/" target="_blank" rel="noopener noreferrer">
         {children}
       </a>
     </Button>

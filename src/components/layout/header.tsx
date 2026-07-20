@@ -17,7 +17,7 @@ const navItems = [
 const socialLinks = [
   {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/in/sai-gutala/",
+    href: "https://www.linkedin.com/in/sri-gutala/",
     icon: Linkedin,
   },
   {
