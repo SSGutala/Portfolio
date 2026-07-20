@@ -64,10 +64,13 @@ const experiences = [
   },
 ];
 
+/** Shared centerline of the timeline track (px from left of track container). */
+const TRACK_CENTER = 10;
+
 export default function ExperienceSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const itemRefs = useRef<(HTMLElement | null)[]>([]);
+  const markerRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const [progress, setProgress] = useState(0);
   const [activeIndex, setActiveIndex] = useState(-1);
 
@@ -79,23 +82,30 @@ export default function ExperienceSection() {
       const pane = scrollRef.current;
       if (!track || !pane) return;
 
-      const paneRect = pane.getBoundingClientRect();
-      const triggerY = paneRect.top + paneRect.height * 0.35;
+      const maxScroll = pane.scrollHeight - pane.clientHeight;
+      const atBottom = maxScroll <= 0 || pane.scrollTop >= maxScroll - 2;
+
+      // Scroll-driven fill; snap to full when the last role is reached
+      let nextProgress =
+        maxScroll <= 0 ? 1 : Math.min(1, Math.max(0, pane.scrollTop / maxScroll));
+      if (atBottom) nextProgress = 1;
+      setProgress(nextProgress);
 
       const trackRect = track.getBoundingClientRect();
-      const start = trackRect.top;
-      const end = trackRect.bottom;
-      const raw = (triggerY - start) / (end - start || 1);
-      setProgress(Math.min(1, Math.max(0, raw)));
+      const glowTipY = trackRect.top + trackRect.height * nextProgress;
 
       let nextActive = -1;
-      itemRefs.current.forEach((el, index) => {
-        if (!el) return;
-        const itemRect = el.getBoundingClientRect();
-        if (itemRect.top + 12 <= triggerY + 8) {
+      markerRefs.current.forEach((marker, index) => {
+        if (!marker) return;
+        const markerRect = marker.getBoundingClientRect();
+        const markerCenterY = markerRect.top + markerRect.height / 2;
+        // Activate once the glow tip reaches/passes the ring center
+        if (glowTipY >= markerCenterY - 2 || atBottom) {
           nextActive = index;
         }
       });
+
+      if (atBottom) nextActive = experiences.length - 1;
       setActiveIndex(nextActive);
     };
 
@@ -113,7 +123,6 @@ export default function ExperienceSection() {
       <div className="pointer-events-none absolute right-0 top-24 h-72 w-72 rounded-full bg-[#00D1FF]/10 blur-[80px]" />
 
       <div className="relative z-10 mx-auto flex h-full max-w-6xl flex-col md:grid md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.4fr)] md:gap-16 md:px-8">
-        {/* Left title — top-aligned like reference */}
         <div className="flex shrink-0 flex-col justify-start px-6 pb-4 pt-10 md:px-0 md:pb-0 md:pt-16 lg:pt-20">
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.28em] text-[#00D1FF]">
             Experience
@@ -129,17 +138,23 @@ export default function ExperienceSection() {
           </p>
         </div>
 
-        {/* Right timeline — only this pane scrolls */}
         <div
           ref={scrollRef}
           className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 pb-16 pt-4 md:px-0 md:pb-24 md:pt-16 lg:pt-20 [scrollbar-width:thin] [scrollbar-color:rgba(0,209,255,0.35)_transparent]"
         >
-          <div ref={trackRef} className="relative pl-10 md:pl-12">
-            <div className="absolute bottom-2 left-[15px] top-2 w-px bg-white/15 md:left-[17px]" />
-
+          <div ref={trackRef} className="relative">
+            {/* Base track — centered on TRACK_CENTER */}
             <div
-              className="absolute left-[15px] top-2 w-px origin-top md:left-[17px]"
+              className="absolute top-2 bottom-2 w-px bg-white/15"
+              style={{ left: TRACK_CENTER, transform: "translateX(-50%)" }}
+            />
+
+            {/* Neon progress fill — same centerline */}
+            <div
+              className="absolute top-2 w-px origin-top"
               style={{
+                left: TRACK_CENTER,
+                transform: "translateX(-50%)",
                 height: `calc((100% - 1rem) * ${progress})`,
                 background:
                   "linear-gradient(180deg, #00D1FF 0%, #38bdf8 55%, #00D1FF 100%)",
@@ -156,35 +171,30 @@ export default function ExperienceSection() {
                 return (
                   <article
                     key={`${item.company}-${item.dates}`}
-                    ref={(el) => {
-                      itemRefs.current[index] = el;
-                    }}
-                    className="relative"
+                    className="relative pl-10 md:pl-12"
                   >
+                    {/* Thick glowing ring, centered on the track line */}
                     <span
+                      ref={(el) => {
+                        markerRefs.current[index] = el;
+                      }}
+                      aria-hidden="true"
                       className={cn(
-                        "absolute -left-10 top-1.5 flex h-4 w-4 items-center justify-center rounded-full border transition-all duration-300 md:-left-[2.65rem] md:h-[1.15rem] md:w-[1.15rem]",
+                        "absolute top-1.5 h-4 w-4 rounded-full bg-transparent transition-all duration-300 md:h-5 md:w-5",
                         isActive
-                          ? "border-[#00D1FF] bg-[#00D1FF]"
-                          : "border-white/35 bg-black"
+                          ? "border-[3px] border-[#00D1FF]"
+                          : "border-2 border-white/35"
                       )}
-                      style={
-                        isActive
-                          ? {
-                              boxShadow: isCurrent
-                                ? "0 0 0 4px rgba(0,209,255,0.2), 0 0 14px rgba(0,209,255,0.95), 0 0 28px rgba(0,209,255,0.55)"
-                                : "0 0 0 3px rgba(0,209,255,0.15), 0 0 10px rgba(0,209,255,0.65)",
-                            }
-                          : undefined
-                      }
-                    >
-                      <span
-                        className={cn(
-                          "h-1.5 w-1.5 rounded-full transition-colors duration-300",
-                          isActive ? "bg-white" : "bg-transparent"
-                        )}
-                      />
-                    </span>
+                      style={{
+                        left: TRACK_CENTER,
+                        transform: "translateX(-50%)",
+                        boxShadow: isActive
+                          ? isCurrent
+                            ? "0 0 0 3px rgba(0,209,255,0.18), 0 0 12px rgba(0,209,255,0.95), 0 0 26px rgba(0,209,255,0.5)"
+                            : "0 0 0 2px rgba(0,209,255,0.12), 0 0 10px rgba(0,209,255,0.7)"
+                          : "none",
+                      }}
+                    />
 
                     <h2
                       className={cn(
