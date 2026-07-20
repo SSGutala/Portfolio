@@ -13,13 +13,13 @@ const features = [
   {
     title: "Product Strategy",
     description:
-      "From user research to roadmap—shaping products that balance insight, feasibility, and emotion.",
+      "From user research to roadmap, shaping products that balance insight, feasibility, and emotion.",
     icon: Lightbulb,
   },
   {
     title: "Venture Building",
     description:
-      "Launching ideas into real products—software, hardware, apparel, and everything in between.",
+      "Launching ideas into real products: software, hardware, apparel, and everything in between.",
     icon: Briefcase,
   },
 ];
@@ -40,7 +40,7 @@ export default function AboutSection() {
           <div className="pointer-events-none absolute -left-10 -top-10 h-40 w-40 rounded-full bg-[#00D1FF]/25 blur-3xl" />
           <div className="pointer-events-none absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
           <p className="font-landing text-6xl font-bold tracking-tight text-white md:text-7xl lg:text-8xl">
-            5+
+            3+
           </p>
           <p className="mt-4 max-w-[12ch] font-landing text-lg font-semibold leading-snug text-white md:text-xl">
             Years Of Experience
@@ -56,9 +56,9 @@ export default function AboutSection() {
             Building products that make people feel something
           </h2>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-white/65 md:text-lg">
-            I&apos;m Sai Srivatsav Gutala—most people call me Sri. I&apos;m a
+            I&apos;m Sai Srivatsav Gutala, most people call me Sri. I&apos;m a
             product thinker, builder, and storyteller. I turn ambitious ideas
-            into experiences people can actually use—whether that&apos;s
+            into experiences people can actually use, whether that&apos;s
             intuitive software, hardware-backed products, or creative work that
             lives somewhere in between. From sketching app concepts at 15 to
             driving strategy at AT&amp;T, Alarm.com, and Fluid Touch, I work at
