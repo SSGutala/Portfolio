@@ -2,7 +2,13 @@
 
 import { useEffect, useState } from "react";
 
-const ROLES = ["Designer", "Product Leader", "Builder", "Strategist"];
+const ROLES = [
+  "Product Manager",
+  "Strategist",
+  "Designer",
+  "Architect",
+  "Leader",
+];
 
 export default function TypewriterText({
   words = ROLES,
