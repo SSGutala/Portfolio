@@ -1,5 +1,3 @@
-import { Button } from "@/components/ui/button";
-
 const stats = [
     { value: "2.5+", label: "Corporate Experience" },
     { value: "4+", label: "Venture Experience" },
@@ -8,7 +6,7 @@ const stats = [
 
 export default function AboutSection() {
     return (
-        <section id="about" className="pt-0 md:pt-0 pb-20 md:pb-32 bg-background">
+        <section className="pt-0 md:pt-0 pb-20 md:pb-32 bg-background">
             <div className="max-w-6xl mx-auto px-6 md:px-8 text-center">
                 <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-6">About Me</h2>
                 <div className="max-w-3xl mx-auto text-lg text-muted-foreground mb-12 space-y-6 text-left">
@@ -32,7 +30,7 @@ export default function AboutSection() {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-3xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
                     {stats.map(stat => (
                         <div key={stat.label} className="p-6 rounded-lg bg-card border border-primary">
                             <p className="text-4xl md:text-5xl font-bold text-primary-foreground bg-primary rounded-md p-2 flex items-baseline justify-center">
@@ -43,10 +41,6 @@ export default function AboutSection() {
                         </div>
                     ))}
                 </div>
-
-                <Button asChild size="lg">
-                    <a href="https://docs.google.com/document/d/13ciZiL_jlkSxqxgCaEvAtzph2389z9EnutM0dO18NP8/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Download Resume</a>
-                </Button>
             </div>
         </section>
     );

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function ConsultingSection() {
   return (
-    <section id="consulting" className="pt-0 md:pt-0 min-h-[90vh] py-20 md:py-32">
+    <section className="pt-0 md:pt-0 min-h-[90vh] py-20 md:py-32">
        <div className="max-w-6xl mx-auto px-6 md:px-8">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-6">Consulting</h2>

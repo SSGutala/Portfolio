@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { Instagram, Mail, Github, Linkedin } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 import Link from "next/link";
 
 export default function HomeSection() {
   return (
-    <section id="home" className="relative min-h-[90vh] py-20 md:py-32 overflow-hidden">
+    <section className="relative min-h-[90vh] py-20 md:py-32 overflow-hidden">
       {/* Background Blurs and Accents */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-copper/10 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute top-1/2 right-1/4 w-[500px] h-[500px] bg-slate-400/20 rounded-full blur-[120px] pointer-events-none" />
@@ -42,17 +42,15 @@ export default function HomeSection() {
                 </a>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-border bg-transparent hover:bg-white/50 px-8 py-6 rounded-lg text-base">
-                <a href="#projects">
+                <Link href="/projects">
                   View My Work
-                </a>
+                </Link>
               </Button>
             </div>
 
             {/* Socials */}
             <div className="flex items-center space-x-4">
               {[
-                { icon: Instagram, href: "#" },
-                { icon: Mail, href: "mailto:contact@saigutala.com" },
                 { icon: Github, href: "https://github.com/SSGutala" },
                 { icon: Linkedin, href: "https://www.linkedin.com/in/sai-gutala/" },
               ].map((social, i) => (
