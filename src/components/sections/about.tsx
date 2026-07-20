@@ -32,7 +32,7 @@ export default function AboutSection() {
             Hi, I&apos;m Sri! 👋
           </h2>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/65 md:text-lg">
-            Over the past three+ years, I&apos;ve been building products across
+            Over the past 3+ years, I&apos;ve been building products across
             both fast-paced startups and large enterprise organizations. At
             heart, I&apos;m someone who naturally gravitates toward finding
             complex problems, understanding why they exist, and building
@@ -85,37 +85,37 @@ export default function AboutSection() {
           </div>
 
           <div className="mt-12 max-w-2xl">
-            <h3 className="font-landing text-xl font-semibold text-white md:text-2xl">
-              Let&apos;s Connect!
-            </h3>
-            <div className="mt-5 flex items-start gap-5">
+            <div className="flex items-center gap-3">
+              <h3 className="font-landing text-xl font-semibold text-white md:text-2xl">
+                Let&apos;s Connect!
+              </h3>
               <Link
                 href={LINKEDIN_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Connect on LinkedIn"
-                className="group relative inline-flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/20 bg-white/10 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.35),inset_0_-10px_18px_rgba(255,255,255,0.06)] transition-[transform,background-color] duration-300 hover:scale-[1.05] hover:bg-white/15"
+                className="group relative inline-flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/20 bg-white/10 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.35),inset_0_-8px_14px_rgba(255,255,255,0.06)] transition-[transform,background-color] duration-300 hover:scale-[1.05] hover:bg-white/15"
               >
                 <span
                   aria-hidden="true"
-                  className="pointer-events-none absolute inset-x-3 bottom-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent"
+                  className="pointer-events-none absolute inset-x-2.5 bottom-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent"
                 />
                 <span
                   aria-hidden="true"
-                  className="pointer-events-none absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent"
+                  className="pointer-events-none absolute inset-x-3 top-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent"
                 />
                 <span
                   aria-hidden="true"
-                  className="text-xl leading-none transition-transform duration-300 group-hover:translate-x-0.5"
+                  className="text-base leading-none transition-transform duration-300 group-hover:translate-x-0.5"
                 >
                   →
                 </span>
               </Link>
-              <p className="pt-1 text-base leading-relaxed text-white/65 md:text-lg">
-                Feel free to reach out on LinkedIn, if you&apos;d like to chat
-                about product management, AI, or collaborate on something cool.
-              </p>
             </div>
+            <p className="mt-4 text-base leading-relaxed text-white/65 md:text-lg">
+              Feel free to reach out on LinkedIn, if you&apos;d like to chat
+              about product management, AI, or collaborate on something cool.
+            </p>
           </div>
         </div>
       </div>
