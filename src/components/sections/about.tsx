@@ -1,20 +1,7 @@
-import { Briefcase, Lightbulb } from "lucide-react";
+import Link from "next/link";
 import { glassCardStyle } from "@/lib/glass-styles";
 
-const features = [
-  {
-    title: "Product Strategy",
-    description:
-      "From user research to roadmap, shaping products that balance insight, feasibility, and emotion.",
-    icon: Lightbulb,
-  },
-  {
-    title: "Venture Building",
-    description:
-      "Launching ideas into real products: software, hardware, apparel, and everything in between.",
-    icon: Briefcase,
-  },
-];
+const LINKEDIN_URL = "https://www.linkedin.com/in/sai-gutala/";
 
 export default function AboutSection() {
   return (
@@ -22,9 +9,9 @@ export default function AboutSection() {
       <div className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-[#00D1FF]/10 blur-[80px]" />
       <div className="pointer-events-none absolute bottom-0 right-0 h-80 w-80 rounded-full bg-[#00D1FF]/[0.07] blur-[90px]" />
 
-      <div className="relative z-10 mx-auto grid max-w-6xl items-stretch gap-10 px-6 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.2fr)] md:gap-14 md:px-8">
+      <div className="relative z-10 mx-auto grid max-w-6xl items-start gap-10 px-6 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.35fr)] md:gap-14 md:px-8">
         <div
-          className="relative flex min-h-[320px] flex-col items-center justify-center overflow-hidden rounded-[2rem] px-8 py-14 text-center md:min-h-full md:rounded-[2.25rem]"
+          className="relative flex min-h-[280px] flex-col items-center justify-center overflow-hidden rounded-[2rem] px-8 py-14 text-center md:sticky md:top-28 md:min-h-[360px] md:rounded-[2.25rem]"
           style={glassCardStyle}
         >
           <div className="pointer-events-none absolute -left-10 -top-10 h-40 w-40 rounded-full bg-[#00D1FF]/25 blur-3xl" />
@@ -37,44 +24,98 @@ export default function AboutSection() {
           </p>
         </div>
 
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col">
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.28em] text-[#00D1FF]">
             About Me
           </p>
           <h2 className="font-landing text-3xl font-bold leading-tight tracking-tight text-white md:text-4xl lg:text-[2.75rem]">
-            Building products that make people feel something
+            Hi, I&apos;m Sai! 👋
           </h2>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-white/65 md:text-lg">
-            I&apos;m Sai Srivatsav Gutala, most people call me Sri. I&apos;m a
-            product thinker, builder, and storyteller. I turn ambitious ideas
-            into experiences people can actually use, whether that&apos;s
-            intuitive software, hardware-backed products, or creative work that
-            lives somewhere in between. From sketching app concepts at 15 to
-            driving strategy at AT&amp;T, Alarm.com, and Fluid Touch, I work at
-            the intersection of technology, design, and human behavior.
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/65 md:text-lg">
+            Over the past three+ years, I&apos;ve been building products across
+            both fast-paced startups and large enterprise organizations. At
+            heart, I&apos;m someone who naturally gravitates toward finding
+            complex problems, understanding why they exist, and building
+            intuitive solutions that people actually enjoy using.
           </p>
 
-          <div className="mt-10 grid gap-4 sm:grid-cols-2">
-            {features.map((feature) => (
-              <div
-                key={feature.title}
-                className="relative flex items-start gap-4 overflow-hidden rounded-2xl px-4 py-5"
-                style={glassCardStyle}
+          <div className="mt-12 max-w-2xl">
+            <h3 className="font-landing text-xl font-semibold text-white md:text-2xl">
+              What I Do
+            </h3>
+            <p className="mt-4 text-base leading-relaxed text-white/65 md:text-lg">
+              I sit at the intersection of technology, business, and user
+              experience. Whether it&apos;s streamlining enterprise workflows,
+              launching community initiatives, or diving into AI-driven
+              features, I love taking complex ideas, turning them into scalable
+              products, and seeing the measurable impact they create.
+            </p>
+          </div>
+
+          <div className="mt-12 max-w-2xl">
+            <h3 className="font-landing text-xl font-semibold text-white md:text-2xl">
+              Education &amp; Background
+            </h3>
+            <ul className="mt-4 space-y-3 text-base leading-relaxed text-white/65 md:text-lg">
+              <li>
+                M.S. in Management — The George Washington University (In
+                Progress)
+              </li>
+              <li>
+                B.S. in Electrical &amp; Computer Engineering — George Mason
+                University
+              </li>
+            </ul>
+          </div>
+
+          <div className="mt-12 max-w-2xl">
+            <h3 className="font-landing text-xl font-semibold text-white md:text-2xl">
+              Looking Ahead
+            </h3>
+            <p className="mt-4 text-base leading-relaxed text-white/65 md:text-lg">
+              I&apos;m passionate about continuing my path as an AI Product
+              Manager—building smart, user-centric tools that solve real
+              problems and deliver high-value results.
+            </p>
+            <p className="mt-4 text-base leading-relaxed text-white/65 md:text-lg">
+              When I&apos;m not diving into product strategy or obsessing over
+              UX details, you can usually find me tinkering with new tech
+              concepts or bringing people together around innovative ideas.
+            </p>
+          </div>
+
+          <div className="mt-12 max-w-2xl">
+            <h3 className="font-landing text-xl font-semibold text-white md:text-2xl">
+              Let&apos;s Connect!
+            </h3>
+            <div className="mt-5 flex items-start gap-5">
+              <Link
+                href={LINKEDIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Connect on LinkedIn"
+                className="group relative inline-flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/20 bg-white/10 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.35),inset_0_-10px_18px_rgba(255,255,255,0.06)] transition-[transform,background-color] duration-300 hover:scale-[1.05] hover:bg-white/15"
               >
-                <div className="pointer-events-none absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#00D1FF]/15 shadow-[0_0_20px_rgba(0,209,255,0.35)] ring-1 ring-[#00D1FF]/50">
-                  <feature.icon className="h-5 w-5 text-[#00D1FF]" strokeWidth={1.75} />
-                </div>
-                <div>
-                  <h3 className="font-landing text-base font-semibold text-white">
-                    {feature.title}
-                  </h3>
-                  <p className="mt-1 text-sm leading-relaxed text-white/55">
-                    {feature.description}
-                  </p>
-                </div>
-              </div>
-            ))}
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-x-3 bottom-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent"
+                />
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent"
+                />
+                <span
+                  aria-hidden="true"
+                  className="text-xl leading-none transition-transform duration-300 group-hover:translate-x-0.5"
+                >
+                  →
+                </span>
+              </Link>
+              <p className="pt-1 text-base leading-relaxed text-white/65 md:text-lg">
+                Feel free to reach out on LinkedIn, if you&apos;d like to chat
+                about product management, AI, or collaborate on something cool.
+              </p>
+            </div>
           </div>
         </div>
       </div>
