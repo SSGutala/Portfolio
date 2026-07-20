@@ -64,50 +64,56 @@ const experiences = [
   },
 ];
 
-/** Shared centerline of the timeline track (px from left of track container). */
-const TRACK_CENTER = 28;
-
-
 export default function ExperienceSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const markerRefs = useRef<(HTMLSpanElement | null)[]>([]);
-  const [progress, setProgress] = useState(0);
+  const itemRefs = useRef<(HTMLElement | null)[]>([]);
   const [activeIndex, setActiveIndex] = useState(-1);
+  const [stemFills, setStemFills] = useState<number[]>(
+    () => experiences.map(() => 0)
+  );
 
   useEffect(() => {
     const scroller = scrollRef.current;
 
     const update = () => {
-      const track = trackRef.current;
       const pane = scrollRef.current;
-      if (!track || !pane) return;
+      if (!pane) return;
 
       const maxScroll = pane.scrollHeight - pane.clientHeight;
       const atBottom = maxScroll <= 0 || pane.scrollTop >= maxScroll - 2;
-
-      // Scroll-driven fill; snap to full when the last role is reached
-      let nextProgress =
-        maxScroll <= 0 ? 1 : Math.min(1, Math.max(0, pane.scrollTop / maxScroll));
-      if (atBottom) nextProgress = 1;
-      setProgress(nextProgress);
-
-      const trackRect = track.getBoundingClientRect();
-      const glowTipY = trackRect.top + trackRect.height * nextProgress;
+      const paneRect = pane.getBoundingClientRect();
+      const triggerY = paneRect.top + paneRect.height * 0.38;
 
       let nextActive = -1;
-      markerRefs.current.forEach((marker, index) => {
-        if (!marker) return;
-        const markerRect = marker.getBoundingClientRect();
-        const markerCenterY = markerRect.top + markerRect.height / 2;
-        // Activate once the glow tip reaches/passes the ring center
-        if (glowTipY >= markerCenterY - 2 || atBottom) {
+      const fills = experiences.map(() => 0);
+
+      itemRefs.current.forEach((el, index) => {
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const ringCenterY = rect.top + 14; // approx ring vertical center
+
+        if (triggerY >= ringCenterY || atBottom) {
           nextActive = index;
+        }
+
+        // Stem under this ring fills as scroll travels through this item
+        if (index < experiences.length - 1) {
+          const stemTop = ringCenterY + 12;
+          const nextEl = itemRefs.current[index + 1];
+          const stemBottom = nextEl
+            ? nextEl.getBoundingClientRect().top + 14 - 12
+            : rect.bottom;
+          const stemHeight = Math.max(1, stemBottom - stemTop);
+          const raw = (triggerY - stemTop) / stemHeight;
+          fills[index] = Math.min(1, Math.max(0, raw));
+          if (atBottom || nextActive > index) fills[index] = 1;
         }
       });
 
       if (atBottom) nextActive = experiences.length - 1;
+
       setActiveIndex(nextActive);
+      setStemFills(fills);
     };
 
     update();
@@ -141,64 +147,34 @@ export default function ExperienceSection() {
 
         <div
           ref={scrollRef}
-          className="relative z-0 min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 pb-16 pt-4 md:pl-4 md:pr-2 md:pb-24 md:pt-16 lg:pt-20 [scrollbar-width:thin] [scrollbar-color:rgba(0,209,255,0.35)_transparent]"
+          className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 pb-16 pt-4 md:px-2 md:pb-24 md:pt-16 lg:pt-20 [scrollbar-width:thin] [scrollbar-color:rgba(0,209,255,0.35)_transparent]"
         >
-          <div ref={trackRef} className="relative pl-2">
-            {/* Base track — centered on TRACK_CENTER */}
-            <div
-              className="absolute top-2 bottom-2 z-0 w-px bg-white/15"
-              style={{ left: TRACK_CENTER, transform: "translateX(-50%)" }}
-            />
+          <div className="flex flex-col">
+            {experiences.map((item, index) => {
+              const isActive = index <= activeIndex;
+              const isCurrent = index === activeIndex;
+              const isLast = index === experiences.length - 1;
+              const stemFill = stemFills[index] ?? 0;
 
-            {/* Neon progress fill — same centerline */}
-            <div
-              className="absolute top-2 z-0 w-px origin-top"
-              style={{
-                left: TRACK_CENTER,
-                transform: "translateX(-50%)",
-                height: `calc((100% - 1rem) * ${progress})`,
-                background:
-                  "linear-gradient(180deg, #00D1FF 0%, #38bdf8 55%, #00D1FF 100%)",
-                boxShadow:
-                  "0 0 8px rgba(0,209,255,0.9), 0 0 18px rgba(0,209,255,0.55), 0 0 32px rgba(0,209,255,0.35)",
-              }}
-            />
-
-            <div className="space-y-14 md:space-y-16">
-              {experiences.map((item, index) => {
-                const isActive = index <= activeIndex;
-                const isCurrent = index === activeIndex;
-
-                return (
-                  <article
-                    key={`${item.company}-${item.dates}`}
-                    className="relative pl-16 md:pl-[4.5rem]"
-                  >
-                    {/* Black disc masks the line so it does not pass through the ring */}
+              return (
+                <article
+                  key={`${item.company}-${item.dates}`}
+                  ref={(el) => {
+                    itemRefs.current[index] = el;
+                  }}
+                  className="flex gap-5 md:gap-7"
+                >
+                  {/* Timeline column: ring + stem centered on one axis */}
+                  <div className="flex w-5 shrink-0 flex-col items-center">
                     <span
-                      aria-hidden="true"
-                      className="absolute top-1.5 z-[1] h-4 w-4 rounded-full bg-black md:h-5 md:w-5"
-                      style={{
-                        left: TRACK_CENTER,
-                        transform: "translateX(-50%)",
-                      }}
-                    />
-
-                    {/* Thick glowing ring (hollow), centered on the track */}
-                    <span
-                      ref={(el) => {
-                        markerRefs.current[index] = el;
-                      }}
                       aria-hidden="true"
                       className={cn(
-                        "absolute top-1.5 z-[2] h-4 w-4 rounded-full bg-transparent transition-all duration-300 md:h-5 md:w-5",
+                        "relative z-[1] mt-1.5 h-4 w-4 shrink-0 rounded-full bg-transparent transition-all duration-300 md:h-5 md:w-5",
                         isActive
                           ? "border-[3px] border-[#00D1FF]"
                           : "border-2 border-white/35"
                       )}
                       style={{
-                        left: TRACK_CENTER,
-                        transform: "translateX(-50%)",
                         boxShadow: isActive
                           ? isCurrent
                             ? "0 0 0 3px rgba(0,209,255,0.18), 0 0 12px rgba(0,209,255,0.95), 0 0 26px rgba(0,209,255,0.5)"
@@ -207,6 +183,25 @@ export default function ExperienceSection() {
                       }}
                     />
 
+                    {!isLast && (
+                      <div className="relative mt-2 w-px min-h-[3rem] flex-1 bg-white/15">
+                        <div
+                          className="absolute inset-x-0 top-0 origin-top"
+                          style={{
+                            height: `${stemFill * 100}%`,
+                            background:
+                              "linear-gradient(180deg, #00D1FF 0%, #38bdf8 100%)",
+                            boxShadow:
+                              stemFill > 0
+                                ? "0 0 8px rgba(0,209,255,0.9), 0 0 18px rgba(0,209,255,0.55)"
+                                : "none",
+                          }}
+                        />
+                      </div>
+                    )}
+                  </div>
+
+                  <div className={cn("min-w-0 flex-1", !isLast && "pb-14 md:pb-16")}>
                     <h2
                       className={cn(
                         "font-landing text-2xl font-bold tracking-tight transition-colors duration-300 md:text-[1.75rem]",
@@ -230,10 +225,10 @@ export default function ExperienceSection() {
                         </li>
                       ))}
                     </ul>
-                  </article>
-                );
-              })}
-            </div>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </div>
