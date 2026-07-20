@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className="font-body antialiased">
         <SiteShell>
           <Header />
-          <main className="flex-grow">{children}</main>
+          <main className="min-h-0 flex-grow">{children}</main>
           <Footer />
         </SiteShell>
         <Toaster />
