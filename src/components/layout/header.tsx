@@ -1,142 +1,151 @@
-
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { usePathname } from "next/navigation";
+import { Github, Linkedin, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { ConnectButton } from "@/components/connect-button";
 
 const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Projects", href: "#projects" },
-  { name: "Consulting", href: "#consulting" },
-  { name: "Leadership", href: "#leadership" },
+  { name: "About", href: "/" },
+  { name: "Experience", href: "/experience" },
+  { name: "Projects", href: "/projects" },
+  { name: "Consulting", href: "/consulting" },
+  { name: "Leadership", href: "/leadership" },
 ];
+
+const socialLinks = [
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/sai-gutala/",
+    icon: Linkedin,
+  },
+  {
+    name: "GitHub",
+    href: "https://github.com/SSGutala",
+    icon: Github,
+  },
+];
+
+function isActivePath(pathname: string, href: string) {
+  if (href === "/") {
+    return pathname === "/";
+  }
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
-  const sectionRefs = useRef<{[key: string]: HTMLElement | null}>({});
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const isLanding = pathname === "/";
 
   useEffect(() => {
-    navItems.forEach(item => {
-      const id = item.href.substring(1);
-      sectionRefs.current[id] = document.getElementById(id);
-    });
-
-    const handleScroll = () => {
-      let currentSection = 'home';
-      let maxVisible = 0;
-
-      const viewportHeight = window.innerHeight;
-
-      for (const id in sectionRefs.current) {
-        const section = sectionRefs.current[id];
-        if (section) {
-          const rect = section.getBoundingClientRect();
-          
-          // If the section is not in the viewport, skip it
-          if (rect.bottom < 0 || rect.top > viewportHeight) {
-            continue;
-          }
-
-          const visibleHeight = Math.max(0, Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0));
-          
-          if (visibleHeight > maxVisible) {
-            maxVisible = visibleHeight;
-            currentSection = id;
-          }
-        }
-      }
-      
-      // Special case for top of the page for 'home'
-      if (window.scrollY < viewportHeight / 2) {
-         currentSection = 'home';
-      }
-      
-      // Special case for the end of the page
-      if (window.scrollY + window.innerHeight >= document.body.scrollHeight - 50) {
-        currentSection = navItems[navItems.length - 1].href.substring(1);
-      }
-
-      setActiveSection(currentSection);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 24);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); 
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [pathname]);
 
   return (
-    <>
-      <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="mx-auto flex h-16 max-w-6xl items-center px-6 md:px-8">
-          <Link href="/" className="mr-6 flex items-center space-x-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full border-[1.5px] border-primary">
-              <span className="font-serif text-sm font-semibold text-primary">SG</span>
-            </div>
-            <span className="text-[15px] font-extrabold uppercase tracking-[0.2em] text-primary">
-              Sri Gutala
-            </span>
-          </Link>
+    <header
+      className={cn(
+        "z-50 w-full text-white transition-colors duration-300",
+        isLanding ? "fixed top-0 left-0 right-0" : "sticky top-0",
+        scrolled || !isLanding
+          ? "border-b border-white/10 bg-black"
+          : "border-b border-transparent bg-transparent"
+      )}
+    >
+      <div className="mx-auto flex h-16 max-w-6xl items-center px-6 md:px-8">
+        <Link
+          href="/"
+          className="mr-6 font-landing text-[15px] font-extrabold uppercase tracking-[0.12em] text-white underline decoration-[#00D1FF] decoration-2 underline-offset-4"
+        >
+          Sri Gutala
+        </Link>
 
-          <nav className="hidden md:flex flex-1 items-center justify-center space-x-2 text-sm">
-            {navItems.map((item) => (
+        <nav className="hidden flex-1 items-center justify-center space-x-6 text-sm md:flex">
+          {navItems.map((item) => {
+            const active = isActivePath(pathname, item.href);
+            return (
               <Link
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  "nav-link",
-                  activeSection === item.href.substring(1) && "active"
+                  "font-medium tracking-wide transition-colors",
+                  active ? "text-white" : "text-white/65 hover:text-white"
+                )}
+              >
+                {item.name}
+              </Link>
+            );
+          })}
+        </nav>
+
+        <div className="flex flex-1 items-center justify-end gap-3">
+          <div className="hidden items-center gap-2 sm:flex">
+            {socialLinks.map((social) => (
+              <a
+                key={social.name}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.name}
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/25 text-white/70 transition-colors hover:border-white/60 hover:text-white"
+              >
+                <social.icon className="h-4 w-4" strokeWidth={1.5} />
+              </a>
+            ))}
+          </div>
+          <button
+            className="text-white md:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X /> : <Menu />}
+          </button>
+        </div>
+      </div>
+
+      {isMenuOpen && (
+        <div className="border-t border-white/10 bg-black/95 md:hidden">
+          <nav className="flex flex-col items-center space-y-4 py-4">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                onClick={() => setIsMenuOpen(false)}
+                className={cn(
+                  "rounded-md px-3 py-1 transition-colors",
+                  isActivePath(pathname, item.href)
+                    ? "bg-white text-black"
+                    : "text-white/70 hover:bg-white/10 hover:text-white"
                 )}
               >
                 {item.name}
               </Link>
             ))}
-          </nav>
-          
-          <div className="flex flex-1 items-center justify-end space-x-4">
-             <ConnectButton variant="outline">Connect</ConnectButton>
-            <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-md px-6">
-              <a href="https://docs.google.com/document/d/13ciZiL_jlkSxqxgCaEvAtzph2389z9EnutM0dO18NP8/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a>
-            </Button>
-            <button
-              className="md:hidden"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? <X /> : <Menu />}
-            </button>
-          </div>
-        </div>
-
-        {isMenuOpen && (
-          <div className="md:hidden">
-            <nav className="flex flex-col items-center space-y-4 py-4 border-t border-border">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={cn(
-                    "transition-colors hover:text-primary-foreground hover:bg-primary",
-                     activeSection === item.href.substring(1) ? "text-primary-foreground bg-primary" : "text-muted-foreground",
-                     "rounded-md px-3 py-1"
-                  )}
+            <div className="flex items-center gap-3 pt-2 sm:hidden">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.name}
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/25 text-white/70"
                 >
-                  {item.name}
-                </Link>
+                  <social.icon className="h-4 w-4" strokeWidth={1.5} />
+                </a>
               ))}
-            </nav>
-          </div>
-        )}
-      </header>
-    </>
+            </div>
+          </nav>
+        </div>
+      )}
+    </header>
   );
 }

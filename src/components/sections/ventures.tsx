@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { glassCardStyle } from "@/lib/glass-styles";
 
 const projects = [
   {
@@ -9,25 +10,9 @@ const projects = [
     description:
       "An AI-powered platform helping founders, PMs, and builders move from raw ideas to structured execution.",
     logo: (
-      <div className="w-20 h-20 rounded-2xl flex items-center justify-center bg-primary shadow-lg">
-        <span className="text-4xl font-serif font-bold text-primary-foreground">A</span>
+      <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-[#00D1FF]/15 shadow-[0_0_24px_rgba(0,209,255,0.25)] ring-1 ring-[#00D1FF]/40">
+        <span className="font-landing text-4xl font-bold text-[#00D1FF]">A</span>
       </div>
-    ),
-  },
-  {
-    slug: "hoop-foundation",
-    name: "Hoop Foundation",
-    tagline: "Social Impact Learning Initiative",
-    description:
-      "A hybrid community + online learning model expanding education access to underserved children in India.",
-    logo: (
-      <Image
-        src="https://raw.githubusercontent.com/SSGutala/Portfolio/61f360425f33f225faeffc56b46f36a656138480/hooplogo.jpg"
-        alt="Hoop Foundation Logo"
-        width={80}
-        height={80}
-        className="rounded-2xl object-cover shadow-lg"
-      />
     ),
   },
   {
@@ -37,13 +22,13 @@ const projects = [
     description:
       "Premium minimal lifestyle activewear with subtle cultural expression, designed for everyday wear.",
     logo: (
-      <div className="w-20 h-20 rounded-2xl bg-black flex items-center justify-center p-2 shadow-lg">
+      <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-black p-2 shadow-lg ring-1 ring-white/15">
         <Image
           src="https://raw.githubusercontent.com/SSGutala/Portfolio/5151bb3c20f4821795f6d93526e6d73138d14986/Veera-logo.png"
           alt="Veera Apparel Logo"
           width={64}
           height={64}
-          className="mix-blend-lighten object-contain"
+          className="object-contain mix-blend-lighten"
         />
       </div>
     ),
@@ -60,7 +45,7 @@ const projects = [
         alt="Alphawave Logo"
         width={80}
         height={80}
-        className="rounded-2xl object-contain shadow-lg"
+        className="rounded-2xl object-contain shadow-lg ring-1 ring-white/10"
       />
     ),
   },
@@ -76,94 +61,57 @@ const projects = [
         alt="SuperStar Logo"
         width={80}
         height={80}
-        className="rounded-2xl object-contain shadow-lg"
+        className="rounded-2xl object-contain shadow-lg ring-1 ring-white/10"
       />
-    ),
-  },
-  {
-    slug: "youngpreneurs",
-    name: "YoungPreneurs",
-    tagline: "Startup Founder Network",
-    description:
-      "A mobile platform connecting startup founders, co-founders, and early investors to build together.",
-    logo: (
-      <div className="w-20 h-20 rounded-2xl flex items-center justify-center bg-gradient-to-b from-yellow-400 to-orange-500 shadow-lg">
-        <svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg" className="w-12 h-12">
-          <defs>
-            <linearGradient id="grad-card" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" style={{ stopColor: "white", stopOpacity: 1 }} />
-            </linearGradient>
-          </defs>
-          <text
-            x="50%"
-            y="50%"
-            dominantBaseline="middle"
-            textAnchor="middle"
-            fontSize="40"
-            fontWeight="100"
-            fontFamily="sans-serif"
-            fill="url(#grad-card)"
-          >
-            Yp
-          </text>
-        </svg>
-      </div>
-    ),
-  },
-  {
-    slug: "provaloh",
-    name: "Provaloh",
-    tagline: "Virtual Trial Room App",
-    description:
-      "A virtual try-on app blending fashion with technology to reduce uncertainty in online clothing purchases.",
-    logo: (
-      <div className="w-20 h-20 rounded-2xl flex items-center justify-center bg-gradient-to-r from-blue-600 to-fuchsia-600 shadow-lg px-1">
-        <span className="text-xs font-light text-white tracking-widest text-center leading-tight">Provaloh</span>
-      </div>
     ),
   },
 ];
 
 export default function VenturesSection() {
   return (
-    <section id="projects" className="pt-0 md:pt-0 min-h-[90vh] py-20 md:py-32">
-      <div className="max-w-6xl mx-auto px-6 md:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">Projects</h2>
-          <p className="text-muted-foreground mt-4 text-lg max-w-xl mx-auto">
+    <section className="relative min-h-[90vh] overflow-hidden bg-black py-20 text-white md:py-32">
+      <div className="pointer-events-none absolute -left-20 top-32 h-72 w-72 rounded-full bg-[#00D1FF]/10 blur-[80px]" />
+
+      <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8">
+        <div className="mb-16 text-center">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.28em] text-[#00D1FF]">
+            Projects
+          </p>
+          <h2 className="font-landing text-3xl font-bold tracking-tight md:text-4xl lg:text-[2.75rem]">
+            Projects
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-lg text-white/65">
             A collection of ventures, products, and initiatives built from concept to execution.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
             <Link
               key={project.slug}
               href={`/projects/${project.slug}`}
-              className="group flex flex-col items-center text-center p-8 rounded-2xl border border-border bg-card hover:bg-secondary/40 hover:border-primary/30 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              className="group relative flex flex-col items-center overflow-hidden rounded-2xl p-8 text-center transition-transform duration-300 hover:-translate-y-1"
+              style={glassCardStyle}
             >
-              {/* Logo */}
+              <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+
               <div className="mb-5 transition-transform duration-300 group-hover:scale-105">
                 {project.logo}
               </div>
 
-              {/* Name */}
-              <h3 className="text-lg font-bold mb-1 group-hover:text-primary transition-colors">
+              <h3 className="mb-1 font-landing text-lg font-bold text-white transition-colors group-hover:text-[#00D1FF]">
                 {project.name}
               </h3>
 
-              {/* Tagline */}
-              <p className="text-xs font-medium text-primary/70 uppercase tracking-wider mb-3">
+              <p className="mb-3 text-xs font-medium uppercase tracking-wider text-[#00D1FF]/80">
                 {project.tagline}
               </p>
 
-              {/* Description */}
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-sm leading-relaxed text-white/55">
                 {project.description}
               </p>
 
-              {/* Arrow hint */}
-              <span className="mt-5 text-xs text-muted-foreground flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+              <span className="mt-5 flex items-center gap-1 text-xs text-white/50 opacity-0 transition-opacity group-hover:opacity-100">
                 View project
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

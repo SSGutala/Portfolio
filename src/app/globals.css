@@ -5,71 +5,51 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    background-color: #000000;
   }
 
   :root {
-    --background: 33 42% 95%; /* Cream */
-    --foreground: 0 0% 17%;
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
 
-    --card: 33 42% 96%;
-    --card-foreground: 0 0% 17%;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 33 42% 96%;
-    --popover-foreground: 0 0% 17%;
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 215 64% 12%; /* Navy */
-    --primary-foreground: 33 42% 95%;
+    --primary: 190 100% 50%;
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 0 0% 100%;
-    --secondary-foreground: 215 64% 12%;
-    
-    --copper: 20 56% 52%; /* Accent orange/copper */
-    
-    --muted: 36 43% 95%; /* Adjusted for more beige */
-    --muted-foreground: 0 0% 33%; /* #555555 */
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 98%;
 
-    --accent: 35 15% 89%; /* Slightly darker than border */
-    --accent-foreground: 25 46% 12%;
+    --copper: 190 100% 50%;
 
-    --destructive: 0 84.2% 60.2%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 0 0% 12%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 35 15% 83%; /* #DAD4CD */
-    --input: 35 15% 83%;
-    --ring: 25 46% 12%;
-    
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 190 100% 50%;
+
     --radius: 0.5rem;
   }
 
-  .dark {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 10.2%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 10.2%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 82%;
-    --accent: 0 0% 6.7%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 10.2%;
-    --input: 0 0% 10.2%;
-    --ring: 0 0% 83.1%;
-  }
-}
-
-@layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
+    background-color: #000000;
+    color: #fafafa;
   }
 }
 
@@ -78,9 +58,59 @@
     @apply font-medium tracking-wide transition-colors;
   }
   .nav-link.active {
-    @apply text-foreground border-b-2 border-copper px-1 py-1;
+    @apply text-white;
   }
   .nav-link:not(.active) {
-    @apply text-muted-foreground hover:text-foreground hover:border-b-2 hover:border-border px-1 py-1 border-b-2 border-transparent;
+    @apply text-white/65 hover:text-white;
   }
+}
+
+@keyframes typewriter-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  font-weight: 400;
+  color: #ffffff;
+  animation: typewriter-blink 1s step-end infinite;
+}
+
+.explore-table {
+  border-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.explore-table th {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.explore-table td {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.project-prose h1,
+.project-prose h2,
+.project-prose h3,
+.project-prose h4,
+.project-prose h5 {
+  color: #ffffff;
+}
+
+.project-prose a {
+  color: #00d1ff;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.project-prose a:hover {
+  color: rgba(0, 209, 255, 0.8);
 }
