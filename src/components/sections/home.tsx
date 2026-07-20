@@ -37,7 +37,7 @@ export default function HomeSection() {
 
           <h1 className="font-landing text-4xl font-bold leading-[1.15] tracking-tight sm:text-5xl md:text-6xl lg:text-[4.25rem]">
             <span className="block">I&apos;m Sri</span>
-            <span className="mt-1 block">
+            <span className="mt-1 block whitespace-nowrap">
               A{" "}
               <TypewriterText className="text-[#00BFFF]" />
             </span>
