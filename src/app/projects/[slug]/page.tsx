@@ -1,21 +1,15 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import AriaProject from "@/components/projects/aria";
-import HoopFoundationProject from "@/components/projects/hoop-foundation";
 import VeeraApparelProject from "@/components/projects/veera-apparel";
 import AlphawaveProject from "@/components/projects/alphawave";
 import SuperStarProject from "@/components/projects/superstar";
-import YoungPreneursProject from "@/components/projects/youngpreneurs";
-import ProvalohProject from "@/components/projects/provaloh";
 
 const projectComponents: Record<string, React.ComponentType> = {
   aria: AriaProject,
-  "hoop-foundation": HoopFoundationProject,
   "veera-apparel": VeeraApparelProject,
   "alphawave-technologies": AlphawaveProject,
   superstar: SuperStarProject,
-  youngpreneurs: YoungPreneursProject,
-  provaloh: ProvalohProject,
 };
 
 export function generateStaticParams() {

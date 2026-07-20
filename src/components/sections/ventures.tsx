@@ -15,24 +15,7 @@ const projects = [
     ),
   },
   {
-    slug: "hoop-foundation",
-    name: "Hoop Foundation",
-    tagline: "Social Impact Learning Initiative",
-    description:
-      "A hybrid community + online learning model expanding education access to underserved children in India.",
-    logo: (
-      <Image
-        src="https://raw.githubusercontent.com/SSGutala/Portfolio/61f360425f33f225faeffc56b46f36a656138480/hooplogo.jpg"
-        alt="Hoop Foundation Logo"
-        width={80}
-        height={80}
-        className="rounded-2xl object-cover shadow-lg"
-      />
-    ),
-  },
-  {
-    slug: "veera-apparel",
-    name: "Veera Apparel",
+    slug: "veera-apparel",    name: "Veera Apparel",
     tagline: "Lifestyle Activewear Venture",
     description:
       "Premium minimal lifestyle activewear with subtle cultural expression, designed for everyday wear.",
@@ -78,48 +61,6 @@ const projects = [
         height={80}
         className="rounded-2xl object-contain shadow-lg"
       />
-    ),
-  },
-  {
-    slug: "youngpreneurs",
-    name: "YoungPreneurs",
-    tagline: "Startup Founder Network",
-    description:
-      "A mobile platform connecting startup founders, co-founders, and early investors to build together.",
-    logo: (
-      <div className="w-20 h-20 rounded-2xl flex items-center justify-center bg-gradient-to-b from-yellow-400 to-orange-500 shadow-lg">
-        <svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg" className="w-12 h-12">
-          <defs>
-            <linearGradient id="grad-card" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" style={{ stopColor: "white", stopOpacity: 1 }} />
-            </linearGradient>
-          </defs>
-          <text
-            x="50%"
-            y="50%"
-            dominantBaseline="middle"
-            textAnchor="middle"
-            fontSize="40"
-            fontWeight="100"
-            fontFamily="sans-serif"
-            fill="url(#grad-card)"
-          >
-            Yp
-          </text>
-        </svg>
-      </div>
-    ),
-  },
-  {
-    slug: "provaloh",
-    name: "Provaloh",
-    tagline: "Virtual Trial Room App",
-    description:
-      "A virtual try-on app blending fashion with technology to reduce uncertainty in online clothing purchases.",
-    logo: (
-      <div className="w-20 h-20 rounded-2xl flex items-center justify-center bg-gradient-to-r from-blue-600 to-fuchsia-600 shadow-lg px-1">
-        <span className="text-xs font-light text-white tracking-widest text-center leading-tight">Provaloh</span>
-      </div>
     ),
   },
 ];
