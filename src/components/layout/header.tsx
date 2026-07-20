@@ -64,7 +64,7 @@ export default function Header() {
               "fixed top-0 left-0 right-0",
               scrolled
                 ? "border-b border-white/10 bg-black text-white"
-                : "border-b border-transparent bg-transparent text-white"
+                : "border-b border-transparent bg-black/0 text-white"
             )
           : "sticky top-0 border-b border-border/40 bg-background/95 text-foreground backdrop-blur supports-[backdrop-filter]:bg-background/60"
       )}
