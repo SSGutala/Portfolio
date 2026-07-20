@@ -29,7 +29,7 @@ export default function AboutSection() {
             About Me
           </p>
           <h2 className="font-landing text-3xl font-bold leading-tight tracking-tight text-white md:text-4xl lg:text-[2.75rem]">
-            Hi, I&apos;m Sai! 👋
+            Hi, I&apos;m Sri! 👋
           </h2>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/65 md:text-lg">
             Over the past three+ years, I&apos;ve been building products across
