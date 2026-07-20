@@ -24,7 +24,7 @@ const experiences = [
 export default function ExperienceSection() {
   return (
     <section className="relative min-h-[90vh] overflow-hidden bg-black py-20 text-white md:py-32">
-      <div className="pointer-events-none absolute right-0 top-20 h-72 w-72 rounded-full bg-[#00D1FF]/10 blur-[100px]" />
+      <div className="pointer-events-none absolute right-0 top-20 h-72 w-72 rounded-full bg-[#00D1FF]/10 blur-[80px]" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8">
         <div className="mx-auto mb-16 max-w-3xl text-center">

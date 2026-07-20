@@ -19,8 +19,8 @@ const features = [
 export default function AboutSection() {
   return (
     <section className="relative overflow-hidden bg-black py-20 text-white md:py-28">
-      <div className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-[#00D1FF]/10 blur-[100px]" />
-      <div className="pointer-events-none absolute bottom-0 right-0 h-80 w-80 rounded-full bg-[#00D1FF]/[0.07] blur-[120px]" />
+      <div className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-[#00D1FF]/10 blur-[80px]" />
+      <div className="pointer-events-none absolute bottom-0 right-0 h-80 w-80 rounded-full bg-[#00D1FF]/[0.07] blur-[90px]" />
 
       <div className="relative z-10 mx-auto grid max-w-6xl items-stretch gap-10 px-6 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.2fr)] md:gap-14 md:px-8">
         <div

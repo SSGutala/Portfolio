@@ -70,7 +70,7 @@ const projects = [
 export default function VenturesSection() {
   return (
     <section className="relative min-h-[90vh] overflow-hidden bg-black py-20 text-white md:py-32">
-      <div className="pointer-events-none absolute -left-20 top-32 h-72 w-72 rounded-full bg-[#00D1FF]/10 blur-[100px]" />
+      <div className="pointer-events-none absolute -left-20 top-32 h-72 w-72 rounded-full bg-[#00D1FF]/10 blur-[80px]" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8">
         <div className="mb-16 text-center">

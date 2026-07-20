@@ -18,13 +18,13 @@
     --popover: 0 0% 7%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 190 100% 50%; /* Cyan accent */
+    --primary: 190 100% 50%;
     --primary-foreground: 0 0% 0%;
 
     --secondary: 0 0% 12%;
     --secondary-foreground: 0 0% 98%;
 
-    --copper: 190 100% 50%; /* Align accent with landing cyan */
+    --copper: 190 100% 50%;
 
     --muted: 0 0% 12%;
     --muted-foreground: 0 0% 65%;
@@ -41,15 +41,15 @@
 
     --radius: 0.5rem;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
     background-color: #000000;
+    color: #fafafa;
   }
 }
 
@@ -63,19 +63,6 @@
   .nav-link:not(.active) {
     @apply text-white/65 hover:text-white;
   }
-}
-
-/* Dark table surfaces used in project detail pages */
-.explore-table {
-  @apply border-white/10 bg-white/[0.04];
-}
-
-.explore-table th {
-  @apply text-white/80;
-}
-
-.explore-table td {
-  @apply text-white/65;
 }
 
 @keyframes typewriter-blink {
@@ -97,15 +84,33 @@
   animation: typewriter-blink 1s step-end infinite;
 }
 
-/* Project detail prose on dark pages */
+.explore-table {
+  border-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.explore-table th {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.explore-table td {
+  color: rgba(255, 255, 255, 0.65);
+}
+
 .project-prose h1,
 .project-prose h2,
 .project-prose h3,
 .project-prose h4,
 .project-prose h5 {
-  @apply text-white;
+  color: #ffffff;
 }
 
 .project-prose a {
-  @apply text-[#00D1FF] underline underline-offset-2 hover:text-[#00D1FF]/80;
+  color: #00d1ff;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.project-prose a:hover {
+  color: rgba(0, 209, 255, 0.8);
 }

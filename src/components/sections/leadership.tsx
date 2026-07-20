@@ -2,7 +2,7 @@ export default function LeadershipSection() {
   return (
     <section className="relative min-h-[90vh] overflow-hidden bg-black py-20 text-white md:py-32">
        <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-8">
-        <div className="pointer-events-none absolute -right-10 top-24 h-72 w-72 rounded-full bg-[#00D1FF]/10 blur-[100px]" />
+        <div className="pointer-events-none absolute -right-10 top-24 h-72 w-72 rounded-full bg-[#00D1FF]/10 blur-[80px]" />
         <div className="relative z-10 max-w-3xl mx-auto text-center mb-16">
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.28em] text-[#00D1FF]">Leadership</p>
           <h2 className="font-landing text-3xl font-bold tracking-tight md:text-4xl lg:text-[2.75rem]">Leadership</h2>
