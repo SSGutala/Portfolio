@@ -65,7 +65,8 @@ const experiences = [
 ];
 
 /** Shared centerline of the timeline track (px from left of track container). */
-const TRACK_CENTER = 10;
+const TRACK_CENTER = 28;
+
 
 export default function ExperienceSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -140,18 +141,18 @@ export default function ExperienceSection() {
 
         <div
           ref={scrollRef}
-          className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 pb-16 pt-4 md:px-0 md:pb-24 md:pt-16 lg:pt-20 [scrollbar-width:thin] [scrollbar-color:rgba(0,209,255,0.35)_transparent]"
+          className="relative z-0 min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 pb-16 pt-4 md:pl-4 md:pr-2 md:pb-24 md:pt-16 lg:pt-20 [scrollbar-width:thin] [scrollbar-color:rgba(0,209,255,0.35)_transparent]"
         >
-          <div ref={trackRef} className="relative">
+          <div ref={trackRef} className="relative pl-2">
             {/* Base track — centered on TRACK_CENTER */}
             <div
-              className="absolute top-2 bottom-2 w-px bg-white/15"
+              className="absolute top-2 bottom-2 z-0 w-px bg-white/15"
               style={{ left: TRACK_CENTER, transform: "translateX(-50%)" }}
             />
 
             {/* Neon progress fill — same centerline */}
             <div
-              className="absolute top-2 w-px origin-top"
+              className="absolute top-2 z-0 w-px origin-top"
               style={{
                 left: TRACK_CENTER,
                 transform: "translateX(-50%)",
@@ -171,16 +172,26 @@ export default function ExperienceSection() {
                 return (
                   <article
                     key={`${item.company}-${item.dates}`}
-                    className="relative pl-10 md:pl-12"
+                    className="relative pl-16 md:pl-[4.5rem]"
                   >
-                    {/* Thick glowing ring, centered on the track line */}
+                    {/* Black disc masks the line so it does not pass through the ring */}
+                    <span
+                      aria-hidden="true"
+                      className="absolute top-1.5 z-[1] h-4 w-4 rounded-full bg-black md:h-5 md:w-5"
+                      style={{
+                        left: TRACK_CENTER,
+                        transform: "translateX(-50%)",
+                      }}
+                    />
+
+                    {/* Thick glowing ring (hollow), centered on the track */}
                     <span
                       ref={(el) => {
                         markerRefs.current[index] = el;
                       }}
                       aria-hidden="true"
                       className={cn(
-                        "absolute top-1.5 h-4 w-4 rounded-full bg-transparent transition-all duration-300 md:h-5 md:w-5",
+                        "absolute top-1.5 z-[2] h-4 w-4 rounded-full bg-transparent transition-all duration-300 md:h-5 md:w-5",
                         isActive
                           ? "border-[3px] border-[#00D1FF]"
                           : "border-2 border-white/35"
