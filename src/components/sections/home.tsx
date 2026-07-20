@@ -51,10 +51,26 @@ export default function HomeSection() {
 
           <Link
             href="/projects"
-            className="mt-10 inline-flex items-center gap-3 rounded-full border border-white/80 px-8 py-3.5 text-sm font-medium tracking-wide text-white transition-colors hover:bg-white hover:text-black"
+            className="group relative mt-10 inline-flex items-center gap-3 overflow-hidden rounded-full px-8 py-3.5 text-sm font-medium tracking-wide text-white transition-[transform,box-shadow] duration-300 hover:scale-[1.02]"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.05) 45%, rgba(255,255,255,0.08) 100%)",
+              backdropFilter: "blur(18px) saturate(1.35)",
+              WebkitBackdropFilter: "blur(18px) saturate(1.35)",
+              boxShadow:
+                "inset 0 1px 0 rgba(255,255,255,0.35), inset 0 -1px 0 rgba(255,255,255,0.08), inset 0 -10px 18px rgba(255,255,255,0.06), 0 0 0 1px rgba(255,255,255,0.18), 0 8px 24px rgba(0,0,0,0.35)",
+            }}
           >
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-6 bottom-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent"
+            />
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent"
+            />
             Explore Projects
-            <span aria-hidden="true" className="text-base leading-none">
+            <span aria-hidden="true" className="text-base leading-none transition-transform group-hover:translate-x-0.5">
               →
             </span>
           </Link>
