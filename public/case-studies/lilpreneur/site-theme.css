@@ -1,0 +1,7 @@
+/* Site theme: black page background to match the portfolio. Only text that sits
+   directly on the page is lightened; every box keeps its original colors. */
+body{background:#000;color:var(--body);--ink:#FFFFFF;--body:#C9CDD6;--muted:#9AA3B2;--link:#EDB55B}
+a{color:var(--link)}
+.frame>b{color:var(--ink)}
+:is(.pill,.topnav a.cta,.receipt,.gap,.ps div:not(.hd),.persona,.jm>div,.band,.board,.screen,.canvas,.about){--ink:#1F3559;--body:#5B6779;--muted:#7C8696;--link:#1F3559}
+:where(.receipt,.gap,.ps div:not(.hd),.persona,.jm>div,.band,.board,.screen,.canvas,.about){color:var(--body)}

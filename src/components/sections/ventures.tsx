@@ -4,6 +4,42 @@ import { glassCardStyle } from "@/lib/glass-styles";
 
 const projects = [
   {
+    slug: "closet-ai",
+    name: "Closet AI",
+    tagline: "AI Closet Assistant",
+    description:
+      "Recommends complete outfits for any occasion, built only from the clothes you already own.",
+    logo: (
+      <div className="flex h-20 w-44 items-center justify-center rounded-2xl bg-black px-3 shadow-lg ring-1 ring-white/15">
+        <Image
+          src="/closetai-logo.png"
+          alt="Closet AI Logo"
+          width={152}
+          height={48}
+          className="object-contain"
+        />
+      </div>
+    ),
+  },
+  {
+    slug: "lilpreneur",
+    name: "LilPreneur",
+    tagline: "Kids Business Simulator",
+    description:
+      "A story-driven simulation that teaches kids 7 to 12 real entrepreneurship, one decision at a time.",
+    logo: (
+      <div className="flex h-20 w-28 items-center justify-center rounded-2xl bg-white p-1.5 shadow-lg ring-1 ring-white/10">
+        <Image
+          src="/lilpreneur-logo.png"
+          alt="LilPreneur Logo"
+          width={100}
+          height={69}
+          className="object-contain"
+        />
+      </div>
+    ),
+  },
+  {
     slug: "aria",
     name: "Aria",
     tagline: "AI Product Workflow Platform",

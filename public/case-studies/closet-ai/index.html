@@ -1,0 +1,504 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Closet AI Product Portfolio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one centered case-study column under a plum banner, same order as the LilPreneur portfolio: overview, challenge, problems/solutions, personas, journey map, define, ideation, prototype, stories, risks, pricing, canvas, about. Single light theme by choice, to match the Demo Day deck. */
+:root{
+  color-scheme:light;
+  --bg:#FBF9FB; --surface:#FFFFFF; --ink:#1B1B30; --body:#555A6E; --muted:#7D8194;
+  --rule:#E4DEE6; --plum:#5B1B3A; --plum-2:#7D2E55; --on-plum:#FFFFFF; --on-plum-soft:#EBD3E0;
+  --coral:#D9512F; --coral-wash:#FCEEE9; --mist:#F3F3F9; --plum-wash:#F4E8EE; --mauve:#A8557C;
+  --note-a:#F6DDE8; --note-b:#FBDDD2; --note-c:#E3E3F3; --note-d:#EADCF0;
+  --display:"PT Serif",Cambria,Georgia,"Times New Roman",serif;
+  --text:"Source Sans 3",Calibri,"Segoe UI",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--body);font-family:var(--text);font-size:16.5px;line-height:1.6;padding-inline:20px;padding-block:24px 64px}
+.page{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:52px}
+.topnav{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:center;font-size:14.5px;font-weight:500;background:var(--plum);padding:14px 22px;border-radius:14px}
+.topnav b{font-family:var(--display);font-size:19px;font-weight:700;color:var(--on-plum);margin-right:auto;letter-spacing:.04em}
+.topnav a{color:var(--on-plum);text-decoration:none;opacity:.9}
+.topnav a:hover{opacity:1}
+.topnav a.cta{background:var(--on-plum);color:var(--plum);padding:7px 18px;border-radius:999px;font-weight:600;opacity:1}
+a{color:var(--plum)}
+a:focus-visible{outline:2px solid var(--coral);outline-offset:2px}
+.banner{position:relative;overflow:hidden;background:var(--plum);color:var(--on-plum);padding:64px 32px;display:flex;flex-direction:column;gap:14px;margin-top:-28px;border-radius:14px}
+.banner::before,.banner::after{content:"";position:absolute;border-radius:50%;background:var(--plum-2);width:300px;height:300px}
+.banner::before{right:-90px;top:-110px}
+.banner::after{left:-150px;bottom:-190px}
+.banner>*{position:relative;z-index:1}
+.banner h1{font-family:var(--display);font-size:clamp(34px,6.5vw,56px);font-weight:700;margin:0;line-height:1.1;text-wrap:balance;max-width:16ch}
+.pill{align-self:flex-start;color:var(--on-plum-soft);font-size:12.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.banner p{margin:0;font-size:19px;max-width:46ch;color:var(--on-plum-soft)}
+section{display:flex;flex-direction:column;gap:16px;scroll-margin-top:16px}
+h2,h3,h4{font-family:var(--display);color:var(--ink);margin:0;line-height:1.15;text-wrap:balance}
+h2{font-size:clamp(28px,4.5vw,38px);font-weight:700;text-align:center;margin-bottom:6px}
+h3{font-size:21px;font-weight:700;margin-top:6px}
+p{margin:0;max-width:70ch} ul,ol{margin:0;padding-left:20px;max-width:70ch} li{margin-bottom:4px}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:start}
+.split>div:first-child{display:flex;flex-direction:column;gap:14px;min-width:0}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;font-size:15px}
+.meta span,.glabel{display:block;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--mauve)}
+.quote{background:var(--mist);border-radius:12px;padding:22px 26px;display:flex;flex-direction:column;gap:10px}
+.quote::before{content:"\201C";font-family:var(--display);font-size:46px;line-height:.6;color:var(--coral);font-style:italic;padding-top:12px}
+.quote p{font-family:var(--display);font-style:italic;font-size:21px;color:var(--ink)}
+.quote span{font-size:14px;color:var(--muted)}
+.gap{border-radius:12px;border:1.5px dashed var(--coral);background:var(--coral-wash);padding:12px 16px;font-size:15px;color:var(--ink);max-width:74ch}
+.gap::before{content:"Needs your input";display:block;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);margin-bottom:2px}
+.slot{border:2px dashed var(--mauve);background:var(--plum-wash);border-radius:14px;display:grid;place-items:center;text-align:center;padding:20px;color:var(--plum);font-weight:600;font-size:15px;max-width:100%}
+.slot small{display:block;font-weight:400;color:var(--body);font-size:13.5px}
+.slot.wide{aspect-ratio:16/9}.slot.phone{aspect-ratio:9/16;max-height:420px;width:100%}.slot.sq{aspect-ratio:4/3}
+/* problems / solutions */
+.ps{display:grid;grid-template-columns:1fr 1fr;max-width:660px;width:100%;margin:0 auto;text-align:center}
+.ps .hd{font-size:12.5px;letter-spacing:.25em;text-transform:uppercase;font-weight:700;color:var(--ink);padding:10px}
+.ps div:not(.hd){padding:16px 14px;font-size:15.5px;font-weight:500;color:var(--ink);background:var(--mist);border-bottom:2px solid var(--bg)}
+.ps div:not(.hd):nth-child(even){background:var(--plum-wash)}
+/* persona */
+.persona{background:var(--surface);border:1px solid var(--rule);border-radius:14px;overflow:hidden}
+.persona header{background:var(--plum);color:var(--on-plum);display:flex;justify-content:space-between;gap:12px;padding:10px 18px;font-family:var(--display);font-weight:700;font-size:17px}
+.pbody{display:grid;grid-template-columns:170px minmax(0,1fr) minmax(0,1fr);gap:22px;padding:18px;font-size:14.5px}
+.pbody>div{display:flex;flex-direction:column;gap:10px;min-width:0}
+.avatar{border-radius:12px;aspect-ratio:1;max-width:100%;background:var(--plum-wash);display:grid;place-items:center;font-family:var(--display);font-size:44px;font-weight:700;color:var(--plum)}
+.persona h4{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mauve);font-family:var(--text);font-weight:700}
+.persona ul{padding-left:16px}
+.facts{margin:0;display:grid;gap:2px}.facts b{color:var(--ink)}
+.slider{display:grid;grid-template-columns:1fr 1fr;font-size:11.5px;color:var(--muted);row-gap:2px}
+.slider span:nth-child(2){text-align:right}
+.slider i{grid-column:1/-1;height:5px;background:var(--plum-wash);position:relative;display:block}
+.slider i::after{content:"";position:absolute;top:-3px;left:var(--p);width:10px;height:11px;background:var(--plum)}
+.bar{font-size:12.5px}.bar i{display:block;height:7px;background:var(--plum-wash)}.bar i::after{content:"";display:block;height:100%;width:var(--p);background:var(--plum-2)}
+/* journey */
+.scroll{overflow-x:auto}
+.jm{display:grid;grid-template-columns:100px repeat(7,minmax(0,1fr));gap:4px;min-width:900px;font-size:13px;line-height:1.4}
+.jm>div{background:var(--surface);border:1px solid var(--rule);padding:8px;border-radius:8px}
+.jm .lab{background:var(--mist);color:var(--ink);font-size:11px;letter-spacing:.05em;text-transform:uppercase;font-weight:700;display:flex;align-items:center}
+.jm .ph{background:var(--plum);color:var(--on-plum);border-color:var(--plum);font-weight:700;text-align:center;font-size:13.5px}
+.jm .curve{grid-column:2/-1;padding:0}
+.jm svg{display:block;width:100%;height:90px}
+.band{border-radius:14px;background:var(--plum);padding:30px 32px;display:flex;flex-direction:column;gap:8px}
+.band u{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--on-plum-soft)}
+.band p{font-family:var(--display);font-size:21px;font-style:italic;color:var(--on-plum);max-width:62ch}
+/* boards */
+.board{background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:14px}
+.board .title{background:var(--plum);color:var(--on-plum);text-align:center;font-weight:700;padding:8px 18px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;border-radius:999px;align-self:center}
+.lane{display:grid;grid-template-columns:120px minmax(0,1fr);gap:12px;align-items:center}
+.lane .pain{background:var(--plum);color:var(--on-plum);border-radius:50%;aspect-ratio:1;display:grid;place-items:center;text-align:center;font-size:13px;font-weight:700;padding:10px;max-width:110px}
+.notes{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:8px}
+.note{border-radius:6px;background:var(--note-a);color:var(--ink);padding:10px;font-size:13px;line-height:1.3;min-height:74px;box-shadow:1px 2px 0 var(--rule);display:flex;align-items:center}
+.note.b{background:var(--note-b)}.note.c{background:var(--note-c)}.note.d{background:var(--note-d)}
+.note.big{font-size:14.5px;font-weight:700;min-height:96px}
+.note.pick{outline:3px solid var(--plum);outline-offset:1px}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.steps>div{background:var(--mist);border-radius:12px;padding:22px;display:flex;flex-direction:column;gap:8px;font-size:15px}
+.steps i{font-style:normal;width:40px;height:40px;border-radius:50%;background:var(--plum);color:var(--on-plum);display:grid;place-items:center;font-weight:700}
+.steps b{font-family:var(--display);color:var(--ink);font-size:18px}
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px}
+.shot{display:block;width:100%;border:1px solid var(--rule);border-radius:14px}
+.demo{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:32px;align-items:center}
+.demo video{display:block;width:100%;aspect-ratio:524/980;border:1px solid var(--rule);border-radius:18px;background:var(--mist)}
+.demo>div{display:flex;flex-direction:column;gap:12px;min-width:0}
+.shots figure{margin:0;display:flex;flex-direction:column;gap:6px;font-size:14px}
+.shots b{font-family:var(--display);color:var(--ink);font-size:16px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px}
+.stats div{font-size:14.5px}
+.stats b{display:block;font-family:var(--display);font-size:34px;font-weight:700;color:var(--plum);line-height:1.1;font-variant-numeric:tabular-nums}
+/* architecture: scales with its container so it never needs a sideways scroll; stacks on phones */
+.archwrap{container-type:inline-size}
+.arch{display:grid;grid-template-columns:minmax(0,1fr) 3cqw minmax(0,1fr) 3cqw minmax(0,1fr) 3.6cqw minmax(0,1fr);gap:.9cqw .6cqw;align-items:stretch;font-size:1.45cqw}
+.layer{background:var(--plum);border-radius:2.8cqw;padding:1.5cqw 1.5cqw 2cqw;display:flex;flex-direction:column;gap:.9cqw;min-width:0}
+.layer b{font-family:var(--display);color:var(--on-plum);text-align:center;font-size:1.75cqw;padding:.2cqw 0 .4cqw}
+.layer span{background:var(--surface);color:var(--ink);border-radius:.8cqw;padding:.9cqw .6cqw;text-align:center;font-family:var(--display);line-height:1.3;flex:1;display:flex;flex-direction:column;justify-content:center;overflow-wrap:anywhere}
+.layer small{display:block;font-size:.85em}
+.layer .one{border-radius:1.7cqw;gap:1.5cqw}
+.arr{display:grid;place-items:center;align-self:center}
+.arr svg{display:block;fill:var(--plum);width:2.8cqw;height:auto}
+.arr.down svg{width:1.7cqw}
+.arch .eval,.arch .down{grid-column:5}
+.arch .gov{grid-column:1/-1;border-radius:1.3cqw;flex-direction:row;align-items:stretch;padding:1.1cqw 1.3cqw;margin-top:1cqw}
+.arch .gov b{padding:0 .8cqw;white-space:nowrap;align-self:center}
+@container (max-width:600px){
+  .arch{grid-template-columns:minmax(0,1fr);font-size:14px;gap:8px}
+  .layer{border-radius:18px;padding:12px;gap:8px}
+  .layer b{font-size:16px}
+  .layer span{border-radius:7px;padding:8px}
+  .layer .one{border-radius:10px;gap:10px}
+  .arr svg{width:24px;transform:rotate(90deg)}
+  .arr.down svg{width:15px;transform:none}
+  .arch .eval,.arch .down{grid-column:1}
+  .arch .gov{flex-direction:column;border-radius:18px;padding:12px;margin-top:0}
+  .arch .gov b{white-space:normal}
+}
+/* deck persona */
+.kdeck{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,5fr);gap:22px}
+.kcard{background:var(--mist);border-radius:12px;padding:26px 28px;display:flex;flex-direction:column;gap:4px;font-size:15px;color:var(--ink)}
+.kcard img{width:96px;height:96px;object-fit:cover;align-self:center}
+.kcard strong{font-family:var(--display);font-size:24px;text-align:center;margin-top:6px}
+.kcard em{font-style:normal;text-align:center;color:var(--muted);margin-bottom:14px}
+.kcard span{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mauve);margin-top:6px}
+.kstory{background:var(--plum);border-radius:12px;padding:30px;display:flex;flex-direction:column;gap:22px;color:var(--on-plum)}
+.kstory span{font-size:12.5px;font-weight:700;letter-spacing:.06em;color:var(--on-plum-soft)}
+.kstory p{font-family:var(--display);font-style:italic;font-size:19px;line-height:1.4;max-width:none}
+.kstory p.plain{font-family:var(--text);font-style:normal;font-size:15.5px;border-top:1px solid var(--mauve);padding-top:22px;margin-top:auto}
+/* stories, risks */
+.stories{display:grid;grid-template-columns:34px minmax(0,1fr) minmax(0,1fr);gap:14px 18px;font-size:15px;align-items:start}
+.stories .ic{border-radius:50%;width:34px;height:34px;display:grid;place-items:center;font-family:var(--display);font-weight:700;color:var(--on-plum);background:var(--plum)}
+.stories .ic.p{background:var(--coral)}
+.stories .grp{grid-column:1/-1;font-weight:700;color:var(--ink);margin-top:8px}
+.risks{display:grid;grid-template-columns:40px minmax(0,1fr) minmax(0,1fr);gap:16px 18px;font-size:15px;counter-reset:r}
+.risks .n{counter-increment:r;font-family:var(--display);font-weight:700;font-size:22px;color:var(--plum);line-height:1}
+.risks .n::before{content:counter(r) "."}
+.risks b{color:var(--ink)}
+.pricebox{border-radius:14px;background:var(--plum);color:var(--on-plum);padding:22px 26px;font-size:15.5px;display:flex;flex-direction:column;gap:8px}
+.pricebox b{font-family:var(--display)} .pricebox ul{max-width:none}
+.canvas{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));min-width:820px;border:1.5px solid var(--plum);background:var(--plum-wash);border-radius:12px;overflow:hidden;font-size:13px;line-height:1.4;color:var(--ink)}
+.canvas>div{grid-column:span 2;border:.75px solid var(--plum);padding:10px}
+.canvas .half{grid-column:span 5}
+.canvas b{display:block;font-family:var(--display);font-size:13.5px;margin-bottom:6px}
+.canvas ul{padding-left:14px;margin:0}
+.about{border-radius:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;background:var(--surface);border:1px solid var(--rule);padding:24px}
+@media (max-width:760px){
+  .split{grid-template-columns:minmax(0,1fr)}
+  .pbody{grid-template-columns:minmax(0,1fr)} .avatar{max-width:120px} .kdeck,.demo{grid-template-columns:minmax(0,1fr)} .demo video{max-width:320px;margin:0 auto}
+  .lane{grid-template-columns:minmax(0,1fr)} .lane .pain{aspect-ratio:auto;border-radius:8px;max-width:none}
+  .stories,.risks{grid-template-columns:34px minmax(0,1fr)} .stories>div:nth-child(4n+4),.risks>div:nth-child(3n+3){grid-column:2}
+  .stories .grp{grid-column:1/-1}
+  .banner{padding:48px 24px}
+}
+/* nothing clips: journey map turns on its side and the canvas reflows before either would overflow */
+@media (min-width:600px) and (max-width:979px){
+  .jm{min-width:0;grid-template-columns:minmax(0,.7fr) repeat(4,minmax(0,1fr));grid-template-rows:repeat(8,auto);grid-auto-flow:column;font-size:12.5px}
+  .jm .curve,.jm .emo{display:none}
+  .jm>div{overflow-wrap:anywhere}
+}
+@media (max-width:899px){
+  .canvas{min-width:0;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .canvas>div,.canvas .half{grid-column:span 1}
+}
+@media (max-width:520px){ .canvas{grid-template-columns:minmax(0,1fr)} }
+@media (max-width:599px){
+  .jm{min-width:0;grid-template-columns:minmax(0,1fr);font-size:14px}
+  .jm .lab,.jm .curve{display:none}
+  .jm .ph{margin-top:10px;text-align:left}
+  .jm>div:nth-child(2),.jm>div:nth-child(10),.jm>div:nth-child(20),.jm>div:nth-child(28),.jm>div:nth-child(36){order:1}
+  .jm>div:nth-child(3),.jm>div:nth-child(11),.jm>div:nth-child(21),.jm>div:nth-child(29),.jm>div:nth-child(37){order:2}
+  .jm>div:nth-child(4),.jm>div:nth-child(12),.jm>div:nth-child(22),.jm>div:nth-child(30),.jm>div:nth-child(38){order:3}
+  .jm>div:nth-child(5),.jm>div:nth-child(13),.jm>div:nth-child(23),.jm>div:nth-child(31),.jm>div:nth-child(39){order:4}
+  .jm>div:nth-child(6),.jm>div:nth-child(14),.jm>div:nth-child(24),.jm>div:nth-child(32),.jm>div:nth-child(40){order:5}
+  .jm>div:nth-child(7),.jm>div:nth-child(15),.jm>div:nth-child(25),.jm>div:nth-child(33),.jm>div:nth-child(41){order:6}
+  .jm>div:nth-child(8),.jm>div:nth-child(16),.jm>div:nth-child(26),.jm>div:nth-child(34),.jm>div:nth-child(42){order:7}
+}
+</style>
+<link rel="stylesheet" href="site-theme.css">
+
+<div class="page">
+<div class="topnav"><b>CLOSET AI</b><a href="#overview">Overview</a><a href="#persona">Persona</a><a href="#journey">Journey</a><a href="#ideation">Ideation</a><a href="#prototype">Prototype</a><a href="#stories">User stories</a><a href="#canvas">Canvas</a></div>
+
+<div class="banner">
+  <span class="pill">Product portfolio</span>
+  <h1>A full closet, and nothing to wear. We fixed the second part.</h1>
+  <p>Closet AI recommends complete outfits for any occasion, built only from the clothes you already own.</p>
+</div>
+
+<section id="overview">
+  <h2>Overview</h2>
+  <div class="split">
+    <div>
+      <p>Closet AI is a closet assistant. You photograph your clothes once and each item is tagged by category, color, and style with no manual entry. You tell it the occasion and the weather. It gives you a complete, ready to wear outfit.</p>
+      <p>Every recommendation comes from your own wardrobe. There are no shopping links and no outside suggestions. That constraint is the product.</p>
+    </div>
+    <img class="shot" style="max-width:300px;justify-self:center" src="shot-outfit.jpg" alt="Closet AI outfit result: a shirt, trousers, and shoes from the user's own closet, with an I'll wear this button">
+  </div>
+  <div class="meta">
+    <div><span>My contribution</span>Product Manager. Owned two features end to end: Authentication and Occasion Selection. Wrote both PRDs, the wireframes, and the real device QA definition of done. Also run go to market and the waitlist.</div>
+    <div><span>People</span>18 people. Four product managers led by Jack Zhang, two designers led by Sage Park, and twelve engineers and data scientists led by Farah Bakhtiar Huda, Syed Kamil Taqi Zaidi, and Muhammad Essa.</div>
+    <div><span>Achievement</span>Presented with a live demo at Demo Day. Working product on a retrieval pipeline, with the waitlist open ahead of launch.</div>
+  </div>
+  <div class="gap">Project start date, the Demo Day date, and the current waitlist count. Also confirm you are fine naming teammates here.</div>
+</section>
+
+<section id="challenge">
+  <h2>Customer's Challenge</h2>
+  <p>Our target customer is a young working professional who owns plenty of clothes they like and still freezes in front of the closet before a date, a happy hour, or a family dinner. It happens two or three times a week, and it usually ends with the same three shirts or a text to a friend.</p>
+  <div class="quote"><p>It's not that I don't know what looks good. I just have too many options.</p><span>Customer interview, 500-item closet</span></div>
+  <p>The biggest thing we learned: the problem is not taste. It is choice overload. Friction scales with closet size and variety, so the more you own, the harder the decision gets. That makes it a decision relief problem, not a styling problem.</p>
+  <h3>What did we ask?</h3>
+  <ul>
+    <li>How big their closet is and how much of it they wear</li>
+    <li>The last time getting dressed was stressful, and why</li>
+    <li>Who or what they turn to for a second opinion</li>
+    <li>Which wardrobe apps they tried, and when they quit</li>
+    <li>What a good recommendation would need to know about the day</li>
+  </ul>
+  <p>We also read what people say about the apps already in this space. Two complaints repeat. Setup means photographing a hundred items before anything useful happens. And the suggestions feel random, or ignore half the closet.</p>
+  <div class="gap">The question list is my reconstruction. Swap in the real interview guide, the number of interviews, and one or two more quotes in the speaker's own words.</div>
+</section>
+
+<section>
+  <div class="ps">
+    <div class="hd">Problems</div><div class="hd">Solutions</div>
+    <div>More clothes make the decision harder</div><div>One complete outfit, ready to wear</div>
+    <div>Suggestions ignore the occasion</div><div>Occasion, date, weather, and setting as inputs</div>
+    <div>Apps push you to buy more</div><div>Built only from clothes you own</div>
+    <div>Cataloging takes a weekend</div><div>Snap a photo, tags fill in themselves</div>
+    <div>AI invents items you do not have</div><div>Every piece checked against your closet</div>
+  </div>
+</section>
+
+<section id="persona">
+  <h2>Persona</h2>
+  <h3>Young Working Professionals like Ken</h3>
+  <div class="kdeck">
+    <div class="kcard">
+      <img src="data:image/jpeg;base64,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" alt="Ken">
+      <strong>Ken</strong><em>25 · San Francisco</em>
+      <span>Role</span>B2B Sales
+      <span>Schedule</span>Hybrid, in office 3 days a week
+      <span>Closet size</span>40+ pieces, mostly worn on repeat
+      <span>Re-decision moments</span>2 to 3x per week
+    </div>
+    <div class="kstory">
+      <span>7:40 PM, TUESDAY</span>
+      <p>Ken matched with someone on Hinge. Tonight is the first date, in an hour. He owns more than 40 pieces he actually likes, but keeps reaching for the same three shirts.</p>
+      <p>He tries on three outfits, can't tell if any of them reads “trying but not too hard,” and ends up texting a friend for a second opinion. Again.</p>
+      <p class="plain">This isn't a one-off. It's dates, happy hours, his cousin's engagement dinner: never a big shopping trip, always a small, stressful re-decision.</p>
+    </div>
+  </div>
+
+  <h3>The Closet Shopper (wear what you own)</h3>
+  <p>Closet shoppers have decided to stop buying and start wearing. This is the first segment in our go to market plan, because they already gather in no-buy and capsule wardrobe communities.</p>
+  <div class="persona">
+    <header><span>Maya T.</span><span>The Closet Shopper</span></header>
+    <div class="pbody">
+      <div>
+        <div class="avatar">MT</div>
+        <p class="facts"><span><b>Age:</b> 29</span><span><b>Work:</b> Marketing associate</span><span><b>Closet:</b> 150+ pieces, many thrifted</span><span><b>Location:</b> Washington, DC</span></p>
+        <h4>Personality</h4>
+        <div class="slider"><span>Buys new</span><span>Wears what she owns</span><i style="--p:85%"></i></div>
+        <div class="slider"><span>Keeps it private</span><span>Posts about it</span><i style="--p:70%"></i></div>
+        <div class="slider"><span>Wants polish</span><span>Tolerates rough betas</span><i style="--p:75%"></i></div>
+      </div>
+      <div>
+        <h4>Bio</h4>
+        <p>Halfway through a no-buy year. Has tried two wardrobe apps and quit both during setup. She is motivated by the outcome and will forgive a rough edge if the outfits are good.</p>
+        <h4>Goals</h4>
+        <ul><li>Wear the pieces she forgot she had</li><li>Get through the year without shopping</li><li>Share outfits with her community</li></ul>
+        <h4>Frustrations</h4>
+        <ul><li>Photographing 100 items before anything works</li><li>Pairings that feel random</li><li>Apps that skip half her closet</li></ul>
+      </div>
+      <div>
+        <h4>How persona discovers the product</h4>
+        <p>Reddit threads, capsule wardrobe creators, Pinterest outfit grids.</p>
+        <h4>How persona uses the product</h4>
+        <p>Joins the waitlist, uploads in batches, and asks for outfits around pieces she has not worn in months.</p>
+        <h4>Motivations</h4>
+        <div class="bar">Uses the whole closet<i style="--p:95%"></i></div>
+        <div class="bar">No shopping push<i style="--p:90%"></i></div>
+        <div class="bar">Fast setup<i style="--p:80%"></i></div>
+        <div class="bar">Something to share<i style="--p:60%"></i></div>
+      </div>
+    </div>
+  </div>
+  <div class="gap">Ken is exactly as he appears in the Demo Day deck. Maya is a draft built from the go to market plan. Redraw her from the interviews, or remove her if you want Ken to stand alone.</div>
+</section>
+
+<section id="journey">
+  <h2>Customer Journey</h2>
+  <h3>Ken's Journey Map</h3>
+  <div class="scroll"><div class="jm">
+    <div class="lab">Phases</div><div class="ph">Trigger</div><div class="ph">Sign up</div><div class="ph">Upload closet</div><div class="ph">Pick occasion</div><div class="ph">Confirm details</div><div class="ph">Get outfit</div><div class="ph">Rate</div>
+    <div class="lab">Thoughts and feelings</div>
+    <div>"Date in an hour and I am staring at a full closet."</div><div>"Just let me in."</div><div>"Do I really have to do every item?"</div><div>"First date. That is an option. Good."</div><div>"It already knows it is cold out."</div><div>"I forgot I owned that jacket."</div><div>"That worked. I would wear it again."</div>
+    <div class="lab emo">Emotional experience</div>
+    <div class="curve"><svg viewBox="0 0 700 90" preserveAspectRatio="none" role="img" aria-label="Emotion curve: stressed, hopeful, impatient, at ease, reassured, relieved, satisfied"><line x1="0" y1="45" x2="700" y2="45" stroke="#E4DEE6" stroke-dasharray="4 4"/><path d="M50,68 C100,68 100,44 150,44 S200,60 250,60 S300,40 350,40 S400,34 450,34 S500,14 550,14 S600,24 650,24" fill="none" stroke="#7D2E55" stroke-width="3"/><g fill="#D9512F"><circle cx="50" cy="68" r="6"/><circle cx="150" cy="44" r="6"/><circle cx="250" cy="60" r="6"/><circle cx="350" cy="40" r="6"/><circle cx="450" cy="34" r="6"/><circle cx="550" cy="14" r="6"/><circle cx="650" cy="24" r="6"/></g></svg></div>
+    <div class="lab">User actions</div>
+    <div>Tries three outfits. Texts a friend</div><div>Signs in with Google in one tap</div><div>Photographs items. Checks the tags</div><div>Picks the occasion type</div><div>Confirms date, weather, activity, and setting</div><div>Reviews the outfit and gets dressed</div><div>Rates the outfit after wearing it</div>
+    <div class="lab">Touchpoints</div>
+    <div>Short video, friend, waitlist page</div><div>Sign in screen, session kept on device</div><div>Camera, auto tagging, tag review</div><div>Occasion picker</div><div>Date, temperature, weather chips, review screen</div><div>Generating screen, outfit result</div><div>Feedback and rating prompt</div>
+    <div class="lab">Pain points</div>
+    <div>Too many options, no time</div><div>Another password to remember</div><div>Cataloging is where every app loses people</div><div>Occasions that do not fit a fixed list</div><div>Typing in what the app could look up</div><div>Outfits that ignore the weather or the closet</div><div>Feedback that changes nothing</div>
+  </div></div>
+  <div class="band">
+    <u>User Stories</u>
+    <p>As someone with plenty of clothes and an event in an hour, I want one complete outfit from what I already own, so that I can stop second guessing and leave on time.</p>
+  </div>
+</section>
+
+<section id="define">
+  <h2>Define</h2>
+  <p>Ken does not need to be taught style. He needs the decision made smaller. He will not catalog for a weekend, and he will not trust an outfit that includes something he does not own. With that in mind, we framed the problem as two How Might We statements.</p>
+  <ul>
+    <li>How might we turn a full closet into one confident outfit in under a minute?</li>
+    <li>How might we learn enough about the occasion without making the user fill out a form?</li>
+  </ul>
+  <div class="board">
+    <div class="title">How Might We?</div>
+    <div class="lane"><div class="pain">Too many options</div><div class="notes">
+      <div class="note">Show one outfit, not ten</div><div class="note">Complete looks only</div><div class="note">Explain why it works</div><div class="note">Surface forgotten pieces</div><div class="note">Let them regenerate</div></div></div>
+    <div class="lane"><div class="pain">Setup is a chore</div><div class="notes">
+      <div class="note c">Auto tag from the photo</div><div class="note c">Category, color, formality</div><div class="note c">Let users correct tags</div><div class="note c">One tap sign in</div><div class="note c">Stay signed in</div></div></div>
+    <div class="lane"><div class="pain">Outfits miss the moment</div><div class="notes">
+      <div class="note d">Occasion taxonomy</div><div class="note d">Date on every occasion</div><div class="note d">Temperature and weather</div><div class="note d">Activity level</div><div class="note d">Indoor, outdoor, mixed</div><div class="note d">Warmth beats activity beats style</div></div></div>
+    <div class="lane"><div class="pain">Can I trust the AI</div><div class="notes">
+      <div class="note b">Only items in the closet</div><div class="note b">Validate every piece</div><div class="note b">Location only if they ask</div><div class="note b">Rating after wearing</div><div class="note b">Delete account and data</div></div></div>
+  </div>
+</section>
+
+<section id="ideation">
+  <h2>Ideation</h2>
+  <p>We went wide first, then grouped the ideas and picked what belonged in the first build. Anything that pointed the user toward buying something was cut early, because it breaks the one promise the product makes.</p>
+  <div class="board">
+    <span class="glabel">Ways to recommend</span>
+    <div class="notes"><div class="note b pick">Outfit from your own closet</div><div class="note b">Shopping suggestions</div><div class="note b">Human stylist chat</div><div class="note b">Daily outfit calendar</div><div class="note b">Friends vote on looks</div><div class="note b">Capsule wardrobe builder</div></div>
+    <span class="glabel">Getting the closet in</span>
+    <div class="notes"><div class="note pick">Photo with auto tagging</div><div class="note">Manual entry form</div><div class="note">Import from receipts</div><div class="note">Bulk video scan</div><div class="note pick">User confirms tags</div></div>
+    <span class="glabel">Understanding the occasion</span>
+    <div class="notes"><div class="note d pick">Structured occasion flow</div><div class="note d">Free text prompt</div><div class="note d">Calendar sync</div><div class="note d pick">Weather chips and temperature</div><div class="note d pick">Opt in location weather</div><div class="note d">Schedule future events</div></div>
+    <span class="glabel">Getting better over time</span>
+    <div class="notes"><div class="note c pick">Feedback and rating loop</div><div class="note c">Wear tracking</div><div class="note c">Cost per wear</div><div class="note c">Style quiz</div><div class="note c">Shared closets</div></div>
+  </div>
+  <div class="board">
+    <div class="title">Selected Ideas for Early Concept</div>
+    <div class="notes">
+      <div class="note b big">Outfits only from clothes you own</div><div class="note big">Photo upload with auto tagging</div><div class="note d big">Structured occasion, date, and weather</div><div class="note c big">Feedback and rating loop</div><div class="note b big">Every item validated against the closet</div><div class="note c big">Simple sign in that sticks</div>
+    </div>
+  </div>
+  <div class="steps">
+    <div><i>1</i><b>Photograph your closet</b>Snap a photo of each item. It is tagged by category, color, and formality. No manual entry.</div>
+    <div><i>2</i><b>Tell it the occasion</b>Client meeting, date night, a snow day. Whatever you are dressing for, plus the weather.</div>
+    <div><i>3</i><b>Get a ready outfit</b>A complete, coherent outfit built only from clothes you own.</div>
+  </div>
+  <div class="gap">I rebuilt these boards from the PRDs and the feature decisions. If the team has real FigJam or Miro boards, screenshots of those are stronger. Forward date scheduling is shown as an idea only, since it is specced but not built.</div>
+</section>
+
+<section id="prototype">
+  <h2>Prototype and User Testing</h2>
+  <div class="demo">
+    <video controls muted playsinline preload="metadata" poster="poster.jpg" src="closetai-demo.mp4" aria-label="Closet AI product walkthrough"></video>
+    <div>
+      <p>The product works end to end. Here is one full run, from first open to a rated outfit.</p>
+      <ol>
+        <li>Onboarding: four cards explain scan, occasion, outfit, and rating.</li>
+        <li>Sign in with email and password or Google.</li>
+        <li>Add a clothing photo. The app analyzes it and fills in category, color, and style.</li>
+        <li>Review the tags, fix anything, and save it to the closet.</li>
+        <li>Pick what you are dressing for, then set how warm or cool it feels.</li>
+        <li>Get outfits built from the closet and tap "I'll wear this".</li>
+        <li>Rate the outfit. It lands in Outfit History with its stars.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="shots">
+    <figure><b>Tag</b><img class="shot" src="shot-tag.jpg" alt="Item screen with a black t-shirt and its category, color, and style tags"><span>One photo in. Category, color, and style come back filled, and you can correct them.</span></figure>
+    <figure><b>Pick the occasion</b><img class="shot" src="shot-occasion.jpg" alt="What are you dressing for, with six occasion tiles"><span>Six occasions, from a casual day out to a client meeting.</span></figure>
+    <figure><b>Set the temperature</b><img class="shot" src="shot-temp.jpg" alt="Temperature dial reading 20 with a Fahrenheit and Celsius toggle"><span>A dial for how warm or cool it feels, in Fahrenheit or Celsius.</span></figure>
+    <figure><b>Get the outfit</b><img class="shot" src="shot-outfit.jpg" alt="Your looks screen with a shirt, trousers, and shoes"><span>Complete looks from your own closet. Swipe between them and commit to one.</span></figure>
+    <figure><b>Rate it</b><img class="shot" src="shot-rate.jpg" alt="How did we do on Outfit 1, with a five star rating"><span>A quick star rating after you choose.</span></figure>
+    <figure><b>Look back</b><img class="shot" src="shot-history.jpg" alt="Outfit History list with occasions, dates, and star ratings"><span>Every outfit is saved with its occasion, date, and rating.</span></figure>
+  </div>
+  <div class="stats">
+    <div><b>18</b>people across product, design, and engineering</div>
+    <div><b>2</b>features I owned end to end</div>
+    <div><b>6</b>occasion types in the picker</div>
+    <div><b>3</b>steps from closet photo to outfit</div>
+  </div>
+  <h3>System Architecture</h3>
+  <div class="archwrap"><div class="arch" role="img" aria-label="System architecture: input layer, orchestration layer, foundation model layer, and data layer, with evaluation and observability below the model layer and deployment and governance across the bottom">
+    <div class="layer"><b>Input Layer</b><span>Photo Upload<br>(article of clothing)</span><span>Occasion Selection<br>Feedback &amp; Rating Loop</span></div>
+    <div class="arr"><svg width="26" height="16" viewBox="0 0 26 16"><path d="M0 5h16V0l10 8-10 8v-5H0z"/></svg></div>
+    <div class="layer"><b>Orchestration Layer</b><span>Semantic Retrieval</span><span>Constraint Filtering</span><span>Fashion Knowledge Base</span></div>
+    <div class="arr"><svg width="26" height="16" viewBox="0 0 26 16"><path d="M0 5h16V0l10 8-10 8v-5H0z"/></svg></div>
+    <div class="layer"><b>Foundation Model Layer</b><span>Outfit Generation (RAG)<small>GPT-5.4 mini</small></span><span>Tagging (Multimodal)<small>GPT-5.4 mini</small></span><span>Embeddings<small>OpenAI text-embedding-3-small</small></span></div>
+    <div class="arr"><svg width="26" height="36" viewBox="0 0 26 36"><path d="M0 3h16V-2l10 8-10 8V9H0z" transform="translate(0,2)"/><path d="M26 23H10v-5L0 26l10 8v-5h16z"/></svg></div>
+    <div class="layer"><b>Data Layer</b><span class="one"><div>Database &amp; Vector Search<small>PostgreSQL + pgvector</small></div><div>File Storage<small>Cloudflare R2</small></div></span></div>
+    <div class="arr down"><svg width="16" height="26" viewBox="0 0 16 26"><path d="M5 0v16H0l8 10 8-10h-5V0z"/></svg></div>
+    <div class="layer eval"><b>Evaluation &amp; Observability</b><span>User Tagging Validation</span><span>Pipeline A/B Testing</span><span>Performance Monitoring</span></div>
+    <div class="layer gov"><b>Deployment &amp; Governance</b><span>Vercel</span><span>LLM Call Rate Limit</span><span>Clerk Authentication</span><span>Grounded Validation</span><span>Anti-Hallucination Guardrails</span></div>
+  </div></div>
+  <h3>What testing changed</h3>
+  <ul>
+    <li>Some requests came back with no outfit at all. The matching rules were too strict, so we relaxed them until the model can always return at least one.</li>
+    <li>Calls to the AI provider failed now and then during development. We added retry logic, which solved it.</li>
+    <li>Weather auto fill started as automatic. It became an explicit "Use my location" action so nothing is looked up without the user asking.</li>
+    <li>Shoes had no subtype, so weather and activity could not change the footwear. Flagged with the upload owner.</li>
+  </ul>
+  <div class="gap">Once people are using it, add time to first outfit, week 2 return rate, and what testers said.</div>
+</section>
+
+<section id="stories">
+  <h2>User Stories and Acceptance Criteria</h2>
+  <div class="stories">
+    <div class="grp">Occasion Selection</div>
+    <div class="ic">O</div><div>As a user getting dressed for an event, I want to pick the kind of occasion, so that the outfit fits where I am going.</div><div>The app should offer a fixed occasion taxonomy and require one choice before continuing. The setting should default from the occasion type.</div>
+    <div class="ic">D</div><div>As a user, I want every occasion tied to a day, so that the outfit and the rating prompt match a real event.</div><div>The date should be required and default to today. Past dates should be blocked.</div>
+    <div class="ic">W</div><div>As a user, I want to give the weather quickly, so that I am not cold or overdressed.</div><div>The app should take a temperature in Fahrenheit or Celsius and reject out of range values inline. Conditions should be one of Clear, Cloudy, Rain, Snow, or Windy.</div>
+    <div class="ic">L</div><div>As a user, I want weather filled in from my location only when I ask, so that I stay in control of my data.</div><div>Location should be read only after the user taps "Use my location". Nothing should be pre-filled without that tap.</div>
+    <div class="ic">A</div><div>As a user, I want the outfit to match what I will be doing, so that I can move comfortably.</div><div>The app should offer Standing or Mingling, Seated, Active or Moving, and Exercise. When signals conflict, warmth beats activity and activity beats style.</div>
+    <div class="grp">Authentication</div>
+    <div class="ic p">G</div><div>As a new user, I want to sign in with an account I already have, so that I can start without another password.</div><div>The app should support Google sign in and email with password. A first sign in should land on closet setup.</div>
+    <div class="ic p">S</div><div>As a returning user, I want to stay signed in, so that I get to an outfit quickly.</div><div>The session should persist across visits and refresh without asking the user to sign in again.</div>
+    <div class="ic p">R</div><div>As a user who forgot my password, I want to reset it, so that I do not lose my closet.</div><div>A reset link should be sent to the account email and the old password should stop working after reset.</div>
+    <div class="ic p">X</div><div>As a user, I want to delete my account, so that my photos and data are removed.</div><div>Deletion should start a 30 day window, after which the account and its data are removed.</div>
+    <div class="grp">Outfit Quality</div>
+    <div class="ic">C</div><div>As a user, I want every piece in the outfit to be mine, so that I can wear it tonight.</div><div>Every recommended item should be validated against the user's closet. No shopping links and no outside items.</div>
+  </div>
+</section>
+
+<section id="risks">
+  <h2>Risks and Remediations</h2>
+  <div class="risks">
+    <div class="n"></div><div><b>Product Risk:</b> users stall while cataloging, the same point where every wardrobe app loses people.</div><div>Auto tagging from one photo, with no manual entry. Hold marketing on the fast setup promise until the product clears it.</div>
+    <div class="n"></div><div><b>Technical Risk:</b> strict matching rules return no outfit for small closets.</div><div>Rules relaxed so the model can always generate at least one outfit.</div>
+    <div class="n"></div><div><b>Technical Risk:</b> the model recommends an item the user does not own.</div><div>Grounded validation and anti-hallucination guardrails check every piece against the closet.</div>
+    <div class="n"></div><div><b>Operational Risk:</b> the AI provider fails mid request, or costs run away.</div><div>Retry logic on every call, plus a rate limit on model calls.</div>
+    <div class="n"></div><div><b>Scope Risk:</b> Occasion Selection grew over several rounds into a larger feature than planned.</div><div>Forward date scheduling moved to its own PRD and is not in the current build.</div>
+    <div class="n"></div><div><b>Business Risk:</b> an established app ships better AI styling.</div><div>The edge is setup speed and the segment we serve first, not the model.</div>
+  </div>
+</section>
+
+<section id="pricing">
+  <h2>Pricing Strategy</h2>
+  <div class="pricebox">
+    <b>Now</b>
+    <ul>
+      <li>Pre-launch. The waitlist is free and so is the closed beta.</li>
+      <li>The first 100 beta users come from the most active waitlist members.</li>
+    </ul>
+    <b>What decides the price</b>
+    <ul>
+      <li>Week 2 return rate: people who upload their closet and come back.</li>
+      <li>Cost per outfit generated, since every recommendation is a model call.</li>
+    </ul>
+    <b>Target</b>
+    <ul>
+      <li>90 day plan: 1,500 waitlist signups and 100 active beta users. These are goals, not results.</li>
+    </ul>
+  </div>
+  <div class="gap">No price has been set. Add the model you are leaning toward (free tier, subscription, or both) and one or two competitor price points for reference.</div>
+</section>
+
+<section id="canvas">
+  <h2>Lean Business Model Canvas</h2>
+  <div class="scroll"><div class="canvas">
+    <div><b>Problem Statement</b>How might we turn a full closet into one confident outfit for the occasion, in under a minute?</div>
+    <div><b>Solution</b><ul><li>Photo upload with auto tagging</li><li>Structured occasion and weather</li><li>Complete outfits from owned clothes</li><li>Feedback and rating loop</li></ul></div>
+    <div><b>Value Proposition</b>Outfits from the clothes you already own, ready in the time it takes to say where you are going.</div>
+    <div><b>Unfair Advantage</b><ul><li>Retrieval over the whole closet</li><li>Every item validated as owned</li><li>Occasion inputs most apps skip</li></ul></div>
+    <div><b>Customer Segments</b>Young working professionals with recurring re-decision moments. People committed to wearing what they own.</div>
+    <div><b>Existing Alternatives</b><ul><li>Wardrobe apps: Whering, Indyx, Acloset, Cladwell, Stylebook</li><li>Texting a friend</li><li>The same three shirts</li></ul></div>
+    <div><b>Key Metrics</b><ul><li>Time to first outfit</li><li>Week 2 return rate</li><li>Outfit rating</li><li>Activated waitlist members</li></ul></div>
+    <div><b>High-level Concept</b><ul><li>Closet AI = the friend you text for a second opinion, who knows your whole closet</li></ul></div>
+    <div><b>Channels</b><ul><li>Short form video</li><li>Reddit and Pinterest</li><li>Build in public on LinkedIn</li><li>Waitlist with referrals</li></ul></div>
+    <div><b>Early Adopters</b><ul><li>Waitlist members</li><li>No-buy and capsule wardrobe communities</li><li>People who quit other wardrobe apps</li></ul></div>
+    <div class="half"><b>Cost Structure</b>Model calls for tagging, embeddings, and outfit generation. Hosting on Vercel. PostgreSQL and file storage on Cloudflare R2. Authentication. People across product, design, and engineering.</div>
+    <div class="half"><b>Revenue Streams (Pricing Model)</b>Not set. Free through waitlist and closed beta. Pricing follows the week 2 return rate.</div>
+  </div></div>
+</section>
+
+<section>
+  <h3>Sources</h3>
+  <p style="font-size:14px;max-width:none">Target customer, interview quote, product steps, system architecture, challenges, and team: Closet AI Demo Day deck. Feature rules: Authentication and Occasion Selection PRDs. Segments, channels, competitor complaints, and targets: Closet AI go to market plan, September 2026.</p>
+</section>
+</div>
+
+</body></html>

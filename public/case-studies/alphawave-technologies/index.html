@@ -1,0 +1,471 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Alphawave Product Portfolio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: one centered case-study column under a centered logo banner, black and blue to match srigutala.com, same order as the LilPreneur and Closet AI portfolios, plus a feasibility section because this one is hardware. Single dark theme by choice, to match the site. */
+:root{
+  color-scheme:dark;
+  --bg:#000000; --surface:#0D0F12; --ink:#FFFFFF; --body:#A6AAB0; --muted:#7E838A;
+  --rule:#272B31; --graphite:#1A1F26; --graphite-2:#252E38; --on-dark:#FFFFFF; --on-dark-soft:#A6AAB0;
+  --teal:#5BB8F0; --teal-wash:#0E2233; --orange:#F0894A; --orange-wash:#2A1A10; --mist:#14171B;
+  --note-a:#2E2612; --note-b:#301C14; --note-c:#122B28; --note-d:#15233B;
+  --display:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --text:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--body);font-family:var(--text);font-size:16px;line-height:1.6;padding-inline:20px;padding-block:24px 64px}
+.page{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:52px}
+.topnav{border:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:6px 22px;align-items:center;font-size:14px;font-weight:500;background:var(--surface);padding:14px 22px;border-radius:10px}
+.topnav b{font-family:var(--display);font-stretch:118%;font-size:18px;font-weight:800;color:var(--on-dark);margin-right:auto;letter-spacing:.08em}
+.topnav a{color:var(--on-dark);text-decoration:none;opacity:.85}
+.topnav a:hover{opacity:1}
+.topnav a.cta{background:var(--on-dark);color:var(--graphite);padding:7px 18px;border-radius:999px;font-weight:600;opacity:1}
+a{color:var(--teal)}
+a:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+.banner{color:var(--on-dark);padding:28px 0 8px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px}
+.banner img{width:110px;height:auto}
+.banner .sub{font-size:22px;color:var(--body)}
+.banner h1{font-family:var(--display);font-stretch:112%;font-size:clamp(32px,6.2vw,56px);font-weight:800;margin:0;line-height:1.05;text-wrap:balance;letter-spacing:-.01em}
+.pill{color:var(--on-dark-soft);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+.banner p{margin:0;font-size:19px;max-width:48ch;color:var(--on-dark-soft)}
+section{display:flex;flex-direction:column;gap:16px;scroll-margin-top:16px}
+h2,h3,h4{font-family:var(--display);color:var(--ink);margin:0;line-height:1.15;text-wrap:balance}
+h2{font-stretch:112%;font-size:clamp(27px,4.4vw,36px);font-weight:800;text-align:center;margin-bottom:6px}
+h3{font-size:20px;font-weight:700;margin-top:6px}
+p{margin:0;max-width:70ch} ul,ol{margin:0;padding-left:20px;max-width:70ch} li{margin-bottom:4px}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:start}
+.split>div:first-child{display:flex;flex-direction:column;gap:14px;min-width:0}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;font-size:14.5px}
+.meta span,.glabel{display:block;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
+.quote{border-left:4px solid var(--teal);padding:6px 0 6px 22px;display:flex;flex-direction:column;gap:8px}
+.quote p{font-size:20px;font-style:italic;color:var(--body);line-height:1.4}
+.quote span{font-size:13.5px;color:var(--muted)}
+.gap{border-radius:10px;border:1.5px dashed var(--orange);background:var(--orange-wash);padding:12px 16px;font-size:14.5px;color:var(--ink);max-width:74ch}
+.gap::before{content:"Needs your input";display:block;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:2px}
+.slot{border:2px dashed var(--teal);background:var(--teal-wash);border-radius:10px;display:grid;place-items:center;text-align:center;padding:20px;color:var(--teal);font-weight:600;font-size:15px;max-width:100%;width:100%}
+.slot small{display:block;font-weight:400;color:var(--body);font-size:13px}
+.slot.wide{aspect-ratio:16/10}.slot.phone{aspect-ratio:9/16;max-height:400px}.slot.sq{aspect-ratio:4/3}
+.ps{display:grid;grid-template-columns:1fr 1fr;max-width:660px;width:100%;margin:0 auto;text-align:center}
+.ps .hd{font-size:12px;letter-spacing:.25em;text-transform:uppercase;font-weight:600;color:var(--ink);padding:10px}
+.ps div:not(.hd){padding:16px 14px;font-size:15px;font-weight:500;color:var(--ink);background:var(--mist);border-bottom:2px solid var(--bg)}
+.ps div:not(.hd):nth-child(even){background:var(--teal-wash)}
+.persona{background:var(--surface);border:1px solid var(--rule);border-radius:10px;overflow:hidden}
+.persona header{background:var(--graphite);color:var(--on-dark);display:flex;justify-content:space-between;gap:12px;padding:10px 18px;font-family:var(--display);font-weight:700;font-size:16px}
+.pbody{display:grid;grid-template-columns:170px minmax(0,1fr) minmax(0,1fr);gap:22px;padding:18px;font-size:14px}
+.pbody>div{display:flex;flex-direction:column;gap:10px;min-width:0}
+.avatar{border-radius:10px;aspect-ratio:1;max-width:100%;background:var(--teal-wash);display:grid;place-items:center;font-family:var(--display);font-size:42px;font-weight:800;color:var(--teal)}
+.persona h4{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-family:var(--text);font-weight:600}
+.persona ul{padding-left:16px}
+.facts{margin:0;display:grid;gap:2px}.facts b{color:var(--ink)}
+.slider{display:grid;grid-template-columns:1fr 1fr;font-size:11px;color:var(--muted);row-gap:2px}
+.slider span:nth-child(2){text-align:right}
+.slider i{grid-column:1/-1;height:5px;background:var(--mist);position:relative;display:block}
+.slider i::after{content:"";position:absolute;top:-3px;left:var(--p);width:10px;height:11px;background:var(--ink)}
+.bar{font-size:12px}.bar i{display:block;height:7px;background:var(--mist)}.bar i::after{content:"";display:block;height:100%;width:var(--p);background:var(--teal)}
+.scroll{overflow-x:auto}
+.jm{display:grid;grid-template-columns:100px repeat(6,minmax(0,1fr));gap:4px;min-width:860px;font-size:12.5px;line-height:1.4}
+.jm>div{background:var(--surface);border:1px solid var(--rule);padding:8px;border-radius:6px}
+.jm .lab{background:var(--mist);color:var(--ink);font-size:11px;letter-spacing:.05em;text-transform:uppercase;font-weight:600;display:flex;align-items:center}
+.jm .ph{background:var(--graphite);color:var(--on-dark);border-color:var(--graphite);font-weight:600;text-align:center;font-size:13px}
+.jm .curve{grid-column:2/-1;padding:0}
+.jm svg{display:block;width:100%;height:90px}
+.band{border-radius:10px;background:var(--graphite);padding:30px 32px;display:flex;flex-direction:column;gap:8px}
+.band u{font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--on-dark-soft)}
+.band p{font-family:var(--display);font-size:21px;font-weight:600;color:var(--on-dark);max-width:62ch;line-height:1.3}
+.board{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:14px}
+.board .title{background:var(--graphite);color:var(--on-dark);text-align:center;font-weight:600;padding:8px 18px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;border-radius:999px;align-self:center}
+.lane{display:grid;grid-template-columns:120px minmax(0,1fr);gap:12px;align-items:center}
+.lane .pain{background:var(--graphite);color:var(--on-dark);border-radius:50%;aspect-ratio:1;display:grid;place-items:center;text-align:center;font-size:12.5px;font-weight:600;padding:10px;max-width:110px}
+.notes{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:8px}
+.note{border-radius:5px;background:var(--note-a);color:var(--ink);padding:10px;font-size:12.5px;line-height:1.3;min-height:74px;box-shadow:1px 2px 0 var(--rule);display:flex;align-items:center}
+.note.b{background:var(--note-b)}.note.c{background:var(--note-c)}.note.d{background:var(--note-d)}
+.note.big{font-size:14px;font-weight:600;min-height:92px}
+.note.pick{outline:3px solid var(--ink);outline-offset:1px}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:14px;background:var(--surface)}
+th,td{border:1px solid var(--rule);padding:10px 12px;text-align:left;vertical-align:top}
+th{background:var(--graphite);color:var(--on-dark);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;border-color:var(--graphite)}
+td:first-child{color:var(--ink);font-weight:600}
+.shot{display:block;width:100%;max-width:300px;margin:0 auto;border-radius:10px}
+.tag{display:inline-block;font-size:11.5px;font-weight:600;padding:2px 9px;border-radius:999px;background:var(--teal-wash);color:var(--teal)}
+.tag.no{background:var(--orange-wash);color:var(--orange)}
+.tag.mid{background:var(--mist);color:var(--body)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.steps>div{background:var(--mist);border-radius:10px;padding:20px;display:flex;flex-direction:column;gap:8px;font-size:14.5px}
+.steps b{font-family:var(--display);color:var(--ink);font-size:17px}
+.steps ul{padding-left:16px}
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.shots figure{margin:0;display:flex;flex-direction:column;gap:6px;font-size:13.5px}
+.shots b{font-family:var(--display);color:var(--ink);font-size:16px}
+.stack{display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr) 28px minmax(0,1fr);gap:8px;align-items:stretch}
+.stack>div{background:var(--graphite);color:var(--on-dark);border-radius:10px;padding:16px;font-size:13.5px;display:flex;flex-direction:column;gap:6px}
+.stack b{font-family:var(--display);font-size:16px}
+.stack span{color:var(--on-dark-soft)}
+.stack .ar{background:none;color:var(--muted);padding:0;justify-content:center;align-items:center;font-size:20px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px}
+.stats div{font-size:14px}
+.stats b{display:block;font-family:var(--display);font-stretch:112%;font-size:34px;font-weight:800;color:var(--ink);line-height:1.1;font-variant-numeric:tabular-nums}
+.moscow{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.moscow>div{background:var(--surface);border:1px solid var(--rule);border-top:5px solid var(--teal);border-radius:6px;padding:14px;font-size:14px;display:flex;flex-direction:column;gap:6px}
+.moscow>div:nth-child(2){border-top-color:var(--ink)}.moscow>div:nth-child(3){border-top-color:var(--muted)}.moscow>div:nth-child(4){border-top-color:var(--orange)}
+.moscow b{font-family:var(--display);color:var(--ink);font-size:16px}
+.moscow ul{padding-left:16px}
+.stories{display:grid;grid-template-columns:34px minmax(0,1fr) minmax(0,1fr);gap:14px 18px;font-size:14.5px;align-items:start}
+.stories .ic{border-radius:50%;width:34px;height:34px;display:grid;place-items:center;font-weight:700;color:var(--bg);background:var(--teal)}
+.stories .ic.p{background:var(--ink)}
+.stories .grp{grid-column:1/-1;font-weight:700;color:var(--ink);margin-top:8px}
+.pricebox{border-radius:10px;background:var(--graphite);color:var(--on-dark-soft);padding:20px 24px;font-size:15px;display:flex;flex-direction:column;gap:8px}
+.pricebox b{color:var(--ink)} .pricebox ul{max-width:none}
+.risks{display:grid;grid-template-columns:40px minmax(0,1fr) minmax(0,1fr);gap:16px 18px;font-size:14.5px;counter-reset:r}
+.risks .n{counter-increment:r;font-family:var(--display);font-weight:800;font-size:22px;color:var(--ink);line-height:1}
+.risks .n::before{content:counter(r) "."}
+.risks b{color:var(--ink)}
+.canvas{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));border:1.5px solid var(--rule);background:var(--surface);border-radius:10px;overflow:hidden;font-size:12.5px;line-height:1.4;color:var(--ink)}
+.canvas>div{grid-column:span 2;border:.75px solid var(--rule);padding:10px;min-width:0}
+.canvas .half{grid-column:span 5}
+.canvas b{display:block;font-family:var(--display);font-size:13.5px;margin-bottom:6px}
+.canvas ul{padding-left:14px;margin:0}
+@media (max-width:899px){
+  .canvas{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .canvas>div,.canvas .half{grid-column:span 1}
+}
+@media (max-width:760px){
+  .split{grid-template-columns:minmax(0,1fr)}
+  .pbody{grid-template-columns:minmax(0,1fr)} .avatar{max-width:120px}
+  .lane{grid-template-columns:minmax(0,1fr)} .lane .pain{aspect-ratio:auto;border-radius:6px;max-width:none}
+  .stories,.risks{grid-template-columns:34px minmax(0,1fr)} .stories>div:nth-child(4n+4),.risks>div:nth-child(3n+3){grid-column:2}
+  .stories .grp{grid-column:1/-1}
+  .stack{grid-template-columns:minmax(0,1fr)} .stack .ar{transform:rotate(90deg)}
+  
+}
+@media (max-width:520px){ .canvas{grid-template-columns:minmax(0,1fr)} }
+.render{display:flex;flex-direction:column;gap:6px;min-width:0}
+.render video{display:block;width:100%;border-radius:10px;background:var(--surface)}
+.render small{font-size:13px;color:var(--body)}
+</style>
+
+<div class="page">
+<div class="topnav"><b>ALPHAWAVE</b><a href="#overview">Overview</a><a href="#persona">Persona</a><a href="#journey">Journey</a><a href="#ideation">Ideation</a><a href="#prototype">Prototype</a><a href="#stories">User stories</a><a href="#canvas">Canvas</a></div>
+
+<div class="banner">
+  <img src="aw-logo.png" alt="Alphawave Technologies logo">
+  <h1>Alphawave Technologies</h1>
+  <p class="sub">Smart Footwear Venture</p>
+  <p>The first app-controlled adaptive footwear. Pick a color or pattern on your phone and the shoe follows.</p>
+</div>
+
+<section id="overview">
+  <h2>Overview</h2>
+  <div class="split">
+    <div>
+      <p>Alphawave was a smart footwear venture I founded and ran from 2020 to 2023. The product was a sneaker with color-shifting panels and a companion mobile app. You choose a style in the app, it sends the command over Bluetooth, and the panels on the shoe change to match.</p>
+      <p>It was part hardware, part mobile software. We took it from a concept sketch through market discovery, working prototypes, and an MVP definition, then paused before production. This page covers what we built, what we learned, and why we stopped.</p>
+    </div>
+    <div class="render"><video src="https://raw.githubusercontent.com/SSGutala/Portfolio/61f360425f33f225faeffc56b46f36a656138480/AWPrismrender.mp4" autoplay loop muted playsinline aria-label="E-ink prism model render"></video><small>E-ink Prism Model</small></div>
+  </div>
+  <div class="meta">
+    <div><span>My contribution</span>Product Owner and Founder. Owned vision, discovery, requirements, feasibility, vendor conversations, the BLE command protocol, app design, and user testing.</div>
+    <div><span>Timeline and type</span>2020 to 2023. Hardware plus mobile SaaS, wearable tech, IoT.</div>
+    <div><span>Scope</span>Concept, market discovery, MVP definition, and technical pre-validation. Production was paused.</div>
+  </div>
+  <div class="gap">Team size and who did what (the electrical engineer, any co-founders), and whether you want them named.</div>
+</section>
+
+<section id="challenge">
+  <h2>Customer's Challenge</h2>
+  <p>Sneakers are one of the main ways young people show who they are, and yet a pair looks the same on day 300 as on day one. The only way to change the look is to buy another pair. Customization exists, but it is slow, expensive, and permanent.</p>
+  <div class="quote"><p>Shoes that adapt like your phone wallpaper: customizable, expressive, and digitally intelligent.</p><span>The product vision we worked from</span></div>
+  <p>I ran a market gap analysis across fashion tech, smart wearables, and customization products. Four trends kept showing up: self-expression, modular fashion, sustainable personalization, and a digital identity that younger buyers carry across everything they own. Smart wearables were a market of roughly $12B and growing, and almost none of it was on people's feet.</p>
+  <h3>What I built in discovery</h3>
+  <ul>
+    <li>Product vision statement and problem statement</li>
+    <li>User personas for sneakerheads, lifestyle users, and creators</li>
+    <li>Market size model</li>
+    <li>Business model canvas for customizable hardware plus digital experiences</li>
+  </ul>
+</section>
+
+<section>
+  <div class="ps">
+    <div class="hd">Problems</div><div class="hd">Solutions</div>
+    <div>A new look means a new pair</div><div>One pair, many styles</div>
+    <div>Custom sneakers are slow and permanent</div><div>Change the style from your phone in seconds</div>
+    <div>Full manual design overwhelms people</div><div>Curated presets and collections</div>
+    <div>Screens in shoes are fragile and hot</div><div>Static color-shifting e-ink panels</div>
+    <div>Smart shoes that die by lunch</div><div>Low power panels on a small LiPo battery</div>
+  </div>
+</section>
+
+<section id="persona">
+  <h2>Persona</h2>
+  <h3>The Sneakerhead</h3>
+  <p>Three personas came out of discovery: sneakerheads, lifestyle users, and creators. The sneakerhead is shown in full because they set the bar for how the shoe has to look when the panels are off.</p>
+  <div class="persona">
+    <header><span>Jordan R.</span><span>The Sneakerhead</span></header>
+    <div class="pbody">
+      <div>
+        <div class="avatar">JR</div>
+        <p class="facts"><span><b>Age:</b> 22</span><span><b>Life stage:</b> College senior</span><span><b>Collection:</b> 20+ pairs</span><span><b>Phone:</b> Always in hand</span></p>
+        <h4>Personality</h4>
+        <div class="slider"><span>Blends in</span><span>Stands out</span><i style="--p:85%"></i></div>
+        <div class="slider"><span>Designs from scratch</span><span>Picks a preset</span><i style="--p:72%"></i></div>
+        <div class="slider"><span>Waits for reviews</span><span>Buys first</span><i style="--p:78%"></i></div>
+      </div>
+      <div>
+        <h4>Bio</h4>
+        <p>Follows drops, matches shoes to the outfit, and posts both. Runs out of closet space and money before running out of ideas.</p>
+        <h4>Goals</h4>
+        <ul><li>A pair nobody else has today</li><li>Match the shoe to the outfit</li><li>Something worth posting</li></ul>
+        <h4>Frustrations</h4>
+        <ul><li>Every new look costs another pair</li><li>Customs take weeks and cannot be undone</li><li>Tech shoes that look like gadgets</li></ul>
+      </div>
+      <div>
+        <h4>How persona discovers the product</h4>
+        <p>TikTok and Instagram creators, sneaker communities, friends.</p>
+        <h4>How persona uses the product</h4>
+        <p>Pairs once, saves favorites, and swaps presets before leaving the house.</p>
+        <h4>Motivations</h4>
+        <div class="bar">Self-expression<i style="--p:95%"></i></div>
+        <div class="bar">Looks good switched off<i style="--p:88%"></i></div>
+        <div class="bar">Easy to use<i style="--p:80%"></i></div>
+        <div class="bar">Durability<i style="--p:70%"></i></div>
+      </div>
+    </div>
+  </div>
+  <div class="gap">Jordan is a draft built from your persona categories. Swap in the real persona sheets for all three, or give me the details and I will redraw them.</div>
+</section>
+
+<section id="journey">
+  <h2>Customer Journey</h2>
+  <h3>From unboxing to a new look</h3>
+  <div class="scroll"><div class="jm">
+    <div class="lab">Phases</div><div class="ph">Discover</div><div class="ph">Unbox and charge</div><div class="ph">Pair</div><div class="ph">Browse styles</div><div class="ph">Apply</div><div class="ph">Wear</div>
+    <div class="lab">Thoughts and feelings</div>
+    <div>"Wait, the shoe changes color?"</div><div>"Does it feel like a real sneaker?"</div><div>"Why can't it find my shoe?"</div><div>"Just show me good ones."</div><div>"That was one tap."</div><div>"Will this survive rain?"</div>
+    <div class="lab">Emotional experience</div>
+    <div class="curve"><svg viewBox="0 0 600 90" preserveAspectRatio="none" role="img" aria-label="Emotion curve: curious, cautious, frustrated, interested, delighted, a little worried"><line x1="0" y1="45" x2="600" y2="45" stroke="#272B31" stroke-dasharray="4 4"/><path d="M50,30 C100,30 100,46 150,46 S200,72 250,72 S300,36 350,36 S400,12 450,12 S500,40 550,40" fill="none" stroke="#5BB8F0" stroke-width="3"/><g fill="#F0894A"><circle cx="50" cy="30" r="6"/><circle cx="150" cy="46" r="6"/><circle cx="250" cy="72" r="6"/><circle cx="350" cy="36" r="6"/><circle cx="450" cy="12" r="6"/><circle cx="550" cy="40" r="6"/></g></svg></div>
+    <div class="lab">User actions</div>
+    <div>Sees a creator swap styles on camera</div><div>Charges the pair, tries them on</div><div>Opens the app and scans for the shoe</div><div>Scrolls presets and collections</div><div>Previews a style, taps apply</div><div>Wears them out, swaps again later</div>
+    <div class="lab">Touchpoints</div>
+    <div>Short video, pitch demo</div><div>Shoe, charging port, battery housing</div><div>Bluetooth scan, onboarding prompts</div><div>Style Library, favorites</div><div>Live Preview, One-Tap Apply</div><div>Panels, housing, battery</div>
+    <div class="lab">Pain points</div>
+    <div>Sounds like a gimmick</div><div>Weight and comfort</div><div>Pairing was the top friction in testing</div><div>Manual editing felt like work</div><div>Preview has to match the real shoe</div><div>Durability and weather</div>
+  </div></div>
+  <div class="band">
+    <u>User Story</u>
+    <p>As someone who expresses myself through sneakers, I want to change how my pair looks from my phone, so that one pair can match any outfit without buying another.</p>
+  </div>
+</section>
+
+<section id="define">
+  <h2>Define</h2>
+  <p>Discovery left one question that mattered more than any feature. Can color-changing technology be built into a shoe and still flex, last, and hold a charge? Everything else followed from that.</p>
+  <ul>
+    <li>How might we let one pair of shoes carry many looks without making it fragile?</li>
+    <li>How might we give people real choice without asking them to become designers?</li>
+  </ul>
+  <div class="board">
+    <div class="title">How Might We?</div>
+    <div class="lane"><div class="pain">One look per pair</div><div class="notes">
+      <div class="note">Color panels on the upper</div><div class="note">Removable panel slots</div><div class="note">Presets stored on the shoe</div><div class="note">Swap in seconds</div></div></div>
+    <div class="lane"><div class="pain">Too much control</div><div class="notes">
+      <div class="note c">Preset first, editor second</div><div class="note c">Style Library</div><div class="note c">Favorites</div><div class="note c">Collections by mood</div></div></div>
+    <div class="lane"><div class="pain">Will it survive</div><div class="notes">
+      <div class="note d">Sealed housing</div><div class="note d">Flex PCB</div><div class="note d">Low voltage panels</div><div class="note d">Protected wiring channels</div></div></div>
+    <div class="lane"><div class="pain">Pairing friction</div><div class="notes">
+      <div class="note b">Automatic device detection</div><div class="note b">Onboarding prompts</div><div class="note b">Preview before sending</div></div></div>
+  </div>
+</section>
+
+<section id="feasibility">
+  <h2>Requirements and Technical Feasibility</h2>
+  <p>Before designing anything in detail, I tested whether the idea could physically work. That meant materials, vendors, patents, electronics, and cost, in that order.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Exploration</th><th>What we did</th></tr></thead>
+    <tbody>
+      <tr><td>Material feasibility</td><td>Evaluated OLED, LCD mesh, flexible e-ink, and electrochromic film</td></tr>
+      <tr><td>Vendor discussions</td><td>Met with E Ink Corp and several Shenzhen prototyping labs</td></tr>
+      <tr><td>Legal and patent research</td><td>Ran an IP feasibility check and started provisional patent development</td></tr>
+      <tr><td>Technical workshops</td><td>Worked through battery integration, Bluetooth Low Energy controllers, and flex PCB constraints</td></tr>
+      <tr><td>Engineering budgeting</td><td>Cost modeling for prototype versions and a bill of materials analysis</td></tr>
+    </tbody>
+  </table></div>
+  <h3>The display decision</h3>
+  <div class="scroll"><table>
+    <thead><tr><th>Option</th><th>What it offered</th><th>What ruled it in or out</th><th>Call</th></tr></thead>
+    <tbody>
+      <tr><td>OLED screens</td><td>Full color and animation</td><td>Fragile, ran hot, and cost too much</td><td><span class="tag no">Dropped</span></td></tr>
+      <tr><td>Static e-ink panels</td><td>Color change that holds without constant power</td><td>Flexible enough, low power, workable cost</td><td><span class="tag">Chosen</span></td></tr>
+      <tr><td>LCD mesh and electrochromic film</td><td>Evaluated as alternatives</td><td>Did not beat e-ink on the same criteria</td><td><span class="tag mid">Not pursued</span></td></tr>
+    </tbody>
+  </table></div>
+  <p>Deliverable: a Technical Feasibility Assessment and a Build vs Buy Matrix. The decision was to move away from OLED and toward static color-shifting e-ink panels driven by a Bluetooth microcontroller.</p>
+  <div class="gap">I kept the LCD mesh and electrochromic row vague on purpose. Tell me the real reasons each lost and I will split them into their own rows.</div>
+</section>
+
+<section id="ideation">
+  <h2>Ideation</h2>
+  <p>We went wide on what the shoe could do and what the app could let people do, then cut to what a bootstrapped team could prove.</p>
+  <div class="board">
+    <span class="glabel">How the shoe changes</span>
+    <div class="notes"><div class="note b pick">Static color-shifting e-ink panels</div><div class="note b">OLED video panels</div><div class="note b">Animated patterns</div><div class="note b pick">Removable color panel slots</div><div class="note b">Electrochromic film</div></div>
+    <span class="glabel">How people choose a style</span>
+    <div class="notes"><div class="note pick">Curated presets</div><div class="note">Full manual editor</div><div class="note pick">Color wheel</div><div class="note pick">Favorites</div><div class="note pick">Collections: Seasonal, Minimal, Streetwear</div></div>
+    <span class="glabel">How shoe and phone talk</span>
+    <div class="notes"><div class="note d pick">Bluetooth Low Energy</div><div class="note d pick">Automatic device detection</div><div class="note d pick">Presets saved on the shoe</div><div class="note d">Cloud preset sync</div></div>
+  </div>
+  <div class="board">
+    <div class="title">Selected Ideas for Early Concept</div>
+    <div class="notes">
+      <div class="note b big">Static color panels, no animation</div><div class="note big">Preset-based Style Library</div><div class="note d big">One-tap apply over Bluetooth</div><div class="note c big">Live preview before sending</div><div class="note big">Collections</div>
+    </div>
+  </div>
+</section>
+
+<section id="prototype">
+  <h2>Prototype and User Testing</h2>
+  <p>Prototyping ran in four passes: concept sketches and 2D renders, low fidelity wireframes in Figma, high fidelity app screens, and physical builds. The three workstreams below ran side by side.</p>
+  <div class="steps">
+    <div><b>Hardware</b><ul>
+      <li>3D renders and engineering-ready models in Blender and Keyshot, with battery housing, controller compartment, wiring channels, and removable panel slots</li>
+      <li>Physical prototypes on Arduino, then ESP32</li>
+      <li>Bill of materials: fabric base, e-textile layer, 3.7V LiPo battery, ESP32 controller, wiring harness, e-ink panel prototypes</li>
+      <li>Annotated CAD files and supplier packets for Shenzhen manufacturing partners</li>
+    </ul></div>
+    <div><b>Firmware</b><ul>
+      <li>Written in C/C++ for Bluetooth communication, boot sequencing, power management, and driver control</li>
+      <li>Logic for real-time color switching and sync timing</li>
+      <li>Presets stored in on-board EEPROM memory</li>
+      <li>Custom circuit board built with an electrical engineer: power regulation, Bluetooth module, drivers, charging</li>
+      <li>Serial debugging and edge-case simulation at each stage</li>
+    </ul></div>
+    <div><b>Mobile app</b><ul>
+      <li>React Native for iOS and Android, chosen for faster iteration and lower cost</li>
+      <li>Bluetooth command protocol that maps each app action to a hex command for the firmware</li>
+      <li>Screens: Live Preview, Color Wheel, Preset Editor, One-Tap Apply Style</li>
+      <li>Preview simulation that mirrors how the real panels behave</li>
+    </ul></div>
+  </div>
+  <h3>How the pieces connect</h3>
+  <div class="stack" role="img" aria-label="App architecture: UI layer, then Bluetooth service layer, then firmware controller on the shoe">
+    <div><b>UI Layer</b><span>React Native screens. Style Library, Live Preview, presets.</span></div>
+    <div class="ar" aria-hidden="true">&rarr;</div>
+    <div><b>Bluetooth Service Layer</b><span>Scans, pairs, and sends hex command strings for color, style, and preset sync.</span></div>
+    <div class="ar" aria-hidden="true">&rarr;</div>
+    <div><b>Firmware Controller</b><span>ESP32 on the shoe. Drives the panels and stores presets.</span></div>
+  </div>
+  <div class="shots">
+    <figure><b>E-ink prism model</b><div class="render"><video src="https://raw.githubusercontent.com/SSGutala/Portfolio/61f360425f33f225faeffc56b46f36a656138480/AWPrismrender.mp4" autoplay loop muted playsinline aria-label="E-ink prism model render"></video><small>The direction we chose</small></div></figure>
+    <figure><b>OLED model</b><div class="render"><video src="https://raw.githubusercontent.com/SSGutala/Portfolio/cf9aa8bf85d3d96aa8cec1ee6583c3e768b94bae/AWSlipOns.mp4" autoplay loop muted playsinline aria-label="OLED model render"></video><small>The direction we dropped</small></div></figure>
+    <figure><b>Style Library</b><img class="shot" src="aw-app1.jpg" alt="Alphawave app: shoe preview with a library of uploaded, downloaded, color, gradient, and animation styles"></figure>
+    <figure><b>Collections and drops</b><img class="shot" src="aw-app2.jpg" alt="Alphawave app: storefront with seasonal, nature, sports, and entertainment collections and new drops"></figure>
+  </div>
+  <div class="gap">The two render spaces are held for your GIFs. The app screens are cropped from your screenshot, so send the originals if you want them sharper.</div>
+
+  <h3>What testing told us</h3>
+  <div class="stats">
+    <div><b>100+</b>tests with lifestyle users, fashion students, and TikTok creators</div>
+    <div><b>15+</b>users in app usability sessions</div>
+    <div><b>4</b>display technologies evaluated</div>
+    <div><b>2</b>controller platforms, Arduino then ESP32</div>
+  </div>
+  <div class="scroll"><table>
+    <thead><tr><th>Feedback</th><th>Value</th><th>Outcome</th></tr></thead>
+    <tbody>
+      <tr><td>Real customization is hard to find in footwear</td><td><span class="tag">High</span></td><td>Confirmed interest</td></tr>
+      <tr><td>People preferred presets over complex manual editing</td><td><span class="tag">High</span></td><td>Simplified the app around presets</td></tr>
+      <tr><td>Worries about durability and weather resistance</td><td><span class="tag">High</span></td><td>Redesigned the housing</td></tr>
+      <tr><td>Asked for preset collections such as Seasonal, Minimal, Streetwear</td><td><span class="tag mid">Medium</span></td><td>Added the Collection concept</td></tr>
+      <tr><td>Bluetooth pairing flow caused friction</td><td><span class="tag">High</span></td><td>Added automatic device detection and onboarding prompts</td></tr>
+    </tbody>
+  </table></div>
+  <p>Feedback also fed back into the physical design: wearability, weight distribution, charging method, and how the shoe looks with the panels idle. Deliverables: a usability report with the iteration path for V2, a high fidelity app design system, a design spec for hardware integration, and a clickable prototype for demos and pre-investor pitches.</p>
+</section>
+
+<section id="mvp">
+  <h2>MVP Definition</h2>
+  <p>Feasibility, user desirability, and cost modeling pointed to the same place. The MVP was an app-controlled static color-shifting shoe. No animation and no video, just color panels that change on command.</p>
+  <div class="moscow">
+    <div><b>Must have</b><ul><li>Mobile app integration over Bluetooth</li><li>Quick style swapping</li><li>6 to 10 starter presets</li><li>Built to withstand real wear</li></ul></div>
+    <div><b>Should have</b><ul><li>Favorites</li><li>Collections</li><li>Automatic device detection</li></ul></div>
+    <div><b>Could have</b><ul><li>Color wheel and manual preset editor</li><li>Cloud preset sync</li></ul></div>
+    <div><b>Won't have (this version)</b><ul><li>Animation or video on the shoe</li><li>OLED panels</li></ul></div>
+  </div>
+  <p>Battery target for the MVP was limited use, under 8 hours per charge. Deliverables: MVP feature list with MoSCoW prioritization, a go-to-market MVP plan, and pitch assets for investor readiness.</p>
+  <div class="gap">The Must and Won't columns are from your MVP definition. I sorted the Should and Could columns myself. Replace them with the real MoSCoW list.</div>
+</section>
+
+<section id="stories">
+  <h2>User Stories and Acceptance Criteria</h2>
+  <div class="stories">
+    <div class="grp">Pairing</div>
+    <div class="ic">P</div><div>As a new owner, I want the app to find my shoes on its own, so that I am not stuck on a Bluetooth screen.</div><div>The app should detect the shoe automatically and walk the user through pairing with onboarding prompts.</div>
+    <div class="grp">Choosing a style</div>
+    <div class="ic p">S</div><div>As a user, I want to pick from ready-made styles, so that I get a good look without designing one.</div><div>The app should ship with 6 to 10 presets, grouped into collections, with favorites one tap away.</div>
+    <div class="ic p">V</div><div>As a user, I want to see the style before it goes to the shoe, so that I know what I am getting.</div><div>Live Preview should mirror how the real panels behave before any command is sent.</div>
+    <div class="grp">Applying and wearing</div>
+    <div class="ic">A</div><div>As a user, I want to change my shoe in one tap, so that I can swap looks on the way out.</div><div>One-Tap Apply should send the command over Bluetooth and the panels should change to the chosen style.</div>
+    <div class="ic">M</div><div>As a user, I want my shoe to keep its style without the app open, so that it works away from my phone.</div><div>Presets should be stored on the shoe and the panels should hold their color between commands.</div>
+    <div class="ic">D</div><div>As a user, I want to wear them like normal sneakers, so that I am not worried about weather or a day of walking.</div><div>The housing should protect the electronics in everyday use, with a battery target of under 8 hours of use per charge.</div>
+  </div>
+  <div class="gap">I wrote these from your feature list and testing notes. Replace them with the stories and acceptance criteria from your original requirements.</div>
+</section>
+
+<section id="outcome">
+  <h2>Risks and Outcome</h2>
+  <h3>Why MVP production paused</h3>
+  <div class="risks">
+    <div class="n"></div><div><b>Supply chain and manufacturing risk</b></div><div>Too high for a bootstrapped budget, with every key part sourced overseas.</div>
+    <div class="n"></div><div><b>Durability testing and certifications</b></div><div>A shoe with a battery and electronics has to pass far more than a normal sneaker, and each test costs time and money.</div>
+    <div class="n"></div><div><b>Unit cost</b></div><div>$85 to $120 per pair to manufacture at first. Too high without volume.</div>
+  </div>
+  <h3>What I learned</h3>
+  <ul>
+    <li>Product work that spans hardware and software needs deep technical feasibility and close vendor collaboration from the start.</li>
+    <li>People favor simplicity. Users did not want full control. They wanted curated choices.</li>
+    <li>Faster does not mean better. Test desirability before building feasibility.</li>
+  </ul>
+</section>
+
+<section id="pricing">
+  <h2>Pricing Strategy</h2>
+  <div class="pricebox">
+    <b>Where it stood</b>
+    <ul><li>No retail price was set. Production paused before pricing.</li><li>First-run manufacturing cost came in at $85 to $120 per pair, which is too high without volume.</li></ul>
+    <b>The model</b>
+    <ul><li>Customizable hardware, plus digital experiences in the app.</li></ul>
+  </div>
+  <div class="gap">Add the retail price you were targeting and any plan for paid presets or collections.</div>
+</section>
+
+<section id="canvas">
+  <h2>Lean Business Model Canvas</h2>
+  <div class="canvas">
+    <div><b>Problem Statement</b>How might we let one pair of shoes carry many looks, without making it fragile or hard to use?</div>
+    <div><b>Solution</b><ul><li>Static color-shifting e-ink panels</li><li>Companion app with presets</li><li>One-tap apply over Bluetooth</li></ul></div>
+    <div><b>Value Proposition</b>Shoes that adapt like your phone wallpaper. One pair, many styles, changed from your phone.</div>
+    <div><b>Unfair Advantage</b><ul><li>Working hardware, firmware, and app built together</li><li>Provisional patent work started</li><li>Direct supplier relationships</li></ul></div>
+    <div><b>Customer Segments</b>Sneakerheads, lifestyle users, and creators.</div>
+    <div><b>Existing Alternatives</b><ul><li>Buying another pair</li><li>Custom sneakers</li></ul></div>
+    <div><b>Key Metrics</b><ul><li>Cost per pair</li><li>Battery life per charge</li><li>Pairing success</li><li>Preset swaps per user</li></ul></div>
+    <div><b>High-level Concept</b><ul><li>Alphawave = a phone wallpaper for your sneakers</li></ul></div>
+    <div><b>Channels</b><ul><li>TikTok creators</li><li>Sneaker communities</li><li>Investor demos</li></ul></div>
+    <div><b>Early Adopters</b><ul><li>Fashion students</li><li>Content creators</li><li>Sneakerheads</li></ul></div>
+    <div class="half"><b>Cost Structure</b>Components and bill of materials. Prototyping and tooling with Shenzhen partners. Durability testing and certifications.</div>
+    <div class="half"><b>Revenue Streams (Pricing Model)</b>The shoes, the wireless charger for the shoes, special digital color and pattern purchases for the shoes, and product care accessories.</div>
+  </div>
+  <div class="gap">Key metrics, channels, and existing alternatives are my fill-ins. Swap in your original canvas if you still have it.</div>
+</section>
+
+<section id="next">
+  <h2>Next Iteration</h2>
+  <p>Generative AI and flexible display technology have both moved a long way since 2023. If Alphawave came back, it would come back as AI-powered adaptive footwear.</p>
+  <div class="steps">
+    <div><b>Upload an outfit</b>Take a photo of what you are wearing today.</div>
+    <div><b>Get a matching style</b>The app generates a shoe style that fits the outfit.</div>
+    <div><b>Sync instantly</b>The style is sent to the shoe and the panels change color.</div>
+  </div>
+</section>
+
+</div>
+
+</body></html>

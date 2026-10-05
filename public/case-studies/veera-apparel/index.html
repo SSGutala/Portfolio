@@ -1,0 +1,415 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Veera Product Portfolio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: one centered case-study column under a centered logo banner, black and blue to match srigutala.com, same order as the LilPreneur and Closet AI portfolios, plus a feasibility section because this one is hardware. Single dark theme by choice, to match the site. */
+:root{
+  color-scheme:dark;
+  --bg:#000000; --surface:#0D0F12; --ink:#FFFFFF; --body:#A6AAB0; --muted:#7E838A;
+  --rule:#272B31; --graphite:#1A1F26; --graphite-2:#252E38; --on-dark:#FFFFFF; --on-dark-soft:#A6AAB0;
+  --teal:#5BB8F0; --teal-wash:#0E2233; --orange:#F0894A; --orange-wash:#2A1A10; --mist:#14171B;
+  --note-a:#2E2612; --note-b:#301C14; --note-c:#122B28; --note-d:#15233B;
+  --display:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --text:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--body);font-family:var(--text);font-size:16px;line-height:1.6;padding-inline:20px;padding-block:24px 64px}
+.page{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:52px}
+.topnav{border:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:6px 22px;align-items:center;font-size:14px;font-weight:500;background:var(--surface);padding:14px 22px;border-radius:10px}
+.topnav b{font-family:var(--display);font-stretch:118%;font-size:18px;font-weight:800;color:var(--on-dark);margin-right:auto;letter-spacing:.08em}
+.topnav a{color:var(--on-dark);text-decoration:none;opacity:.85}
+.topnav a:hover{opacity:1}
+.topnav a.cta{background:var(--on-dark);color:var(--graphite);padding:7px 18px;border-radius:999px;font-weight:600;opacity:1}
+a{color:var(--teal)}
+a:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+.banner{color:var(--on-dark);padding:28px 0 8px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px}
+.banner img{width:110px;height:auto}
+.banner .sub{font-size:22px;color:var(--body)}
+.banner h1{font-family:var(--display);font-stretch:112%;font-size:clamp(32px,6.2vw,56px);font-weight:800;margin:0;line-height:1.05;text-wrap:balance;letter-spacing:-.01em}
+.pill{color:var(--on-dark-soft);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+.banner p{margin:0;font-size:19px;max-width:48ch;color:var(--on-dark-soft)}
+section{display:flex;flex-direction:column;gap:16px;scroll-margin-top:16px}
+h2,h3,h4{font-family:var(--display);color:var(--ink);margin:0;line-height:1.15;text-wrap:balance}
+h2{font-stretch:112%;font-size:clamp(27px,4.4vw,36px);font-weight:800;text-align:center;margin-bottom:6px}
+h3{font-size:20px;font-weight:700;margin-top:6px}
+p{margin:0;max-width:70ch} ul,ol{margin:0;padding-left:20px;max-width:70ch} li{margin-bottom:4px}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:start}
+.split>div:first-child{display:flex;flex-direction:column;gap:14px;min-width:0}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;font-size:14.5px}
+.meta span,.glabel{display:block;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
+.quote{border-left:4px solid var(--teal);padding:6px 0 6px 22px;display:flex;flex-direction:column;gap:8px}
+.quote p{font-size:20px;font-style:italic;color:var(--body);line-height:1.4}
+.quote span{font-size:13.5px;color:var(--muted)}
+.gap{border-radius:10px;border:1.5px dashed var(--orange);background:var(--orange-wash);padding:12px 16px;font-size:14.5px;color:var(--ink);max-width:74ch}
+.gap::before{content:"Needs your input";display:block;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:2px}
+.slot{border:2px dashed var(--teal);background:var(--teal-wash);border-radius:10px;display:grid;place-items:center;text-align:center;padding:20px;color:var(--teal);font-weight:600;font-size:15px;max-width:100%;width:100%}
+.slot small{display:block;font-weight:400;color:var(--body);font-size:13px}
+.slot.wide{aspect-ratio:16/10}.slot.phone{aspect-ratio:9/16;max-height:400px}.slot.sq{aspect-ratio:4/3}
+.ps{display:grid;grid-template-columns:1fr 1fr;max-width:660px;width:100%;margin:0 auto;text-align:center}
+.ps .hd{font-size:12px;letter-spacing:.25em;text-transform:uppercase;font-weight:600;color:var(--ink);padding:10px}
+.ps div:not(.hd){padding:16px 14px;font-size:15px;font-weight:500;color:var(--ink);background:var(--mist);border-bottom:2px solid var(--bg)}
+.ps div:not(.hd):nth-child(even){background:var(--teal-wash)}
+.persona{background:var(--surface);border:1px solid var(--rule);border-radius:10px;overflow:hidden}
+.persona header{background:var(--graphite);color:var(--on-dark);display:flex;justify-content:space-between;gap:12px;padding:10px 18px;font-family:var(--display);font-weight:700;font-size:16px}
+.pbody{display:grid;grid-template-columns:170px minmax(0,1fr) minmax(0,1fr);gap:22px;padding:18px;font-size:14px}
+.pbody>div{display:flex;flex-direction:column;gap:10px;min-width:0}
+.avatar{border-radius:10px;aspect-ratio:1;max-width:100%;background:var(--teal-wash);display:grid;place-items:center;font-family:var(--display);font-size:42px;font-weight:800;color:var(--teal)}
+.persona h4{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-family:var(--text);font-weight:600}
+.persona ul{padding-left:16px}
+.facts{margin:0;display:grid;gap:2px}.facts b{color:var(--ink)}
+.slider{display:grid;grid-template-columns:1fr 1fr;font-size:11px;color:var(--muted);row-gap:2px}
+.slider span:nth-child(2){text-align:right}
+.slider i{grid-column:1/-1;height:5px;background:var(--mist);position:relative;display:block}
+.slider i::after{content:"";position:absolute;top:-3px;left:var(--p);width:10px;height:11px;background:var(--ink)}
+.bar{font-size:12px}.bar i{display:block;height:7px;background:var(--mist)}.bar i::after{content:"";display:block;height:100%;width:var(--p);background:var(--teal)}
+.scroll{overflow-x:auto}
+.jm{display:grid;grid-template-columns:100px repeat(6,minmax(0,1fr));gap:4px;min-width:860px;font-size:12.5px;line-height:1.4}
+.jm>div{background:var(--surface);border:1px solid var(--rule);padding:8px;border-radius:6px}
+.jm .lab{background:var(--mist);color:var(--ink);font-size:11px;letter-spacing:.05em;text-transform:uppercase;font-weight:600;display:flex;align-items:center}
+.jm .ph{background:var(--graphite);color:var(--on-dark);border-color:var(--graphite);font-weight:600;text-align:center;font-size:13px}
+.jm .curve{grid-column:2/-1;padding:0}
+.jm svg{display:block;width:100%;height:90px}
+.band{border-radius:10px;background:var(--graphite);padding:30px 32px;display:flex;flex-direction:column;gap:8px}
+.band u{font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--on-dark-soft)}
+.band p{font-family:var(--display);font-size:21px;font-weight:600;color:var(--on-dark);max-width:62ch;line-height:1.3}
+.board{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:14px}
+.board .title{background:var(--graphite);color:var(--on-dark);text-align:center;font-weight:600;padding:8px 18px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;border-radius:999px;align-self:center}
+.lane{display:grid;grid-template-columns:120px minmax(0,1fr);gap:12px;align-items:center}
+.lane .pain{background:var(--graphite);color:var(--on-dark);border-radius:50%;aspect-ratio:1;display:grid;place-items:center;text-align:center;font-size:12.5px;font-weight:600;padding:10px;max-width:110px}
+.notes{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:8px}
+.note{border-radius:5px;background:var(--note-a);color:var(--ink);padding:10px;font-size:12.5px;line-height:1.3;min-height:74px;box-shadow:1px 2px 0 var(--rule);display:flex;align-items:center}
+.note.b{background:var(--note-b)}.note.c{background:var(--note-c)}.note.d{background:var(--note-d)}
+.note.big{font-size:14px;font-weight:600;min-height:92px}
+.note.pick{outline:3px solid var(--ink);outline-offset:1px}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:14px;background:var(--surface)}
+th,td{border:1px solid var(--rule);padding:10px 12px;text-align:left;vertical-align:top}
+th{background:var(--graphite);color:var(--on-dark);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;border-color:var(--graphite)}
+td:first-child{color:var(--ink);font-weight:600}
+.shot{display:block;width:100%;max-width:300px;margin:0 auto;border-radius:10px}
+.tag{display:inline-block;font-size:11.5px;font-weight:600;padding:2px 9px;border-radius:999px;background:var(--teal-wash);color:var(--teal)}
+.tag.no{background:var(--orange-wash);color:var(--orange)}
+.tag.mid{background:var(--mist);color:var(--body)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.steps>div{background:var(--mist);border-radius:10px;padding:20px;display:flex;flex-direction:column;gap:8px;font-size:14.5px}
+.steps b{font-family:var(--display);color:var(--ink);font-size:17px}
+.steps ul{padding-left:16px}
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.shots figure{margin:0;display:flex;flex-direction:column;gap:6px;font-size:13.5px}
+.shots b{font-family:var(--display);color:var(--ink);font-size:16px}
+.stack{display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr) 28px minmax(0,1fr);gap:8px;align-items:stretch}
+.stack>div{background:var(--graphite);color:var(--on-dark);border-radius:10px;padding:16px;font-size:13.5px;display:flex;flex-direction:column;gap:6px}
+.stack b{font-family:var(--display);font-size:16px}
+.stack span{color:var(--on-dark-soft)}
+.stack .ar{background:none;color:var(--muted);padding:0;justify-content:center;align-items:center;font-size:20px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px}
+.stats div{font-size:14px}
+.stats b{display:block;font-family:var(--display);font-stretch:112%;font-size:34px;font-weight:800;color:var(--ink);line-height:1.1;font-variant-numeric:tabular-nums}
+.moscow{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.moscow>div{background:var(--surface);border:1px solid var(--rule);border-top:5px solid var(--teal);border-radius:6px;padding:14px;font-size:14px;display:flex;flex-direction:column;gap:6px}
+.moscow>div:nth-child(2){border-top-color:var(--ink)}.moscow>div:nth-child(3){border-top-color:var(--muted)}.moscow>div:nth-child(4){border-top-color:var(--orange)}
+.moscow b{font-family:var(--display);color:var(--ink);font-size:16px}
+.moscow ul{padding-left:16px}
+.stories{display:grid;grid-template-columns:34px minmax(0,1fr) minmax(0,1fr);gap:14px 18px;font-size:14.5px;align-items:start}
+.stories .ic{border-radius:50%;width:34px;height:34px;display:grid;place-items:center;font-weight:700;color:var(--bg);background:var(--teal)}
+.stories .ic.p{background:var(--ink)}
+.stories .grp{grid-column:1/-1;font-weight:700;color:var(--ink);margin-top:8px}
+.pricebox{border-radius:10px;background:var(--graphite);color:var(--on-dark-soft);padding:20px 24px;font-size:15px;display:flex;flex-direction:column;gap:8px}
+.pricebox b{color:var(--ink)} .pricebox ul{max-width:none}
+.risks{display:grid;grid-template-columns:40px minmax(0,1fr) minmax(0,1fr);gap:16px 18px;font-size:14.5px;counter-reset:r}
+.risks .n{counter-increment:r;font-family:var(--display);font-weight:800;font-size:22px;color:var(--ink);line-height:1}
+.risks .n::before{content:counter(r) "."}
+.risks b{color:var(--ink)}
+.canvas{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));border:1.5px solid var(--rule);background:var(--surface);border-radius:10px;overflow:hidden;font-size:12.5px;line-height:1.4;color:var(--ink)}
+.canvas>div{grid-column:span 2;border:.75px solid var(--rule);padding:10px;min-width:0}
+.canvas .half{grid-column:span 5}
+.canvas b{display:block;font-family:var(--display);font-size:13.5px;margin-bottom:6px}
+.canvas ul{padding-left:14px;margin:0}
+@media (max-width:899px){
+  .canvas{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .canvas>div,.canvas .half{grid-column:span 1}
+}
+@media (max-width:760px){
+  .split{grid-template-columns:minmax(0,1fr)}
+  .pbody{grid-template-columns:minmax(0,1fr)} .avatar{max-width:120px}
+  .lane{grid-template-columns:minmax(0,1fr)} .lane .pain{aspect-ratio:auto;border-radius:6px;max-width:none}
+  .stories,.risks{grid-template-columns:34px minmax(0,1fr)} .stories>div:nth-child(4n+4),.risks>div:nth-child(3n+3){grid-column:2}
+  .stories .grp{grid-column:1/-1}
+  .stack{grid-template-columns:minmax(0,1fr)} .stack .ar{transform:rotate(90deg)}
+  
+}
+@media (max-width:520px){ .canvas{grid-template-columns:minmax(0,1fr)} }
+.banner .slot{width:120px;aspect-ratio:1;padding:8px;font-size:13px}
+.render{display:flex;flex-direction:column;gap:6px;min-width:0}
+.render img{display:block;width:100%;border-radius:10px;background:#E6E8EB}
+.render small{font-size:13px;color:var(--body)}
+</style>
+
+<div class="page">
+<div class="topnav"><b>VEERA</b><a href="#overview">Overview</a><a href="#persona">Persona</a><a href="#journey">Journey</a><a href="#ideation">Ideation</a><a href="#prototype">Prototype</a><a href="#stories">User stories</a><a href="#canvas">Canvas</a></div>
+
+<div class="banner">
+  <img src="veera-logo.png" alt="Veera Apparel logo">
+  <h1>Veera Apparel</h1>
+  <p class="sub">Lifestyle Activewear Venture</p>
+  <p>Comfort-first activewear with subtle cultural identity. Not costume, not cliché, just confidently expressive.</p>
+</div>
+
+<section id="overview">
+  <h2>Overview</h2>
+  <div class="split">
+    <div>
+      <p>Veera was a lifestyle activewear brand I founded in 2024. The idea was premium, minimal clothing that carries cultural identity quietly, built for everyday wear and not only for events or the gym.</p>
+      <p>We took it from concept through market discovery, a design system, supplier sourcing, and a small run of shirts that went to beta customers. We then closed it. The product did not stand apart enough from what people already wore, and the market need for ethnic design athletic wear was not there. This page covers what we built and how we reached that call.</p>
+    </div>
+    <div class="render"><img src="veera-front.png" alt="Veera tee, front, with the archer chest mark"><small>Front of tee</small></div>
+  </div>
+  <div class="meta">
+    <div><span>My contribution</span>Founder and Product Owner. Owned discovery, brand positioning, the design system, material and cost decisions, supplier selection, and the beta.</div>
+    <div><span>Timeline and type</span>Started 2024. Apparel and brand, lifestyle and activewear.</div>
+    <div><span>Scope</span>Concept, market discovery, design system, supplier sourcing, and a beta run. Closed after beta.</div>
+  </div>
+  <div class="gap">The end date, team size and who did what, and how many shirts went out to beta customers.</div>
+</section>
+
+<section id="challenge">
+  <h2>Customer's Challenge</h2>
+  <p>People who want their clothes to say something about where they come from have two choices. Premium activewear looks great and says nothing. Cultural apparel says a lot, but it is loud, graphic heavy, and saved for events. Nothing sat in between that you could wear to the gym, to a café, and to work on the same day.</p>
+  <div class="quote"><p>Looks good, but too loud to wear casually.</p><span>Tester, on the first graphic-based concepts</span></div>
+  <h3>What we did</h3>
+  <ul>
+    <li>Interviewed 50+ early potential users, including fitness creators, young professionals, and models, on comfort, fit, and cultural expression</li>
+    <li>Analyzed premium activewear brands (Lululemon, Alo, Gymshark) to compare tone, brand language, and perception of quality</li>
+    <li>Identified an opportunity in understated cultural identity, as opposed to bold graphics or printed symbolism</li>
+  </ul>
+  <p>Deliverables: a problem statement, target persona profiles, and brand positioning axes running from minimal to loud and from lifestyle to performance.</p>
+</section>
+
+<section>
+  <div class="ps">
+    <div class="hd">Problems</div><div class="hd">Solutions</div>
+    <div>Cultural apparel is too loud for daily wear</div><div>Tone-on-tone symbolic accents</div>
+    <div>Premium activewear carries no identity</div><div>Minimal branding with a cultural mark</div>
+    <div>Graphic prints read as costume</div><div>Clean silhouettes in a neutral palette</div>
+    <div>Cheap fabric undercuts a premium story</div><div>Mid-weight cotton and cotton-spandex blends</div>
+    <div>Inventory is a big bet for a new brand</div><div>Small-batch drops of 50 to 100 units</div>
+  </div>
+</section>
+
+<section id="persona">
+  <h2>Persona</h2>
+  <h3>The Young Professional</h3>
+  <p>We spoke with three groups: fitness creators, young professionals, and models. The young professional is shown in full because they wear the same pieces across the most settings.</p>
+  <div class="persona">
+    <header><span>Arjun M.</span><span>The Young Professional</span></header>
+    <div class="pbody">
+      <div>
+        <div class="avatar">AM</div>
+        <p class="facts"><span><b>Age:</b> 27</span><span><b>Work:</b> Hybrid office job</span><span><b>Trains:</b> 4 days a week</span><span><b>Wears:</b> Activewear most days</span></p>
+        <h4>Personality</h4>
+        <div class="slider"><span>Loud</span><span>Minimal</span><i style="--p:82%"></i></div>
+        <div class="slider"><span>Performance</span><span>Lifestyle</span><i style="--p:70%"></i></div>
+        <div class="slider"><span>Price first</span><span>Quality first</span><i style="--p:68%"></i></div>
+      </div>
+      <div>
+        <h4>Bio</h4>
+        <p>Lives in gym clothes that pass for casual wear. Proud of his background, but does not want to wear it as a print across his chest.</p>
+        <h4>Goals</h4>
+        <ul><li>One wardrobe for gym, café, and weekend</li><li>Clothes that feel premium</li><li>A quiet nod to identity</li></ul>
+        <h4>Frustrations</h4>
+        <ul><li>Cultural designs that feel like costume</li><li>Thin fabric that loses shape in the wash</li><li>Logos that shout</li></ul>
+      </div>
+      <div>
+        <h4>How persona discovers the product</h4>
+        <p>Fitness creators, friends, a waitlist page.</p>
+        <h4>How persona uses the product</h4>
+        <p>Wears it to train, keeps it on for the rest of the day.</p>
+        <h4>Motivations</h4>
+        <div class="bar">Comfort and fabric feel<i style="--p:95%"></i></div>
+        <div class="bar">Looks premium<i style="--p:88%"></i></div>
+        <div class="bar">Subtle identity<i style="--p:65%"></i></div>
+        <div class="bar">Price<i style="--p:60%"></i></div>
+      </div>
+    </div>
+  </div>
+  <div class="gap">Arjun is a draft built from your interview groups. Swap in the real target persona profiles.</div>
+</section>
+
+<section id="journey">
+  <h2>Customer Journey</h2>
+  <h3>From first look to everyday wear</h3>
+  <div class="scroll"><div class="jm">
+    <div class="lab">Phases</div><div class="ph">Discover</div><div class="ph">Consider</div><div class="ph">Receive</div><div class="ph">First wear</div><div class="ph">Everyday wear</div><div class="ph">Come back</div>
+    <div class="lab">Thoughts and feelings</div>
+    <div>"Clean. What is the symbol?"</div><div>"Is this different from what I own?"</div><div>"The fabric feels good."</div><div>"Fits well. Nobody would call it a costume."</div><div>"It is a nice black tee."</div><div>"Would I pay more for this one?"</div>
+    <div class="lab">Emotional experience</div>
+    <div class="curve"><svg viewBox="0 0 600 90" preserveAspectRatio="none" role="img" aria-label="Emotion curve: curious, unsure, pleased, happy, neutral, unsure"><line x1="0" y1="45" x2="600" y2="45" stroke="#272B31" stroke-dasharray="4 4"/><path d="M50,32 C100,32 100,54 150,54 S200,24 250,24 S300,16 350,16 S400,44 450,44 S500,62 550,62" fill="none" stroke="#5BB8F0" stroke-width="3"/><g fill="#F0894A"><circle cx="50" cy="32" r="6"/><circle cx="150" cy="54" r="6"/><circle cx="250" cy="24" r="6"/><circle cx="350" cy="16" r="6"/><circle cx="450" cy="44" r="6"/><circle cx="550" cy="62" r="6"/></g></svg></div>
+    <div class="lab">User actions</div>
+    <div>Sees the concept visuals</div><div>Compares with brands they already buy</div><div>Gets a beta shirt</div><div>Wears it to train and out after</div><div>Puts it in the weekly rotation</div><div>Decides whether to buy again</div>
+    <div class="lab">Touchpoints</div>
+    <div>Lifestyle visuals, creators</div><div>Brand story, renders</div><div>Shirt, fabric, packaging</div><div>Fit, drape, chest mark</div><div>Wash and wear</div><div>Feedback conversation</div>
+    <div class="lab">Pain points</div>
+    <div>Graphic versions felt too loud</div><div>Hard to tell apart from other premium tees</div><div>None raised</div><div>None raised</div><div>The subtle mark goes unnoticed</div><div>No strong reason to switch brands</div>
+  </div></div>
+  <div class="band">
+    <u>User Story</u>
+    <p>As someone who wears activewear every day, I want pieces that feel premium and carry my identity quietly, so that I can wear them anywhere without feeling like I am in costume.</p>
+  </div>
+  <div class="gap">The journey is my reconstruction from your notes. Correct the quotes and pain points with what beta customers told you.</div>
+</section>
+
+<section id="define">
+  <h2>Define</h2>
+  <p>Discovery narrowed the problem to one tension. People liked the idea of cultural expression, and they would not wear it if it was loud. So the design question became how little you can show and still mean something.</p>
+  <ul>
+    <li>How might we express cultural identity in a way people will wear on an ordinary day?</li>
+    <li>How might we prove people want it without producing inventory first?</li>
+  </ul>
+  <div class="board">
+    <div class="title">How Might We?</div>
+    <div class="lane"><div class="pain">Too loud to wear</div><div class="notes">
+      <div class="note">Tone-on-tone motifs</div><div class="note">Small chest mark</div><div class="note">Symbolic over literal</div><div class="note">Neutral palette</div></div></div>
+    <div class="lane"><div class="pain">Has to feel premium</div><div class="notes">
+      <div class="note c">Mid-weight cotton</div><div class="note c">Cotton-spandex stretch</div><div class="note c">Matte textures</div><div class="note c">Wash durability</div></div></div>
+    <div class="lane"><div class="pain">Small budget</div><div class="notes">
+      <div class="note d">50 to 100 unit drops</div><div class="note d">Print locally ourselves</div><div class="note d">Compare suppliers worldwide</div><div class="note d">Renders before samples</div></div></div>
+    <div class="lane"><div class="pain">Unproven demand</div><div class="notes">
+      <div class="note b">Concept testing</div><div class="note b">Waitlist</div><div class="note b">Shirts to beta customers</div><div class="note b">Influencer sampling</div></div></div>
+  </div>
+</section>
+
+<section id="ideation">
+  <h2>Ideation</h2>
+  <p>We explored how to show identity, what to make it from, and how to get it made. The loud options were tested first and cut on user feedback.</p>
+  <div class="board">
+    <span class="glabel">How identity shows up</span>
+    <div class="notes"><div class="note b">Bold cultural illustration</div><div class="note b">Printed motifs</div><div class="note b pick">Tone-on-tone symbolic accents</div><div class="note b pick">Minimal chest mark</div><div class="note b pick">Outlined wordmark on the back</div></div>
+    <span class="glabel">Materials</span>
+    <div class="notes"><div class="note c pick">Mid-weight cotton</div><div class="note c pick">Cotton-spandex blend</div><div class="note c">Bamboo blend</div></div>
+    <span class="glabel">How it gets made</span>
+    <div class="notes"><div class="note d">Local suppliers</div><div class="note d">Printing designs ourselves</div><div class="note d pick">Supplier in India</div><div class="note d pick">Small-batch drop</div></div>
+    <span class="glabel">How we test demand</span>
+    <div class="notes"><div class="note pick">Concept testing with visuals</div><div class="note pick">Shirts to beta customers</div><div class="note">Waitlist</div><div class="note">Influencer sampling</div></div>
+  </div>
+  <div class="board">
+    <div class="title">Selected Ideas for Early Concept</div>
+    <div class="notes">
+      <div class="note b big">Subtle symbolic accents, no graphics</div><div class="note c big">Cotton and cotton-spandex only</div><div class="note d big">Small batch with an Indian supplier</div><div class="note big">Beta shirts before any launch</div>
+    </div>
+  </div>
+</section>
+
+<section id="prototype">
+  <h2>Prototype and User Testing</h2>
+  <p>Focus was on fabric feel, premium perception, and whether we could manufacture at small scale.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Area</th><th>Key focus</th></tr></thead>
+    <tbody>
+      <tr><td>Material testing</td><td>Evaluated cotton-spandex and bamboo blends for softness, stretch, and wash durability</td></tr>
+      <tr><td>Cost modeling</td><td>Created a small-batch feasibility plan for a 50 to 100 unit drop</td></tr>
+      <tr><td>Brand testing</td><td>Compared subtle symbolic accents against cultural graphic printing</td></tr>
+      <tr><td>Supplier research</td><td>Researched suppliers locally and across the globe</td></tr>
+    </tbody>
+  </table></div>
+  <div class="steps">
+    <div><b>Prototype 1: Graphic-based concepts</b><ul>
+      <li>Explored strong cultural illustration and printed motifs</li>
+      <li>Built mockups in Illustrator and Figma to test placement and identity</li>
+      <li>Users said it looked good but was too loud to wear casually</li>
+    </ul></div>
+    <div><b>Prototype 2: Minimal and tone-based</b><ul>
+      <li>Refined into clean silhouettes and tone-on-tone symbolic elements</li>
+      <li>Matte textures, subtle cultural accents, premium feel</li>
+      <li>Design System v1: a soft neutral palette of charcoal, stone, and deep navy, minimal branding, and placement rules for symbolic micro-elements</li>
+    </ul></div>
+    <div><b>Getting it made</b><ul>
+      <li>Tried printing designs on our own locally</li>
+      <li>Compared local and overseas suppliers</li>
+      <li>Partnered with a supplier in India</li>
+      <li>Gave a few shirts to beta customers</li>
+    </ul></div>
+  </div>
+  <div class="shots">
+    <figure><b>Front</b><div class="render"><img src="veera-front.png" alt="Veera tee, front, with the archer chest mark"><small>Chest mark</small></div></figure>
+    <figure><b>Back</b><div class="render"><img src="veera-back.png" alt="Veera tee, back, with the outlined VEERA wordmark"><small>Outlined wordmark</small></div></figure>
+  </div>
+  <h3>What testing told us</h3>
+  <div class="stats">
+    <div><b>50+</b>early potential users interviewed</div>
+    <div><b>3</b>premium brands benchmarked</div>
+    <div><b>2</b>design directions prototyped</div>
+    <div><b>50 to 100</b>units planned per drop</div>
+  </div>
+  <div class="scroll"><table>
+    <thead><tr><th>Insight</th><th>Impact</th></tr></thead>
+    <tbody>
+      <tr><td>People want premium minimal more than bold ethnic designs</td><td>Shifted away from graphic imagery toward tone-based accents</td></tr>
+      <tr><td>Fabric feel signals quality</td><td>Limited materials to mid-weight cotton and cotton-spandex blends</td></tr>
+      <tr><td>Cultural identity must be subtle, not loud</td><td>Established symbolic over literal cultural designs</td></tr>
+      <tr><td>Once it was subtle, it did not stand apart from other premium basics</td><td>No clear differentiation. Closed the business after beta</td></tr>
+    </tbody>
+  </table></div>
+  <p>Alongside the product we created lifestyle concept visuals for gym, café, and everyday casual settings, a brand story centered on subtle identity, comfort, and self-expression, and an early go-to-market concept of waitlist, concept testing, and influencer sampling. Deliverables: brand story, MVP concept brief, and a design system snapshot.</p>
+  <div class="gap">What the local printing attempt taught you, why the Indian supplier won, and what beta customers said in their own words. Also whether the waitlist or influencer sampling ever ran.</div>
+</section>
+
+<section id="stories">
+  <h2>User Stories and Acceptance Criteria</h2>
+  <div class="stories">
+    <div class="grp">Design</div>
+    <div class="ic">S</div><div>As a wearer, I want cultural identity shown subtly, so that I can wear the piece on an ordinary day.</div><div>Branding should be tone-on-tone or a small mark, placed by the design system rules. No large graphics or printed illustration.</div>
+    <div class="ic">C</div><div>As a wearer, I want colors that go with everything, so that the piece fits my existing wardrobe.</div><div>Pieces should come only in the neutral palette: charcoal, stone, and deep navy.</div>
+    <div class="grp">Fabric and fit</div>
+    <div class="ic p">F</div><div>As a wearer, I want fabric that feels premium, so that I trust the brand.</div><div>Use mid-weight cotton or a cotton-spandex blend, tested for softness and stretch.</div>
+    <div class="ic p">W</div><div>As a wearer, I want it to hold up, so that it stays in my rotation.</div><div>Fabric and print should keep their shape and finish through repeated washes.</div>
+    <div class="grp">Launch</div>
+    <div class="ic">B</div><div>As a founder, I want to test demand before buying stock, so that I do not sit on inventory.</div><div>First production should be a small batch of 50 to 100 units, after beta shirts are in customers' hands.</div>
+  </div>
+  <div class="gap">I wrote these from your design system and material decisions. Replace them with your own requirements if you had them written down.</div>
+</section>
+
+<section id="outcome">
+  <h2>Risks and Outcome</h2>
+  <h3>Why we closed it</h3>
+  <div class="risks">
+    <div class="n"></div><div><b>Lack of differentiation</b></div><div>Users pushed the design toward minimal. The more minimal it got, the more it looked like premium basics people already owned.</div>
+    <div class="n"></div><div><b>Market need</b></div><div>There was not enough demand for ethnic design athletic wear. People liked the idea more than they needed the product.</div>
+  </div>
+  <h3>What I learned</h3>
+  <ul>
+    <li>Subtlety is a strategy, not just a design choice. It also has a cost: the subtler the identity, the harder it is to stand out.</li>
+    <li>Fabric is the MVP in apparel.</li>
+    <li>You can validate desirability without producing inventory.</li>
+  </ul>
+</section>
+
+<section id="pricing">
+  <h2>Pricing Strategy</h2>
+  <div class="pricebox">
+    <b>Where it stood</b>
+    <ul><li>Positioned as premium, next to brands like Lululemon, Alo, and Gymshark.</li><li>No retail price was set. Beta shirts were given away.</li></ul>
+    <b>The model</b>
+    <ul><li>Small-batch drops of 50 to 100 units, sold direct.</li></ul>
+  </div>
+  <div class="gap">Your target retail price and cost per shirt from the Indian supplier. Confirm that selling direct was the plan.</div>
+</section>
+
+<section id="canvas">
+  <h2>Lean Business Model Canvas</h2>
+  <div class="canvas">
+    <div><b>Problem Statement</b>How might we express cultural identity in activewear that people will wear on an ordinary day?</div>
+    <div><b>Solution</b><ul><li>Tone-on-tone symbolic accents</li><li>Neutral palette</li><li>Premium cotton blends</li></ul></div>
+    <div><b>Value Proposition</b>Comfort-first apparel with subtle identity. Not costume, not cliché, just confidently expressive.</div>
+    <div><b>Unfair Advantage</b>None found. This is why the business closed.</div>
+    <div><b>Customer Segments</b>Fitness creators, young professionals, and models.</div>
+    <div><b>Existing Alternatives</b><ul><li>Lululemon, Alo, Gymshark</li><li>Graphic cultural apparel</li></ul></div>
+    <div><b>Key Metrics</b><ul><li>Beta feedback</li><li>Waitlist signups</li><li>Sell-through of a first drop</li></ul></div>
+    <div><b>High-level Concept</b><ul><li>Veera = premium activewear with a quiet cultural mark</li></ul></div>
+    <div><b>Channels</b><ul><li>Waitlist</li><li>Influencer sampling</li><li>Story-first marketing</li></ul></div>
+    <div><b>Early Adopters</b><ul><li>Beta customers</li><li>Fitness creators</li></ul></div>
+    <div class="half"><b>Cost Structure</b>Fabric and production with the Indian supplier. Sampling. Shipping. Design and brand visuals.</div>
+    <div class="half"><b>Revenue Streams (Pricing Model)</b>Direct sales in small-batch drops. Price not set.</div>
+  </div>
+</section>
+</div>
+
+</body></html>

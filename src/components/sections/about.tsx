@@ -17,7 +17,7 @@ export default function AboutSection() {
           <div className="pointer-events-none absolute -left-10 -top-10 h-40 w-40 rounded-full bg-[#00D1FF]/25 blur-3xl" />
           <div className="pointer-events-none absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
           <p className="font-landing text-6xl font-bold tracking-tight text-white md:text-7xl lg:text-8xl">
-            3+
+            5+
           </p>
           <p className="mt-4 max-w-[12ch] font-landing text-lg font-semibold leading-snug text-white md:text-xl">
             Years Of Experience
@@ -32,7 +32,7 @@ export default function AboutSection() {
             Hi, I&apos;m Sri! 👋
           </h2>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/65 md:text-lg">
-            Over the past 3+ years, I&apos;ve been building products across
+            Over the past 5+ years, I&apos;ve been building products across
             both fast-paced startups and large enterprise organizations. At
             heart, I&apos;m someone who naturally gravitates toward finding
             complex problems, understanding why they exist, and building

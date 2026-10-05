@@ -1,9 +1,43 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-const experiences = [
+type Experience = {
+  company: string;
+  role: string;
+  location: string;
+  dates: string;
+  bullets: string[];
+  portfolioHref?: string;
+};
+
+const experiences: Experience[] = [
+  {
+    company: "Closet AI",
+    role: "Co-Founder & AI Product Manager",
+    location: "Remote",
+    dates: "July 2026 - Present",
+    portfolioHref: "/projects/closet-ai",
+    bullets: [
+      "Directed a 4-person cross-functional team to build Authentication and Occasion Selection for an AI wardrobe app, authoring PRDs and resolving feature dependencies.",
+      "Resolved critical specification ambiguities for a generative AI RAG pipeline by architecting a timezone-safe data model, unblocking commitment locking and rating loops.",
+      "Established real-device QA standards spanning a 30-case, 4-device matrix and formulated pre-launch go-to-market strategy backed by a 7-competitor benchmarking teardown to inform strategic decision making.",
+    ],
+  },
+  {
+    company: "LilPreneur",
+    role: "Co-Founder & AI Product Manager",
+    location: "Remote",
+    dates: "July 2026 - Present",
+    portfolioHref: "/projects/lilpreneur",
+    bullets: [
+      "Led product lifecycle building a simulation platform for youth, managing workflows from onboarding to reporting.",
+      "Directed a 45-screen design system in Figma and conducted structured scenario reviews that caught conflicting cost models and pattern flaws prior to engineering handoff.",
+      "Architected COPPA-compliant frontend scope, decoupling client-side state management from server-side model calls to ensure end-to-end data governance.",
+    ],
+  },
   {
     company: "Fluid Touch",
     role: "Product Analyst / Software Engineer",
@@ -35,6 +69,7 @@ const experiences = [
     role: "Product Lead / Founder",
     location: "Fairfax, VA",
     dates: "May 2020 - July 2023",
+    portfolioHref: "/projects/alphawave-technologies",
     bullets: [
       "Built and tested a 0-to-1 hardware-software consumer product concept across mobile app, embedded system, BLE, supplier, durability, battery, and user experience constraints.",
       "Conducted 100+ user testing sessions across 6 prototypes, improving user satisfaction by approximately 40% while validating technical and product feasibility.",
@@ -82,7 +117,12 @@ export default function ExperienceSection() {
       const maxScroll = pane.scrollHeight - pane.clientHeight;
       const atBottom = maxScroll <= 0 || pane.scrollTop >= maxScroll - 2;
       const paneRect = pane.getBoundingClientRect();
-      const triggerY = paneRect.top + paneRect.height * 0.38;
+      // The trigger line sits 38% down the pane, then slides to the bottom
+      // over the final stretch of scroll so the last roles can still reach it.
+      const triggerOffset = paneRect.height * 0.38;
+      const remaining = Math.max(0, maxScroll - pane.scrollTop);
+      const slide = Math.max(0, paneRect.height - triggerOffset - remaining);
+      const triggerY = paneRect.top + triggerOffset + slide;
 
       let nextActive = -1;
       const fills = experiences.map(() => 0);
@@ -140,8 +180,8 @@ export default function ExperienceSection() {
             experience
           </h1>
           <p className="mt-6 max-w-sm text-base leading-relaxed text-white/55 md:text-lg">
-            Corporate roles where I shaped product strategy, automation, and
-            user-centered digital experiences across enterprise environments.
+            Roles where I shaped product strategy, automation, and
+            user-centered experiences across different environments.
           </p>
         </div>
 
@@ -225,6 +265,27 @@ export default function ExperienceSection() {
                         </li>
                       ))}
                     </ul>
+                    {item.portfolioHref && (
+                      <Link
+                        href={item.portfolioHref}
+                        className="mt-5 inline-flex items-center gap-2 rounded-full border border-[#00D1FF]/70 px-5 py-1.5 text-sm font-medium text-[#00D1FF] shadow-[0_0_14px_rgba(0,209,255,0.35)] transition-all duration-300 hover:border-[#00D1FF] hover:bg-[#00D1FF]/10 hover:shadow-[0_0_22px_rgba(0,209,255,0.6)]"
+                      >
+                        View Product Portfolio
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="m9 18 6-6-6-6" />
+                        </svg>
+                      </Link>
+                    )}
                   </div>
                 </article>
               );

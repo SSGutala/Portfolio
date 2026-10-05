@@ -1,19 +1,26 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import AriaProject from "@/components/projects/aria";
-import VeeraApparelProject from "@/components/projects/veera-apparel";
-import AlphawaveProject from "@/components/projects/alphawave";
 import SuperStarProject from "@/components/projects/superstar";
+import CaseStudyFrame from "@/components/projects/case-study-frame";
 
 const projectComponents: Record<string, React.ComponentType> = {
   aria: AriaProject,
-  "veera-apparel": VeeraApparelProject,
-  "alphawave-technologies": AlphawaveProject,
   superstar: SuperStarProject,
 };
 
+// Full case-study pages served as-is from public/case-studies.
+const caseStudies: Record<string, { title: string }> = {
+  "closet-ai": { title: "Closet AI Product Portfolio" },
+  lilpreneur: { title: "LilPreneur Product Portfolio" },
+  "alphawave-technologies": { title: "Alphawave Product Portfolio" },
+  "veera-apparel": { title: "Veera Product Portfolio" },
+};
+
 export function generateStaticParams() {
-  return Object.keys(projectComponents).map((slug) => ({ slug }));
+  return [...Object.keys(projectComponents), ...Object.keys(caseStudies)].map(
+    (slug) => ({ slug })
+  );
 }
 
 export default async function ProjectPage({
@@ -22,6 +29,19 @@ export default async function ProjectPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const caseStudy = caseStudies[slug];
+
+  if (caseStudy) {
+    return (
+      <div className="bg-black">
+        <CaseStudyFrame
+          src={`/case-studies/${slug}/index.html`}
+          title={caseStudy.title}
+        />
+      </div>
+    );
+  }
+
   const ProjectComponent = projectComponents[slug];
 
   if (!ProjectComponent) {
