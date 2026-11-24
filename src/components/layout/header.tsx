@@ -17,7 +17,7 @@ const navItems = [
 const socialLinks = [
   {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/in/sri-gutala/",
+    href: "https://www.linkedin.com/in/sai-gutala/",
     icon: Linkedin,
   },
   {
@@ -65,7 +65,7 @@ export default function Header() {
           href="/"
           className="mr-6 font-landing text-[15px] font-extrabold uppercase tracking-[0.12em] text-white underline decoration-[#00D1FF] decoration-2 underline-offset-4"
         >
-          Sri Gutala
+          Sai Gutala
         </Link>
 
         <nav className="hidden flex-1 items-center justify-center space-x-6 text-sm md:flex">

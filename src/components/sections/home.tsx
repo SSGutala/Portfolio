@@ -15,7 +15,7 @@ export default function HomeSection() {
         <div className="relative h-full w-full">
           <Image
             src={PROFILE_IMAGE}
-            alt="Sri Gutala"
+            alt="Sai Gutala"
             fill
             priority
             sizes="(max-width: 768px) 100vw, 52vw"
@@ -36,7 +36,7 @@ export default function HomeSection() {
           </p>
 
           <h1 className="font-landing text-4xl font-bold leading-[1.15] tracking-tight sm:text-5xl md:text-6xl lg:text-[4.25rem]">
-            <span className="block">I&apos;m Sri</span>
+            <span className="block">I&apos;m Sai</span>
             <span className="mt-1 block whitespace-nowrap">
               A
               <TypewriterText className="text-[#00BFFF]" />

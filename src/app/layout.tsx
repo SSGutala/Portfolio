@@ -6,8 +6,8 @@ import Footer from "@/components/layout/footer";
 import SiteShell from "@/components/layout/site-shell";
 
 export const metadata: Metadata = {
-  title: 'Sri Gutala Portfolio',
-  description: 'Portfolio of Sri Gutala, showcasing consulting, ventures, product, and UI/UX work.',
+  title: 'Sai Gutala Portfolio',
+  description: 'Portfolio of Sai Gutala, showcasing consulting, ventures, product, and UI/UX work.',
 };
 
 export default function RootLayout({
