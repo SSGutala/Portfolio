@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { glassCardStyle } from "@/lib/glass-styles";
 
-const LINKEDIN_URL = "https://www.linkedin.com/in/sri-gutala/";
+const LINKEDIN_URL = "https://www.linkedin.com/in/sai-gutala/";
 
 export default function AboutSection() {
   return (
@@ -17,7 +17,7 @@ export default function AboutSection() {
           <div className="pointer-events-none absolute -left-10 -top-10 h-40 w-40 rounded-full bg-[#00D1FF]/25 blur-3xl" />
           <div className="pointer-events-none absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
           <p className="font-landing text-6xl font-bold tracking-tight text-white md:text-7xl lg:text-8xl">
-            5+
+            3+
           </p>
           <p className="mt-4 max-w-[12ch] font-landing text-lg font-semibold leading-snug text-white md:text-xl">
             Years Of Experience
@@ -29,10 +29,10 @@ export default function AboutSection() {
             About Me
           </p>
           <h2 className="font-landing text-3xl font-bold leading-tight tracking-tight text-white md:text-4xl lg:text-[2.75rem]">
-            Hi, I&apos;m Sri! 👋
+            Hi, I&apos;m Sai! 👋
           </h2>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/65 md:text-lg">
-            Over the past 5+ years, I&apos;ve been building products across
+            Over the past 3+ years, I&apos;ve been building products across
             both fast-paced startups and large enterprise organizations. At
             heart, I&apos;m someone who naturally gravitates toward finding
             complex problems, understanding why they exist, and building
@@ -58,12 +58,14 @@ export default function AboutSection() {
             </h3>
             <ul className="mt-4 space-y-3 text-base leading-relaxed text-white/65 md:text-lg">
               <li>
-                M.S. in Management — The George Washington University (In
-                Progress)
+                M.S. in Management — The George Washington University (2027)
+              </li>
+              <li>
+                Certified Product Manager Pro — PM Accelerator (2026)
               </li>
               <li>
                 B.S. in Electrical &amp; Computer Engineering — George Mason
-                University
+                University (2022)
               </li>
             </ul>
           </div>

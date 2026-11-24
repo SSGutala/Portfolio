@@ -15,18 +15,6 @@ type Experience = {
 
 const experiences: Experience[] = [
   {
-    company: "Closet AI",
-    role: "Co-Founder & AI Product Manager",
-    location: "Remote",
-    dates: "July 2026 - Present",
-    portfolioHref: "/projects/closet-ai",
-    bullets: [
-      "Directed a 4-person cross-functional team to build Authentication and Occasion Selection for an AI wardrobe app, authoring PRDs and resolving feature dependencies.",
-      "Resolved critical specification ambiguities for a generative AI RAG pipeline by architecting a timezone-safe data model, unblocking commitment locking and rating loops.",
-      "Established real-device QA standards spanning a 30-case, 4-device matrix and formulated pre-launch go-to-market strategy backed by a 7-competitor benchmarking teardown to inform strategic decision making.",
-    ],
-  },
-  {
     company: "LilPreneur",
     role: "Co-Founder & AI Product Manager",
     location: "Remote",
@@ -36,6 +24,18 @@ const experiences: Experience[] = [
       "Led product lifecycle building a simulation platform for youth, managing workflows from onboarding to reporting.",
       "Directed a 45-screen design system in Figma and conducted structured scenario reviews that caught conflicting cost models and pattern flaws prior to engineering handoff.",
       "Architected COPPA-compliant frontend scope, decoupling client-side state management from server-side model calls to ensure end-to-end data governance.",
+    ],
+  },
+  {
+    company: "Closet AI",
+    role: "AI Product Manager",
+    location: "Remote",
+    dates: "July 2026 - November 2026",
+    portfolioHref: "/projects/closet-ai",
+    bullets: [
+      "Directed a 4-person cross-functional team to build Authentication and Occasion Selection for an AI wardrobe app, authoring PRDs and resolving feature dependencies.",
+      "Resolved critical specification ambiguities for a generative AI RAG pipeline by architecting a timezone-safe data model, unblocking commitment locking and rating loops.",
+      "Established real-device QA standards spanning a 30-case, 4-device matrix and formulated pre-launch go-to-market strategy backed by a 7-competitor benchmarking teardown to inform strategic decision making.",
     ],
   },
   {
